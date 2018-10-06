@@ -247,12 +247,12 @@ hide_edge_borders both
 
 # bar
 bar {
-	#status_command i3blocks -c /home/booker/.i3/i3blocks.conf
-	status_command i3status
+	status_command i3blocks -c /home/penn/.i3/i3blocks.conf
+	#status_command i3status
 	position top
 	colors {
 		background	$c-black
-	    	separator	$c-yellow
+	    	separator	$c-black
 		#			border		background	text
 	#	focused_workspace	$c-yellow	$c-yellow	$c-black
 	#	inactive_workspace	$c-black	$c-black	$c-white
