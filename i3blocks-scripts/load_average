@@ -14,22 +14,36 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#while :
+#do
+#    load="$(cut -d ' ' -f1 /proc/loadavg)"
+#    cpus="$(nproc)"
+#    echo "$load"
+
+    # color if load is too high
+#    awk -v cpus=$cpus -v cpuload=$load
+#    sleep .5
+#done
+
 load="$(cut -d ' ' -f1 /proc/loadavg)"
 cpus="$(nproc)"
 
+#let "loadperc = load*25.0"
+loadperc=$(echo "$load * 25" | bc)
+
 # full text
-echo "$load"
+#echo "$loadperc "
+printf -v loadperc "%02d" $loadperc
+echo "${loadperc%.*}%  "
 
 # short text
-echo "$load"
+echo "$load "
 
 # color if load is too high
-awk -v cpus=$cpus -v cpuload=$load '
-    BEGIN {
-        if (cpus <= cpuload) {
-            print "#FF0000";
-            exit 33;
-        }
-    }
-'
-
+if [ $loadperc = 100 ]; then
+    echo "#cc0000"
+elif [[ ${loadperc:0:1} = "9" ]]; then
+    echo "#cc0000"
+else
+    echo "#eeeeee"
+fi

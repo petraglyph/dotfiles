@@ -1,0 +1,22 @@
+#/bin/sh
+#
+#conky.text = [[
+#${if_up tun0}${else}$endif
+#${if_up tun0}${else}$endif
+#${if_existing /proc/net/route wlp59s0}#ffcc00${else}#cc0000${endif}
+#]]
+
+wlan="$(cat /sys/class/net/wlp59s0/carrier)"
+vpn="$(cat /sys/class/net/tun0/carrier)"
+if [[ $vpn = 1 ]]; then
+    echo ""
+else
+    echo ""
+fi
+
+echo ""
+if [[ $wlan = 1 ]]; then
+    echo "#ffcc00"
+else
+    echo "#cc0000"
+fi

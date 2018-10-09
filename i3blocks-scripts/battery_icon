@@ -64,6 +64,7 @@ if ($status eq 'Discharging') {
 } else {
     $full_text = '';
 }
+=cut
 
 if ($status eq 'Charging') {
     $full_text = '';
@@ -78,9 +79,6 @@ if ($status eq 'Charging') {
 } else {
     $full_text = '';
 }
-=cut
-
-$full_text = "$percent% ";
 
 $short_text = $full_text;
 
@@ -89,19 +87,14 @@ if ($acpi =~ /(\d\d:\d\d):/) {
 }
 
 # print text
-print "$full_text \n";
-print "$short_text \n";
+print "$full_text\n";
+print "$short_text\n";
 
 # consider color and urgent flag only on discharge
-if ($percent < 5) {
-    print "#111111\n";
-    exit(33);
-} elsif ($percent < 10) {
+if ($percent < 25) {
     print "#cc0000\n";
-} elsif ($percent < 25) {
+} else {
     print "#ffcc00\n";
-} elsif ($percent < 100) {
-    print "#eeeeee\n";
 } #else {
     #print "#0000cc";
 #}

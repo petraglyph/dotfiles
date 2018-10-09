@@ -125,10 +125,10 @@ set $ws2 "2 "
 set $ws3 "3 "
 set $ws4 "4 "
 set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7"
+set $ws6 "6 "
+set $ws7 "7 "
 set $ws8 "8"
-set $ws9 "9"
+set $ws9 "9 "
 set $ws10 "10 "
 
 # switch to workspace
@@ -228,6 +228,7 @@ exec firefox
 exec lollypop
 exec atom
 exec compton -f
+exec xautolock -locker i3lock
 
 # Run on i3 Restart
 exec_always feh --bg-scale /home/penn/Pictures/i3wallpaper.jpg
@@ -249,10 +250,11 @@ hide_edge_borders both
 bar {
 	status_command i3blocks -c /home/penn/.i3/i3blocks.conf
 	#status_command i3status -c /home/penn/.i3/i3status.conf
+	#status_command conky -c /home/penn/.i3/i3conky
 	position top
 	colors {
 		background	$c-black
-	    	separator	$c-yellow
+	    	separator	$c-black
 		#			border		background	text
 	#	focused_workspace	$c-yellow	$c-yellow	$c-black
 	#	inactive_workspace	$c-black	$c-black	$c-white
