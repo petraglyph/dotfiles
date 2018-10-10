@@ -1,15 +1,9 @@
 # i3 config file (v4)
-#
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
+# Penn Bauman
 
-# colors
+
+## Colors
 set $c-black    #111111
 set $c-grey     #555555
 set $c-white    #eeeeee
@@ -17,121 +11,64 @@ set $c-yellow   #ffcc00
 set $c-red      #cc0000
 set $c-blue     #0000cc
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-#font pango:FontAwesome, pango:monospace 8
-font pango:FontAwesome, pango:Monospace 10
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn't scale on retina/hidpi displays.
-
-# use these keys for focus, movement, and resize directions when reaching for
-# the arrows is not convenient
-set $up up
-set $down down
-set $left left
-set $right right
 
 ## Mod Key
 set $mod Mod4
 
-# use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+## Fonts
+# for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:FontAwesome, pango:DejaVu Sans Mono 10
+# DejaVu Sans Mono is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
 
-# kill focused window
-bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
+## Program Launcher
 #bindsym $mod+space exec dmenu_run
-bindsym $mod+space exec rofi -show run
+bindsym $mod+space exec rofi --enable-drun -show drun
 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-#bindsym $mod+$left focus left
-#bindsym $mod+$down focus down
-#bindsym $mod+$up focus up
-#bindsym $mod+$right focus right
-
-# alternatively, you can use the cursor keys:
+## General Window Controls
+# Change focused Window
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
-#bindsym $mod+Shift+$left move left
-#bindsym $mod+Shift+$down move down
-#bindsym $mod+Shift+$up move up
-#bindsym $mod+Shift+$right move right
-
-# alternatively, you can use the cursor keys:
+# Move focused window
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
+# Toggle split  orientation
+bindsym $mod+v split toggle
 
-# split in vertical orientation
-bindsym $mod+v split v
+# Kill focused window
+bindsym $mod+Shift+q kill
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+# Container layout
+bindsym $mod+t layout toggle tabbed split
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
+# Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-#bindsym $mod+f1 focus mode_toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+## Workspaces
+# Workspace names
 set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
 set $ws4 "4 "
 set $ws5 "5 "
-set $ws6 "6 "
+set $ws6 "6 "
 set $ws7 "7 "
 set $ws8 "8"
 set $ws9 "9 "
 set $ws10 "10 "
 
-# switch to workspace
+# Switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -143,7 +80,7 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-# move focused container to workspace
+# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -155,23 +92,19 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# workspace assignments
+# Workspace assignments
 assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws3
 assign [class="Atom"] $ws4
 assign [class="Lollypop"] $ws10
 assign [class="Spotify"] $ws10
-assign [class="Gimp"] $ws6
-assign [class="Inkscape"] $ws6
+assign [class="Gimp"] $ws7
+assign [class="Inkscape"] $ws7
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+## Resizing windows
 # resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -179,12 +112,6 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left        resize shrink width 10 px or 10 ppt
         bindsym Down        resize grow height 10 px or 10 ppt
         bindsym Up          resize shrink height 10 px or 10 ppt
@@ -196,8 +123,16 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
 
+## Scratchpad
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+~ move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+~ scratchpad show
+
+
+## System buttons
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
@@ -212,17 +147,54 @@ bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
-#bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-
-# Custom Keyboard Shortcuts
+# Restart i3
+bindsym $mod+Shift+Escape restart
+# Exit i3
+bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# Lock i3
 bindsym $mod+l exec i3lock --color 111111
 
-# Run on Startup
-#exec xkbcomp switch-LALT-LCTL.xkb $DISPLAY
+# Screenshots
+bindsym Print exec gnome-screenshot
+bindsym Control+Print exec gnome-screenshot -i
 
+
+## Program Keyboard Shortcuts
+# Start Terminal
+bindsym $mod+Return exec i3-sensible-terminal
+# Start Chrome
+bindsym $mod+Shift+w exec google-chrome-stable
+# Start Spotify
+bindsym $mod+Shift+s exec spotify --force-device-scale-factor=2.0 %U
+# Start Atom
+bindsym $mod+Shift+a exec atom
+# Start Lollypop
+bindsym $mod+Shift+l exec lollypop
+
+
+## Folder keyboard shortcuts
+# Open /
+bindsym $mod+Shift+r exec thunar /
+# Open 5e Rule Books
+bindsym $mod+Shift+b exec thunar /home/penn/Storage/D\&D/5e\ Rule\ Books/
+# Open pCloud Drive
+bindsym $mod+Shift+d exec thunar /home/penn/pCloudDrive/
+# Open Downloads
+bindsym $mod+d exec thunar /home/penn/Downloads/
+# Open Git Folder
+bindsym $mod+Shift+g exec thunar /home/penn/Storage/Git/
+# Open Site
+bindsym $mod+Shift+v exec thunar /home/penn/Storage/Site/
+# Open Storage
+bindsym $mod+Shift+f exec thunar /home/penn/Storage
+# Open College Folder
+bindsym $mod+Shift+e exec thunar /home/penn/Storage/College/
+
+
+## Run on Startup
 exec i3-sensible-terminal
 exec firefox
 exec lollypop
@@ -231,40 +203,38 @@ exec compton -f
 exec xautolock -locker i3lock
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
-
 # Run on i3 Restart
 exec_always feh --bg-scale /home/penn/Pictures/i3wallpaper.jpg
 exec_always xkbcomp switch-LALT-LCTL.xkb $DISPLAY
 
 
+## Windows
 # window colors
-#			border		background	text		indicator
-client.focused		$c-black	$c-black	$c-white	$c-yellow
-client.unfocused	$c-black	$c-black	$c-grey		$c-yellow
-client.focused_inactive	$c-black	$c-black	$c-white	$c-yellow
-client.urgent 		$c-black	$c-black	$c-red		$c-yellow
+#                        border     background   text        indicator
+client.focused           $c-black   $c-black     $c-white    $c-yellow
+client.unfocused         $c-black   $c-black     $c-grey     $c-yellow
+client.focused_inactive  $c-black   $c-black     $c-white    $c-yellow
+client.urgent            $c-black   $c-black     $c-red      $c-yellow
 
 # no borders
 new_window pixel 0
 hide_edge_borders both
 
-# bar
+
+## Bar
 bar {
 	status_command i3blocks -c /home/penn/.i3/i3blocks.conf
 	#status_command i3status -c /home/penn/.i3/i3status.conf
 	#status_command conky -c /home/penn/.i3/i3conky
+    font pango:FontAwesome, pango:Monospace 10
 	position top
 	colors {
 		background	$c-black
-	    	separator	$c-black
-		#			border		background	text
-	#	focused_workspace	$c-yellow	$c-yellow	$c-black
-	#	inactive_workspace	$c-black	$c-black	$c-white
-	#	urgent_workspace	$c-red		$c-red		$c-black
-		focused_workspace       $c-black        $c-black        $c-yellow
-                inactive_workspace      $c-black        $c-black        $c-white
-                urgent_workspace        $c-black        $c-black        $c-red
+	    separator	$c-black
+		#                    border		background   text
+		focused_workspace    $c-black   $c-black     $c-yellow
+        inactive_workspace   $c-black   $c-black     $c-white
+        urgent_workspace     $c-black   $c-black     $c-red
 
 	}
 }
-

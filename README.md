@@ -27,3 +27,7 @@ i3blocks
 Redshift
 
     $ sudo pacman -S redshift
+
+Thunar
+
+    $ sudo pacman -S thunar
