@@ -2,9 +2,9 @@
 
 vol="$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }')"
 if [[ ${vol:1:2} = "%" ]]; then
-    echo "0$vol"
+    echo "0$vol  "
 else
-    echo $vol
+    echo "$vol  "
 fi
 
 #if [[ ${vol:0:1} > 4 ]];then
