@@ -165,6 +165,8 @@ bindsym Control+Print exec gnome-screenshot -i
 ## Program Keyboard Shortcuts
 # Start Terminal
 bindsym $mod+Return exec i3-sensible-terminal
+# Start Firefox
+bindsym $mod+w exec Firefox
 # Start Chrome
 bindsym $mod+Shift+w exec google-chrome-stable
 # Start Spotify
@@ -174,8 +176,15 @@ bindsym $mod+Shift+a exec atom
 # Start Lollypop
 bindsym $mod+Shift+l exec lollypop
 
+# Start Calculator
+bindsym $mod+c exec gnome-calculator
+# Keep Calculator floating
+for_window [class="Gnome-calculator"] floating enable
+
 
 ## Folder keyboard shortcuts
+# Open ~/
+bindsym $mod+f exec thunar
 # Open /
 bindsym $mod+Shift+r exec thunar /
 # Open 5e Rule Books
