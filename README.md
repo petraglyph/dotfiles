@@ -23,3 +23,7 @@ Feh
 i3blocks
 
     $ sudo pacman -S i3blocks
+
+Redshift
+
+    $ sudo pacman -S redshift
