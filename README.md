@@ -2,6 +2,7 @@
 
 ## Files to Move
     $ cp rofi-config ~/.config/rofi/config
+    $ sudo cp blur-i3lock.sh /bin/
 
 ## Programs to Install
 Rofi

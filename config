@@ -155,7 +155,7 @@ bindsym $mod+Shift+Escape restart
 # Exit i3
 bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # Lock i3
-bindsym $mod+l exec i3lock --color 111111
+bindsym $mod+l exec blur-i3lock.sh dark
 
 # Screenshots
 bindsym Print exec gnome-screenshot
@@ -209,7 +209,7 @@ exec firefox
 exec lollypop
 exec atom
 exec compton -f
-exec --no-startup-id xautolock -locker wait-i3lock.sh
+exec --no-startup-id xautolock -notify 20 -notifier 'xset dpms force off' -locker blur-i3lock.sh
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 # Run on i3 Restart
