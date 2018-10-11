@@ -209,7 +209,7 @@ exec firefox
 exec lollypop
 exec atom
 exec compton -f
-exec xautolock -locker i3lock
+exec --no-startup-id xautolock -locker wait-i3lock.sh
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 # Run on i3 Restart
