@@ -1,6 +1,14 @@
 #!/bin/sh
 # Disk Icon
 
+home=($(df -k --output=pcent /))
+storage=($(df -k --output=pcent /home/penn/Storage/))
+
 echo ""
-echo ""
-echo "#ffcc00"
+echo ""
+
+if [[ ${home:0:1} = "9" || ${storage:0:1} = "9" ]]; then
+    echo "#cc0000"
+else
+    echo "#ffcc00"
+fi

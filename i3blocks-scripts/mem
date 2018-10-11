@@ -1,0 +1,8 @@
+#/bin/sh
+# Memory Usage
+
+#6mem="$(free -m | awk 'NR==2{printf "%.0f%%", $3*100/$2 }')"
+#mem="$(free | grep Mem | awk '{ printf("free: %.0f%\n", $4/$2 * 100.0) }')"
+
+mem="$(free | grep Mem | awk '{ printf("1: %s\n2: %s\n3: %s\n4: %s\n", $1,$2,$3,$4) }')"
+echo $mem

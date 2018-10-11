@@ -9,5 +9,4 @@ conky.config = {
 
 conky.text = [[
 ${if_existing /proc/net/route wlp59s0}${wireless_essid wlp59s0} ${wireless_link_qual_perc wlp59s0}% (${downspeedf wlp59s0}K/${upspeedf wlp59s0}K)${else}Disconnected$endif  
-${if_existing /proc/net/route wlp59s0}${wireless_essid wlp59s0} ${wireless_link_qual_perc wlp59s0}% (${downspeedf wlp59s0}K/${upspeedf wlp59s0}K)${else}Disconnected$endif
 ]]

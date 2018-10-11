@@ -4,12 +4,3 @@ home=($(df -k --output=pcent /))
 storage=($(df -k --output=pcent /home/penn/Storage/))
 
 echo "${home[1]}, ${storage[1]}  "
-echo "${home[1]}, ${storage[1]}  "
-
-if [[ ${home:0:1} = "9" ]]; then
-    echo "#cc0000"
-elif [[ ${storage:0:1} = "9" ]]; then
-    echo "#cc0000"S
-else
-    echo "#eeeeee"
-fi

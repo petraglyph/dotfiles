@@ -1,0 +1,12 @@
+conky.config = {
+	background = false,
+	out_to_x = false,
+	out_to_console = true,
+	update_interval = 1,
+	total_run_times = 1,
+	use_spacer = "none",
+}
+--Disk: 43.5%
+conky.text = [[
+${fs_used_perc /home/penn}%, ${fs_used_perc /home/penn/Storage}%
+]]
