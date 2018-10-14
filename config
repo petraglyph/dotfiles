@@ -212,8 +212,10 @@ exec compton -f
 exec --no-startup-id xautolock -notify 20 -notifier 'xset dpms force off' -locker blur-i3lock.sh
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+exec twmnd
 # Run on i3 Restart
-exec_always feh --bg-scale /home/penn/Pictures/i3wallpaper.jpg
+exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
 exec_always xkbcomp switch-LALT-LCTL.xkb $DISPLAY
 
 
@@ -232,9 +234,10 @@ hide_edge_borders both
 
 ## Bar
 bar {
-	status_command i3blocks -c /home/penn/.i3/i3blocks.conf
+	#status_command i3blocks -c /home/penn/.i3/i3blocks.conf
 	#status_command i3status -c /home/penn/.i3/i3status.conf
 	#status_command conky -c /home/penn/.i3/i3conky
+    status_command bash /home/penn/.i3/conky-wrap.sh
     font pango:FontAwesome, pango:Monospace 10
 	position top
 	colors {

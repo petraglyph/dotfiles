@@ -1,12 +1,9 @@
 conky.config = {
-	background = false,
 	out_to_x = false,
 	out_to_console = true,
-	update_interval = 1,
-	total_run_times = 1,
-	use_spacer = "none",
+	total_run_times = 2,
 }
 
 conky.text = [[
-${if_match $cpu<10}0${endif}${cpu}%  
+${if_match $cpu<10}0${endif}${cpu cpu0}%  
 ]]
