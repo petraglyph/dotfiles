@@ -1,7 +1,7 @@
 #/bin/sh
 
 # Send the header so that i3bar knows we want to use JSON:
-echo '{"version":1,"separator_block_width":10}'
+echo '{"version":1}'
 
 # Begin the endless array.
 echo '['
