@@ -1,0 +1,59 @@
+
+REFERENCES
+git@github.com:bookercodes/dotfiles.git
+git@github.com:vivien/i3blocks-contrib.git
+
+BAR CATAGORIES
+    ,,/// Time
+    ////, /,  Battery
+         00 - 10
+         11 - 25
+         26 - 50
+         51 - 75
+         76 - 100
+     CPU
+     Ram/Swap
+    , , ,  Disk
+    , , / Network (PIA, name, %, ip, up/down)
+        wahoo 75% (10K/2K)
+    //, , // Volume
+    //, //, , ,  Music
+
+    // pcloud
+
+
+DESKTOPS
+    1 
+    2 
+    3 
+    4 
+    5 
+    6 
+    7 
+    8 
+    9 
+    10 
+
+       
+
+    
+      
+    
+    
+
+REMOVED SHORTCUTS (i3 config)
+    # use Mouse+$mod to drag floating windows to their wanted position
+    #floating_modifier $mod
+    # enter fullscreen mode for the focused container
+    #bindsym $mod+f fullscreen toggle
+    # change container layout (stacked, tabbed, toggle split)
+    #bindsym $mod+s layout stacking
+    #bindsym $mod+w layout
+    # change focus between tiling / floating windows
+    #bindsym $mod+f1 focus mode_toggle
+    # focus the parent container
+    #bindsym $mod+a focus parent
+    # focus the child container
+    #bindsym $mod+d focus child
+    # reload the configuration file
+    #bindsym $mod+Shift+c reload
