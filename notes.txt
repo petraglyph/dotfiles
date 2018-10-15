@@ -1,7 +1,6 @@
-
 REFERENCES
-git@github.com:bookercodes/dotfiles.git
-git@github.com:vivien/i3blocks-contrib.git
+    git@github.com:bookercodes/dotfiles.git
+    git@github.com:vivien/i3blocks-contrib.git
 
 BAR CATAGORIES
     ,,/// Time
