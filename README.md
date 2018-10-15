@@ -14,20 +14,13 @@
     $ sudo pacman -S redshift
     $ sudo pacman -S thunar
 
+## FontAwesome
+[Reference](https://fontawesome.com/cheatsheet?from=io)
+
+[Download](https://github.com/FortAwesome/Font-Awesome), then move "Font Awesome 5 Free-Regular-400.otf" to ~/.fonts/
+
 ## Colors
 * Black: #111111
 * White: #eeeeee
 * Yellow: #ffcc00
 * Red: #cc0000
-
-## Desktops
-1 
-2 
-3 
-4 
-5 
-6 
-7 
-8 
-9 
-10 
