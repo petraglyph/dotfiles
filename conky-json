@@ -39,13 +39,13 @@ conky.text = [[
     { "full_text": "", "color": "${if_match $memperc>85}\#cc0000${else}${if_match $swapperc>85}\#cc0000${else}\#ffcc00${endif}${endif}", "separator_block_width":10},
     { "full_text": "${if_match $memperc<10}0${endif}$memperc%${if_match $swapperc>4}, ${if_match $swapperc<10}0${endif}${swapperc}%${endif}", "color": "\#eeeeee" },
 
-    { "full_text": "", "color": "${if_match $cpu>70}\#cc0000${else}\#ffcc00${endif}", "separator_block_width":10},
+    { "full_text": "", "color": "${if_match $cpu>75}\#cc0000${else}\#ffcc00${endif}", "separator_block_width":10},
     { "full_text": "${if_match $cpu<10}0${endif}${cpu}%", "color": "\#eeeeee" },
 
     { "full_text": "${if_match $battery_percent>75}${else}${if_match $battery_percent>50}${else}${if_match $battery_percent>25}${else}${if_match $battery_percent>10}${else}${endif}${endif}${endif}${endif}", "color": "${if_match $battery_percent>25}\#ffcc00${else}\#cc0000${endif}", "separator_block_width":10},
     { "full_text": "${battery_percent}%", "color": "\#eeeeee" },
 
     { "full_text": "", "color": "\#ffcc00", "separator_block_width":10},
-    { "full_text": "${time %a %Y-%m-%d %H:%M:%S}", "color": "\#eeeeee" }
+    { "full_text": "${time %a %Y-%m-%d %H:%M:%S}", "color": "\#eeeeee"}
 ],
 ]];
