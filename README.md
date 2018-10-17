@@ -22,5 +22,6 @@
 ## Colors
 * Black: #111111
 * White: #eeeeee
+* Grey: #555555
 * Yellow: #ffcc00
 * Red: #cc0000

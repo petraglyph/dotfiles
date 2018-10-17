@@ -30,6 +30,8 @@ xprop -name "Spotify Premium - Linux Preview" _NET_WM_ICON_NAME|\cut -d "\"" -f 
 
 conky.text = [[
 [
+    { "full_text": "${exec /home/penn/.i3/volume.sh}", "color": "\#eeeeee" },
+
     { "full_text": "${if_up tun0}${else}$endif", "color": "${if_existing /proc/net/route wlp59s0}\#ffcc00${else}\#cc0000${endif}", "separator_block_width":10},
     { "full_text": "${if_existing /proc/net/route wlp59s0}${wireless_essid wlp59s0} ${wireless_link_qual_perc wlp59s0}% (${downspeedf wlp59s0}K/${upspeedf wlp59s0}K)${else}Disconnected$endif", "color": "\#eeeeee" },
 
