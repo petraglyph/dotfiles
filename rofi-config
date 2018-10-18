@@ -9,7 +9,7 @@ rofi.hide-scrollbar:	True
 rofi.show-match:	False
 rofi.disable-history:	True
 rofi.font:      Monospace 40
-rofi.color-normal:  #111111, #eeeeee, #111111, #111111, #ffcc00
+rofi.color-normal:  #111111, #eeeeee, #111111, #111111, #00ffcc
 rofi.color-urgent:  #111111, #cc0000, #111111, #111111 , #cc0000
-rofi.color-active:  #111111, #ffcc00, #111111, #111111, #0000cc
+rofi.color-active:  #111111, #00ffcc, #111111, #111111, #0000cc
 rofi.color-window:  #111111, #eeeeee, #111111

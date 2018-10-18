@@ -4,12 +4,42 @@
 
 
 ## Colors
-set $c-black    #111111
-set $c-grey     #555555
-set $c-white    #eeeeee
-set $c-yellow   #ffcc00
-set $c-red      #cc0000
-set $c-blue     #0000cc
+# Original (black, white, yellow, red)
+set $c-backgnd  #111111
+set $c-text     #eeeeee
+set $c-high-n   #ffcc00
+set $c-high-b   #cc0000
+    # Unused
+    #set $c-mid      #555555
+    #set $c-high-g   #0000cc
+# Tealed (black, white, teal, red)
+set $c-backgnd  #111111
+set $c-text     #eeeeee
+set $c-high-n   #00ffcc
+set $c-high-b   #cc0000
+
+# Adapta Based (dark grey, white, teal, orange)
+#set $c-backgnd  #1b1b1b
+#set $c-text     #cfd8dc
+#set $c-high-n   #1de9b6
+#set $c-high-b   #f77669
+
+# Material Design (black, white, teal, ??)
+# 900 Grey
+#set $c-backgnd  #212121
+#set $c-backgnd  #1b1b1b
+# 100 Grey
+#set $c-text     #F5F5F5
+# A200 Teal
+#set $c-high-n   #64FFDA
+# A400 Deep Orange
+#set $c-high-b   #FF3D00
+
+# Manjaro (black, white, green, )
+#set $c-backgnd  #111111
+#set $c-text     #d9f3e1
+#set $c-high-n   #34BE5B
+#set $c-high-b   #34BE5B
 
 
 ## Mod Key
@@ -221,11 +251,11 @@ exec_always xkbcomp switch-LALT-LCTL.xkb $DISPLAY
 
 ## Windows
 # window colors
-#                        border     background   text        indicator
-client.focused           $c-black   $c-black     $c-white    $c-yellow
-client.unfocused         $c-black   $c-black     $c-grey     $c-yellow
-client.focused_inactive  $c-black   $c-black     $c-white    $c-yellow
-client.urgent            $c-black   $c-black     $c-red      $c-yellow
+#                        border      background   text       indicator
+client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-high-n
+client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-high-n
+client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-high-n
+client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
 
 # no borders
 new_window pixel 0
@@ -241,12 +271,12 @@ bar {
     font pango:FontAwesome, pango:Monospace 10
 	position top
 	colors {
-		background	$c-black
-	    separator	$c-black
-		#                    border		background   text
-		focused_workspace    $c-black   $c-black     $c-yellow
-        inactive_workspace   $c-black   $c-black     $c-white
-        urgent_workspace     $c-black   $c-black     $c-red
+		background	$c-backgnd
+	    separator	$c-backgnd
+		#                    border		 background   text
+		focused_workspace    $c-backgnd  $c-backgnd   $c-high-n
+        inactive_workspace   $c-backgnd  $c-backgnd   $c-text
+        urgent_workspace     $c-backgnd  $c-backgnd   $c-high-b
 
 	}
 }
