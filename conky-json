@@ -33,7 +33,10 @@ local ctext = "eeeeee"
 local chigh = "ffcc00"
 local cerror = "cc0000"
 
-Teadled
+Tealed
+local ctext = "eeeeee"
+local chigh = "00ffcc"
+local cerror = "cc0000"
 
 Manjaro
 local ctext = "d9f3e1"
