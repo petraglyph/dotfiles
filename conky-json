@@ -14,20 +14,9 @@ conky.config = {
 }
 
 --[[
-ZIP CODES
-Arlington: 22205
-Charlottesville: 22904
-
-VOLUME
-$500 pactl list sinks | grep "Volume: 0" | cut -d " " -f4
 SPOTIFY
 xprop -name "Spotify Premium - Linux Preview" _NET_WM_ICON_NAME|\cut -d "\"" -f 2|cut -b 11-
 
-{ "full_text": "", "color": "\#ffcc00" },
-{ "full_text": "", "color": "\#eeeeee" },
-
-]]
---[[
 Original
 local ctext = "eeeeee"
 local chigh = "ffcc00"

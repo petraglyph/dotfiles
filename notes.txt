@@ -2,6 +2,12 @@ REFERENCES
     git@github.com:bookercodes/dotfiles.git
     git@github.com:vivien/i3blocks-contrib.git
 
+COLORS
+    Set in
+        config
+        conky-json
+        rofi-config 
+
 BAR CATAGORIES
     ,,/// Time
     ////, /,  Battery
@@ -19,7 +25,6 @@ BAR CATAGORIES
     //, //, , ,  Music
 
     // pcloud
-
 
 DESKTOPS
     1 
