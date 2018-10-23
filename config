@@ -244,6 +244,7 @@ exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec twmnd
+exec --no-startup-id /usr/lib/kdeconnectd
 # Run on i3 Restart
 exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
 exec_always xkbcomp switch-LALT-LCTL.xkb $DISPLAY
