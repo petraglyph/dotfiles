@@ -6,6 +6,7 @@ Save into the home directory as ~/.i3/
 ### Files to Move
     $ cd ~/.i3/
     $ ln rofi-config ~/.config/rofi/config
+    $ ln twmn.conf ~/.config/twmn/twmn.conf
     $ sudo ln blur-i3lock.sh /bin/
 
 ### Programs to Install
