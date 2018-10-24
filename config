@@ -58,6 +58,11 @@ font pango:FontAwesome, pango:DejaVu Sans Mono 10
 #bindsym $mod+space exec dmenu_run
 bindsym $mod+space exec rofi --enable-drun -show drun
 
+## Letter Arrow Keys
+set $left-key a
+set $down-key s
+set $up-key w
+set $right-key d
 
 ## General Window Controls
 # Change focused Window
@@ -66,11 +71,21 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+bindsym $mod+$left-key focus left
+bindsym $mod+$down-key focus down
+bindsym $mod+$up-key focus up
+bindsym $mod+$right-key focus right
+
 # Move focused window
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+$left-key move left
+bindsym $mod+Shift+$down-key move down
+bindsym $mod+Shift+$up-key move up
+bindsym $mod+Shift+$right-key move right
 
 # Toggle split  orientation
 bindsym $mod+v split toggle
@@ -147,6 +162,11 @@ mode "resize" {
         bindsym Up          resize shrink height 10 px or 10 ppt
         bindsym Right       resize grow width 10 px or 10 ppt
 
+        bindsym $left-key   resize shrink width 10 px or 10 ppt
+        bindsym $down-key   resize grow height 10 px or 10 ppt
+        bindsym $up-key     resize shrink height 10 px or 10 ppt
+        bindsym $right-key  resize grow width 10 px or 10 ppt
+
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -196,13 +216,13 @@ bindsym Control+Print exec gnome-screenshot -i
 # Start Terminal
 bindsym $mod+Return exec i3-sensible-terminal
 # Start Firefox
-bindsym $mod+w exec Firefox
+#bindsym $mod+w exec Firefox
 # Start Chrome
-bindsym $mod+Shift+w exec google-chrome-stable
+#bindsym $mod+Shift+w exec google-chrome-stable
 # Start Spotify
-bindsym $mod+Shift+s exec spotify --force-device-scale-factor=2.0 %U
+#bindsym $mod+Shift+s exec spotify --force-device-scale-factor=2.0 %U
 # Start Atom
-bindsym $mod+Shift+a exec atom
+#bindsym $mod+Shift+a exec atom
 # Start Lollypop
 bindsym $mod+Shift+l exec lollypop
 
@@ -220,9 +240,9 @@ bindsym $mod+Shift+r exec thunar /
 # Open 5e Rule Books
 bindsym $mod+Shift+b exec thunar /home/penn/Storage/D\&D/5e\ Rule\ Books/
 # Open pCloud Drive
-bindsym $mod+Shift+d exec thunar /home/penn/pCloudDrive/
+#bindsym $mod+Shift+d exec thunar /home/penn/pCloudDrive/
 # Open Downloads
-bindsym $mod+d exec thunar /home/penn/Downloads/
+#bindsym $mod+d exec thunar /home/penn/Downloads/
 # Open Git Folder
 bindsym $mod+Shift+g exec thunar /home/penn/Storage/Git/
 # Open Site
