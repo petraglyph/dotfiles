@@ -240,7 +240,7 @@ bindsym $mod+Shift+r exec thunar /
 # Open 5e Rule Books
 bindsym $mod+Shift+b exec thunar /home/penn/Storage/D\&D/5e\ Rule\ Books/
 # Open pCloud Drive
-#bindsym $mod+Shift+d exec thunar /home/penn/pCloudDrive/
+bindsym $mod+Shift+p exec thunar /home/penn/pCloudDrive/
 # Open Downloads
 #bindsym $mod+d exec thunar /home/penn/Downloads/
 # Open Git Folder
