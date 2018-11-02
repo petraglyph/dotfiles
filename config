@@ -256,7 +256,7 @@ bindsym $mod+Shift+e exec thunar /home/penn/Storage/College/
 ## Run on Startup
 exec i3-sensible-terminal
 exec firefox
-exec lollypop
+#exec lollypop
 exec atom
 exec compton -f
 exec --no-startup-id xautolock -notify 20 -notifier 'xset dpms force off' -locker blur-i3lock.sh
