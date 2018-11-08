@@ -145,7 +145,7 @@ assign [class="Gimp"] $ws7
 assign [class="Inkscape"] $ws7
 assign [class="Lollypop"] $ws10
 assign [class="Spotify"] $ws10
-assign [class="rhythmbox"] $ws10
+assign [class="Rhythmbox"] $ws10
 
 
 ## Resizing windows
@@ -284,9 +284,10 @@ client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-high-n
 client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
 
 # no borders
-#new_window pixel 0
+new_window pixel 0
 hide_edge_borders both
-
+default_border none
+for_window [class="Gnome-terminal"] border normal
 
 ## Bar
 bar {
