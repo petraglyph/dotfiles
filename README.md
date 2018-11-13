@@ -9,6 +9,7 @@ Save into the home directory as ~/.i3/
     $ ln twmn.conf ~/.config/twmn/twmn.conf
     $ sudo ln blur-i3lock.sh /bin/
     $ sudo ln window-file-clear.sh /bin/
+    $ sudo ln -r -s xorg.conf.d /etc/X11/
 
 ### Programs to Install
     $ sudo pacman -S rofi
