@@ -1,15 +1,7 @@
 # i3 Config Files
 
 ## Install
-Save into the home directory as ~/.i3/
-
-### Files to Move
-    $ cd ~/.i3/
-    $ ln rofi-config ~/.config/rofi/config
-    $ ln twmn.conf ~/.config/twmn/twmn.conf
-    $ sudo ln blur-i3lock.sh /bin/
-    $ sudo ln window-file-clear.sh /bin/
-    $ sudo ln -r -s xorg.conf.d /etc/X11/
+    $ bash ~/.i3/install.sh
 
 ### Programs to Install
     $ sudo pacman -S rofi lxappearance compton feh i3blocks redshift thunar xorg-xbacklight
