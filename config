@@ -147,6 +147,7 @@ assign [class="Lollypop"] $ws10
 assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
 
+workspace_layout tabbed
 
 ## Resizing windows
 # resize window (you can also use the mouse for that)

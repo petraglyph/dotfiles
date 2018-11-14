@@ -1,6 +1,7 @@
 # i3 Config Files
 
 ## Install
+
     $ bash ~/.i3/install.sh
 
 ### Programs to Install (pamac & AUR)
