@@ -7,22 +7,26 @@
 
     * android-studio
     * arduino
-    * dropbox
-    * gcolor2
-    * gnome-calculator
     * google-chrome
     * intellij
-    * kdeconnect
-    * materia-gtk-theme
-    * openvpn
-    * papirus-maia-icon-theme
-    * pcloudcc
-    * pcloud
     * spotify
-    * transmission-gtk
     * unity-editor
     * visual-studio-code
+
+    * gnome-calculator
+    * pcloudcc
+    * pcloud
+    * dropbox
+    * transmission-gtk
+
+    * materia-gtk-theme
+    * papirus-maia-icon-theme
+    * gcolor2
+
+    * openvpn
+    * kdeconnect
     * twmn-git
+    * nmcli
 
 ### FontAwesome
 [Download](https://github.com/FortAwesome/Font-Awesome), then move "Font Awesome 5 Free-Regular-400.otf" to ~/.fonts/

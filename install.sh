@@ -29,7 +29,6 @@ pgms+=("xorg-xbacklight")
 pgms+=("conky")
 pgms+=("gparted")
 pgms+=("neofetch")
-pgms+=("nmcli")
 
 pgms+=("gimp")
 #pgms+=("lollypop")
