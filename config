@@ -13,10 +13,10 @@
     #set $c-mid      #555555
     #set $c-high-g   #0000cc
 # Tealed (black, white, teal, red)
-set $c-backgnd  #111111
-set $c-text     #eeeeee
-set $c-high-n   #00ffcc
-set $c-high-b   #cc0000
+#set $c-backgnd  #111111
+#set $c-text     #eeeeee
+#set $c-high-n   #00ffcc
+#set $c-high-b   #cc0000
 
 # Adapta Based (dark grey, white, teal, orange)
 #set $c-backgnd  #1b1b1b
@@ -35,11 +35,11 @@ set $c-high-b   #cc0000
 # A400 Deep Orange
 #set $c-high-b   #FF3D00
 
-# Manjaro (black, white, green, )
-#set $c-backgnd  #111111
-#set $c-text     #d9f3e1
-#set $c-high-n   #34BE5B
-#set $c-high-b   #34BE5B
+# Manjaro (black, white, green, orange)
+set $c-backgnd  #111111
+set $c-text     #fafafa
+set $c-high-n   #3bdab4
+set $c-high-b   #ea721c
 
 
 ## Mod Key
@@ -288,6 +288,7 @@ client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
 new_window pixel 0
 default_border none
 for_window [class="Gnome-terminal"] border normal
+
 
 ## Bar
 bar {
