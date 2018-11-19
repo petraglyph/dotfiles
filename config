@@ -288,7 +288,7 @@ client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
 new_window pixel 0
 default_border none
 for_window [class="Gnome-terminal"] border normal
-
+for_window [class="Gimp-2.10"] border normal
 
 ## Bar
 bar {
