@@ -273,6 +273,7 @@ exec bash window-file-clear.sh
 
 # Run on i3 Restart
 exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
+#exec_always feh --bg-scale /home/penn/.i3/wallpaper.png
 exec_always xkbcomp switch-LALT-LCTL.xkb $DISPLAY
 
 
