@@ -257,6 +257,7 @@ bindsym $mod+Shift+e exec thunar /home/penn/Storage/College/
 
 ## Run on Startup
 exec i3-sensible-terminal
+exec i3-sensible-terminal
 exec firefox
 exec rhythmbox
 #exec lollypop
