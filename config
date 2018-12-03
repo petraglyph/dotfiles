@@ -5,10 +5,10 @@
 
 ## Colors
 # Original (black, white, yellow, red)
-#set $c-backgnd  #111111
-#set $c-text     #eeeeee
-#set $c-high-n   #ffcc00
-#set $c-high-b   #cc0000
+set $c-backgnd  #111111
+set $c-text     #eeeeee
+set $c-high-n   #ffcc00
+set $c-high-b   #cc0000
     # Unused
     #set $c-mid      #555555
     #set $c-high-g   #0000cc
@@ -36,10 +36,10 @@
 #set $c-high-b   #FF3D00
 
 # Manjaro (black, white, green, orange)
-set $c-backgnd  #111111
-set $c-text     #fafafa
-set $c-high-n   #3bdab4
-set $c-high-b   #ea721c
+#set $c-backgnd  #111111
+#set $c-text     #fafafa
+#set $c-high-n   #3bdab4
+#set $c-high-b   #ea721c
 
 
 ## Mod Key
@@ -293,21 +293,17 @@ for_window [class="Gnome-terminal"] border normal
 for_window [class="Gimp-2.10"] border normal
 
 ## Bar
-#bar {
-	#status_command i3blocks -c /home/penn/.i3/i3blocks.conf
-	#status_command i3status -c /home/penn/.i3/i3status.conf
-	#status_command conky -c /home/penn/.i3/i3conky
-    #status_command polybar example
-    #status_command bash /home/penn/.i3/conky-wrap.sh
-    #font pango:FontAwesome, pango:Monospace 10
-	#position bottom
-	#colors {
-	#	background	$c-backgnd
-	#    separator	$c-backgnd
-	#	#                    border		 background   text
-	#	focused_workspace    $c-backgnd  $c-backgnd   $c-high-n
-    #    inactive_workspace   $c-backgnd  $c-backgnd   $c-text
-    #    urgent_workspace     $c-backgnd  $c-backgnd   $c-high-b
-	#}
-#}
-exec_always --no-startup-id bash polybar-start.sh
+#exec_always --no-startup-id bash polybar-start.sh
+bar {
+    status_command bash /home/penn/.i3/conky-wrap.sh
+    font pango:FontAwesome, pango:Monospace 10
+	position top
+	colors {
+		background	$c-backgnd
+	    separator	$c-backgnd
+		#                    border		 background   text
+		focused_workspace    $c-backgnd  $c-backgnd   $c-high-n
+        inactive_workspace   $c-backgnd  $c-backgnd   $c-text
+        urgent_workspace     $c-backgnd  $c-backgnd   $c-high-b
+	}
+}

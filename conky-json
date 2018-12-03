@@ -37,9 +37,9 @@ local ctext = "F5F5F5"
 local chigh = "64FFDA"
 local cerror = "FF3D00"
 ]]
-local ctext = "fafafa"
-local chigh = "3bdab4"
-local cerror = "ea721c"
+local ctext = "eeeeee"
+local chigh = "ffcc00"
+local cerror = "cc0000"
 
 
 conky.text = [[
