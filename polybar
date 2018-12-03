@@ -18,15 +18,16 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
+background-alt = #444444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
 
+background = #111111
+text = eeeeee
+primary = #ffcc00
+secondary = #00ff00
+alert = #0000ff
 
 [bar/pennbar]
 width = 100%
@@ -42,6 +43,7 @@ module-margin-left = 2
 module-margin-right = 2
 font-0 = fixed:pixelsize=18;1
 font-1 = unifont:fontformat=DejaVu Sans Mono:size=18:antialias=false;0
+font-2 = unifont:fontformat=FontAwesome:size=18:antialias=false;0
 
 modules-left = i3ws i3
 modules-center = datetime
@@ -55,16 +57,34 @@ cursor-scroll = ns-resize
 
 
 
-[module/filesystem]
-type = internal/fs
-interval = 25
+[module/i3ws]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-scroll = true
+format = <label-state>
+format-padding-right = 2
 
-mount-0 = /
-mount-1 = /home/penn/Storage
+label-unfocused-foreground = ${colors.text}
+label-unfocused-padding = 1
+label-unfocused-margin = 1
+;label-unfocused-underline = ${colors.text}
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-focused-foreground = ${colors.primary}
+label-focused-padding = 1
+label-focused-margin = 1
+label-focused-underline = ${colors.primary}
+
+label-visible-foreground = ${colors.primary}
+label-visible-padding = 1
+label-visible-margin = 1
+label-visible-underline = ${colors.primary}
+
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = 1
+label-urgent-margin = 1
+label-urgent-underline = ${colors.alert}
 
 
 [module/datetime]
@@ -72,93 +92,36 @@ type = internal/date
 interval = 1
 time = "%a %Y-%m-%d %H:%M:%S"
 format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-prefix-foreground = ${colors.primary}
+format-underline = #ffcc00
 label = %time%
-
-[module/i3ws]
-type = internal/i3
-pin-workspaces = true
-strip-wsnumbers = true
-index-sort = true
-enable-scroll = false
-format = <label-state> <label-mode>
-format-padding-right = 2
-label-unfocused-foreground = ${colors.foreground}
-label-unfocused-padding = 2
-label-focused-foreground = ${colors.green}
-label-focused-padding = 2
-label-urgent-foreground = ${colors.red}
-label-urgent-padding = 2
+label-padding-right = 1
+label-padding-left = 1
 
 
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+[module/filesystem]
+type = internal/fs
+interval = 25
 
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+mount-0 = /
+mount-1 = /home/penn/Storage
 
-; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
+label-mounted = %mountpoint%: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
 
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
-
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
-
-; Separator in between workspaces
-; label-separator = |
-
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
-label = BL
+format = <label>
+label = BL
+format-prefix-foreground = ${colors.primary}
+format-underline = #ffcc00
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+label-padding-right = 1
+label-padding-left = 1
 
 [module/backlight-acpi]
 inherit = module/xbacklight

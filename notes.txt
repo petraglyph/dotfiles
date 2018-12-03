@@ -6,7 +6,7 @@ COLORS
     Set in
         config
         conky-json
-        rofi-config 
+        rofi-config
 
 BAR CATAGORIES
     ,,/// Time
@@ -25,6 +25,7 @@ BAR CATAGORIES
     //, //, , ,  Music
 
     // pcloud
+    ,
 
 DESKTOPS
     1 
