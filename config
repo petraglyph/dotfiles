@@ -5,10 +5,10 @@
 
 ## Colors
 # Original (black, white, yellow, red)
-set $c-backgnd  #111111
-set $c-text     #eeeeee
-set $c-high-n   #ffcc00
-set $c-high-b   #cc0000
+#set $c-backgnd  #111111
+#set $c-text     #eeeeee
+#set $c-high-n   #ffcc00
+#set $c-high-b   #cc0000
     # Unused
     #set $c-mid      #555555
     #set $c-high-g   #0000cc
@@ -36,10 +36,11 @@ set $c-high-b   #cc0000
 #set $c-high-b   #FF3D00
 
 # Manjaro (black, white, green, orange)
-#set $c-backgnd  #111111
-#set $c-text     #fafafa
+set $c-backgnd  #111111
+set $c-text     #fafafa
+set $c-high-n   #3baf80
 #set $c-high-n   #3bdab4
-#set $c-high-b   #ea721c
+set $c-high-b   #ea721c
 
 
 ## Mod Key
