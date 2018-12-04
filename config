@@ -36,11 +36,28 @@
 #set $c-high-b   #FF3D00
 
 # Manjaro (black, white, green, orange)
-set $c-backgnd  #111111
-set $c-text     #fafafa
-set $c-high-n   #3baf80
+#set $c-backgnd  #111111
+#set $c-text     #fafafa
+#set $c-high-n   #3baf80
 #set $c-high-n   #3bdab4
-set $c-high-b   #ea721c
+#set $c-high-b   #ea721c
+
+#Terminal (black, white, green, red)
+set $c-backgnd  #0C0C0D
+#set $c-text     #EEEEEE
+set $c-text     #AAAAAA
+#set $c-high-n   #55FF55
+set $c-high-n   #00AA00
+#set $c-high-b   #FF5555
+set $c-high-b   #AA0000
+
+#Matcha-dark-sea
+set $c-backgnd  #141A1B
+set $c-text     #EEEEEE
+set $c-high-n   #2EB398
+set $c-high-b   #DB5B5B
+
+
 
 
 ## Mod Key
@@ -276,7 +293,7 @@ exec bash window-file-clear.sh
 # Run on i3 Restart
 exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
 #exec_always feh --bg-scale /home/penn/.i3/wallpaper.png
-exec_always xkbcomp switch-LALT-LCTL.xkb $DISPLAY
+#exec_always xkbcomp switch-LALT-LCTL.xkb $DISPLAY
 
 
 ## Windows
@@ -291,7 +308,9 @@ client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
 new_window pixel 0
 default_border none
 for_window [class="Gnome-terminal"] border normal
+#for_window [class="Termite"] border normal
 for_window [class="Gimp-2.10"] border normal
+
 
 ## Bar
 #exec_always --no-startup-id bash polybar-start.sh
