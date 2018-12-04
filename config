@@ -65,6 +65,7 @@ set $mod Mod4
 
 ## Terminal
 set $term termite
+bindsym $mod+Return exec $term
 
 ## Fonts
 # for window titles. Will also be used by the bar unless a different font
@@ -232,19 +233,6 @@ bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~
 
 
 ## Program Keyboard Shortcuts
-# Start Terminal
-bindsym $mod+Return exec $term
-# Start Firefox
-#bindsym $mod+w exec Firefox
-# Start Chrome
-#bindsym $mod+Shift+w exec google-chrome-stable
-# Start Spotify
-#bindsym $mod+Shift+s exec spotify --force-device-scale-factor=2.0 %U
-# Start Atom
-#bindsym $mod+Shift+a exec atom
-# Start Lollypop
-bindsym $mod+Shift+l exec lollypop
-
 # Start Calculator
 bindsym $mod+c exec gnome-calculator
 # Keep Calculator floating
@@ -260,8 +248,6 @@ bindsym $mod+Shift+r exec thunar /
 bindsym $mod+Shift+b exec thunar /home/penn/Storage/D\&D/5e\ Rule\ Books/
 # Open pCloud Drive
 bindsym $mod+Shift+p exec thunar /home/penn/pCloudDrive/
-# Open Downloads
-#bindsym $mod+d exec thunar /home/penn/Downloads/
 # Open Git Folder
 bindsym $mod+Shift+g exec thunar /home/penn/Storage/Git/
 # Open Site
@@ -291,8 +277,7 @@ exec bash window-file-clear.sh
 
 # Run on i3 Restart
 exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
-#exec_always feh --bg-scale /home/penn/.i3/wallpaper.png
-#exec_always xkbcomp switch-LALT-LCTL.xkb $DISPLAY
+#exec_always feh --bg-scale /home/penn/.i3/wallpaper.png1
 
 
 ## Windows
