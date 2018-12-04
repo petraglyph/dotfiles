@@ -43,13 +43,13 @@
 #set $c-high-b   #ea721c
 
 #Terminal (black, white, green, red)
-set $c-backgnd  #0C0C0D
+#set $c-backgnd  #0C0C0D
 #set $c-text     #EEEEEE
-set $c-text     #AAAAAA
+#set $c-text     #AAAAAA
 #set $c-high-n   #55FF55
-set $c-high-n   #00AA00
+#set $c-high-n   #00AA00
 #set $c-high-b   #FF5555
-set $c-high-b   #AA0000
+#set $c-high-b   #AA0000
 
 #Matcha-dark-sea
 set $c-backgnd  #141A1B
@@ -214,9 +214,6 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10.0 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10.0 # decrease screen brightness
 
-# Touchpad controls
-bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
-
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
@@ -230,8 +227,8 @@ bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut
 bindsym $mod+l exec blur-i3lock.sh dark
 
 # Screenshots
-bindsym Print exec gnome-screenshot
-bindsym Control+Print exec gnome-screenshot -i
+bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
+bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/' -s
 
 
 ## Program Keyboard Shortcuts
@@ -309,8 +306,8 @@ client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
 # no borders
 new_window pixel 0
 default_border none
-for_window [class="Gnome-terminal"] border normal
-#for_window [class="Termite"] border normal
+#for_window [class="Termite"] border pixel 3
+#[class="Termite"].focused           $c-high-n  $c-high-n   $c-high-n  $c-high-n
 for_window [class="Gimp-2.10"] border normal
 
 
