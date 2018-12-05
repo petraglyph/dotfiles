@@ -17,7 +17,7 @@ ln ~/.i3/rofi-config ~/.config/rofi/config
 ln ~/.i3/twmn.conf ~/.config/twmn/twmn.conf
 ln ~/.i3/polybar ~/.config/polybar/config
 ln ~/.i3/termite-config ~/.config/termite/config
-ln ~/.i3/xsession ~/.xsession
+cp ~/.i3/xsession ~/.xsession
 sudo ln ~/.i3/blur-i3lock.sh /bin/
 sudo ln ~/.i3/window-file-clear.sh /bin/
 sudo ln -r -s ~/.i3/xorg.conf.d /etc/X11/
