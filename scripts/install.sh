@@ -4,7 +4,6 @@
 # REMOVE EXISTING CONFIGS
 rm ~/.config/rofi/config
 rm ~/.config/twmn/twmn.conf
-
 rm ~/.config/termite/config
 rm ~/.xsession
 sudo rm /bin/i3locker.sh

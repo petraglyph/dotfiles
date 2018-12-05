@@ -225,7 +225,7 @@ bindsym $mod+Shift+Escape restart
 # Exit i3
 bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # Lock i3
-bindsym $mod+l exec i3locker.sh dark
+bindsym $mod+l exec bash ~/.i3/scripts/i3locker.sh dark
 
 # Screenshots
 bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
@@ -266,7 +266,7 @@ exec rhythmbox
 #exec lollypop
 exec atom
 exec compton -f
-exec --no-startup-id xautolock -notify 20 -notifier 'xset dpms force off' -locker i3locker.sh
+exec --no-startup-id xautolock -notify 20 -notifier 'xset dpms force off' -locker 'bash ~/.i3/scripts/i3locker.sh'
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
