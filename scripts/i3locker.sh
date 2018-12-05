@@ -1,4 +1,5 @@
 #!/bin/sh -e
+# $ bash ~/.i3/scripts/i3locker.#!/bin/sh
 
 ## Blur i3lock
 # Take a screenshot
@@ -9,16 +10,19 @@
 # Lock screen displaying this image.
 #i3lock -i /tmp/screen_locked.png -e -u
 
-
 ## Color i3lock
-i3lock -e --color=141A1BFF --indicator --force-clock \
---insidevercolor=2EB398FF --insidewrongcolor=DB5B5BFF --insidecolor=2EB398FF \
---ringvercolor=EEEEEEFF --ringwrongcolor=DB5B5BFF --ringcolor=2EB398FF \
---linecolor=141A1BFF --keyhlcolor=EEEEEEFF --bshlcolor=DB5B5BFF --separatorcolor=141A1BFF \
+backcolor="141A1B"
+plaincolor="EEEEEEFF"
+highcolor="2EB398FF"
+errorcolor="DB5B5BFF"
+linecolor="141A1BFF"
+
+i3lock -e --color=$backcolor --indicator --force-clock \
+--insidevercolor=$highcolor --insidewrongcolor=$errorcolor --insidecolor=$highcolor \
+--ringvercolor=$plaincolor --ringwrongcolor=$errorcolor --ringcolor=2EB398FF \
+--linecolor=$linecolor --keyhlcolor=$plaincolor --bshlcolor=$errorcolor --separatorcolor=$linecolor \
 --veriftext="" --wrongtext="" --noinputtext="" --locktext="" --lockfailedtext="" \
 --datestr="%a %Y-%m-%d" --time-font=Monospace --date-font=Monospace
-
-#--{time, date, layout, verif, wrong}-font=
 
 # Turn the screen off after a delay.
 if [[ $1 = "dark" ]]; then
