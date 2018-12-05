@@ -278,7 +278,7 @@ exec bash ~/.i3/scripts/window-file-clear.sh
 # Run on i3 Restart
 exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
 #exec_always feh --bg-scale /home/penn/.i3/wallpaper.png1
-exec_always xkbcomp switch-LALT-LCTL.xkb $DISPLAY
+exec_always xkbcomp ~/.i3/configs/switch-LALT-LCTL.xkb $DISPLAY
 
 
 ## Windows
