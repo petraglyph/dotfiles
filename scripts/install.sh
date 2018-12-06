@@ -16,6 +16,8 @@ ln ~/.i3/configs/termite-config ~/.config/termite/config
 cp ~/.i3/configs/xsession ~/.xsession
 sudo ln ~/.i3/scripts/i3locker.sh /bin/
 sudo ln -r -s ~/.i3/xorg.conf.d /etc/X11/
+sudo cp ~/.i3/scripts/backup.sh /etc/cron.weekly/backup
+sudo chmod +x /etc/cron.weekly/backup
 echo "Configs Linked"
 
 # PROGRAM INSTALLS
