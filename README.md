@@ -31,6 +31,7 @@
     * gparted
     * polybar
     * i3lock-color
+    * yay
 
 ### FontAwesome
 [Download](https://github.com/FortAwesome/Font-Awesome), then move "Font Awesome 5 Free-Regular-400.otf" to ~/.fonts/

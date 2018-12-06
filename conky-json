@@ -51,7 +51,7 @@ conky.text = [[
     { "full_text": "${exec bash /home/penn/.i3/scripts/volume.sh}%", "color": "\#]]..ctext..[[" },
 
     { "full_text": "", "color": "${if_match ${fs_used_perc /home/penn}>90}\#]]..cerror..[[${else}${if_match ${fs_used_perc /home/penn/Storage}>90}\#]]..cerror..[[${else}\#]]..chigh..[[${endif}${endif}", "separator_block_width":10},
-    { "full_text": "${fs_used_perc /home/penn}%, ${fs_used_perc /home/penn/Storage}%", "color": "\#]]..ctext..[[" },
+    { "full_text": "${fs_used_perc /home/penn}% ${fs_used_perc /home/penn/Storage}%", "color": "\#]]..ctext..[[" },
 
     { "full_text": "", "color": "${if_match $memperc>85}\#]]..cerror..[[${else}${if_match $swapperc>85}\#]]..cerror..[[${else}\#]]..chigh..[[${endif}${endif}", "separator_block_width":10},
     { "full_text": "${if_match $memperc<10}0${endif}$memperc%${if_match $swapperc>4}, ${if_match $swapperc<10}0${endif}${swapperc}%${endif}", "color": "\#]]..ctext..[[" },
@@ -63,6 +63,6 @@ conky.text = [[
     { "full_text": "${battery_percent}%", "color": "\#]]..ctext..[[" },
 
     { "full_text": "", "color": "\#]]..chigh..[[", "separator_block_width":10},
-    { "full_text": "${time %a %Y-%m-%d %H:%M:%S}", "color": "\#]]..ctext..[["}
+    { "full_text": "${time %a %Y-%m-%d %H:%M:%S} ", "color": "\#]]..ctext..[["}
 ],
 ]];
