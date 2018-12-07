@@ -293,7 +293,12 @@ client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
 new_window pixel 0
 default_border none
 for_window [class="Gimp-2.10"] border normal
-
+for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [instance="sun-awt-X11-XFramePeer"] border normal
+#for_window [instance="sun-awt-X11-XFramePeer" title="MATLAB R2018b - academic use"] floating disable
+#for_window [instance="sun-awt-X11-XFramePeer" title="MATLAB R2018b - academic use"] pixel 0
+for_window [title="MATLAB R2018b - academic use"] floating disable
+for_window [title="MATLAB R2018b - academic use"] border none
 
 ## Bar
 #exec_always --no-startup-id bash polybar-start.sh
