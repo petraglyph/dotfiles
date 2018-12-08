@@ -1,72 +1,28 @@
 # i3 config file (v4)
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# set this config at https://github.com/pennbauman/i3-config 
 # Penn Bauman
 
 
-## Colors
-# Original (black, white, yellow, red)
-#set $c-backgnd  #111111
-#set $c-text     #eeeeee
-#set $c-high-n   #ffcc00
-#set $c-high-b   #cc0000
-    # Unused
-    #set $c-mid      #555555
-    #set $c-high-g   #0000cc
-# Tealed (black, white, teal, red)
-#set $c-backgnd  #111111
-#set $c-text     #eeeeee
-#set $c-high-n   #00ffcc
-#set $c-high-b   #cc0000
-
-# Adapta Based (dark grey, white, teal, orange)
-#set $c-backgnd  #1b1b1b
-#set $c-text     #cfd8dc
-#set $c-high-n   #1de9b6
-#set $c-high-b   #f77669
-
-# Material Design (black, white, teal, ??)
-# 900 Grey
-#set $c-backgnd  #212121
-#set $c-backgnd  #1b1b1b
-# 100 Grey
-#set $c-text     #F5F5F5
-# A200 Teal
-#set $c-high-n   #64FFDA
-# A400 Deep Orange
-#set $c-high-b   #FF3D00
-
-# Manjaro (black, white, green, orange)
-#set $c-backgnd  #111111
-#set $c-text     #fafafa
-#set $c-high-n   #3baf80
-#set $c-high-n   #3bdab4
-#set $c-high-b   #ea721c
-
-#Terminal (black, white, green, red)
-#set $c-backgnd  #0C0C0D
-#set $c-text     #EEEEEE
-#set $c-text     #AAAAAA
-#set $c-high-n   #55FF55
-#set $c-high-n   #00AA00
-#set $c-high-b   #FF5555
-#set $c-high-b   #AA0000
-
-#Matcha-dark-sea
+### VARIABLES
+# Colors (Matcha-dark-sea)
 set $c-backgnd  #141A1B
 set $c-text     #EEEEEE
 set $c-high-n   #2EB398
 set $c-high-b   #DB5B5B
-
-
-
-
-## Mod Key
+# Mod Key
 set $mod Mod4
-
-## Terminal
+# Terminal
 set $term termite
-bindsym $mod+Return exec $term
+# Letter Arrow Keys
+set $left-key a
+set $down-key s
+set $up-key w
+set $right-key d
 
+
+
+### APPEARANCE
 ## Fonts
 # for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -74,55 +30,47 @@ font pango:Monospace, pango:FontAwesome, pango:EmojiOne Color 10
 # DejaVu Sans Mono is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 
+## Window Colors
+#                        border      background   text       indicator
+client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-high-n
+client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-high-n
+client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-high-n
+client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
 
-## Program Launcher
-#bindsym $mod+space exec dmenu_run
-bindsym $mod+space exec rofi --enable-drun -show drun
+## Windows Borders
+# hide border by default
+new_window pixel 0
+default_border none
+# added borders for certain windows
+for_window [class="Gimp-2.10"] border normal
+# windows floating by default
+for_window [class="Gnome-calculator"] floating enable
+# set non-primary matlab windows to floating
+for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [instance="sun-awt-X11-XFramePeer"] border normal
+for_window [title="MATLAB R2018b - academic use"] floating disable
+for_window [title="MATLAB R2018b - academic use"] border none
 
-## Letter Arrow Keys
-set $left-key a
-set $down-key s
-set $up-key w
-set $right-key d
-
-## General Window Controls
-# Change focused Window
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-bindsym $mod+$left-key focus left
-bindsym $mod+$down-key focus down
-bindsym $mod+$up-key focus up
-bindsym $mod+$right-key focus right
-
-# Move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-bindsym $mod+Shift+$left-key move left
-bindsym $mod+Shift+$down-key move down
-bindsym $mod+Shift+$up-key move up
-bindsym $mod+Shift+$right-key move right
-
-# Toggle split  orientation
-bindsym $mod+v split toggle
-
-# Kill focused window
-bindsym $mod+Shift+q kill
-
-# Container layout
-bindsym $mod+t layout toggle tabbed split
-
-# Toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+## Bar
+#exec_always --no-startup-id bash polybar-start.sh
+bar {
+    status_command bash /home/penn/.i3/scripts/conky-wrap.sh
+    font pango:Monospace, pango:FontAwesome 10
+	position top
+	colors {
+		background	$c-backgnd
+	    separator	$c-backgnd
+		#                    border		 background   text
+		focused_workspace    $c-backgnd  $c-backgnd   $c-high-n
+        inactive_workspace   $c-backgnd  $c-backgnd   $c-text
+        urgent_workspace     $c-backgnd  $c-backgnd   $c-high-b
+	}
+}
 
 
-## Workspaces
-# Workspace names
+
+### WORKSPACES
+# workspace names
 set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
@@ -133,8 +81,7 @@ set $ws7 "7 "
 set $ws8 "8 "
 set $ws9 "9 "
 set $ws10 "10 "
-
-# Switch to workspace
+# switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -145,8 +92,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
-
-# Move focused container to workspace
+# move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -157,8 +103,7 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-
-# Workspace assignments
+# workspace assignments
 assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws3
 assign [class="Atom"] $ws4
@@ -167,8 +112,47 @@ assign [class="Inkscape"] $ws7
 assign [class="Lollypop"] $ws10
 assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
-
 #workspace_layout tabbed
+
+
+
+### WINDOWS ARRANGEMENT
+## General Window Controls
+# Change focused Window
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+# Change focused Window
+bindsym $mod+$left-key focus left
+bindsym $mod+$down-key focus down
+bindsym $mod+$up-key focus up
+bindsym $mod+$right-key focus right
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+# Move focused window
+bindsym $mod+Shift+$left-key move left
+bindsym $mod+Shift+$down-key move down
+bindsym $mod+Shift+$up-key move up
+bindsym $mod+Shift+$right-key move right
+# toggle split  orientation
+bindsym $mod+v split toggle
+# container layout
+bindsym $mod+t layout toggle tabbed split
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# kill focused window
+bindsym $mod+Shift+q kill
+
+## Scratchpad
+# move the currently focused window to the scratchpad
+bindcode $mod+Shift+49 move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindcode $mod+49 scratchpad show
 
 ## Resizing windows
 # resize window (you can also use the mouse for that)
@@ -197,49 +181,42 @@ mode "resize" {
 }
 
 
-## Scratchpad
-# move the currently focused window to the scratchpad
-bindcode $mod+Shift+49 move scratchpad
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindcode $mod+49 scratchpad show
 
+### KEYBOARD SHORTCUTS
+## Program Launching
+#bindsym $mod+space exec dmenu_run
+bindsym $mod+space exec rofi --enable-drun -show drun
+# start terminal
+bindsym $mod+Return exec $term
+# start calculator
+bindsym $mod+c exec gnome-calculator
+#bindsym $mod+c exec termite -e calc && xdotool getactivewindow set_window --name uniquetitle
 
 ## System buttons
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-volume 0 0 # mute sound
-
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10.0 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10.0 # decrease screen brightness
-
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+## i3 Control
 # Restart i3
 bindsym $mod+Shift+Escape restart
 # Exit i3
 bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # Lock i3
 bindsym $mod+l exec bash ~/.i3/scripts/i3locker.sh dark
-
 # Screenshots
 bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
 bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/' -s
 
-
-## Program Keyboard Shortcuts
-# Start Calculator
-bindsym $mod+c exec gnome-calculator
-# Keep Calculator floating
-for_window [class="Gnome-calculator"] floating enable
-
-
-## Folder keyboard shortcuts
+## Folder Opening
 # Open ~/
 bindsym $mod+f exec thunar
 # Open /
@@ -258,7 +235,9 @@ bindsym $mod+Shift+f exec thunar /home/penn/Storage
 bindsym $mod+Shift+e exec thunar /home/penn/Storage/College/
 
 
-## Run on Startup
+
+### STARTUP PROGRAMS
+## Run on i3 Startup
 exec $term
 exec $term
 exec firefox
@@ -271,47 +250,11 @@ exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec twmnd
-exec --no-startup-id /usr/lib/kdeconnectd
+#exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "penn.bauman@gmail.com" -d
 exec bash ~/.i3/scripts/window-file-clear.sh
 
-# Run on i3 Restart
+## Run on i3 Restart
 exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
 #exec_always feh --bg-scale /home/penn/.i3/wallpaper.png1
 exec_always xkbcomp ~/.i3/configs/switch-LALT-LCTL.xkb $DISPLAY
-
-
-## Windows
-# window colors
-#                        border      background   text       indicator
-client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-high-n
-client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-high-n
-client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-high-n
-client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
-
-# no borders
-new_window pixel 0
-default_border none
-for_window [class="Gimp-2.10"] border normal
-for_window [instance="sun-awt-X11-XFramePeer"] floating enable
-for_window [instance="sun-awt-X11-XFramePeer"] border normal
-#for_window [instance="sun-awt-X11-XFramePeer" title="MATLAB R2018b - academic use"] floating disable
-#for_window [instance="sun-awt-X11-XFramePeer" title="MATLAB R2018b - academic use"] pixel 0
-for_window [title="MATLAB R2018b - academic use"] floating disable
-for_window [title="MATLAB R2018b - academic use"] border none
-
-## Bar
-#exec_always --no-startup-id bash polybar-start.sh
-bar {
-    status_command bash /home/penn/.i3/scripts/conky-wrap.sh
-    font pango:Monospace, pango:FontAwesome 10
-	position top
-	colors {
-		background	$c-backgnd
-	    separator	$c-backgnd
-		#                    border		 background   text
-		focused_workspace    $c-backgnd  $c-backgnd   $c-high-n
-        inactive_workspace   $c-backgnd  $c-backgnd   $c-text
-        urgent_workspace     $c-backgnd  $c-backgnd   $c-high-b
-	}
-}
