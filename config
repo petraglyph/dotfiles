@@ -165,21 +165,26 @@ bindcode $mod+49 scratchpad show
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
-
-        bindsym $left-key   resize shrink width 10 px or 10 ppt
-        bindsym $down-key   resize grow height 10 px or 10 ppt
-        bindsym $up-key     resize shrink height 10 px or 10 ppt
-        bindsym $right-key  resize grow width 10 px or 10 ppt
-
+        # arrow large
+        bindsym Left        resize shrink width 100 px or 100 ppt
+        bindsym Down        resize grow height 100 px or 100 ppt
+        bindsym Up          resize shrink height 100 px or 100 ppt
+        bindsym Right       resize grow width 100 px or 100 ppt
+        # letter large
+        bindsym $left-key   resize shrink width 100 px or 100 ppt
+        bindsym $down-key   resize grow height 100 px or 010 ppt
+        bindsym $up-key     resize shrink height 10 px or 100 ppt
+        bindsym $right-key  resize grow width 100 px or 100 ppt
+        # arrow small
+        bindsym Shift+Left        resize shrink width 10 px or 10 ppt
+        bindsym Shift+Down        resize grow height 10 px or 10 ppt
+        bindsym Shift+Up          resize shrink height 10 px or 10 ppt
+        bindsym Shift+Right       resize grow width 10 px or 10 ppt
+        # letter small
+        bindsym Shift+$left-key   resize shrink width 10 px or 10 ppt
+        bindsym Shift+$down-key   resize grow height 10 px or 10 ppt
+        bindsym Shift+$up-key     resize shrink height 10 px or 10 ppt
+        bindsym Shift+$right-key  resize grow width 10 px or 10 ppt
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
