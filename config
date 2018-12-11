@@ -166,15 +166,15 @@ bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         # arrow large
-        bindsym Left        resize shrink width 100 px or 100 ppt
-        bindsym Down        resize grow height 100 px or 100 ppt
-        bindsym Up          resize shrink height 100 px or 100 ppt
-        bindsym Right       resize grow width 100 px or 100 ppt
+        bindsym Left        resize shrink width 100 px or 10 ppt
+        bindsym Down        resize grow height 100 px or 10 ppt
+        bindsym Up          resize shrink height 100 px or 10 ppt
+        bindsym Right       resize grow width 100 px or 150 ppt
         # letter large
-        bindsym $left-key   resize shrink width 100 px or 100 ppt
-        bindsym $down-key   resize grow height 100 px or 010 ppt
-        bindsym $up-key     resize shrink height 10 px or 100 ppt
-        bindsym $right-key  resize grow width 100 px or 100 ppt
+        bindsym $left-key   resize shrink width 100 px or 10 ppt
+        bindsym $down-key   resize grow height 100 px or 10 ppt
+        bindsym $up-key     resize shrink height 10 px or 10 ppt
+        bindsym $right-key  resize grow width 100 px or 10 ppt
         # arrow small
         bindsym Shift+Left        resize shrink width 10 px or 10 ppt
         bindsym Shift+Down        resize grow height 10 px or 10 ppt
