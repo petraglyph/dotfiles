@@ -5,16 +5,17 @@
 
 
 ### VARIABLES
-# Colors (Matcha-dark-sea)
+# colors (matcha-dark-sea)
 set $c-backgnd  #141A1B
 set $c-text     #EEEEEE
 set $c-high-n   #2EB398
 set $c-high-b   #DB5B5B
-# Mod Key
+# mod key
 set $mod Mod4
-# Terminal
+# default programs
 set $term termite
-# Letter Arrow Keys
+#set $file thunar
+set $file pcmanfm -n
 set $left-key a
 set $down-key s
 set $up-key w
@@ -230,21 +231,21 @@ bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~
 
 ## Folder Opening
 # Open ~/
-bindsym $mod+f exec thunar
+bindsym $mod+f exec $file
 # Open /
-bindsym $mod+Shift+r exec thunar /
+bindsym $mod+Shift+r exec $file /
 # Open 5e Rule Books
-bindsym $mod+Shift+b exec thunar /home/penn/Storage/D\&D/5e\ Rule\ Books/
+bindsym $mod+Shift+b exec $file /home/penn/Storage/D\&D/5e\ Rule\ Books/
 # Open pCloud Drive
-bindsym $mod+Shift+p exec thunar /home/penn/pCloudDrive/
+bindsym $mod+Shift+p exec $file /home/penn/pCloudDrive/
 # Open Git Folder
-bindsym $mod+Shift+g exec thunar /home/penn/Storage/Git/
+bindsym $mod+Shift+g exec $file /home/penn/Storage/Git/
 # Open Site
-bindsym $mod+Shift+v exec thunar /home/penn/Storage/Site/
+bindsym $mod+Shift+v exec $file /home/penn/Storage/Site/
 # Open Storage
-bindsym $mod+Shift+f exec thunar /home/penn/Storage
+bindsym $mod+Shift+f exec $file /home/penn/Storage
 # Open College Folder
-bindsym $mod+Shift+e exec thunar /home/penn/Storage/College/
+bindsym $mod+Shift+e exec $file /home/penn/Storage/College/
 
 
 
