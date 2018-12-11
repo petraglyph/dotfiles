@@ -41,10 +41,13 @@ client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
 # hide border by default
 new_window pixel 0
 default_border none
+for_window [floating] border pixel 4
 # added borders for certain windows
 for_window [class="Gimp-2.10"] border normal
 # windows floating by default
 for_window [class="Gnome-calculator"] floating enable
+for_window [class="Termite" title="calc"] floating enable
+for_window [class="Termite" title="termite scratch"] floating enable
 # set non-primary matlab windows to floating
 for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 for_window [instance="sun-awt-X11-XFramePeer"] border normal
@@ -66,6 +69,9 @@ bar {
         urgent_workspace     $c-backgnd  $c-backgnd   $c-high-b
 	}
 }
+
+## i3-gaps
+#gaps inner all set 10
 
 
 
@@ -189,9 +195,9 @@ bindsym $mod+space exec rofi --enable-drun -show drun
 # start terminal
 bindsym $mod+Return exec $term
 # start calculator
-bindsym $mod+c exec gnome-calculator
+#bindsym $mod+c exec gnome-calculator
 #bindsym $mod+c exec "termite && xdotool getactivewindow set_window --name uniquetitle"
-#bindsym $mod+c exec termite -e cd /etc/ && calc
+bindsym $mod+c exec termite --name="termite calc" -e calc
 
 ## System buttons
 # Pulse Audio controls
