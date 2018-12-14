@@ -48,7 +48,7 @@ for_window [class="Gimp-2.10"] border normal
 # windows floating by default
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="Termite" title="calc"] floating enable
-for_window [class="Termite" title="termite scratch"] floating enable
+for_window [class="Termite" title="scratch"] move scratchpad
 # set non-primary matlab windows to floating
 for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 for_window [instance="sun-awt-X11-XFramePeer"] border normal
@@ -203,7 +203,7 @@ bindsym $mod+Return exec $term
 # start calculator
 #bindsym $mod+c exec gnome-calculator
 #bindsym $mod+c exec "termite && xdotool getactivewindow set_window --name uniquetitle"
-bindsym $mod+c exec termite --name="termite calc" -e calc
+bindsym $mod+c exec $term --name="calc" -e calc
 
 ## System buttons
 # Pulse Audio controls
@@ -253,6 +253,8 @@ bindsym $mod+Shift+e exec $file /home/penn/Storage/College/
 ## Run on i3 Startup
 exec $term
 exec $term
+exec $term --title="scratch"
+exec i3-msg '[class="Termite" title="scratch"] move scratchpad'
 exec firefox
 exec rhythmbox
 #exec lollypop
@@ -268,6 +270,6 @@ exec pcloudcc -u "penn.bauman@gmail.com" -d
 exec bash ~/.i3/scripts/window-file-clear.sh
 
 ## Run on i3 Restart
-exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
-#exec_always feh --bg-scale /home/penn/.i3/wallpaper.png1
+#exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
+exec_always feh --bg-scale /home/penn/.i3/background.png
 exec_always xkbcomp ~/.i3/configs/switch-LALT-LCTL.xkb $DISPLAY
