@@ -5,5 +5,5 @@
 
 # rsync -a --delete --quiet /folder/to/backup /location/of/backup
 
-rsync -a --delete --quiet /home/penn/.config/ /home/penn/Storage/Backups/config
-cp /home/penn/.bashrc /home/penn/Storage/Backups
+rsync -a --delete --quiet /home/penn/.config/ /home/penn/Storage/System-Backups/config
+cp /home/penn/.bashrc /home/penn/Storage/System-Backups
