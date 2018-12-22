@@ -88,6 +88,7 @@ set $ws7 "7 "
 set $ws8 "8 "
 set $ws9 "9 "
 set $ws10 "10 "
+set $wsHDMI "HDMI"
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -99,6 +100,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+bindsym $mod+h workspace $wsHDMI
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -110,6 +112,7 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+h move container to workspace $wsHDMI
 # workspace assignments
 assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws3
@@ -119,6 +122,18 @@ assign [class="Inkscape"] $ws7
 assign [class="Lollypop"] $ws10
 assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
+# workspace monitors
+workspace $ws1 output eDP1
+workspace $ws2 output eDP1
+workspace $ws3 output eDP1
+workspace $ws4 output eDP1
+workspace $ws5 output eDP1
+workspace $ws6 output eDP1
+workspace $ws7 output eDP1
+workspace $ws8 output eDP1
+workspace $ws9 output eDP1
+workspace $ws10 output eDP1
+workspace $wsHDMI output DP2
 #workspace_layout tabbed
 
 
@@ -174,7 +189,7 @@ mode "resize" {
         # letter large
         bindsym $left-key   resize shrink width 100 px or 10 ppt
         bindsym $down-key   resize grow height 100 px or 10 ppt
-        bindsym $up-key     resize shrink height 10 px or 10 ppt
+        bindsym $up-key     resize shrink height 100 px or 10 ppt
         bindsym $right-key  resize grow width 100 px or 10 ppt
         # arrow small
         bindsym Shift+Left        resize shrink width 10 px or 10 ppt
