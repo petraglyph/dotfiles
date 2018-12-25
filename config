@@ -61,6 +61,23 @@ bar {
     status_command bash /home/penn/.i3/scripts/conky-wrap.sh
     font pango:Monospace, pango:FontAwesome 10
 	position top
+    output eDP1
+	colors {
+		background	$c-backgnd
+	    separator	$c-backgnd
+		#                    border		 background   text
+		focused_workspace    $c-backgnd  $c-backgnd   $c-high-n
+        inactive_workspace   $c-backgnd  $c-backgnd   $c-text
+        urgent_workspace     $c-backgnd  $c-backgnd   $c-high-b
+	}
+}
+# HDMI bar
+bar {
+    status_command bash /home/penn/.i3/scripts/conky-wrap-short.sh
+    font pango:Monospace, pango:FontAwesome 10
+	position top
+    output DP2
+    output HDMI1
 	colors {
 		background	$c-backgnd
 	    separator	$c-backgnd

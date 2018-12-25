@@ -1,0 +1,59 @@
+conky.config = {
+    out_to_x = false,
+    own_window = false,
+    out_to_console = true,
+    update_interval = 1,
+    total_run_times = 0,
+    override_utf8_locale = false,
+    if_up_strictness = 'address',
+    short_units = true,
+    -- Add spaces to keep things from moving about?  This only affects certain objects. (left|right|none)
+    use_spacer = 'none',
+    -- number of cpu samples to average, set to 1 to disable averaging
+    cpu_avg_samples = 2,
+}
+
+--[[
+SPOTIFY
+xprop -name "Spotify Premium - Linux Preview" _NET_WM_ICON_NAME|\cut -d "\"" -f 2|cut -b 11-
+
+Original
+local ctext = "eeeeee"
+local chigh = "ffcc00"
+local cerror = "cc0000"
+
+Tealed
+local ctext = "eeeeee"
+local chigh = "00ffcc"
+local cerror = "cc0000"
+
+Manjaro
+local ctext = "fafafa"
+local chigh = "3baf80"
+local cerror = "ea721c"
+
+Material Design
+local ctext = "F5F5F5"
+local chigh = "64FFDA"
+local cerror = "FF3D00"
+]]
+local ctext = "EEEEEE"
+local chigh = "2EB398"
+local cerror = "DB5B5B"
+
+
+conky.text = [[
+[
+    { "full_text": "${if_up tun0}${else}$endif", "color": "${if_existing /proc/net/route wlp59s0}\#]]..chigh..[[${else}\#]]..cerror..[[${endif}", "separator_block_width":10},
+    { "full_text": "${if_existing /proc/net/route wlp59s0}${wireless_essid wlp59s0}${else}Disconnected$endif", "color": "\#]]..ctext..[[" },
+
+    { "full_text": "${if_match ${exec bash /home/penn/.i3/scripts/volume.sh} == 0}${else}${if_match ${exec bash /home/penn/.i3/scripts/volume.sh} < 50}${else}${endif}${endif}", "color": "${if_match ${exec bash /home/penn/.i3/scripts/volume.sh} > 100}\#]]..cerror..[[${else}\#]]..chigh..[[${endif}", "separator_block_width":10},
+    { "full_text": "${exec bash /home/penn/.i3/scripts/volume.sh}%", "color": "\#]]..ctext..[[" },
+
+    { "full_text": "${if_match $battery_percent>75}${else}${if_match $battery_percent>50}${else}${if_match $battery_percent>25}${else}${if_match $battery_percent>10}${else}${endif}${endif}${endif}${endif}", "color": "${if_match $battery_percent>25}\#]]..chigh..[[${else}\#]]..cerror..[[${endif}", "separator_block_width":10},
+    { "full_text": "${battery_percent}%", "color": "\#]]..ctext..[[" },
+
+    { "full_text": "", "color": "\#]]..chigh..[[", "separator_block_width":10},
+    { "full_text": "${time %a %Y-%m-%d %H:%M:%S} ", "color": "\#]]..ctext..[["}
+],
+]];
