@@ -20,7 +20,8 @@ set $left-key a
 set $down-key s
 set $up-key w
 set $right-key d
-
+# config location
+set $loc "/home/penn/.i3"
 
 
 ### APPEARANCE
@@ -59,7 +60,7 @@ for_window [title="MATLAB R2018b - academic use"] border none
 ## Bar
 #exec_always --no-startup-id bash polybar-start.sh
 bar {
-    status_command bash /home/penn/.i3/scripts/conky-wrap.sh
+    status_command bash $loc/scripts/conky-wrap.sh
     font pango:Monospace, pango:FontAwesome 10
 	position top
     output eDP1
@@ -74,7 +75,7 @@ bar {
 }
 # HDMI bar
 bar {
-    status_command bash /home/penn/.i3/scripts/conky-wrap-short.sh
+    status_command bash $loc/scripts/conky-wrap-short.sh
     font pango:Monospace, pango:FontAwesome 10
 	position top
     output DP2
@@ -256,9 +257,10 @@ bindsym XF86AudioPrev exec playerctl previous
 # Restart i3
 bindsym $mod+Shift+Escape restart
 # Exit i3
-bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Escape exec termite --title="float" -e "bash $loc/scripts/i3exit.sh"
 # Lock i3
-bindsym $mod+l exec bash ~/.i3/scripts/i3locker.sh dark
+bindsym $mod+l exec bash $loc/scripts/i3locker.sh dark
 # Screenshots
 bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
 bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/' -s
@@ -294,21 +296,21 @@ exec firefox
 exec rhythmbox
 #exec lollypop
 exec compton -f
-exec --no-startup-id xautolock -notify 20 -notifier 'xset dpms force off' -locker 'bash /home/penn/.i3/scripts/i3locker.sh'
+exec --no-startup-id xautolock -notify 20 -notifier 'xset dpms force off' -locker 'bash $loc/scripts/i3locker.sh'
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec twmnd
 #exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "penn.bauman@gmail.com" -d
-exec bash ~/.i3/scripts/window-file-clear.sh
+exec bash $loc/scripts/window-file-clear.sh
 # wifi setup
 exec nmcli con up Bakuman-5G
 exec nmcli con up wahoo
 
 ## Run on i3 Restart
-#exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
-exec_always feh --bg-scale /home/penn/.i3/background.png
-exec_always xkbcomp ~/.i3/configs/switch-LALT-LCTL.xkb $DISPLAY
+#exec_always feh --bg-scale $loc/wallpaper.jpg
+exec_always feh --bg-scale $loc/background.png
+exec_always xkbcomp $loc/configs/switch-LALT-LCTL.xkb $DISPLAY
 exec_always xrandr --output HDMI1 --auto --right-of eDP1
 exec_always xrandr --output DP2 --auto --right-of eDP1
