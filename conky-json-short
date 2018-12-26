@@ -50,6 +50,9 @@ conky.text = [[
     { "full_text": "${if_match ${exec bash /home/penn/.i3/scripts/volume.sh} == 0}${else}${if_match ${exec bash /home/penn/.i3/scripts/volume.sh} < 50}${else}${endif}${endif}", "color": "${if_match ${exec bash /home/penn/.i3/scripts/volume.sh} > 100}\#]]..cerror..[[${else}\#]]..chigh..[[${endif}", "separator_block_width":10},
     { "full_text": "${exec bash /home/penn/.i3/scripts/volume.sh}%", "color": "\#]]..ctext..[[" },
 
+    { "full_text": "", "color": "${if_match $cpu>75}\#]]..cerror..[[${else}\#]]..chigh..[[${endif}", "separator_block_width":10},
+    { "full_text": "${if_match $cpu<10}0${endif}${cpu}%", "color": "\#]]..ctext..[[" },
+
     { "full_text": "${if_match $battery_percent>75}${else}${if_match $battery_percent>50}${else}${if_match $battery_percent>25}${else}${if_match $battery_percent>10}${else}${endif}${endif}${endif}${endif}", "color": "${if_match $battery_percent>25}\#]]..chigh..[[${else}\#]]..cerror..[[${endif}", "separator_block_width":10},
     { "full_text": "${battery_percent}%", "color": "\#]]..ctext..[[" },
 
