@@ -49,6 +49,7 @@ for_window [class="Gimp-2.10"] border normal
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="Termite" title="calc"] floating enable
 for_window [class="Termite" title="scratch"] move scratchpad
+for_window [class="Termite" title="float"] floating enable
 # set non-primary matlab windows to floating
 for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 for_window [instance="sun-awt-X11-XFramePeer"] border normal
@@ -107,7 +108,6 @@ set $ws9 "9 "
 set $ws10 "10 "
 set $wsHDMI "HDMI "
 # switch to workspace
-bindsym $mod+j workspace 0
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -132,12 +132,10 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+h move container to workspace $wsHDMI
 # workspace assignments
-assign [class="Termite" title="scratch"] $ws1
 assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws3
 #assign [class="Atom"] $ws4
-#assign [title="Visual Studio Code"] $ws4
-#assign [class="Code"] $ws4
+assign [class="Code"] $ws4
 assign [class="Gimp"] $ws7
 assign [class="Inkscape"] $ws7
 assign [class="Lollypop"] $ws10
@@ -287,13 +285,11 @@ bindsym $mod+Shift+e exec $file /home/penn/Storage/College/
 
 ### STARTUP PROGRAMS
 ## Run on i3 Startup
-exec $term --title="default"
-exec $term --title="default"
+exec $term
+exec $term
 exec $term --title="scratch"
-exec i3-msg '[class="Termite" title="scratch"] move scratchpad'
 exec code
 #exec atom
-exec i3-msg 'move container to workspace $ws4'
 exec firefox
 exec rhythmbox
 #exec lollypop
@@ -306,6 +302,9 @@ exec twmnd
 #exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "penn.bauman@gmail.com" -d
 exec bash ~/.i3/scripts/window-file-clear.sh
+# wifi setup
+exec nmcli con up Bakuman-5G
+exec nmcli con up wahoo
 
 ## Run on i3 Restart
 #exec_always feh --bg-scale /home/penn/.i3/wallpaper.jpg
