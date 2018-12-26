@@ -98,7 +98,7 @@ bar {
 set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
-set $ws4 "4 "
+set $ws4 "4 "
 set $ws5 "5 "
 set $ws6 "6 "
 set $ws7 "7 "
@@ -107,6 +107,7 @@ set $ws9 "9 "
 set $ws10 "10 "
 set $wsHDMI "HDMI "
 # switch to workspace
+bindsym $mod+j workspace 0
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -131,9 +132,12 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+h move container to workspace $wsHDMI
 # workspace assignments
+assign [class="Termite" title="scratch"] $ws1
 assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws3
-assign [class="Atom"] $ws4
+#assign [class="Atom"] $ws4
+#assign [title="Visual Studio Code"] $ws4
+#assign [class="Code"] $ws4
 assign [class="Gimp"] $ws7
 assign [class="Inkscape"] $ws7
 assign [class="Lollypop"] $ws10
@@ -283,14 +287,16 @@ bindsym $mod+Shift+e exec $file /home/penn/Storage/College/
 
 ### STARTUP PROGRAMS
 ## Run on i3 Startup
-exec $term
-exec $term
+exec $term --title="default"
+exec $term --title="default"
 exec $term --title="scratch"
 exec i3-msg '[class="Termite" title="scratch"] move scratchpad'
+exec code
+#exec atom
+exec i3-msg 'move container to workspace $ws4'
 exec firefox
 exec rhythmbox
 #exec lollypop
-exec atom
 exec compton -f
 exec --no-startup-id xautolock -notify 20 -notifier 'xset dpms force off' -locker 'bash /home/penn/.i3/scripts/i3locker.sh'
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent

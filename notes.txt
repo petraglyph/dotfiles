@@ -64,8 +64,8 @@ set $c-high-b   #DB5B5B
 
 
 BAR CATAGORIES
-    ,,/// Time
-    ////, /,  Battery
+      /// Time
+    //// /  Battery
          00 - 10
          11 - 25
          26 - 50
@@ -73,11 +73,11 @@ BAR CATAGORIES
          76 - 100
      CPU
      Ram/Swap
-    , , ,  Disk
-    , , / Network (PIA, name, %, ip, up/down)
+         Disk
+      / Network (PIA, name, %, ip, up/down)
         wahoo 75% (10K/2K)
-    //, , // Volume
-    //, //, , ,  Music
+    //  // Volume
+    // //    Music
 
     // pcloud
     ,
@@ -86,21 +86,22 @@ DESKTOPS
     1 
     2 
     3 
-    4 
+    4 
     5 
     6 
     7 
     8 
     9 
     10 
-
+    HDMI  
+    
+     
        
-
-    
-      
-    
-    
-       
+        
+         
+      
+    
+    
 
 REMOVED SHORTCUTS (i3 config)
     # use Mouse+$mod to drag floating windows to their wanted position
