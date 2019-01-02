@@ -16,6 +16,7 @@ set $mod Mod4
 set $term termite
 #set $file thunar
 set $file pcmanfm -n
+# arrow keys
 set $left-key a
 set $down-key s
 set $up-key w
@@ -292,12 +293,12 @@ exec firefox
 exec rhythmbox
 #exec lollypop
 exec compton -f
-exec --no-startup-id xautolock -notify 20 -notifier 'xset dpms force off' -locker 'bash $loc/scripts/i3locker.sh'
+exec --no-startup-id xautolock -notify 20 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh'
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec twmnd
-#exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "penn.bauman@gmail.com" -d
 exec bash $loc/scripts/window-file-clear.sh
 # wifi setup
