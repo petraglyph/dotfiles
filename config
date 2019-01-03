@@ -239,9 +239,9 @@ bindsym $mod+c exec $term --name="calc" -e calc
 
 ## System buttons
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-volume 0 0 # mute sound
+bindsym XF86AudioRaiseVolume exec pamixer --increase 5
+bindsym XF86AudioLowerVolume exec pamixer --increase 5
+bindsym XF86AudioMute exec pamixer --set-volume 0
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10.0 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10.0 # decrease screen brightness
@@ -255,7 +255,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Shift+Escape restart
 # Exit i3
 #bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Escape exec termite --title="float" -e "bash $loc/scripts/i3exit.sh"
+bindsym $mod+Escape exec $term --title="float" -e "bash $loc/scripts/i3exit.sh"
 # Lock i3
 bindsym $mod+l exec bash $loc/scripts/i3locker.sh dark
 # Screenshots
