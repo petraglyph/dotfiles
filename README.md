@@ -1,37 +1,60 @@
 # i3 Config Files
 
 ## Install
+Install [yay](https://aur.archlinux.org/packages/yay/) then:
 
-    $ bash ~/.i3/install.sh
+    $ bash scripts/install.sh
 
-### Programs to Install (pamac & AUR)
+The installer scripts setups config files and installs the following porgrams:
+
+    * rofi
+    * compton
+    * feh
+    * redshift
+    * xorg-xbacklight
+    * xautolock
+    * pamixer
+    * playerctl
+    * mncli
+    * conky
+    * i3lock-color
+    * lightdm
+    * lightdm-webkit2-greeter-manjaro-dark
+    * papirus-maia-icon-theme
+    * ttf-emojione-color
+    * ttf-font-awesome
+    * vimix-gtk-themes-git
+    * dunst
+
+    * termite
+    * lxappearance
+    * pcmanfm
+    * gparted
+    * neofetch
+    * pcloudcc
+    * kdeconnectd
+    * openvpn
+    * calc
+
+    * gimp
+    * transmission-gtk
+    * visual-studio-code-bin
+    * rhythmbox
+
+### Other Programs to Install 
 
     * android-studio
     * arduino
-    * google-chrome
+    * atom
+    * inkscape
     * intellij
-    * spotify
+    * lollypop
+    * pcloud-drive
+    * google-chrome
     * unity-editor
-    * visual-studio-code
-
-    * gnome-calculator
-    * pcloudcc
-    * pcloud
+    * spotify
     * dropbox
-    * transmission-gtk
-
-    * materia-gtk-theme
-    * papirus-maia-icon-theme
     * gcolor2
-
-    * openvpn
-    * kdeconnect
-    * twmn-git
-    * nmcli
-    * gparted
-    * polybar
-    * i3lock-color
-    * yay
 
 ### FontAwesome
 [Download](https://github.com/FortAwesome/Font-Awesome), then move "Font Awesome 5 Free-Regular-400.otf" to ~/.fonts/

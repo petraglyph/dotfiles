@@ -240,7 +240,7 @@ bindsym $mod+c exec $term --name="calc" -e calc
 ## System buttons
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec pamixer --increase 5
-bindsym XF86AudioLowerVolume exec pamixer --increase 5
+bindsym XF86AudioLowerVolume exec pamixer --decrease 5
 bindsym XF86AudioMute exec pamixer --set-volume 0
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10.0 # increase screen brightness
@@ -297,7 +297,8 @@ exec --no-startup-id xautolock -notify 20 -notifier 'bash $loc/scripts/pre-i3loc
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-exec twmnd
+#exec twmnd
+exec dunst
 exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "penn.bauman@gmail.com" -d
 exec bash $loc/scripts/window-file-clear.sh
