@@ -17,6 +17,21 @@ highcolor="2EB398FF"
 errorcolor="DB5B5BFF"
 linecolor="141A1BFF"
 
+# connected monitors
+screens="$(xrandr | grep " connected" | wc -l)"
+# video player running
+totem="$(pgrep totem | wc -l)"
+
+echo "Locker:  $screens $totem $(date +%Y-%m-%d_%H:%M:%S) $1" >> /home/penn/.i3/scripts/lock-log.txt
+
+# nofies on auto lock
+if [[ $1 = "auto" ]]; then
+    if [[ $screens > 1 ]] || [[ $totem > 0 ]]; then
+        zenity --notification --text="lock triggered"
+        exit 1
+    fi
+fi
+
 i3lock -e --color=$backcolor --indicator --force-clock \
 --insidevercolor=$highcolor --insidewrongcolor=$errorcolor --insidecolor=$highcolor \
 --ringvercolor=$plaincolor --ringwrongcolor=$errorcolor --ringcolor=2EB398FF \
@@ -28,3 +43,5 @@ i3lock -e --color=$backcolor --indicator --force-clock \
 if [[ $1 = "dark" ]]; then
     sleep 10; pgrep i3lock && xset dpms force off
 fi
+
+
