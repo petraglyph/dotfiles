@@ -1,4 +1,4 @@
 **~
 local~/*
 **/error_log
-i3blocks-contrib/*
+scripts/lock-log.txt
