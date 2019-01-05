@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "0x5-20+70"
+    geometry = "0x5-15+70"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -125,7 +125,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b><span color="#2EB398">%s [%a]</span></b>\n%b"
+    format = "<b><span color="#2EB398">%s</span></b>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -154,7 +154,7 @@
     hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
+    show_indicators = no
 
     ### Icons ###
 
