@@ -1,4 +1,4 @@
 **~
 local~/*
 **/error_log
-scripts/lock-log.txt
+/scripts/lock-log.txt
