@@ -41,6 +41,9 @@ The installer scripts setups config files and installs the following porgrams:
     * visual-studio-code-bin
     * rhythmbox
 
+### Display Manager
+Manages login and desktop enviorment selection. Use [SDDM](https://wiki.archlinux.org/index.php/SDDM) with the sddm-maia-theme.
+
 ### Other Programs to Install 
 
     * android-studio
