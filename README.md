@@ -18,8 +18,8 @@ The installer scripts setups config files and installs the following porgrams:
     * mncli
     * conky
     * i3lock-color
-    * lightdm
-    * lightdm-webkit2-greeter-manjaro-dark
+    * sddm
+    * sddm-maia-theme
     * papirus-maia-icon-theme
     * ttf-emojione-color
     * ttf-font-awesome
