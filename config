@@ -299,7 +299,7 @@ exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 #exec twmnd
 exec dunst
-systemctl start bluetooth.service
+exec systemctl start bluetooth.service
 exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "penn.bauman@gmail.com" -d
 exec bash $loc/scripts/window-file-clear.sh
