@@ -49,10 +49,10 @@ for_window [class="Termite" title="calc"] floating enable
 for_window [class="Termite" title="float"] floating enable
 for_window [class="Termite" title="scratch"] move scratchpad
 # set non-primary matlab windows to floating
-for_window [instance="sun-awt-X11-XFramePeer"] floating enable
-for_window [instance="sun-awt-X11-XFramePeer"] border normal
-for_window [title="MATLAB R2018b - academic use"] floating disable
-for_window [title="MATLAB R2018b - academic use"] border none
+#for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+#for_window [instance="sun-awt-X11-XFramePeer"] border normal
+#for_window [title="MATLAB R2018b - academic use"] floating disable
+#for_window [title="MATLAB R2018b - academic use"] border none
 
 ## Bar
 #exec_always --no-startup-id bash polybar-start.sh
