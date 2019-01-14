@@ -293,7 +293,7 @@ exec firefox
 exec rhythmbox
 #exec lollypop
 exec compton -f
-exec_always --no-startup-id xautolock -time 15 -notify 20 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto'
+exec --no-startup-id xautolock -time 5 -notify 20 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto'
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
