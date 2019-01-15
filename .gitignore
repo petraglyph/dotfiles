@@ -2,3 +2,4 @@
 local~/*
 **/error_log
 scripts/lock-log.txt
+scripts/test.sh
