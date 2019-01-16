@@ -10,6 +10,10 @@ function mouser {
     xdotool mousemove $((200+$x)) $((200+$y))
 }
 
+if [ ! -f /sys/class/net/tun0/carrier ]; then
+    killall transmission-gtk
+fi
+
 # connected monitors
 screens="$(xrandr | grep " connected" | wc -l)"
 # video player running
