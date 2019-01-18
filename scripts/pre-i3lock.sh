@@ -22,10 +22,8 @@ totem="$(pgrep totem | wc -l)"
 echo "PreLock: $screens $totem $(date +%Y-%m-%d_%H:%M:%S) $1" >> /home/penn/.i3/scripts/lock-log.txt
 
 if [[ $screens > 1 ]]; then
-    dunstify -r "1" "prelock triggered (HDMI attached)" 
     mouser
 elif [[ $totem > 0 ]]; then
-    dunstify -r "1" "prelock triggered (video playing)"
     mouser
 else 
     xset dpms force off
