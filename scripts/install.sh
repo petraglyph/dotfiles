@@ -8,7 +8,6 @@ rm ~/.config/rofi/config
 rm ~/.config/twmn/twmn.conf
 rm ~/.config/termite/config
 rm ~/.config/dunst/dunstrc
-rm ~/.xsession
 sudo rm /bin/i3locker.sh
 sudo rm /etc/X11/xorg.conf.d
 sudo rm /etc/cron.weekly/backup
@@ -19,7 +18,6 @@ ln $loc/configs/rofi-config ~/.config/rofi/config
 ln $loc/configs/twmn.conf ~/.config/twmn/twmn.conf
 ln $loc/configs/termite-config ~/.config/termite/config
 ln $loc/configs/dunstrc ~/.config/dunst/dunstrc
-cp $loc/configs/xsession ~/.xsession
 sudo ln $loc/scripts/i3locker.sh /bin/
 sudo ln -r -s $loc/xorg.conf.d /etc/X11/
 sudo cp $loc/scripts/backup-weekly.sh /etc/cron.weekly/backup
