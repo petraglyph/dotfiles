@@ -136,6 +136,7 @@ assign [class="Google-chrome"] $ws3
 assign [class="Code"] $ws4
 assign [class="Gimp"] $ws7
 assign [class="Inkscape"] $ws7
+assign [class="Transmission-gtk"] $ws9
 assign [class="Lollypop"] $ws10
 assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
@@ -311,5 +312,6 @@ exec nmcli con up wahoo
 ## Run on i3 Restart
 #exec_always feh --bg-scale $loc/wallpaper.jpg
 exec_always feh --bg-scale $loc/background.png
+exec_always xkbcomp $loc/configs/switch-LALT-LCTL.xkb $DISPLAY
 exec_always xrandr --output HDMI1 --auto --right-of eDP1
 exec_always xrandr --output DP2 --auto --right-of eDP1
