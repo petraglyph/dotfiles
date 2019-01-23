@@ -246,6 +246,8 @@ bindsym XF86AudioMute exec pamixer --set-volume 0
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10.0 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10.0 # decrease screen brightness
+bindcode 167 exec xbacklight -inc 10.0
+bindcode 166 exec xbacklight -dec 10.0
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
