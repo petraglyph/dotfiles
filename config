@@ -236,7 +236,7 @@ bindsym $mod+Return exec $term
 # start calculator
 #bindsym $mod+c exec gnome-calculator
 #bindsym $mod+c exec "termite && xdotool getactivewindow set_window --name uniquetitle"
-bindsym $mod+c exec $term --name="calc" -e calc
+bindsym $mod+c exec $term --name="calc" -e "calc -d"
 
 ## System buttons
 # Pulse Audio controls
