@@ -12,6 +12,7 @@ sudo rm /bin/i3locker.sh
 sudo rm /etc/X11/xorg.conf.d
 sudo rm /etc/cron.weekly/backup
 sudo rm /etc/cron.daily/backup
+sudo rm /usr/lib/systemd/system-sleep/pre-suspend.sh
 echo "Configs Cleared"
 # LINK NEW CONFIGS
 ln $loc/configs/rofi-config ~/.config/rofi/config
@@ -24,6 +25,8 @@ sudo cp $loc/scripts/backup-weekly.sh /etc/cron.weekly/backup
 sudo cp $loc/scripts/backup-daily.sh /etc/cron.daily/backup
 sudo chmod +x /etc/cron.weekly/backup
 sudo chmod +x /etc/cron.daily/backup
+sudo cp $loc/scripts/pre-suspend.sh /usr/lib/systemd/system-sleep/
+sudo chmod +x /usr/lib/systemd/system-sleep/pre-suspend.sh
 echo "Configs Linked"
 
 # PROGRAM INSTALLS
