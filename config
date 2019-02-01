@@ -308,7 +308,7 @@ exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "penn.bauman@gmail.com" -d
 exec bash $loc/scripts/window-file-clear.sh
 exec bash $loc/scripts/vpn-safety.sh
-exec bash $loc/scripts/ncmpcpp-start.sh
+exec_always bash $loc/scripts/ncmpcpp-start.sh $term
 # wifi setup
 exec nmcli con up Bakuman-5G
 exec nmcli con up wahoo
