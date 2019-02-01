@@ -48,7 +48,6 @@ for_window [class="Termite" title="float"] floating enable
 for_window [class="Termite" title="scratch"] move scratchpad
 
 ## Bar
-#exec_always --no-startup-id bash polybar-start.sh
 bar {
     status_command bash $loc/scripts/conky-wrap.sh
     font pango:Monospace, pango:FontAwesome 10
