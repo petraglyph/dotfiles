@@ -15,7 +15,8 @@ set $mod Mod4
 # default programs
 set $term termite
 #set $file thunar
-set $file pcmanfm -n
+#set $file pcmanfm -n
+set $file $term -e mc
 # arrow keys
 set $left-key a
 set $down-key s
@@ -268,21 +269,21 @@ bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~
 
 ## Folder Opening
 # Open ~/
-bindsym $mod+f exec $file
+bindsym $mod+f exec $term -e "mc $HOME/ $HOME/Storage/"
 # Open /
-bindsym $mod+Shift+r exec $file /
+bindsym $mod+Shift+r exec $term -e "mc / /"
 # Open 5e Rule Books
-bindsym $mod+Shift+b exec $file $HOME/Storage/D\&D/5e\ Rule\ Books/
+bindsym $mod+Shift+b exec $term -e "mc $HOME/Storage/D\&D/5e\ Rule\ Books/ $HOME/Storage/D\&D/"
 # Open pCloud Drive
-bindsym $mod+Shift+p exec $file $HOME/pCloudDrive/
+bindsym $mod+Shift+p exec $term -e "mc $HOME/pCloudDrive/ $HOME/Storage/"
 # Open Git Folder
-bindsym $mod+Shift+g exec $file $HOME/Storage/Git/
+bindsym $mod+Shift+g exec $term -e "mc $HOME/Storage/Git/ $HOME/Storage/"
 # Open Site
-bindsym $mod+Shift+v exec $file $HOME/Storage/Site/
+bindsym $mod+Shift+v exec $term -e "mc $HOME/Storage/Site/ $HOME/Storage/"
 # Open Storage
-bindsym $mod+Shift+f exec $file $HOME/Storage/
+bindsym $mod+Shift+f exec $term -e "mc $HOME/Storage/ $HOME/Storage/"
 # Open College Folder
-bindsym $mod+Shift+e exec $file $HOME/Storage/College/ $HOME/Storage/
+bindsym $mod+Shift+e exec $term -e "mc $HOME/Storage/College/ $HOME/Storage/"
 
 
 
@@ -308,7 +309,7 @@ exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "penn.bauman@gmail.com" -d
 exec bash $loc/scripts/window-file-clear.sh
 exec bash $loc/scripts/vpn-safety.sh
-exec_always bash $loc/scripts/ncmpcpp-start.sh $term
+exec bash $loc/scripts/ncmpcpp-start.sh $term
 # wifi setup
 exec nmcli con up Bakuman-5G
 exec nmcli con up wahoo
