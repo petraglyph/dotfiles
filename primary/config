@@ -316,7 +316,7 @@ exec nmcli con up wahoo
 
 ## Run on i3 Restart
 #exec_always feh --bg-scale $loc/wallpaper.jpg
-exec_always feh --bg-scale $loc/background.png
+exec_always feh --bg-scale $loc/primary/background.png
 exec_always xkbcomp $loc/configs/switch-LALT-LCTL.xkb $DISPLAY
 exec_always xrandr --output HDMI1 --auto --right-of eDP1
 exec_always xrandr --output DP2 --auto --right-of eDP1

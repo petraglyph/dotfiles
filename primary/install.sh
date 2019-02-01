@@ -4,6 +4,9 @@
 loc="/home/penn/.i3"
 
 # REMOVE EXISTING CONFIGS
+rm ~/.config/i3/config
+rm ~/.conky/i3bar-json
+rm ~/.conky/i3bar-json-short
 rm ~/.config/rofi/config
 rm ~/.config/twmn/twmn.conf
 rm ~/.config/termite/config
@@ -17,6 +20,9 @@ sudo rm /usr/lib/systemd/system-sleep/pre-suspend.sh
 sudo rm /usr/share/mc/skins/mc-custom.ini
 echo "Configs Cleared"
 # LINK NEW CONFIGS
+ln $loc/primary/config ~/.config/i3/config
+cp $loc/scripts/conky-json ~/.conky/i3bar-json
+cp $loc/scripts/conky-json-short ~/.conky/i3bar-json-short
 ln $loc/configs/rofi-config ~/.config/rofi/config
 ln $loc/configs/twmn.conf ~/.config/twmn/twmn.conf
 ln $loc/configs/termite-config ~/.config/termite/config

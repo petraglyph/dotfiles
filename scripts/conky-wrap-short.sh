@@ -10,4 +10,4 @@ echo '['
 echo '[],'
 
 # Now send blocks with information forever:
-exec conky -c /home/penn/.i3/conky-json-short
+exec conky -c $HOME/.conky/i3bar-json-short
