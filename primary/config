@@ -23,7 +23,7 @@ set $down-key s
 set $up-key w
 set $right-key d
 # config location
-set $loc "/home/penn/.i3"
+set $loc "/home/penn/Storage/Linux/i3-config"
 
 
 ### APPEARANCE

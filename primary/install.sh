@@ -1,12 +1,13 @@
 #/bin/sh
 # bash scripts/install.sh [quick]
 
-loc="/home/penn/.i3"
+loc="/home/penn/Storage/Linux/i3-config"
 
 # REMOVE EXISTING CONFIGS
 rm $HOME/.config/i3/config
 rm $HOME/.conky/i3bar-json
 rm $HOME/.conky/i3bar-json-short
+rm $HOME/.conky/volume.sh
 rm $HOME/.config/rofi/config
 rm $HOME/.config/termite/config
 rm $HOME/.config/dunst/dunstrc
@@ -21,6 +22,7 @@ echo "Configs Cleared"
 ln -s $loc/primary/config $HOME/.config/i3/config
 cp $loc/scripts/conky-json $HOME/.conky/i3bar-json
 cp $loc/scripts/conky-json-short $HOME/.conky/i3bar-json-short
+cp $loc/scripts/volume.sh $HOME/.conky/volume.sh
 ln -s $loc/configs/rofi-config $HOME/.config/rofi/config
 ln -s $loc/configs/termite-config $HOME/.config/termite/config
 ln -s $loc/configs/dunstrc $HOME/.config/dunst/dunstrc

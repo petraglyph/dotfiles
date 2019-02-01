@@ -23,8 +23,8 @@ conky.text = [[
     { "full_text": "${if_up tun0}${else}$endif", "color": "${if_existing /proc/net/route wlp59s0}\#]]..chigh..[[${else}\#]]..cerror..[[${endif}", "separator_block_width":10},
     { "full_text": "${if_existing /proc/net/route wlp59s0}${wireless_essid wlp59s0}${else}Disconnected$endif", "color": "\#]]..ctext..[[" },
 
-    { "full_text": "${if_match ${exec bash /home/penn/.i3/scripts/volume.sh} == 0}${else}${if_match ${exec bash /home/penn/.i3/scripts/volume.sh} < 50}${else}${endif}${endif}", "color": "${if_match ${exec bash /home/penn/.i3/scripts/volume.sh} > 100}\#]]..cerror..[[${else}\#]]..chigh..[[${endif}", "separator_block_width":10},
-    { "full_text": "${exec bash /home/penn/.i3/scripts/volume.sh}%", "color": "\#]]..ctext..[[" },
+    { "full_text": "${if_match ${exec bash ~/.conky/volume.sh} == 0}${else}${if_match ${exec bash ~/.conky/volume.sh} < 50}${else}${endif}${endif}", "color": "${if_match ${exec bash ~/.conky/volume.sh} > 100}\#]]..cerror..[[${else}\#]]..chigh..[[${endif}", "separator_block_width":10},
+    { "full_text": "${exec bash ~/.conky/volume.sh}%", "color": "\#]]..ctext..[[" },
 
     { "full_text": "", "color": "${if_match $cpu>75}\#]]..cerror..[[${else}\#]]..chigh..[[${endif}", "separator_block_width":10},
     { "full_text": "${if_match $cpu<10}0${endif}${cpu}%", "color": "\#]]..ctext..[[" },
