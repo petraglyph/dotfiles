@@ -140,6 +140,7 @@ assign [class="Transmission-gtk"] $ws9
 assign [class="Lollypop"] $ws10
 assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
+assign [class="Termite" title="ncmpcpp"] $ws10
 # workspace monitors
 workspace $ws1 output eDP1
 workspace $ws2 output eDP1
@@ -249,9 +250,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10.0 # decrease screen bright
 bindcode 167 exec xbacklight -inc 10.0
 bindcode 166 exec xbacklight -dec 10.0
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause | mpc toggle
+bindsym XF86AudioNext exec playerctl next | mpc next
+bindsym XF86AudioPrev exec playerctl previous | mpc prev
 
 ## i3 Control
 # Restart i3
@@ -293,10 +294,10 @@ exec $term --title="scratch"
 exec code
 #exec atom
 exec firefox
-exec rhythmbox
+#exec rhythmbox
 #exec lollypop
 exec compton -f
-exec --no-startup-id xautolock -time 9 -notify 60 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto'
+exec --no-startup-id xautolock -time 9 -notify 60 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto' -killer 'xkbcomp $loc/configs/switch-LALT-LCTL.xkb $DISPLAY'
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
@@ -307,6 +308,7 @@ exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "penn.bauman@gmail.com" -d
 exec bash $loc/scripts/window-file-clear.sh
 exec bash $loc/scripts/vpn-safety.sh
+exec bash $loc/scripts/ncmpcpp-start.sh
 # wifi setup
 exec nmcli con up Bakuman-5G
 exec nmcli con up wahoo

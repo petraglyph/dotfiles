@@ -50,6 +50,7 @@ pgms+=("ttf-emojione-color")
 pgms+=("ttf-font-awesome")
 pgms+=("vimix-gtk-themes-git")
 pgms+=("dunst")
+pgms+=("mpc")
 # utility
 pgms+=("termite")
 pgms+=("lxappearance")
@@ -60,10 +61,10 @@ pgms+=("pcloudcc")
 pgms+=("kdeconnectd")
 pgms+=("openvpn")
 pgms+=("calc")
+pgms+=("ncmpcpp")
 # applications
 pgms+=("gimp")
 pgms+=("transmission-gtk")
 pgms+=("visual-studio-code-bin")
-pgms+=("rhythmbox")
 
 exec yay -S ${pgms[*]}
