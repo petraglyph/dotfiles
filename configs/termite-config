@@ -88,12 +88,17 @@ color14 = #75B5AA
 # Extra colors
 color16 = #D28445
 color17 = #8F5536
-color18 = #202020
 color19 = #303030
 color20 = #B0B0B0
-color21 = #E0E0E0
 
+
+# Background
+color18 = #141A1B
+# Plain
+color21 = #EEEEEE
+# Error (salmon)
 color9 = #DB5B5B
+# Highlight (Teal)
 color14 = #2EB398
 
 [hints]
