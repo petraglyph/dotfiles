@@ -272,17 +272,17 @@ bindsym $mod+f exec $file
 # Open /
 bindsym $mod+Shift+r exec $file /
 # Open 5e Rule Books
-bindsym $mod+Shift+b exec $file /home/penn/Storage/D\&D/5e\ Rule\ Books/
+bindsym $mod+Shift+b exec $file $HOME/Storage/D\&D/5e\ Rule\ Books/
 # Open pCloud Drive
-bindsym $mod+Shift+p exec $file /home/penn/pCloudDrive/
+bindsym $mod+Shift+p exec $file $HOME/pCloudDrive/
 # Open Git Folder
-bindsym $mod+Shift+g exec $file /home/penn/Storage/Git/
+bindsym $mod+Shift+g exec $file $HOME/Storage/Git/
 # Open Site
-bindsym $mod+Shift+v exec $file /home/penn/Storage/Site/
+bindsym $mod+Shift+v exec $file $HOME/Storage/Site/
 # Open Storage
-bindsym $mod+Shift+f exec $file /home/penn/Storage
+bindsym $mod+Shift+f exec $file $HOME/Storage/
 # Open College Folder
-bindsym $mod+Shift+e exec $file /home/penn/Storage/College/
+bindsym $mod+Shift+e exec $file $HOME/Storage/College/ $HOME/Storage/
 
 
 
@@ -319,3 +319,5 @@ exec_always feh --bg-scale $loc/background.png
 exec_always xkbcomp $loc/configs/switch-LALT-LCTL.xkb $DISPLAY
 exec_always xrandr --output HDMI1 --auto --right-of eDP1
 exec_always xrandr --output DP2 --auto --right-of eDP1
+
+#exec_always $term -e "mc $HOME/Storage/"
