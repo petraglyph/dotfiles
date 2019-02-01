@@ -16,14 +16,14 @@ fi
 
 # connected monitors
 screens="$(xrandr | grep " connected" | wc -l)"
-# video player running
-totem="$(pgrep totem | wc -l)"
 # write info to lock-log.txt
 #echo "PreLock: $screens $totem $(date +%Y-%m-%d_%H:%M:%S) $1" >> /home/penn/.i3/scripts/lock-log.txt
 
 if [[ $screens > 1 ]]; then
     mouser
-elif [[ $totem > 0 ]]; then
+elif [[ $(pgrep totem | wc -l) > 0 ]]; then
+    mouser
+elif [[ $(pgrep mplayer | wc -l) > 0 ]]; then
     mouser
 else 
     xset dpms force off

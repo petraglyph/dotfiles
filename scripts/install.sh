@@ -70,6 +70,7 @@ pgms+=("kdeconnectd")
 pgms+=("openvpn")
 pgms+=("calc")
 pgms+=("ncmpcpp")
+pgms+=("mplayer")
 # applications
 pgms+=("gimp")
 pgms+=("transmission-gtk")
