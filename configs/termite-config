@@ -58,12 +58,12 @@ background = #141A1B
 # Black, Gray, Silver, White
 color0  = #151515
 color8  = #505050
-color7  = #D0D0D0
-color15 = #F5F5F5
+color7  = #EEEEEE
+color15 = #EEEEEE
 
 # Red
-color1  = #AC4142
-color9  = #AC4142
+color1  = #DB5B5B
+color9  = #DB5B5B
 
 # Green
 color2  = #90A959
@@ -82,8 +82,8 @@ color5  = #AA759F
 color13 = #AA759F
 
 # Teal
-color6  = #75B5AA
-color14 = #75B5AA
+color6  = #2EB398
+color14 = #2EB398
 
 # Extra colors
 color16 = #D28445
@@ -98,7 +98,7 @@ color18 = #141A1B
 color21 = #EEEEEE
 # Error (salmon)
 color9 = #DB5B5B
-# Highlight (Teal)
+# Highlight (Cyan)
 color14 = #2EB398
 
 [hints]

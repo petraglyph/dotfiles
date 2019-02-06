@@ -12,6 +12,7 @@ rm $HOME/.config/rofi/config
 rm $HOME/.config/termite/config
 rm $HOME/.config/dunst/dunstrc
 rm $HOME/.config/mc/mc.keymap
+rm $HOME/.config/ncmpcpp/config
 sudo rm /etc/X11/xorg.conf.d
 sudo rm /etc/cron.weekly/backup
 sudo rm /etc/cron.daily/backup
@@ -27,6 +28,7 @@ ln -s $loc/configs/rofi-config $HOME/.config/rofi/config
 ln -s $loc/configs/termite-config $HOME/.config/termite/config
 ln -s $loc/configs/dunstrc $HOME/.config/dunst/dunstrc
 ln -s $loc/configs/mc.keymap $HOME/.config/mc/mc.keymap
+ln -s $loc/configs/ncmpcpp-config $HOME/.config/ncmpcpp/config
 sudo ln -r -s $loc/xorg.conf.d /etc/X11/
 sudo cp $loc/scripts/backup-weekly.sh /etc/cron.weekly/backup
 sudo cp $loc/scripts/backup-daily.sh /etc/cron.daily/backup

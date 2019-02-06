@@ -1,0 +1,53 @@
+## NCMPCPP Config
+
+# Basic
+mpd_host = localhost
+mpd_port = 6600
+mpd_connection_timeout = 5
+mpd_music_dir = ~/Music
+
+# Settings
+execute_on_song_change = bash ~/Storage/Linux/i3-config/scripts/ncmpcpp-notifier.sh
+user_interface = alternative
+media_library_primary_tag = album_artist
+cyclic_scrolling = yes
+space_add_mode = add_remove
+jump_to_now_playing_song_at_start = yes
+display_volume_level = no
+display_remaining_time = no
+ignore_leading_the = yes
+mouse_support = yes
+
+# Formats
+song_columns_list_format = (40)[]{t|f:Title} (20)[cyan]{a} (30)[]{b} (7f)[]{l}
+# = (20)[]{a}[cyan] (6f)[cyan]{NE}[white] (50)[]{t|f:Title}[cyan] (20)[]{b}[white] (7f)[]{l}
+#song_window_title_format = {%a - }{%t}|{%f}
+song_list_format = $/b{%a - }{%t}|{$8%f$9}$R({%l})
+#song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
+song_library_format = $/b{%n - }{%t}|{%f}
+alternative_header_first_line_format = $b$8--$9 {%t}|{%f} $b$8--$9
+# = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
+alternative_header_second_line_format = {$8%a - %b (%y)}
+# = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
+current_item_prefix = $(cyan)$r
+now_playing_prefix = $b
+now_playing_suffix = $/b
+
+# Colors
+colors_enabled = yes
+empty_tag_color = red
+progressbar_color = white:b
+progressbar_elapsed_color = cyan:b
+statusbar_color = red
+header_window_color = cyan
+alternative_ui_separator_color = white
+main_window_color = white
+state_flags_color = cyan:b
+statusbar_time_color = white:b
+player_state_color = cyan:b
+state_line_color = red
+color1 = white
+color2 = cyan
+window_border_color = red
+active_window_border = red
+active_column_color = white_red
