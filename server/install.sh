@@ -16,7 +16,7 @@ sudo rm /etc/X11/xorg.conf.d
 sudo rm /usr/share/mc/skins/mc-custom.ini
 echo "Configs Cleared"
 # LINK NEW CONFIGS
-ln -s $loc/primary/config $HOME/.config/i3/config
+ln -s $loc/server/config $HOME/.config/i3/config
 cp $loc/scripts/conky-json $HOME/.conky/i3bar-json
 cp $loc/scripts/conky-json-short $HOME/.conky/i3bar-json-short
 cp $loc/scripts/volume.sh $HOME/.conky/volume.sh
