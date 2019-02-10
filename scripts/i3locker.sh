@@ -9,9 +9,9 @@ errorcolor="DB5B5BFF"
 linecolor="141A1BFF"
 
 # connected monitors
-screens="$(xrandr | grep " connected" | wc -l)"
+#screens="$(xrandr | grep " connected" | wc -l)"
 # video player running
-totem="$(pgrep totem | wc -l)"
+#totem="$(pgrep totem | wc -l)"
 # write info to lock-log.txt
 #echo "Locker:  $screens $totem $(date +%Y-%m-%d_%H:%M:%S) $1" >> /home/penn/.i3/scripts/lock-log.txt
 

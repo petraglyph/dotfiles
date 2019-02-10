@@ -10,16 +10,10 @@ function mouser {
     xdotool mousemove $((200+$x)) $((200+$y))
 }
 
-if [ ! -f /sys/class/net/tun0/carrier ]; then
-    killall transmission-gtk
-fi
-
-# connected monitors
-screens="$(xrandr | grep " connected" | wc -l)"
 # write info to lock-log.txt
 #echo "PreLock: $screens $totem $(date +%Y-%m-%d_%H:%M:%S) $1" >> /home/penn/.i3/scripts/lock-log.txt
 
-if [[ $screens > 1 ]]; then
+if [[ $(xrandr | grep " connected" | wc -l) > 1 ]]; then
     mouser
 elif [[ $(pgrep totem | wc -l) > 0 ]]; then
     mouser
