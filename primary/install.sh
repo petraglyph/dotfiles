@@ -39,6 +39,15 @@ sudo chmod +x /usr/lib/systemd/system-sleep/pre-suspend.sh
 sudo cp $loc/configs/mc-custom-skin.ini /usr/share/mc/skins/mc-custom.ini
 echo "Configs Linked"
 
+if [ $(cat "$HOME/.config/gtk-3.0/gtk.css" | grep ".termite" | wc -l) == 0 ]; then 
+    echo ".termite {" >> $HOME/.config/gtk-3.0/gtk.css
+    echo "    padding: 6px;" >> $HOME/.config/gtk-3.0/gtk.css
+    echo "}" >> $HOME/.config/gtk-3.0/gtk.css
+    echo "gtk.css Updated"
+else 
+    echo "Termite already styled in gtk.css"
+fi
+
 if [ $1 == "quick" ]; then 
     exit 0
 fi
