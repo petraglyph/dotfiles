@@ -8,7 +8,6 @@ echo "  [e] exit i3"
 echo "  [z] sleep"
 #echo "  6) hibernate"
 echo "  [l] lock i3"
-echo "  [i] restart i3"
 echo "  [c] cancel"
 while true; do 
     read -p ": " t
@@ -28,9 +27,6 @@ while true; do
         exit 0
     elif [ $t == "l" ]; then 
         bash i3locker.sh dark
-        exit 0
-    elif [ $t == "i" ]; then 
-        i3-msg restart
         exit 0
     elif [ $t == "c" ]; then 
         exit 0
