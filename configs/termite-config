@@ -33,7 +33,7 @@ cursor_shape = block
 #modify_other_keys = false
 
 # set size hints for the window
-#size_hints = false
+size_hints = false
 
 # "off", "left" or "right"
 scrollbar = off
@@ -47,6 +47,8 @@ cursor_foreground = #141A1B
 foreground = #EEEEEE
 foreground_bold = #2EB398
 background = #141A1B
+#rgba(20,26,27,0.75)
+#141A1B
 
 # 20% background transparency (requires a compositor)
 #background = rgba(63, 63, 63, 0.8)

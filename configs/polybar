@@ -1,0 +1,231 @@
+; Polybar Config
+
+[colors]
+background = #141A1B
+primary = #EEEEEE
+secondary = #2EB398
+alert = #DB5B5B
+
+[bar/hdmibar]
+monitor = DP2 HDMI1
+width = 100%
+height = 20
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.primary}
+line-size = 0
+line-color = ${colors.background}
+border-size = 0
+padding-left = 1
+padding-right = 1
+module-margin-left = 0
+module-margin-right = 1
+;
+font-0 = Monospace:size=12;0
+font-1 = "Material Design Icons:size=14;0"
+;font-1 = "Font Awesome 5 Free:style=Regular:size=22;0"
+;font-2 = "Font Awesome 5 Free:style=Solid:size=22;0"
+;font-3 = "Font Awesome 5 Free Solid:style=Regular:size=22;0"
+;font-4 = "Font Awesome 5 Brands:style=Regular:size=22;0"
+;
+modules-left = i3ws 
+modules-center = datetime
+modules-right = wireless-short cpu battery
+tray-position = none
+
+[bar/pennbar]
+monitor = eDP1
+width = 100%
+height = 50
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.primary}
+line-size = 0
+line-color = ${colors.background}
+border-size = 0
+padding-left = 1
+padding-right = 1
+module-margin-left = 0
+module-margin-right = 1
+;
+font-0 = Monospace:size=24;0
+font-1 = "Material Design Icons:size=28;0"
+;
+modules-left = i3ws
+;mpd 
+modules-center = datetime
+modules-right = updates wireless volume memory cpu battery pgmr
+; storage   
+;
+tray-position = right
+tray-padding = 2
+
+
+; LEFT MODULES
+[module/i3ws]
+type = internal/i3
+;         
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;精
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+;
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = true
+pin-workspaces = true
+;
+label-mode-foreground = ${colors.primary}
+label-mode-background = ${colors.background}
+;
+label-focused = %icon%
+label-focused-foreground = ${colors.secondary}
+label-focused-underline = ${colors.secondary}
+;
+label-unfocused = %icon%
+label-visible = %icon%
+;
+label-urgent = %icon%
+label-urgent-foreground = ${colors.alert}
+label-urgent-underline = ${colors.alert}
+;
+label-separator = ||
+label-separator-foreground = ${colors.background}
+
+[module/mpd]
+type = internal/mpd
+label-padding = 3
+format-offline = 
+format-online = 
+;<label-time> <icon-random> <label-song>
+;label-song = %artist:0:20:...% - %title:0:20:...%
+;
+;
+icon-random = 
+;
+toggle-on-foreground = ${colors.primary}
+toggle-off-foreground = ${colors.primary}
+
+
+; CENTER MODULE
+[module/datetime]
+type = internal/date
+interval = 1
+time = "%a %Y-%m-%d %H:%M:%S"
+format-prefix-foreground = ${colors.primary}
+format-underline = ${colors.secondary}
+label = %{u#f120}%time%
+label-padding-right = 1
+label-padding-left = 1
+
+
+; RIGHT MODULES
+[module/pgmr]
+type = custom/script
+interval = 3600
+;label = %{A:pgrm:}A%{A}
+label = %output%
+;
+exec = echo "%{A:termite --title="float" -e "pgmr":}%{F#2EB398}%{F}%{A}"
+tail = true
+
+[module/battery]
+type = internal/battery
+interval = 5
+battery = BAT0
+adapter = ADP1
+full-at = 100
+; 
+format-full = %{F#2EB398}%{F}<label-full>
+label-full = %percentage:02%%
+;
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging = %percentage:02%%
+;
+format-charging = %{F#2EB398}%{F}<label-charging>
+; <ramp-capacity>
+label-charging = %percentage:02%% 
+;
+ramp-capacity-0 = %{F#DB5B5B}%{F}
+ramp-capacity-1 = %{F#DB5B5B}%{F}
+ramp-capacity-2 = %{F#DB5B5B}%{F}
+ramp-capacity-3 = %{F#2EB398}%{F}
+ramp-capacity-4 = %{F#2EB398}%{F}
+ramp-capacity-5 = %{F#2EB398}%{F}
+ramp-capacity-6 = %{F#2EB398}%{F}
+ramp-capacity-7 = %{F#2EB398}%{F}
+ramp-capacity-8 = %{F#2EB398}%{F}
+ramp-capacity-9 = %{F#2EB398}%{F}
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format = <ramp-load><label>
+label = %percentage:02%%
+;
+ramp-load-0 = %{F#2EB398}%{F}
+ramp-load-1 = %{F#2EB398}%{F}
+ramp-load-2 = %{F#2EB398}%{F}
+ramp-load-3 = %{F#2EB398}%{F}
+ramp-load-4 = %{F#DB5B5B}%{F}
+
+[module/memory]
+type = internal/memory
+interval = 5
+format = %{A:bash /home/penn/Storage/Linux/i3-config/scripts/system-notify.sh disk:}<ramp-used><label>%{A}
+label = %percentage_used:02%% %percentage_swap_used:02%%
+;
+ramp-used-0 = %{F#2EB398}%{F}
+ramp-used-1 = %{F#2EB398}%{F}
+ramp-used-2 = %{F#2EB398}%{F}
+ramp-used-3 = %{F#2EB398}%{F}
+ramp-used-4 = %{F#DB5B5B}%{F}
+
+[module/storage]
+type = internal/fs
+module-margin = 0
+mount-0 = /imaginary
+mount-1 = /
+mount-2 = /home/penn/Storage
+spacing = 1
+;
+format-mounted = <label-mounted>
+format-unmounted = %{F#2EB398}%{F} 
+label-mounted = %percentage_used%% 
+
+[module/volume]
+type = custom/script
+interval = 1
+label = %output%
+exec = ~/.conky/volume.sh
+;exec-if = [ -p /tmp/.xmonad-workspace-log ]
+tail = true
+
+[module/wireless]
+type = custom/script
+interval = 1
+label = %{A:bash /home/penn/Storage/Linux/i3-config/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.config/polybar/polybar-net-conky
+tail = true
+
+[module/wireless-short]
+type = custom/script
+interval = 1
+label = %output%
+exec = conky -c $HOME/.config/polybar/polybar-net-conky-short
+tail = true
+
+[module/updates]
+type = custom/script
+interval = 60
+label = %output%
+exec = echo "%{A:termite --title="float" -e "yay":}%{F#DB5B5B}%{F} $(yay -Qu | wc -l) updates%{A}"
+exec-if = [[ $(yay -Qu | wc -l) != 0 ]]
+tail = true
+

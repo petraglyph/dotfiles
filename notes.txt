@@ -62,6 +62,15 @@ set $c-text     #EEEEEE
 set $c-high-n   #2EB398
 set $c-high-b   #DB5B5B
 
+Material Icons  
+    Wifi 來 冷爛嵐襤蠟 狼鸞藍臘朗
+    Volume    
+    System    
+    Battery  
+    Other  串
+    Weather                  
+    Desktops 降   ﱨ粒精      
+          精      
 
 BAR CATAGORIES
       /// Time

@@ -27,78 +27,54 @@ set $loc "/home/penn/Storage/Linux/i3-config"
 
 ### APPEARANCE
 ## Fonts
-font pango:Monospace, pango:FontAwesome, pango:EmojiOne Color 10
+font pango:Monospace, "Material Design Icons", pango:EmojiOne Color 10
 
 ## Window Colors
 #                        border      background   text       indicator
-client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-high-n
-client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-high-n
-client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-high-n
-client.urgent            $c-backgnd  $c-backgnd   $c-high-b  $c-high-n
-
+#client.focused           $c-high-n   $c-high-n    $c-backgnd $c-high-n
+client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
+client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
+client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
+client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
+#for_window [tabbed] client.focused $c-backgnd $c-backgnd $c-high-n $c-high-n
 ## Windows Borders
 # hide border by default
 new_window pixel 0
-default_border none
-for_window [floating] border pixel 4
+# i3 gaps
+gaps inner 14
+gaps outer -2
+smart_gaps on
+smart_borders on
 # added borders for certain windows
 for_window [class="Gimp-2.10"] border normal
 # windows floating by default
 for_window [class="Termite" title="calc"] floating enable
 for_window [class="Termite" title="float"] floating enable
-for_window [class="Termite" title="scratch"] move scratchpad
+for_window [class="Steam" title="Steam - News"] floating enable
 # set non-primary matlab windows to floating
 #for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 #for_window [instance="sun-awt-X11-XFramePeer"] border normal
 #for_window [title="MATLAB R2018b - academic use"] floating disable
 #for_window [title="MATLAB R2018b - academic use"] border none
+for_window [class="Termite" title="scratch"] move scratchpad
 
 ## Bar
-bar {
-    status_command bash $loc/scripts/conky-wrap.sh
-    font pango:Monospace, pango:FontAwesome 10
-	position top
-    output eDP1
-	colors {
-		background	$c-backgnd
-	    separator	$c-backgnd
-		#                    border		 background   text
-		focused_workspace    $c-backgnd  $c-backgnd   $c-high-n
-        inactive_workspace   $c-backgnd  $c-backgnd   $c-text
-        urgent_workspace     $c-backgnd  $c-backgnd   $c-high-b
-	}
-}
-# HDMI bar
-bar {
-    status_command bash $loc/scripts/conky-wrap-short.sh
-    font pango:Monospace, pango:FontAwesome 10
-	position top
-    output DP2
-    output HDMI1
-	colors {
-		background	$c-backgnd
-	    separator	$c-backgnd
-		#                    border		 background   text
-		focused_workspace    $c-backgnd  $c-backgnd   $c-high-n
-        inactive_workspace   $c-backgnd  $c-backgnd   $c-text
-        urgent_workspace     $c-backgnd  $c-backgnd   $c-high-b
-	}
-}
+exec_always bash $loc/scripts/polybar-start.sh
 
 
 ### WORKSPACES
 # workspace names
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
-set $ws10 "10 "
-set $wsHDMI "HDMI "
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+set $wsHDMI "HDMI"
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -226,6 +202,8 @@ bindsym $mod+space exec rofi --enable-drun -show drun
 bindsym $mod+Return exec $term
 # start calculator
 bindsym $mod+c exec $term --name="calc" -e "calc -d"
+# Custom program runner
+bindsym $mod+p exec $term --title="float" -e "pgmr"
 
 ## System buttons
 # Pulse Audio controls
@@ -241,6 +219,8 @@ bindcode 166 exec xbacklight -dec 10.0
 bindsym XF86AudioPlay exec playerctl play-pause | mpc toggle
 bindsym XF86AudioNext exec playerctl next | mpc next
 bindsym XF86AudioPrev exec playerctl previous | mpc prev
+# Special character selector
+bindcode 66 exec $term --title="float" -e "bash $loc/scripts/char-select.sh"
 
 ## i3 Control
 # Restart i3
@@ -281,7 +261,7 @@ exec $term
 exec $term --title="scratch"
 exec code
 exec firefox
-exec compton -f
+exec compton -f --shadow-opacity=0
 exec --no-startup-id xautolock -time 9 -notify 60 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto' -killer 'xkbcomp $loc/configs/switch-LALT-LCTL.xkb $DISPLAY'
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
@@ -297,7 +277,7 @@ exec nmcli con up Bakuman-5G
 exec nmcli con up wahoo
 
 ## Run on i3 Restart
-exec_always feh --bg-scale $loc/primary/background.png
-exec_always xkbcomp $loc/configs/switch-LALT-LCTL.xkb $DISPLAY
+exec_always feh --bg-scale $loc/primary/background.jpg
+exec_always setxkbmap -option 'caps:none,ctrl:swap_lalt_lctl'
 exec_always xrandr --output HDMI1 --auto --right-of eDP1
 exec_always xrandr --output DP2 --auto --right-of eDP1

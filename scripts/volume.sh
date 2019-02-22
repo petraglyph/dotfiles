@@ -1,9 +1,16 @@
-#/bin/sh
-vol="$(pamixer --get-volume)"
+#!/bin/sh
 
-#vol="$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }')"
-if (( $vol < 10 )); then
-    echo "0$vol"
-else
-    echo "$vol"
+vol=$(pamixer --get-volume)
+if (( $vol > 100 )); then 
+    color="DB5B5B"
+else 
+    color="2EB398"
+fi 
+if (( $vol == 0 )); then 
+    icon=""
+elif (( $vol < 50 )); then 
+    icon=""
+else 
+    icon=""
 fi
+echo $(printf '%%{F#%s}%s%%{F}%s%%' $color $icon $vol)
