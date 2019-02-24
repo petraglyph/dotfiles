@@ -16,11 +16,10 @@ local chigh = "2EB398"
 local cerror = "DB5B5B"
 
 conky.text = [[
-
 ${if_existing /proc/net/route wlp59s0}\
 %{F\#2EB398}\
 ${if_up tun0}\
-${if_match ${wireless_link_qual_perc wlp59s0}>80}
+${if_match ${wireless_link_qual_perc wlp59s0}>80}\
 朗\
 ${else}${if_match ${wireless_link_qual_perc wlp59s0}>60}\
 臘\
@@ -32,7 +31,7 @@ ${else}\
 狼\
 ${endif}${endif}${endif}${endif}\
 ${else}\
-${if_match ${wireless_link_qual_perc wlp59s0}>80}
+${if_match ${wireless_link_qual_perc wlp59s0}>80}\
 蠟\
 ${else}${if_match ${wireless_link_qual_perc wlp59s0}>60}\
 襤\

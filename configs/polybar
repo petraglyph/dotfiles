@@ -51,7 +51,7 @@ module-margin-right = 1
 font-0 = Monospace:size=24;0
 font-1 = "Material Design Icons:size=28;0"
 ;
-modules-left = i3ws
+modules-left = i3ws mpd
 ;mpd 
 modules-center = datetime
 modules-right = updates wireless volume memory cpu battery pgmr
@@ -102,15 +102,20 @@ label-separator-foreground = ${colors.background}
 type = internal/mpd
 label-padding = 3
 format-offline = 
-format-online = 
-;<label-time> <icon-random> <label-song>
-;label-song = %artist:0:20:...% - %title:0:20:...%
+format-online = <label-song>
+label-song = %title:0:20:...% - %artist:0:20:...%
 ;
 ;
 icon-random = 
 ;
 toggle-on-foreground = ${colors.primary}
 toggle-off-foreground = ${colors.primary}
+
+[module/title]
+type = internal/xwindow
+format = <label>
+label = %title%
+label-maxlen = 50
 
 
 ; CENTER MODULE
@@ -203,9 +208,11 @@ label-mounted = %percentage_used%%
 type = custom/script
 interval = 1
 label = %output%
-exec = ~/.conky/volume.sh
+exec = ~/.config/polybar/volume.sh
 ;exec-if = [ -p /tmp/.xmonad-workspace-log ]
 tail = true
+scroll-up = pamixer --decrease 5 --allow-boost 
+scroll-down = pamixer --increase 5 --allow-boost 
 
 [module/wireless]
 type = custom/script
@@ -223,9 +230,9 @@ tail = true
 
 [module/updates]
 type = custom/script
-interval = 60
+interval = 300
 label = %output%
-exec = echo "%{A:termite --title="float" -e "yay":}%{F#DB5B5B}%{F} $(yay -Qu | wc -l) updates%{A}"
+exec = echo "%{A:termite --title="float" -e "yay":}%{F#DB5B5B}%{F}$(yay -Qu | wc -l) %{A}"
 exec-if = [[ $(yay -Qu | wc -l) != 0 ]]
 tail = true
 

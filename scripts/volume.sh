@@ -13,4 +13,4 @@ elif (( $vol < 50 )); then
 else 
     icon=""
 fi
-echo $(printf '%%{F#%s}%s%%{F}%s%%' $color $icon $vol)
+echo $(printf '%%{F#%s}%s%%{F}%02d%%' $color $icon $vol)

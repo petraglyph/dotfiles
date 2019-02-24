@@ -11,14 +11,12 @@ rm $HOME/.config/dunst/dunstrc
 rm $HOME/.config/mc/mc.keymap
 rm $HOME/.config/ncmpcpp/config
 rm $HOME/.config/polybar/config
-rm $HOME/.config/i3blocks/config
 rm $HOME/.config/polybar/polybar-net-conky
 rm $HOME/.config/polybar/polybar-net-conky-short
-rm $HOME/.config//polybarvolume.sh
+rm $HOME/.config/polybar/volume.sh
 sudo rm /etc/X11/xorg.conf.d
 sudo rm /etc/cron.weekly/backup
 sudo rm /etc/cron.daily/backup
-sudo rm /usr/lib/systemd/system-sleep/pre-suspend.sh
 sudo rm /usr/share/mc/skins/mc-custom.ini
 echo "Configs Cleared"
 # LINK NEW CONFIGS
@@ -37,8 +35,6 @@ sudo cp $loc/scripts/backup-weekly.sh /etc/cron.weekly/backup
 sudo cp $loc/scripts/backup-daily.sh /etc/cron.daily/backup
 sudo chmod +x /etc/cron.weekly/backup
 sudo chmod +x /etc/cron.daily/backup
-sudo cp $loc/scripts/pre-suspend.sh /usr/lib/systemd/system-sleep/
-sudo chmod +x /usr/lib/systemd/system-sleep/pre-suspend.sh
 sudo cp $loc/configs/mc-custom-skin.ini /usr/share/mc/skins/mc-custom.ini
 echo "Configs Linked"
 
