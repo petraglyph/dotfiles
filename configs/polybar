@@ -59,6 +59,9 @@ modules-right = updates wireless volume memory cpu battery pgmr
 ;
 tray-position = right
 tray-padding = 2
+tray-maxsize = 32
+tray-detached = false
+tray-background = ${root.background}
 
 
 ; LEFT MODULES
@@ -100,16 +103,13 @@ label-separator-foreground = ${colors.background}
 
 [module/mpd]
 type = internal/mpd
-label-padding = 3
-format-offline = 
-format-online = <label-song>
-label-song = %title:0:20:...% - %artist:0:20:...%
-;
+format-offline = 
+format-online = <label-song> 
+format-online-padding = 2
+label-song = %title% - %artist%
+label-song-maxlen = 44
 ;
 icon-random = 
-;
-toggle-on-foreground = ${colors.primary}
-toggle-off-foreground = ${colors.primary}
 
 [module/title]
 type = internal/xwindow
@@ -230,7 +230,7 @@ tail = true
 
 [module/updates]
 type = custom/script
-interval = 300
+interval = 120
 label = %output%
 exec = echo "%{A:termite --title="float" -e "yay":}%{F#DB5B5B}%{F}$(yay -Qu | wc -l) %{A}"
 exec-if = [[ $(yay -Qu | wc -l) != 0 ]]
