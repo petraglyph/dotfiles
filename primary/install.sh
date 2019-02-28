@@ -35,17 +35,11 @@ sudo cp $loc/configs/mc-custom-skin.ini /usr/share/mc/skins/mc-custom.ini
 echo "Configs Linked"
 
 if [ -d $HOME/.bin ]; then 
-    rm -rf $HOME/.bin
-    mkdir $HOME/.bin
-else 
-    mkdir $HOME/.bin
+    rm -f $HOME/.bin
 fi
-ln -s $loc/scripts/polybar-net-conky $HOME/.bin/polybar-net-conky
-ln -s $loc/scripts/polybar-net-conky $HOME/.bin/polybar-net-conky-short
-cp $loc/scripts/volume.sh $HOME/.bin/volume.sh
-cp $loc/scripts/keyboard $HOME/.bin/keyboard
+ln -s $loc/scripts/bin $HOME/.bin
 chmod 755 ~/.bin/*
-echo "~/.bin created"
+echo "~/.bin/ created"
 
 if [ $(cat "$HOME/.config/gtk-3.0/gtk.css" | grep ".termite" | wc -l) == 0 ]; then 
     echo ".termite {" >> $HOME/.config/gtk-3.0/gtk.css
