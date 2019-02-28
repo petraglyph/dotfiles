@@ -47,7 +47,7 @@ ${endif}\
 %{F} \
 ${wireless_essid wlp59s0}\
 ${else}\
-%{F#DB5B5B}\
+%{F\#DB5B5B}\
 來%{F} none\
 ${endif}\
 ]];

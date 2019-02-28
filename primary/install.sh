@@ -43,8 +43,6 @@ fi
 ln -s $loc/scripts/polybar-net-conky $HOME/.bin/polybar-net-conky
 ln -s $loc/scripts/polybar-net-conky $HOME/.bin/polybar-net-conky-short
 cp $loc/scripts/volume.sh $HOME/.bin/volume.sh
-cp $loc/scripts/system-notify.sh $HOME/.bin/system-notify.sh
-cp $loc/scripts/udev-keyboard $HOME/.bin/udev-keyboard
 cp $loc/scripts/keyboard $HOME/.bin/keyboard
 chmod 755 ~/.bin/*
 echo "~/.bin created"
