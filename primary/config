@@ -216,9 +216,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10.0 # decrease screen bright
 bindcode 167 exec xbacklight -inc 10.0
 bindcode 166 exec xbacklight -dec 10.0
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause | mpc toggle
-bindsym XF86AudioNext exec playerctl next | mpc next
-bindsym XF86AudioPrev exec playerctl previous | mpc prev
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
 # Special character selector
 bindcode 66 exec $term --title="float" -e "bash $loc/scripts/char-select.sh"
 
