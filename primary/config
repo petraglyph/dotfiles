@@ -203,7 +203,7 @@ bindsym $mod+Return exec $term
 # start calculator
 bindsym $mod+c exec $term --name="calc" -e "calc -d"
 # Custom program runner
-bindsym $mod+p exec $term --title="float" -e "pgmr"
+bindsym $mod+x exec $term --title="float" -e "pgmr"
 
 ## System buttons
 # Pulse Audio controls
@@ -242,7 +242,7 @@ bindsym $mod+Shift+r exec $term -e "mc / /"
 # Open 5e Rule Books
 bindsym $mod+Shift+b exec $term -e "mc $HOME/Storage/D\&D/5e\ Rule\ Books/ $HOME/Storage/D\&D/"
 # Open pCloud Drive
-bindsym $mod+Shift+p exec $term -e "mc $HOME/pCloudDrive/ $HOME/Storage/"
+bindsym $mod+Shift+c exec $term -e "mc $HOME/pCloudDrive/ $HOME/Storage/"
 # Open Git Folder
 bindsym $mod+Shift+g exec $term -e "mc $HOME/Storage/Git/ $HOME/Storage/"
 # Open Site
