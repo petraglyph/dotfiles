@@ -49,8 +49,7 @@ font-0 = Monospace:size=24;0
 font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
-;mpd 
-modules-center = datetime
+modules-center = datetime weather
 modules-right = updates wireless volume memory cpu battery pgmr
 ; storage   
 ;
@@ -104,7 +103,7 @@ format-offline =
 format-online = <label-song> 
 format-online-padding = 2
 label-song = %title% - %artist%
-label-song-maxlen = 44
+label-song-maxlen = 41
 ;
 icon-random = 
 
@@ -120,11 +119,14 @@ label-maxlen = 50
 type = internal/date
 interval = 1
 time = "%a %Y-%m-%d %H:%M:%S"
-format-prefix-foreground = ${colors.primary}
 format-underline = ${colors.secondary}
-label = %{u#f120}%time%
-label-padding-right = 1
-label-padding-left = 1
+label = %time%
+
+[module/weather]
+type = custom/script
+interval = 300
+label = %output%
+exec = bash ~/.bin/wunderground.sh
 
 
 ; RIGHT MODULES

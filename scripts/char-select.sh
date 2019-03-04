@@ -5,6 +5,7 @@ math:intergral:∫
 math:closed-intergral:∮
 math:dot:·
 math:divide:÷
+math:degree:°
 
 euro:a-umlaut:ä:Ä
 euro:o-umlaut:ö:Ö
