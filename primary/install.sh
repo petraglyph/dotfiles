@@ -11,10 +11,8 @@ rm $HOME/.config/dunst/dunstrc
 rm $HOME/.config/mc/mc.keymap
 rm $HOME/.config/ncmpcpp/config
 rm $HOME/.config/polybar/config
-rm $HOME/.config/polybar/polybar-net-conky
-rm $HOME/.config/polybar/polybar-net-conky-short
-rm $HOME/.config/polybar/volume.sh
-sudo rm /etc/X11/xorg.conf.d
+
+sudo rm -rf /etc/X11/xorg.conf.d
 sudo rm /etc/cron.weekly/backup
 sudo rm /etc/cron.daily/backup
 sudo rm /usr/share/mc/skins/mc-custom.ini
@@ -27,16 +25,21 @@ ln -s $loc/configs/dunstrc $HOME/.config/dunst/dunstrc
 ln -s $loc/configs/mc.keymap $HOME/.config/mc/mc.keymap
 ln -s $loc/configs/ncmpcpp-config $HOME/.config/ncmpcpp/config
 ln -s $loc/configs/polybar $HOME/.config/polybar/config
-ln -s $loc/scripts/polybar-net-conky $HOME/.config/polybar/polybar-net-conky
-ln -s $loc/scripts/polybar-net-conky $HOME/.config/polybar/polybar-net-conky-short
-cp $loc/scripts/volume.sh $HOME/.config/polybar/volume.sh
-sudo ln -r -s $loc/xorg.conf.d /etc/X11/
+
+sudo cp -r $loc/configs/xorg.conf.d /etc/X11/
 sudo cp $loc/scripts/backup-weekly.sh /etc/cron.weekly/backup
 sudo cp $loc/scripts/backup-daily.sh /etc/cron.daily/backup
 sudo chmod +x /etc/cron.weekly/backup
 sudo chmod +x /etc/cron.daily/backup
 sudo cp $loc/configs/mc-custom-skin.ini /usr/share/mc/skins/mc-custom.ini
 echo "Configs Linked"
+
+if [ -d $HOME/.bin ]; then 
+    rm -f $HOME/.bin
+fi
+ln -s $loc/scripts/bin $HOME/.bin
+chmod 755 ~/.bin/*
+echo "~/.bin/ created"
 
 if [ $(cat "$HOME/.config/gtk-3.0/gtk.css" | grep ".termite" | wc -l) == 0 ]; then 
     echo ".termite {" >> $HOME/.config/gtk-3.0/gtk.css

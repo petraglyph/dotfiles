@@ -23,15 +23,12 @@ module-margin-right = 1
 ;
 font-0 = Monospace:size=12;0
 font-1 = "Material Design Icons:size=14;0"
-;font-1 = "Font Awesome 5 Free:style=Regular:size=22;0"
-;font-2 = "Font Awesome 5 Free:style=Solid:size=22;0"
-;font-3 = "Font Awesome 5 Free Solid:style=Regular:size=22;0"
-;font-4 = "Font Awesome 5 Brands:style=Regular:size=22;0"
 ;
 modules-left = i3ws 
 modules-center = datetime
 modules-right = wireless-short cpu battery
 tray-position = none
+tray-maxsize = 32
 
 [bar/pennbar]
 monitor = eDP1
@@ -183,7 +180,7 @@ ramp-load-4 = %{F#DB5B5B}%{F}
 [module/memory]
 type = internal/memory
 interval = 5
-format = %{A:bash /home/penn/Storage/Linux/i3-config/scripts/system-notify.sh disk:}<ramp-used><label>%{A}
+format = %{A:bash /home/penn/.bin/system-notify.sh disk:}<ramp-used><label>%{A}
 label = %percentage_used:02%% %percentage_swap_used:02%%
 ;
 ramp-used-0 = %{F#2EB398}%{F}
@@ -208,7 +205,7 @@ label-mounted = %percentage_used%%
 type = custom/script
 interval = 1
 label = %output%
-exec = ~/.config/polybar/volume.sh
+exec = ~/.bin/volume.sh
 ;exec-if = [ -p /tmp/.xmonad-workspace-log ]
 tail = true
 scroll-up = pamixer --decrease 5 --allow-boost 
@@ -217,15 +214,15 @@ scroll-down = pamixer --increase 5 --allow-boost
 [module/wireless]
 type = custom/script
 interval = 1
-label = %{A:bash /home/penn/Storage/Linux/i3-config/scripts/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.config/polybar/polybar-net-conky
+label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.bin/polybar-net-conky
 tail = true
 
 [module/wireless-short]
 type = custom/script
 interval = 1
 label = %output%
-exec = conky -c $HOME/.config/polybar/polybar-net-conky-short
+exec = conky -c $HOME/.bin/polybar-net-conky-short
 tail = true
 
 [module/updates]
