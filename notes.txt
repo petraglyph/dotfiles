@@ -1,62 +1,6 @@
-REFERENCES
-    git@github.com:bookercodes/dotfiles.git
-    git@github.com:vivien/i3blocks-contrib.git
+NOTES
 
-COLORS
-    Set in
-        config
-        conky-json
-        rofi-config
-
-## Colors
-# Original (black, white, yellow, red)
-#set $c-backgnd  #111111
-#set $c-text     #eeeeee
-#set $c-high-n   #ffcc00
-#set $c-high-b   #cc0000
-    # Unused
-    #set $c-mid      #555555
-    #set $c-high-g   #0000cc
-# Tealed (black, white, teal, red)
-#set $c-backgnd  #111111
-#set $c-text     #eeeeee
-#set $c-high-n   #00ffcc
-#set $c-high-b   #cc0000
-
-# Adapta Based (dark grey, white, teal, orange)
-#set $c-backgnd  #1b1b1b
-#set $c-text     #cfd8dc
-#set $c-high-n   #1de9b6
-#set $c-high-b   #f77669
-
-# Material Design (black, white, teal, ??)
-# 900 Grey
-#set $c-backgnd  #212121
-#set $c-backgnd  #1b1b1b
-# 100 Grey
-#set $c-text     #F5F5F5
-# A200 Teal
-#set $c-high-n   #64FFDA
-# A400 Deep Orange
-#set $c-high-b   #FF3D00
-
-# Manjaro (black, white, green, orange)
-#set $c-backgnd  #111111
-#set $c-text     #fafafa
-#set $c-high-n   #3baf80
-#set $c-high-n   #3bdab4
-#set $c-high-b   #ea721c
-
-#Terminal (black, white, green, red)
-#set $c-backgnd  #0C0C0D
-#set $c-text     #EEEEEE
-#set $c-text     #AAAAAA
-#set $c-high-n   #55FF55
-#set $c-high-n   #00AA00
-#set $c-high-b   #FF5555
-#set $c-high-b   #AA0000
-
-#Matcha-dark-sea
+# Colors
 set $c-backgnd  #141A1B
 set $c-text     #EEEEEE
 set $c-high-n   #2EB398
@@ -73,52 +17,40 @@ https://cdn.materialdesignicons.com/3.4.93/
     Desktops 降   ﱨ粒精      
           精      
 
-BAR CATAGORIES
-      /// Time
-    //// /  Battery
-         00 - 10
-         11 - 25
-         26 - 50
-         51 - 75
-         76 - 100
-     CPU
-     Ram/Swap
-         Disk
-      / Network (PIA, name, %, ip, up/down)
-        wahoo 75% (10K/2K)
-    //  // Volume
-    // //    Music
+Wunderground
+    https://www.wunderground.com/glossary/
+    https://www.wunderground.com/weather/api/d/docs?d=resources/phrase-glossary
 
-    // pcloud
-    ,
+    sunny:
+    0/8 cloud cover
+    clear:
+    0/8 cloud cover
 
-DESKTOPS
-    1 
-    2 
-    3 
-    4 
-    5 
-    6 
-    7 
-    8 
-    9 
-    10 
-    HDMI  
-    
-     
-       
-        
-         
-      
-    
-    
+    mostlysunny:
+    1-2/8 cloud cover, day
 
-REMOVED SHORTCUTS (i3 config)
-    # use Mouse+$mod to drag floating windows to their wanted position
-    #floating_modifier $mod
-    # enter fullscreen mode for the focused container
-    #bindsym $mod+f fullscreen toggle
-    # focus the parent container
-    #bindsym $mod+a focus parent
-    # focus the child container
-    #bindsym $mod+d focus child
+    partlycloudy:
+    3-5/8 cloud cover
+    partlysunny:
+    3-5/8 cloud cover, day
+
+    mostlycloudy:
+    6-7/8 cloud cover
+    cloudy:
+    7-8/8 cloud cover
+
+    chanceflurries:
+    chancerain:
+    chancesleet:
+    chancesnow:
+    chancetstorms:
+
+    flurries:
+    fog:
+    hazy:
+    rain:
+    sleet:
+    snow:
+    tstorms:
+    unknown:稜
+            
