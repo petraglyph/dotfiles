@@ -88,8 +88,10 @@ pgms+=("openvpn")
 pgms+=("calc")
 pgms+=("ncmpcpp")
 pgms+=("mplayer")
+pgms+=("odrive")
 # applications
 pgms+=("gimp")
+pgms+=("onlyoffice")
 pgms+=("transmission-gtk")
 pgms+=("visual-studio-code-bin")
 
