@@ -103,9 +103,8 @@ format-offline =
 format-online = <label-song> 
 format-online-padding = 2
 label-song = %title% - %artist%
+;label-song-maxlen = 45
 label-song-maxlen = 41
-;
-icon-random = 
 
 [module/title]
 type = internal/xwindow
@@ -126,7 +125,7 @@ label = %time%
 type = custom/script
 interval = 300
 label = %output%
-exec = bash ~/.bin/wunderground.sh
+exec = bash ~/.bin/darksky-weather.sh bar
 
 
 ; RIGHT MODULES
