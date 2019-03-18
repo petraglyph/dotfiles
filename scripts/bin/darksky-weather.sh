@@ -6,7 +6,7 @@ icons="
 :clear-day:
 :clear-night:
 :partly-cloudy-day:
-:partly-cloudy-night:
+:partly-cloudy-night:
 :cloudy:
 :rain:
 :snow:
