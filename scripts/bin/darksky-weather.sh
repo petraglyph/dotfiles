@@ -24,7 +24,7 @@ else
         #Charlottesville: 38.02981,-78.51977
         #Arlington: 38.88756,-77.12322
         loc="38.029812,-78.519775"
-        #https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+        #https://api.darksky.net/forecast/[key]/[latitude],[longitude]?exclude=minutely,hourly,alerts&units=us
         apikey=$(cat $HOME/.api/darksky)
         curl "https://api.darksky.net/forecast/$apikey/$loc?exclude=minutely,hourly,alerts&units=us" -o $weather 2> /dev/null
         
@@ -38,6 +38,10 @@ else
         else
             icon=$(echo "$icons" | grep ":unknown:" | cut -d":" -f 3)
         fi
-        echo "%{F#2EB398}$icon%{F} $temp°F"
+        echo "%{A:bash /home/penn/.bin/darksky-weather.sh notify noupdate:}%{F#2EB398}$icon%{F} $temp°F%{A}"
+    elif [ $1 == "notify" ]; then 
+        dunstify -u low -r 1 -t 10000 "This Week's Forecast" "$(jq .daily.summary $weather | cut -d'"' -f 2)"
+        dunstify -u low -r 2 -t 10000 "Today's Forecast" "$(jq .daily.data[0].summary $weather | cut -d'"' -f 2) ($(printf '%.0f' $(jq .daily.data[0].temperatureHigh $weather))°F/$(printf '%.0f' $(jq .daily.data[0].temperatureLow $weather))°F)"
+        dunstify -u low -r 3 -t 10000 "$(date --date="+1 days" +%A)'s Forecast" "$(jq .daily.data[1].summary $weather | cut -d'"' -f 2) ($(printf '%.0f' $(jq .daily.data[1].temperatureHigh $weather))°F/$(printf '%.0f' $(jq .daily.data[0].temperatureLow $weather))°F)"
     fi
 fi 
