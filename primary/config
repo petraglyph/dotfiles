@@ -240,7 +240,7 @@ bindsym $mod+f exec $term -e "mc $HOME/ $HOME/Storage/"
 # Open /
 bindsym $mod+Shift+r exec $term -e "mc / /"
 # Open 5e Rule Books
-bindsym $mod+Shift+b exec $term -e "mc $HOME/Storage/DnD/5e-books/ $HOME/Storage/D\&D/"
+bindsym $mod+Shift+b exec $term -e "mc $HOME/Storage/D\&D/5e-books/ $HOME/Storage/D\&D/"
 # Open pCloud Drive
 bindsym $mod+Shift+c exec $term -e "mc $HOME/pCloudDrive/ $HOME/Storage/"
 # Open Git Folder
