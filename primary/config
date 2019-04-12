@@ -14,8 +14,6 @@ set $c-high-b   #DB5B5B
 set $mod Mod4
 # default programs
 set $term termite
-# file manager
-set $file $term -e mc
 # arrow keys
 set $left-key a
 set $down-key s
@@ -237,21 +235,21 @@ bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~
 
 ## Folder Opening
 # Open ~/
-bindsym $mod+f exec $term -e "mc $HOME/ $HOME/Storage/"
+bindsym $mod+f exec $term -e "ranger $HOME/ $HOME/Storage/"
 # Open /
-bindsym $mod+Shift+r exec $term -e "mc / /"
+bindsym $mod+Shift+r exec $term -e "ranger / /"
 # Open 5e Rule Books
-bindsym $mod+Shift+b exec $term -e "mc $HOME/Storage/DnD/5e-books/ $HOME/Storage/DnD/"
+bindsym $mod+Shift+b exec $term -e "ranger $HOME/Storage/DnD/5e-books/ $HOME/Storage/DnD/"
 # Open pCloud Drive
-bindsym $mod+Shift+c exec $term -e "mc $HOME/pCloudDrive/ $HOME/Storage/"
+bindsym $mod+Shift+c exec $term -e "ranger $HOME/pCloudDrive/ $HOME/Storage/"
 # Open Git Folder
-bindsym $mod+Shift+g exec $term -e "mc $HOME/Storage/Git/ $HOME/Storage/"
+bindsym $mod+Shift+g exec $term -e "ranger $HOME/Storage/Git/ $HOME/Storage/"
 # Open Site
-bindsym $mod+Shift+v exec $term -e "mc $HOME/Storage/Site/ $HOME/Storage/"
+bindsym $mod+Shift+v exec $term -e "ranger $HOME/Storage/Site/ $HOME/Storage/"
 # Open Storage
-bindsym $mod+Shift+f exec $term -e "mc $HOME/Storage/ $HOME/Storage/"
+bindsym $mod+Shift+f exec $term -e "ranger $HOME/Storage/ $HOME/Storage/"
 # Open College Folder
-bindsym $mod+Shift+e exec $term -e "mc $HOME/Storage/College/ $HOME/Storage/"
+bindsym $mod+Shift+e exec $term -e "ranger $HOME/Storage/College/ $HOME/Storage/"
 
 
 
@@ -260,7 +258,7 @@ bindsym $mod+Shift+e exec $term -e "mc $HOME/Storage/College/ $HOME/Storage/"
 exec $term
 exec $term
 exec $term --title="scratch"
-exec code
+#exec code
 exec firefox
 exec compton -f --shadow-opacity=0
 exec --no-startup-id xautolock -time 9 -notify 60 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto' -killer 'xkbcomp $loc/configs/switch-LALT-LCTL.xkb $DISPLAY'

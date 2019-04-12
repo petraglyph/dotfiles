@@ -50,7 +50,7 @@ else
     echo "Termite already styled in gtk.css"
 fi
 
-if [ $1 == "quick" ]; then 
+if [[ $1 == "quick" ]]; then 
     exit 0
 fi
 
@@ -77,9 +77,9 @@ pgms+=("vimix-gtk-themes-git")
 pgms+=("dunst")
 pgms+=("mpc")
 # utility
-pgms+=("termite")
-pgms+=("lxappearance")
-#pgms+=("pcmanfm")
+pgms+=("termite"
+agms+=("lxappearance")
+pgms+=("ranger")
 pgms+=("gparted")
 pgms+=("neofetch")
 pgms+=("pcloudcc")
@@ -89,6 +89,7 @@ pgms+=("calc")
 pgms+=("ncmpcpp")
 pgms+=("mplayer")
 pgms+=("odrive")
+pgms+=("zathura-pdf-mupdf")
 # applications
 pgms+=("gimp")
 pgms+=("onlyoffice")
