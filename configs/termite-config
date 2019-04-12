@@ -47,6 +47,7 @@ cursor_foreground = #141A1B
 foreground = #EEEEEE
 foreground_bold = #2EB398
 background = #141A1B
+#background = #111111
 #rgba(20,26,27,0.75)
 #141A1B
 
@@ -68,8 +69,10 @@ color1  = #DB5B5B
 color9  = #DB5B5B
 
 # Green
-color2  = #90A959
-color10 = #90A959
+#color2  = #90A959
+#color10 = #90A959
+color2  = #2EB398
+color10 = #2EB398
 
 # Yellow
 color3  = #F4BF75
@@ -84,8 +87,10 @@ color5  = #AA759F
 color13 = #AA759F
 
 # Teal
-color6  = #2EB398
-color14 = #2EB398
+#color6  = #2EB398
+#color14 = #2EB398
+color6  = 75B5AA
+color14 = 75B5AA
 
 # Extra colors
 color16 = #D28445
@@ -99,9 +104,9 @@ color18 = #141A1B
 # Plain
 color21 = #EEEEEE
 # Error (salmon)
-color9 = #DB5B5B
+#color9 = #DB5B5B
 # Highlight (Cyan)
-color14 = #2EB398
+#color14 = #2EB398
 
 [hints]
 #font = Monospace 12
