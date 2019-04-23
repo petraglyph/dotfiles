@@ -14,11 +14,16 @@ set $c-high-b   #DB5B5B
 set $mod Mod4
 # default programs
 set $term termite
-# arrow keys
-set $left-key a
-set $down-key s
-set $up-key w
-set $right-key d
+# wasd arrow keys
+set $left-wasd a
+set $down-wasd s
+set $up-wasd w
+set $right-wasd d
+# vi arrow keys
+set $left-vi h
+set $down-vi j
+set $up-vi k
+set $right-vi l
 # config location
 set $loc "/home/penn/Storage/Linux/i3-config"
 
@@ -85,7 +90,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
-bindsym $mod+h workspace $wsHDMI
+bindsym $mod+m workspace $wsHDMI
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -97,7 +102,7 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-bindsym $mod+Shift+h move container to workspace $wsHDMI
+bindsym $mod+Shift+m move container to workspace $wsHDMI
 # workspace assignments
 assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws3
@@ -133,20 +138,30 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 # Change focused Window
-bindsym $mod+$left-key focus left
-bindsym $mod+$down-key focus down
-bindsym $mod+$up-key focus up
-bindsym $mod+$right-key focus right
+bindsym $mod+$left-wasd focus left
+bindsym $mod+$down-wasd focus down
+bindsym $mod+$up-wasd focus up
+bindsym $mod+$right-wasd focus right
+# Change focused Window
+bindsym $mod+$left-vi focus left
+bindsym $mod+$down-vi focus down
+bindsym $mod+$up-vi focus up
+bindsym $mod+$right-vi focus right
 # Move focused window
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 # Move focused window
-bindsym $mod+Shift+$left-key move left
-bindsym $mod+Shift+$down-key move down
-bindsym $mod+Shift+$up-key move up
-bindsym $mod+Shift+$right-key move right
+bindsym $mod+Shift+$left-wasd move left
+bindsym $mod+Shift+$down-wasd move down
+bindsym $mod+Shift+$up-wasd move up
+bindsym $mod+Shift+$right-wasd move right
+# Move focused window
+bindsym $mod+Shift+$left-vi move left
+bindsym $mod+Shift+$down-vi move down
+bindsym $mod+Shift+$up-vi move up
+bindsym $mod+Shift+$right-vi move right
 # toggle split  orientation
 bindsym $mod+v split toggle
 # container layout
@@ -172,20 +187,30 @@ mode "resize" {
         bindsym Up          resize shrink height 100 px or 10 ppt
         bindsym Right       resize grow width 100 px or 150 ppt
         # letter large
-        bindsym $left-key   resize shrink width 100 px or 10 ppt
-        bindsym $down-key   resize grow height 100 px or 10 ppt
-        bindsym $up-key     resize shrink height 100 px or 10 ppt
-        bindsym $right-key  resize grow width 100 px or 10 ppt
+        bindsym $left-wasd   resize shrink width 100 px or 10 ppt
+        bindsym $down-wasd   resize grow height 100 px or 10 ppt
+        bindsym $up-wasd     resize shrink height 100 px or 10 ppt
+        bindsym $right-wasd  resize grow width 100 px or 10 ppt
+        # letter large
+        bindsym $left-vi   resize shrink width 100 px or 10 ppt
+        bindsym $down-vi   resize grow height 100 px or 10 ppt
+        bindsym $up-vi     resize shrink height 100 px or 10 ppt
+        bindsym $right-vi  resize grow width 100 px or 10 ppt
         # arrow small
         bindsym Shift+Left        resize shrink width 10 px or 10 ppt
         bindsym Shift+Down        resize grow height 10 px or 10 ppt
         bindsym Shift+Up          resize shrink height 10 px or 10 ppt
         bindsym Shift+Right       resize grow width 10 px or 10 ppt
         # letter small
-        bindsym Shift+$left-key   resize shrink width 10 px or 10 ppt
-        bindsym Shift+$down-key   resize grow height 10 px or 10 ppt
-        bindsym Shift+$up-key     resize shrink height 10 px or 10 ppt
-        bindsym Shift+$right-key  resize grow width 10 px or 10 ppt
+        bindsym Shift+$left-wasd   resize shrink width 10 px or 10 ppt
+        bindsym Shift+$down-wasd   resize grow height 10 px or 10 ppt
+        bindsym Shift+$up-wasd     resize shrink height 10 px or 10 ppt
+        bindsym Shift+$right-wasd  resize grow width 10 px or 10 ppt
+        # letter small
+        bindsym Shift+$left-vi   resize shrink width 10 px or 10 ppt
+        bindsym Shift+$down-vi   resize grow height 10 px or 10 ppt
+        bindsym Shift+$up-vi     resize shrink height 10 px or 10 ppt
+        bindsym Shift+$right-vi  resize grow width 10 px or 10 ppt
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -228,7 +253,7 @@ bindsym $mod+Shift+Escape restart
 #bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Escape exec $term --title="float" -e "bash $loc/scripts/i3exit.sh"
 # Lock i3
-bindsym $mod+l exec bash $loc/scripts/i3locker.sh dark
+bindsym $mod+z exec bash $loc/scripts/i3locker.sh dark
 # Screenshots
 bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
 bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/' -s
@@ -239,17 +264,17 @@ bindsym $mod+f exec $term -e "ranger $HOME/ $HOME/Storage/"
 # Open /
 bindsym $mod+Shift+r exec $term -e "ranger / /"
 # Open 5e Rule Books
-bindsym $mod+Shift+b exec $term -e "ranger $HOME/Storage/DnD/5e-books/ $HOME/Storage/DnD/"
+bindsym $mod+Shift+b exec $term -e "ranger $HOME/Storage/dnd/5e-books/ $HOME/Storage/dnd/"
 # Open pCloud Drive
 bindsym $mod+Shift+c exec $term -e "ranger $HOME/pCloudDrive/ $HOME/Storage/"
 # Open Git Folder
-bindsym $mod+Shift+g exec $term -e "ranger $HOME/Storage/Git/ $HOME/Storage/"
+bindsym $mod+Shift+g exec $term -e "ranger $HOME/Storage/git/ $HOME/Storage/"
 # Open Site
-bindsym $mod+Shift+v exec $term -e "ranger $HOME/Storage/Site/ $HOME/Storage/"
+bindsym $mod+Shift+v exec $term -e "ranger $HOME/Storage/site/ $HOME/Storage/"
 # Open Storage
 bindsym $mod+Shift+f exec $term -e "ranger $HOME/Storage/ $HOME/Storage/"
 # Open College Folder
-bindsym $mod+Shift+e exec $term -e "ranger $HOME/Storage/College/ $HOME/Storage/"
+bindsym $mod+Shift+e exec $term -e "ranger $HOME/Storage/college/ $HOME/Storage/"
 
 
 
