@@ -78,7 +78,7 @@ pgms+=("dunst")
 pgms+=("mpc")
 # utility
 pgms+=("termite"
-agms+=("lxappearance")
+pgms+=("lxappearance")
 pgms+=("ranger")
 pgms+=("gparted")
 pgms+=("neofetch")

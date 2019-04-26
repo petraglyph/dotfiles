@@ -25,7 +25,7 @@ set $down-vi j
 set $up-vi k
 set $right-vi l
 # config location
-set $loc "/home/penn/Storage/Linux/i3-config"
+set $loc "/home/penn/Storage/linux/i3-config"
 
 
 ### APPEARANCE
@@ -283,17 +283,16 @@ bindsym $mod+Shift+e exec $term -e "ranger $HOME/Storage/college/ $HOME/Storage/
 exec $term
 exec $term
 exec $term --title="scratch"
-#exec code
 exec firefox
 exec compton -f --shadow-opacity=0
-exec --no-startup-id xautolock -time 9 -notify 60 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto' -killer 'xkbcomp $loc/configs/switch-LALT-LCTL.xkb $DISPLAY'
+exec --no-startup-id xautolock -time 9 -notify 60 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto' 
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec dunst
 exec systemctl start bluetooth.service
 exec --no-startup-id /usr/lib/kdeconnectd
-exec pcloudcc -u "penn.bauman@gmail.com" -d
+exec pcloudcc -u "pennbauman@protonmail.com" -d
 exec bash $loc/scripts/window-file-clear.sh
 exec bash $loc/scripts/ncmpcpp-start.sh $term
 # wifi setup
