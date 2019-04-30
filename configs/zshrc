@@ -1,0 +1,179 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+if [ ! -d /home/penn/.oh-my-zsh ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+# Path to your oh-my-zsh installation.
+export ZSH="/home/penn/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="penn"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Configure Prompt
+autoload -U colors && colors
+setopt PROMPT_SUBST
+
+set_prompt() {
+	PS1='%{$fg_bold[green]%}[%{$fg_bold[green]%}%n@%m'
+	
+	#PS1+="%{$fg_bold[cyan]%}${PWD/#$HOME/~}%{$reset_color%}"
+	PS1+=" %{$fg_bold[white]%}%c"
+
+	# Git
+	if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' ; then
+		#PS1+=', '
+		PS1+=" %{$fg_bold[blue]%}$(git rev-parse --abbrev-ref HEAD 2> /dev/null)%{$reset_color%}"
+		if [ $(git status --short | wc -l) -gt 0 ]; then 
+			PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
+		fi
+	fi
+
+	# Timer: http://stackoverflow.com/questions/2704635/is-there-a-way-to-find-the-running-time-of-the-last-executed-command-in-the-shel
+	#if [[ $_elapsed[-1] -ne 0 ]]; then
+	#	PS1+=', '
+	#	PS1+="%{$fg[magenta]%}$_elapsed[-1]s%{$reset_color%}"
+	#fi
+
+	# PID
+	if [[ $! -ne 0 ]]; then
+		PS1+=', '
+		PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
+	fi
+
+	# Sudo: https://superuser.com/questions/195781/sudo-is-there-a-command-to-check-if-i-have-sudo-and-or-how-much-time-is-left
+	#CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
+	#if [ ${CAN_I_RUN_SUDO} -gt 0 ]
+	#then
+	#	PS1+=', '
+	#	PS1+="%{$fg_bold[red]%}SUDO%{$reset_color%}"
+	#fi
+
+	PS1+="%{$fg_bold[green]%}]$ %{$reset_color%}% "
+}
+
+precmd_functions+=set_prompt
+
+
+alias zshconf="vim ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+unsetopt share_history
+
+alias cds=". /home/penn/Storage/code/cds/cds -v $@"
+alias cd=". /home/penn/Storage/code/cds/cds -v $@"
+
+alias ls="ls -Fh"
+#alias mkdir="mkdir -p $1; cd $@"
+function md {
+	command mkdir -p $@ && cd $@
+	#echo $@
+}
+
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1 -d ${1:0:-4}    ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+alias cd=". /home/penn/Storage/code/cds/cds -v "
+alias cd=". /home/penn/Storage/code/cds/cds -v "
+alias cd=". /home/penn/Storage/code/cds/cds -v "
+alias cd=". /home/penn/Storage/code/cds/cds -v "
+alias cd=". /home/penn/Storage/code/cds/cds -v "
