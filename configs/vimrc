@@ -137,10 +137,8 @@ endif
 " vim-plug
 " :PlugInstall to install
 call plug#begin('~/.vim/plugged')
-	Plug 'https://github.com/skielbasa/vim-material-monokai.git'
 	Plug 'https://github.com/Yggdroot/indentLine.git'
 	Plug 'https://github.com/vim-airline/vim-airline.git'
-	Plug 'patstockwell/vim-monokai-tasty'
 	Plug 'francoiscabrol/ranger.vim'
 	Plug 'rust-lang/rust.vim'
 	"Plug 'https://github.com/scrooloose/nerdtree.git'
@@ -156,11 +154,18 @@ nmap <S-h>	^
 nmap <S-j>	15j
 nmap <S-k>	15k
 nmap <S-l> 	$
+vmap <S-h>	^	
+vmap <S-j>	15j
+vmap <S-k>	15k
+vmap <S-l> 	$
+nmap <S-u> :redo<Enter>
 set clipboard=unnamedplus
+:set listchars=tab:¦\ ,trail:~,extends:>,precedes:<
+:set list
 
 " Style
-colorscheme material-monokai-custom
-let g:airline_theme='monokai_tasty_custom'
+colorscheme maia-custom
+let g:airline_theme='maia_custom'
 let g:airline#extensions#tabline#enabled = 1
 set tabstop=4
 set shiftwidth=4
@@ -193,3 +198,4 @@ nnoremap :f :RangerWorkingDirectory<CR>
 let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
+nnoremap <C-r> :Ranger<Enter>

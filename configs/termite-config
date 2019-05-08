@@ -44,8 +44,8 @@ scrollbar = off
 cursor = #2EB398
 cursor_foreground = #141A1B
 
-foreground = #EEEEEE
-foreground_bold = #2EB398
+foreground = #dddddd
+foreground_bold = #EEEEEE
 background = #141A1B
 #background = #111111
 #rgba(20,26,27,0.75)
@@ -59,9 +59,9 @@ background = #141A1B
 
 # Colors from color0 to color254 can be set
 # Black, Gray, Silver, White
-color0  = #151515
-color8  = #505050
-color7  = #EEEEEE
+color0  = #090909
+color7  = #505050
+color8  = #aaaaaa
 color15 = #EEEEEE
 
 # Red
@@ -75,28 +75,32 @@ color2  = #2EB398
 color10 = #2EB398
 
 # Yellow
-color3  = #F4BF75
-color11 = #F4BF75
+#original: f4bf75
+color3  = #f0c07e
+color11 = #f0c07e
 
 # Blue
-color4  = #6A9FB5
-color12 = #6A9FB5
+#original: 6a9fb5
+color4  = #4ea2c1
+color12 = #4ea2c1
 
 # Purple
-color5  = #AA759F
-color13 = #AA759F
+#original: aa759f
+color5  = #b56ea7
+color13 = #b56ea7
 
 # Teal
+#original: 75b5aa
 #color6  = #2EB398
 #color14 = #2EB398
-color6  = 75B5AA
-color14 = 75B5AA
+color6  = #b5e4f4
+color14 = #b5e4f4
 
 # Extra colors
 color16 = #D28445
 color17 = #8F5536
 color19 = #303030
-color20 = #B0B0B0
+color20 = #909090
 
 
 # Background
