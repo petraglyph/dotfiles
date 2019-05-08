@@ -302,6 +302,6 @@ exec nmcli con up wahoo
 
 ## Run on i3 Restart
 exec_always feh --bg-scale $loc/primary/background.jpg
-exec_always setxkbmap -option 'caps:none,ctrl:swap_lalt_lctl'
+#exec_always setxkbmap -option 'caps:none,ctrl:swap_lalt_lctl'
 exec_always xrandr --output HDMI1 --auto --right-of eDP1
 exec_always xrandr --output DP2 --auto --right-of eDP1
