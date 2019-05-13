@@ -106,7 +106,7 @@ bindsym $mod+Shift+m move container to workspace $wsHDMI
 # workspace assignments
 assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws3
-assign [class="Code"] $ws4
+#assign [class="Code"] $ws4
 assign [class="Gimp"] $ws7
 assign [class="Inkscape"] $ws7
 assign [class="Transmission-gtk"] $ws9

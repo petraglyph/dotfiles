@@ -142,6 +142,7 @@ alias cds=". /home/penn/Storage/code/cds/cds -v $@"
 alias cd=". /home/penn/Storage/code/cds/cds -v $@"
 
 alias ls="ls -Fh"
+alias cp="cp -r"
 #alias mkdir="mkdir -p $1; cd $@"
 function md {
 	command mkdir -p $@ && cd $@
