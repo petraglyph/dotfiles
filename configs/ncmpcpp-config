@@ -19,7 +19,7 @@ ignore_leading_the = yes
 mouse_support = yes
 
 # Formats
-song_columns_list_format = (40)[]{t|f:Title} (20)[green]{a} (30)[]{b} (7f)[]{l}
+song_columns_list_format = (40)[white]{t|f:Title} (20)[green]{a} (30)[]{b} (7f)[]{l}
 # = (20)[]{a}[green] (6f)[green]{NE}[white] (50)[]{t|f:Title}[green] (20)[]{b}[white] (7f)[]{l}
 #song_window_title_format = {%a - }{%t}|{%f}
 song_list_format = $/b{%a - }{%t}|{$8%f$9}$R({%l})

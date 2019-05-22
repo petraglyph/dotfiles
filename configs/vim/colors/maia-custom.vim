@@ -82,11 +82,11 @@ endfunction
 
 let s:white       = { "gui": "#CDD3DE", "cterm": "15" }
 let s:black       = { "gui": "#263238", "cterm": "19" }
-let s:lightblack  = { "gui": "#2D2E27", "cterm": "8" }
-let s:lightblack2 = { "gui": "#383a3e", "cterm": "8" }
+let s:lightblack  = { "gui": "#2D2E27", "cterm": "7" }
+let s:lightblack2 = { "gui": "#383a3e", "cterm": "7" }
 let s:darkblack   = { "gui": "#1F292D", "cterm": "0" }
-let s:grey        = { "gui": "#3F565F", "cterm": "7" }
-let s:lightgrey   = { "gui": "#575b61", "cterm": "8" }
+let s:grey        = { "gui": "#3F565F", "cterm": "8" }
+let s:lightgrey   = { "gui": "#575b61", "cterm": "7" }
 let s:darkgrey    = { "gui": "#232E33", "cterm": "19" }
 let s:coolgrey    = { "gui": "#506E79", "cterm": "20" }
 
@@ -119,7 +119,7 @@ call s:h("StatusLine",    { "fg": s:white,      "bg": s:darkblack })
 call s:h("StatusLineNC",  { "fg": s:darkgrey,   "bg": s:coolgrey,     "format": "reverse" })
 call s:h("WildMenu",      { "fg": s:white,      "bg": s:pink })
 call s:h("TabLine",       { "fg": s:white,      "bg": s:darkblack,    "format": "reverse" })
-call s:h("Visual",        {                     "bg": s:lightgrey })
+call s:h("Visual",        {                     "bg": s:grey })
 call s:h("Search",        { "fg": s:black,      "bg": s:yellow })
 call s:h("MatchParen",    { "fg": s:black,      "bg": s:purple })
 call s:h("Question",      { "fg": s:yellow })

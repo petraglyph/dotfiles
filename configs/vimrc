@@ -150,18 +150,21 @@ filetype plugin on
 set number
 nnoremap <S-tab> :bprev<Enter>
 nnoremap <tab>   :bnext<Enter>
-nmap <S-h>	^	
-nmap <S-j>	15j
-nmap <S-k>	15k
-nmap <S-l> 	$
-vmap <S-h>	^	
-vmap <S-j>	15j
-vmap <S-k>	15k
-vmap <S-l> 	$
+nmap <S-h> ^
+nmap <S-j> 15j
+nmap <S-k> 15k
+nmap <S-l> $
+vmap <S-h> ^
+vmap <S-j> 15j
+vmap <S-k> 15k
+vmap <S-l> $
 nmap <S-u> :redo<Enter>
 set clipboard=unnamedplus
-:set listchars=tab:¦\ ,trail:~,extends:>,precedes:<
-:set list
+" copy and paste
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
 
 " Style
 colorscheme maia-custom
@@ -170,6 +173,8 @@ let g:airline#extensions#tabline#enabled = 1
 set tabstop=4
 set shiftwidth=4
 let g:indentLine_setConceal = 4 
+:set listchars=tab:¦\ ,trail:~,extends:>,precedes:<
+:set list
 " netrw
 "let g:netrw_banner = 0
 "let g:netrw_liststyle = 3

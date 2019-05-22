@@ -6,8 +6,8 @@ let s:blue = { "cterm": 4, "gui": "#4ea2c1" }
 let s:magenta = { "cterm": 1, "gui": "#db5b5b" }
 let s:orange = { "cterm": 14, "gui": "#b5e4a7" }
 
-let s:light_grey = { "cterm": 8, "gui": "#bcbcbc" }
-let s:dark_grey = { "cterm": 7, "gui": "#5f5f5f" }
+let s:light_grey = { "cterm": 7, "gui": "#bcbcbc" }
+let s:dark_grey = { "cterm": 8, "gui": "#5f5f5f" }
 let s:darker_grey = { "cterm": 0, "gui": "#444444" }
 let s:light_charcoal = { "cterm": 19, "gui": "#303030" }
 let s:charcoal = { "cterm": 19, "gui": "#262626" }

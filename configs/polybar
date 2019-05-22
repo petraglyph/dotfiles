@@ -26,7 +26,7 @@ font-1 = "Material Design Icons:size=21;0"
 ;
 modules-left = hdmi
 modules-center = datetime
-modules-right = wireless-short cpu battery
+modules-right = wireless-short volume cpu battery
 tray-position = none
 
 [bar/pennbar]

@@ -60,8 +60,8 @@ background = #141A1B
 # Colors from color0 to color254 can be set
 # Black, Gray, Silver, White
 color0  = #090909
-color7  = #505050
-color8  = #aaaaaa
+color8  = #505050
+color7  = #dddddd
 color15 = #EEEEEE
 
 # Red
