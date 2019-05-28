@@ -3,4 +3,5 @@ local~/*
 **/error_log
 scripts/lock-log.txt
 scripts/bin/weather.json
+scripts/bin/log
 configs/vim/plugged/*
