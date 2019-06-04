@@ -146,7 +146,8 @@ alias cp="cp -r"
 alias rm="rm -r"
 #alias mkdir="mkdir -p $1; cd $@"
 function md {
-	command mkdir -p $@ && cd $@
+	command mkdir -p $@
+	cd $@
 	#echo $@
 }
 
