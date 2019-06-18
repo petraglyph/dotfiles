@@ -141,6 +141,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'https://github.com/vim-airline/vim-airline.git'
 	Plug 'francoiscabrol/ranger.vim'
 	Plug 'rust-lang/rust.vim'
+	Plug 'https://github.com/vim-syntastic/syntastic'
 	"Plug 'https://github.com/scrooloose/nerdtree.git'
 	"Plug 'https://github.com/rbgrouleff/bclose.vim'
 call plug#end()
@@ -173,9 +174,9 @@ let g:airline#extensions#tabline#enabled = 1
 set tabstop=4
 set shiftwidth=4
 let g:indentLine_setConceal = 4 
-:set encoding=utf8
-:set listchars=tab:¦\ ,trail:~,extends:>,precedes:<
-:set list
+set encoding=utf8
+set listchars=tab:¦\ ,trail:~,extends:>,precedes:<
+set list
 " netrw
 	"let g:netrw_banner = 0
 	"let g:netrw_liststyle = 3
@@ -205,3 +206,13 @@ let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
 nnoremap <C-r> :Ranger<Enter>
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
