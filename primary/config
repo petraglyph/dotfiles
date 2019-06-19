@@ -245,7 +245,7 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
 # Special character selector
-bindcode 66 exec $term --title="float" -e "bash $loc/scripts/char-select.sh"
+#bindcode 66 exec $term --title="float" -e "bash $loc/scripts/char-select.sh"
 
 ## i3 Control
 # Restart i3
