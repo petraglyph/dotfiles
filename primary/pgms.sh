@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# PROGRAM INSTALLS
+pgms=()
+# backend
+pgms+=("rofi")
+pgms+=("compton")
+pgms+=("feh")
+pgms+=("redshift")
+pgms+=("xorg-xbacklight")
+pgms+=("xautolock")
+pgms+=("pamixer")
+pgms+=("playerctl")
+pgms+=("nmcli")
+pgms+=("conky")
+pgms+=("i3lock-color")
+pgms+=("sddm")
+pgms+=("sddm-maia-theme")
+pgms+=("papirus-maia-icon-theme")
+pgms+=("ttf-emojione-color")
+pgms+=("ttf-font-awesome")
+pgms+=("vimix-gtk-themes-git")
+pgms+=("dunst")
+pgms+=("mpc")
+# utility
+pgms+=("termite")
+pgms+=("lxappearance")
+pgms+=("ranger")
+pgms+=("gparted")
+pgms+=("neofetch")
+pgms+=("pcloudcc")
+pgms+=("kdeconnectd")
+pgms+=("openvpn")
+pgms+=("calc")
+pgms+=("ncmpcpp")
+pgms+=("mplayer")
+pgms+=("odrive")
+pgms+=("zathura-pdf-mupdf")
+pgms+=("gotop")
+# applications
+pgms+=("gimp")
+pgms+=("onlyoffice")
+pgms+=("transmission-gtk")
+pgms+=("visual-studio-code-bin")
+
+exec yay -S ${pgms[*]}

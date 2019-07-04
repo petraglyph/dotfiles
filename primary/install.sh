@@ -9,6 +9,7 @@ rm $HOME/.config/rofi/config
 rm $HOME/.config/termite/config
 rm $HOME/.config/dunst/dunstrc
 rm $HOME/.config/ncmpcpp/config
+rm $HOME/.config/ncmpcpp/bindings
 rm $HOME/.config/polybar/config
 rm -r $HOME/.config/ranger
 rm $HOME/.zshrc
@@ -26,6 +27,7 @@ ln -s $loc/configs/rofi-config $HOME/.config/rofi/config
 ln -s $loc/configs/termite-config $HOME/.config/termite/config
 ln -s $loc/configs/dunstrc $HOME/.config/dunst/dunstrc
 ln -s $loc/configs/ncmpcpp-config $HOME/.config/ncmpcpp/config
+ln -s $loc/configs/ncmpcpp-bindings $HOME/.config/ncmpcpp/bindings
 ln -s $loc/configs/polybar $HOME/.config/polybar/config
 ln -s $loc/configs/ranger $HOME/.config/ranger
 ln -s $loc/configs/zshrc $HOME/.zshrc
@@ -55,51 +57,3 @@ else
     echo "Termite already styled in gtk.css"
 fi
 
-if [[ $1 != "pgms" ]]; then 
-    exit 0
-fi
-
-# PROGRAM INSTALLS
-pgms=()
-# backend
-pgms+=("rofi")
-pgms+=("compton")
-pgms+=("feh")
-pgms+=("redshift")
-pgms+=("xorg-xbacklight")
-pgms+=("xautolock")
-pgms+=("pamixer")
-pgms+=("playerctl")
-pgms+=("nmcli")
-pgms+=("conky")
-pgms+=("i3lock-color")
-pgms+=("sddm")
-pgms+=("sddm-maia-theme")
-pgms+=("papirus-maia-icon-theme")
-pgms+=("ttf-emojione-color")
-pgms+=("ttf-font-awesome")
-pgms+=("vimix-gtk-themes-git")
-pgms+=("dunst")
-pgms+=("mpc")
-# utility
-pgms+=("termite"
-pgms+=("lxappearance")
-pgms+=("ranger")
-pgms+=("gparted")
-pgms+=("neofetch")
-pgms+=("pcloudcc")
-pgms+=("kdeconnectd")
-pgms+=("openvpn")
-pgms+=("calc")
-pgms+=("ncmpcpp")
-pgms+=("mplayer")
-pgms+=("odrive")
-pgms+=("zathura-pdf-mupdf")
-pgms+=("gotop")
-# applications
-pgms+=("gimp")
-pgms+=("onlyoffice")
-pgms+=("transmission-gtk")
-pgms+=("visual-studio-code-bin")
-
-exec yay -S ${pgms[*]}
