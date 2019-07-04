@@ -50,4 +50,4 @@ color1 = white
 color2 = green
 window_border_color = red
 active_window_border = red
-active_column_color = white_red
+#active_column_color = white_red
