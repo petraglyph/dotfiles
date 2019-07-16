@@ -17,6 +17,8 @@ rm $HOME/.vimrc
 rm -r $HOME/.vim
 
 sudo rm -rf /etc/X11/xorg.conf.d
+sudo chattr -i /etc/resolv.conf
+sudo rm /etc/resolv.conf
 #sudo rm /etc/cron.weekly/backup
 #sudo rm /etc/cron.daily/backup
 echo "Configs Cleared"
@@ -35,6 +37,8 @@ ln -s $loc/configs/vimrc $HOME/.vimrc
 ln -s $loc/configs/vim $HOME/.vim
 
 sudo cp -r $loc/configs/xorg.conf.d /etc/X11/
+sudo cp $loc/configs/resolv.conf /etc/
+sudo chattr -i /etc/resolv.conf
 #sudo cp $loc/scripts/backup-weekly.sh /etc/cron.weekly/backup
 #sudo cp $loc/scripts/backup-daily.sh /etc/cron.daily/backup
 #sudo chmod +x /etc/cron.weekly/backup
