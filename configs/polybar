@@ -123,7 +123,7 @@ interval = 0
 label = %output%
 exec = echo "%{A:termite -c ~/Storage/linux/i3-config/configs/termite-1080p:}termite%{A}"
 
-[module/termite]
+[module/ranger]
 type = custom/script
 interval = 0
 label = %output%
