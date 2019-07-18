@@ -21,10 +21,10 @@ padding-right = 1
 module-margin-left = 0
 module-margin-right = 1
 ;
-font-0 = Monospace:size=18;0
+font-0 = DejaVu Sans Mono:size=18;0
 font-1 = "Material Design Icons:size=21;0"
 ;
-modules-left = hdmi
+modules-left = hdmi termite ranger
 modules-center = datetime
 modules-right = wireless-short volume cpu battery
 tray-position = none
@@ -44,7 +44,7 @@ padding-right = 1
 module-margin-left = 0
 module-margin-right = 1
 ;
-font-0 = Monospace:size=24;0
+font-0 = DejaVu Sans Mono:size=24;0
 font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd 
@@ -116,6 +116,18 @@ type = custom/script
 interval = 0
 label = %output%
 exec = echo "HDMI"
+
+[module/termite]
+type = custom/script
+interval = 0
+label = %output%
+exec = echo "%{A:termite -c ~/Storage/linux/i3-config/configs/termite-1080p:}termite%{A}"
+
+[module/termite]
+type = custom/script
+interval = 0
+label = %output%
+exec = echo "%{A:termite -c ~/Storage/linux/i3-config/configs/termite-1080p -e "ranger ~/Storage/videos/ ~/Storage/:}termite%{A}"
 
 ; CENTER MODULE
 [module/datetime]
