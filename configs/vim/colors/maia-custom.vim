@@ -156,8 +156,8 @@ call s:h("FoldColumn",    {                     "bg": s:darkblack })
 "        Incsearch"
 
 " popup menu
-call s:h("Pmenu",         { "fg": s:white,      "bg": s:darkblack })
-call s:h("PmenuSel",      { "fg": s:pink,       "bg": s:white,      "format": "reverse,bold" })
+call s:h("Pmenu",         { "fg": s:white,      "bg": s:darkgrey })
+call s:h("PmenuSel",      { "fg": s:green,       "bg": s:darkgrey,      "format": "bold" })
 call s:h("PmenuThumb",    { "fg": s:lightblack, "bg": s:grey })
 "        PmenuSbar"
 
