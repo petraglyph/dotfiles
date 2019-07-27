@@ -294,6 +294,7 @@ exec dunst
 exec systemctl start bluetooth.service
 exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "pennbauman@protonmail.com" -d
+exec syndaemon -i 0.5 -t -K -R -d
 exec bash $loc/scripts/window-file-clear.sh
 exec bash $loc/scripts/ncmpcpp-start.sh $term
 exec bash /home/penn/Storage/torrents/.control/start.sh
