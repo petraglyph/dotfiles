@@ -1,6 +1,0 @@
-#!/bin/sh
-
-home=($(df -k --output=pcent /))
-storage=($(df -k --output=pcent /home/penn/Storage/))
-
-echo "${home[1]}, ${storage[1]}  "
