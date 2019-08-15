@@ -17,6 +17,7 @@ local cerror = "DB5B5B"
 
 conky.text = [[
 
+${if_existing /proc/net/dev_mcast wlp59s0}\
 ${if_existing /proc/net/route wlp59s0}\
 %{F\#2EB398}\
 ${if_up tun0}\
@@ -48,6 +49,10 @@ ${endif}\
 ${wireless_essid wlp59s0}\
 ${else}\
 %{F\#DB5B5B}\
-來%{F} none\
+來%{F} None\
+${endif}\
+${else}\
+%{F\#2EB398}\
+來%{F} Off\
 ${endif}\
 ]];

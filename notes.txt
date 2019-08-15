@@ -8,9 +8,9 @@ set $c-high-b   #DB5B5B
 
 Material Icons  
 https://cdn.materialdesignicons.com/3.4.93/
-    Wifi 來 冷爛嵐襤蠟 狼鸞藍臘朗
+    Wifi 來 冷爛嵐襤蠟 狼鸞藍臘朗 
     Volume    
-    System    
+    System    
     Battery  
     Other  串
     Weather                   稜

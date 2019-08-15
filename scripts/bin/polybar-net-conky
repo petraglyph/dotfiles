@@ -16,6 +16,7 @@ local chigh = "2EB398"
 local cerror = "DB5B5B"
 
 conky.text = [[
+${if_existing /proc/net/dev_mcast wlp59s0}\
 ${if_existing /proc/net/route wlp59s0}\
 %{F\#2EB398}\
 ${if_up tun0}\
@@ -48,5 +49,9 @@ ${wireless_essid wlp59s0} (${downspeed wlp59s0}/${upspeed wlp59s0})\
 ${else}\
 %{F\#DB5B5B}\
 來%{F} Disconnected\
+${endif}\
+${else}\
+%{F\#2EB398}\
+來%{F} Airplane Mode\
 ${endif}\
 ]];
