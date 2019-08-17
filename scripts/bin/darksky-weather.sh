@@ -21,9 +21,10 @@ if [ $# == 0 ]; then
 else 
     weather="$HOME/.bin/weather.json"
     if [[ $2 != "noupdate" ]]; then 
-        #Charlottesville: 38.02981,-78.51977
-        #Arlington: 38.88756,-77.12322
-        loc="38.029812,-78.519775"
+        #Charlottesville, VA: 38.02981,-78.51977
+        #Arlington, VA: 38.88756,-77.12322
+		#Roseville, CA: 38.6916199,-121.2352681
+        loc="38.6916199,-121.2352681"
         #https://api.darksky.net/forecast/[key]/[latitude],[longitude]?exclude=minutely,hourly,alerts&units=us
         apikey=$(cat $HOME/.api/darksky)
         curl "https://api.darksky.net/forecast/$apikey/$loc?exclude=minutely,hourly,alerts&units=us" -o $weather 2> /dev/null
