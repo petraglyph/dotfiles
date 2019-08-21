@@ -24,7 +24,8 @@ else
         #Charlottesville, VA: 38.02981,-78.51977
         #Arlington, VA: 38.88756,-77.12322
 		#Roseville, CA: 38.6916199,-121.2352681
-        loc="38.6916199,-121.2352681"
+		#Berkeley, CA: 37.875193, -122.251473
+        loc="37.875193, -122.251473"
         #https://api.darksky.net/forecast/[key]/[latitude],[longitude]?exclude=minutely,hourly,alerts&units=us
         apikey=$(cat $HOME/.api/darksky)
         curl "https://api.darksky.net/forecast/$apikey/$loc?exclude=minutely,hourly,alerts&units=us" -o $weather 2> /dev/null
