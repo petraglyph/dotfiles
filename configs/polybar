@@ -9,7 +9,7 @@ alert = #DB5B5B
 [bar/hdmibar]
 monitor = DP2
 width = 100%
-height = 30
+height = 24
 fixed-center = true
 background = ${colors.background}
 foreground = ${colors.primary}
@@ -21,10 +21,10 @@ padding-right = 1
 module-margin-left = 0
 module-margin-right = 1
 ;
-font-0 = DejaVu Sans Mono:size=18;0
-font-1 = "Material Design Icons:size=21;0"
+font-0 = DejaVu Sans Mono:size=12;0
+font-1 = "Material Design Icons:size=14;0"
 ;
-modules-left = hdmi termite ranger
+modules-left = hdmi
 modules-center = datetime
 modules-right = wireless-short volume cpu battery
 tray-position = none
@@ -115,19 +115,7 @@ label-maxlen = 50
 type = custom/script
 interval = 0
 label = %output%
-exec = echo "HDMI"
-
-[module/termite]
-type = custom/script
-interval = 0
-label = %output%
-exec = echo "%{A:termite -c ~/Storage/linux/i3-config/configs/termite-1080p:}termite%{A}"
-
-[module/ranger]
-type = custom/script
-interval = 0
-label = %output%
-exec = echo "%{A:termite -c ~/Storage/linux/i3-config/configs/termite-1080p -e "ranger ~/Storage/videos/ ~/Storage/:}termite%{A}"
+exec = echo "HDMI %{A:termite -c ~/Storage/linux/i3-config/configs/termite-1080p:}termite%{A} %{A:termite -c ~/Storage/linux/i3-config/configs/termite-1080p -e ranger ~/Storage/videos/ ~/Storage/:}ranger%{A}"
 
 ; CENTER MODULE
 [module/datetime]
