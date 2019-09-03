@@ -141,8 +141,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'https://github.com/Yggdroot/indentLine.git'
 	Plug 'https://github.com/vim-airline/vim-airline.git'
 	Plug 'francoiscabrol/ranger.vim'
-	Plug 'rust-lang/rust.vim'
-	Plug 'https://github.com/vim-syntastic/syntastic'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
@@ -192,16 +190,6 @@ let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
 nnoremap <C-r> :Ranger<Enter>
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " COC.vim
 set hidden
