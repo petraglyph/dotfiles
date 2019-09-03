@@ -176,3 +176,4 @@ ex ()
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export LC_ALL="C"
+eval $(thefuck --alias)
