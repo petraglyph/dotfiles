@@ -114,6 +114,7 @@ assign [class="Lollypop"] $ws10
 assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
 assign [class="Termite" title="ncmpcpp"] $ws10
+assign [class="Termite" title="hdmi"] $wsHDMI
 # workspace monitors
 workspace $ws1 output eDP1
 workspace $ws2 output eDP1
