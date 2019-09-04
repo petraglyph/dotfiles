@@ -39,15 +39,19 @@ ln -s $loc/configs/vim $HOME/.vim
 sudo cp -r $loc/configs/xorg.conf.d /etc/X11/
 sudo cp $loc/configs/resolv.conf /etc/
 sudo chattr -i /etc/resolv.conf
-#sudo cp $loc/scripts/backup-weekly.sh /etc/cron.weekly/backup
-#sudo cp $loc/scripts/backup-daily.sh /etc/cron.daily/backup
-#sudo chmod +x /etc/cron.weekly/backup
-#sudo chmod +x /etc/cron.daily/backup
 echo "Configs Linked"
 
 # CREATE ~/.bin
-rm -f $HOME/.bin
-ln -s $loc/scripts/bin $HOME/.bin
+if [ ! -d $HOME/.bin ]; then
+	mkdir $HOME/.bin
+fi
+for f in $loc/scripts/bin/*; do
+	rm $HOME/.bin/${f:$(echo "$loc/scripts/bin" | wc -c)}
+	
+	if [[ "${f: -5}" != ".json" ]]; then
+		ln -s $f $HOME/.bin/${f:$(echo "$loc/scripts/bin" | wc -c)}
+	fi
+done
 chmod 755 ~/.bin/*
 echo "~/.bin/ created"
 
@@ -60,4 +64,3 @@ if [ $(cat "$HOME/.config/gtk-3.0/gtk.css" | grep ".termite" | wc -l) == 0 ]; th
 else 
     echo "Termite already styled in gtk.css"
 fi
-
