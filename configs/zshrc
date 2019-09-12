@@ -141,7 +141,7 @@ unsetopt share_history
 alias cds=". /home/penn/Storage/code/cds/cds -v $@"
 alias cd=". /home/penn/Storage/code/cds/cds -v $@"
 
-alias ls="ls -Fh --group-directories-first"
+alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"
 #alias mkdir="mkdir -p $1; cd $@"

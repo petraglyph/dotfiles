@@ -173,6 +173,7 @@ nmap <S-i> i<right>
 nmap ; :
 nmap < v<
 nmap > v>
+nmap <S-o> o<esc>
 
 " Style
 colorscheme maia-custom
