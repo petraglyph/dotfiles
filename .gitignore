@@ -6,3 +6,4 @@ scripts/lock-log.txt
 scripts/bin/weather*.json
 scripts/bin/log
 configs/vim/plugged/*
+configs/ranger/commands_full.py
