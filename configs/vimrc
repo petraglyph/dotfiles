@@ -169,7 +169,7 @@ vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 " editing
 nmap <enter> i<enter><esc>
-nmap <S-i> i<right>
+nmap <S-i> i<end>
 nmap ; :
 nmap < v<
 nmap > v>
