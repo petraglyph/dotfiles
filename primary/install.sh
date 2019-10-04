@@ -11,6 +11,7 @@ rm $HOME/.config/dunst/dunstrc
 rm $HOME/.config/ncmpcpp/config
 rm $HOME/.config/ncmpcpp/bindings
 rm $HOME/.config/polybar/config
+rm $HOME/.config/mpd/mpd.conf
 rm -r $HOME/.config/ranger
 rm $HOME/.zshrc
 rm $HOME/.vimrc
@@ -31,6 +32,7 @@ ln -s $loc/configs/dunstrc $HOME/.config/dunst/dunstrc
 ln -s $loc/configs/ncmpcpp-config $HOME/.config/ncmpcpp/config
 ln -s $loc/configs/ncmpcpp-bindings $HOME/.config/ncmpcpp/bindings
 ln -s $loc/configs/polybar $HOME/.config/polybar/config
+ln -s $loc/configs/mpd.conf $HOME/.config/mpd/mpd.conf
 ln -s $loc/configs/ranger $HOME/.config/ranger
 ln -s $loc/configs/zshrc $HOME/.zshrc
 ln -s $loc/configs/vimrc $HOME/.vimrc
