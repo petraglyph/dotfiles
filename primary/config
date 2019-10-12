@@ -239,8 +239,8 @@ bindsym XF86AudioMute exec pamixer --set-volume 0
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec bash $loc/scripts/backlight.sh +
 bindsym XF86MonBrightnessDown exec bash $loc/scripts/backlight.sh -
-bindcode 167 bash $loc/scripts/backlight.sh +
-bindcode 166 bash $loc/scripts/backlight.sh -
+bindcode 167 exec bash $loc/scripts/backlight.sh +
+bindcode 166 exec bash $loc/scripts/backlight.sh -
 # Media player controls
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
