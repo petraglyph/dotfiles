@@ -162,11 +162,11 @@ vmap <S-k> 15k
 vmap <S-l> $
 nmap <S-u> :redo<Enter>
 " copy and paste
-set clipboard=unnamedplus
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
+"set clipboard=unnamedplus
+"vmap <C-c> "+yi
+"vmap <C-x> "+c
+"vmap <C-v> c<ESC>"+p
+"imap <C-v> <ESC>"+pa
 " editing
 nmap <enter> i<enter><esc>
 nmap <S-i> i<end>
@@ -175,6 +175,7 @@ nmap < v<
 nmap > v>
 nmap <S-o> o<esc>
 nmap <S-d> dd
+vmap <S-y> ! xsel -b<enter>u
 
 " Style
 colorscheme maia-custom
@@ -225,5 +226,5 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 
 " NERD Commenter
-nmap / V\ci
-vmap / \cc
+nmap c V\ci
+vmap c \cc
