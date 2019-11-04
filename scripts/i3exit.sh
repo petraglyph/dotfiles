@@ -21,33 +21,24 @@ echo "  [s] shutdown"
 echo "  [r] reboot"
 echo "  [e] exit i3"
 echo "  [z] sleep"
-#echo "  6) hibernate"
 echo "  [l] lock i3"
 echo "  [c] cancel"
 while true; do 
     read -p ": " t
-    if [ $t == "s" ]; then 
-		pacmaner
-        i3exit shutdown
-        exit 0
-    elif [ $t == "r" ]; then 
-		pacmaner
-        i3exit reboot
-        exit 0
-    elif [ $t == "e" ]; then 
-        i3-msg exit
-        exit 0
-    elif [ $t == "z" ]; then 
-        bash i3lock
-        xset dpms force off
-        i3exit suspend
-        exit 0
-    elif [ $t == "l" ]; then 
-        bash i3locker.sh dark
-        exit 0
-    elif [ $t == "c" ]; then 
-        exit 0
-    else 
-        echo " Please enter a listed letter."
-    fi
+	case $t in
+		s) pacmaner
+			i3exit shutdown
+			exit 0;;
+		r) pacmaner
+			i3exit reboot
+			exit 0;;
+		e) i3-msg exit
+			exit 0;;
+		z) bash i3lock
+			xset dpms force off
+			i3exit suspend
+			exit 0;;
+		c) exit 0;;
+		*) echo " Invalid input."
+	esac
 done

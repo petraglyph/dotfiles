@@ -230,7 +230,7 @@ bindsym $mod+Return exec $term
 # start calculator
 bindsym $mod+c exec $term --title="float" -e "calc -i read $loc/configs/val.cal"
 # Custom program runner
-bindsym $mod+x exec $term --title="float" -e "pgmr"
+bindsym $mod+x exec $term --title="float" -e "bash $HOME/Storage/linux/scripts/quick-run.sh"
 
 ## System buttons
 # Pulse Audio controls
