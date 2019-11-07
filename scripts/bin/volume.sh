@@ -1,12 +1,14 @@
 #!/bin/sh
 
 vol=$(pamixer --get-volume)
+mute=$(pamixer --get-mute)
+
 if (( $vol > 100 )); then 
     color="DB5B5B"
-else 
+else
     color="2EB398"
-fi 
-if (( $vol == 0 )); then 
+fi
+if (( $vol == 0 )) || [[ $mute == true ]]; then 
     icon=""
 elif (( $vol < 50 )); then 
     icon=""

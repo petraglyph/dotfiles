@@ -229,9 +229,9 @@ bindsym $mod+x exec $term --title="float" -e "bash $HOME/Storage/linux/scripts/q
 
 ## System buttons
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pamixer --increase 5 --allow-boost 
-bindsym XF86AudioLowerVolume exec pamixer --decrease 5 --allow-boost 
-bindsym XF86AudioMute exec pamixer --set-volume 0
+bindsym XF86AudioRaiseVolume exec pamixer --increase 5 --allow-boost --unmute
+bindsym XF86AudioLowerVolume exec pamixer --decrease 5 --allow-boost --unmute
+bindsym XF86AudioMute exec pamixer --toggle-mute
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec bash $loc/scripts/backlight.sh +
 bindsym XF86MonBrightnessDown exec bash $loc/scripts/backlight.sh -
