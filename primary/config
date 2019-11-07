@@ -107,7 +107,6 @@ bindsym $mod+Shift+m move container to workspace $wsHDMI
 assign [class="Firefox"] $ws2
 assign [class="firefox"] $ws2
 assign [class="Google-chrome"] $ws3
-#assign [class="Code"] $ws4
 assign [class="Gimp"] $ws7
 assign [class="Inkscape"] $ws7
 assign [class="Transmission-gtk"] $ws9
@@ -128,9 +127,6 @@ workspace $ws8 output eDP1
 workspace $ws9 output eDP1
 workspace $ws10 output eDP1
 workspace $wsHDMI output DP2
-#workspace $wsHDMI output HDMI
-#workspace_layout tabbed
-
 
 
 ### WINDOWS ARRANGEMENT
@@ -183,41 +179,40 @@ bindcode $mod+49 scratchpad show
 ## Resizing windows
 bindsym $mod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # arrow large
-        bindsym Left        resize shrink width 100 px or 10 ppt
-        bindsym Down        resize grow height 100 px or 10 ppt
-        bindsym Up          resize shrink height 100 px or 10 ppt
-        bindsym Right       resize grow width 100 px or 150 ppt
-        # letter large
-        bindsym $left-wasd   resize shrink width 100 px or 10 ppt
-        bindsym $down-wasd   resize grow height 100 px or 10 ppt
-        bindsym $up-wasd     resize shrink height 100 px or 10 ppt
-        bindsym $right-wasd  resize grow width 100 px or 10 ppt
-        # letter large
-        bindsym $left-vi   resize shrink width 100 px or 10 ppt
-        bindsym $down-vi   resize grow height 100 px or 10 ppt
-        bindsym $up-vi     resize shrink height 100 px or 10 ppt
-        bindsym $right-vi  resize grow width 100 px or 10 ppt
-        # arrow small
-        bindsym Shift+Left        resize shrink width 10 px or 10 ppt
-        bindsym Shift+Down        resize grow height 10 px or 10 ppt
-        bindsym Shift+Up          resize shrink height 10 px or 10 ppt
-        bindsym Shift+Right       resize grow width 10 px or 10 ppt
-        # letter small
-        bindsym Shift+$left-wasd   resize shrink width 10 px or 10 ppt
-        bindsym Shift+$down-wasd   resize grow height 10 px or 10 ppt
-        bindsym Shift+$up-wasd     resize shrink height 10 px or 10 ppt
-        bindsym Shift+$right-wasd  resize grow width 10 px or 10 ppt
-        # letter small
-        bindsym Shift+$left-vi   resize shrink width 10 px or 10 ppt
-        bindsym Shift+$down-vi   resize grow height 10 px or 10 ppt
-        bindsym Shift+$up-vi     resize shrink height 10 px or 10 ppt
-        bindsym Shift+$right-vi  resize grow width 10 px or 10 ppt
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+	# arrow large
+	bindsym Left        resize shrink width 100 px or 10 ppt
+	bindsym Down        resize grow height 100 px or 10 ppt
+	bindsym Up          resize shrink height 100 px or 10 ppt
+	bindsym Right       resize grow width 100 px or 150 ppt
+	# letter large
+	bindsym $left-wasd   resize shrink width 100 px or 10 ppt
+	bindsym $down-wasd   resize grow height 100 px or 10 ppt
+	bindsym $up-wasd     resize shrink height 100 px or 10 ppt
+	bindsym $right-wasd  resize grow width 100 px or 10 ppt
+	# letter large
+	bindsym $left-vi   resize shrink width 100 px or 10 ppt
+	bindsym $down-vi   resize grow height 100 px or 10 ppt
+	bindsym $up-vi     resize shrink height 100 px or 10 ppt
+	bindsym $right-vi  resize grow width 100 px or 10 ppt
+	# arrow small
+	bindsym Shift+Left        resize shrink width 10 px or 10 ppt
+	bindsym Shift+Down        resize grow height 10 px or 10 ppt
+	bindsym Shift+Up          resize shrink height 10 px or 10 ppt
+	bindsym Shift+Right       resize grow width 10 px or 10 ppt
+	# letter small
+	bindsym Shift+$left-wasd   resize shrink width 10 px or 10 ppt
+	bindsym Shift+$down-wasd   resize grow height 10 px or 10 ppt
+	bindsym Shift+$up-wasd     resize shrink height 10 px or 10 ppt
+	bindsym Shift+$right-wasd  resize grow width 10 px or 10 ppt
+	# letter small
+	bindsym Shift+$left-vi   resize shrink width 10 px or 10 ppt
+	bindsym Shift+$down-vi   resize grow height 10 px or 10 ppt
+	bindsym Shift+$up-vi     resize shrink height 10 px or 10 ppt
+	bindsym Shift+$right-vi  resize grow width 10 px or 10 ppt
+	# back to normal: Enter or Escape or $mod+r
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
 }
 
 
@@ -246,14 +241,11 @@ bindcode 166 exec bash $loc/scripts/backlight.sh -
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
-# Special character selector
-#bindcode 66 exec $term --title="float" -e "bash $loc/scripts/char-select.sh"
 
 ## i3 Control
 # Restart i3
 bindsym $mod+Shift+Escape restart
 # Exit i3
-#bindsym $mod+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Escape exec $term --title="float" -e "bash $loc/scripts/i3exit.sh"
 # Lock i3
 bindsym $mod+z exec bash $loc/scripts/i3locker.sh dark
@@ -263,22 +255,19 @@ bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~
 
 ## Folder Opening
 # Open ~/
-bindsym $mod+f exec $term -e "ranger $HOME/ $HOME/Storage/"
+bindsym $mod+f exec $term -e "ranger $HOME/ $HOME/Storage/ $HOME/Storage"
 # Open /
-bindsym $mod+Shift+r exec $term -e "ranger / /"
+bindsym $mod+Shift+r exec $term -e "ranger / / $HOME/Storage"
 # Open 5e Rule Books
-bindsym $mod+Shift+b exec $term -e "ranger $HOME/Storage/dnd/5e-books/ $HOME/Storage/dnd/"
+bindsym $mod+Shift+b exec $term -e "ranger $HOME/Storage/dnd/5e-books/ $HOME/Storage/dnd/ $HOME/Storage"
 # Open pCloud Drive
-bindsym $mod+Shift+c exec $term -e "ranger $HOME/pCloudDrive/ $HOME/Storage/"
-# Open Git Folder
-bindsym $mod+Shift+g exec $term -e "ranger $HOME/Storage/git/ $HOME/Storage/"
+bindsym $mod+Shift+c exec $term -e "ranger $HOME/pCloudDrive/ $HOME/Storage/ $HOME/Storage"
 # Open Site
-bindsym $mod+Shift+v exec $term -e "ranger $HOME/Storage/site/ $HOME/Storage/"
+bindsym $mod+Shift+v exec $term -e "ranger $HOME/Storage/site/ $HOME/Storage/ $HOME/Storage"
 # Open Storage
-bindsym $mod+Shift+f exec $term -e "ranger $HOME/Storage/ $HOME/Storage/"
+bindsym $mod+Shift+f exec $term -e "ranger $HOME/Storage/ $HOME/Storage/ $HOME/Storage"
 # Open College Folder
-bindsym $mod+Shift+e exec $term -e "ranger $HOME/Storage/college/ $HOME/Storage/"
-
+bindsym $mod+Shift+e exec $term -e "ranger $HOME/Storage/college/ $HOME/Storage/ $HOME/Storage"
 
 
 ### STARTUP PROGRAMS
@@ -296,16 +285,16 @@ exec dunst
 exec systemctl start bluetooth.service
 exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "pennbauman@protonmail.com" -d
-exec syndaemon -i 0.5 -t -K -R -d
+exec syndaemon -i 1 -t -K -R -d
 exec bash $loc/scripts/window-file-clear.sh
 exec bash $loc/scripts/ncmpcpp-start.sh $term
 exec bash /home/penn/Storage/torrents/.control/start.sh
 # wifi setup
-exec nmcli con up Bakuman-5G
-exec nmcli con up wahoo
+exec sleep 5 && nmcli con up "Bakuman-5G"
+exec sleep 5 && nmcli con up "wahoo"
+exec sleep 5 && ncmli con up "Grandmarc Wireless"
 
 ## Run on i3 Restart
 exec_always feh --bg-scale $loc/primary/background.jpg
-#exec_always setxkbmap -option 'caps:none,ctrl:swap_lalt_lctl'
 exec_always xrandr --output HDMI1 --auto --right-of eDP1
 exec_always xrandr --output DP2 --auto --right-of eDP1
