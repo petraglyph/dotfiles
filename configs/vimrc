@@ -142,24 +142,23 @@ call plug#begin('~/.vim/plugged')
 	Plug 'https://github.com/vim-airline/vim-airline.git'
 	Plug 'francoiscabrol/ranger.vim'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'lervag/vimtex'
 	Plug 'scrooloose/nerdcommenter'
+	"Plug 'lervag/vimtex'
 call plug#end()
 
 " Added by Penn
 filetype plugin on
 set number
+set wrap lbr
 nnoremap <S-tab> :bprev<Enter>
 nnoremap <tab>   :bnext<Enter>
 " document navigation
-nmap <S-h> ^
-nmap <S-j> 15j
-nmap <S-k> 15k
-nmap <S-l> $
-vmap <S-h> ^
-vmap <S-j> 15j
-vmap <S-k> 15k
-vmap <S-l> $
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> <S-h> g^
+noremap <silent> <S-j> 15gj
+noremap <silent> <S-k> 15gk
+noremap <silent> <S-l> g$
 nmap <S-u> :redo<Enter>
 " copy and paste
 "set clipboard=unnamedplus
@@ -217,13 +216,6 @@ let g:coc_global_extensions=[
 	\ "coc-phpls",
 	\ "coc-json",
 	\ ]
-
-" vimtex
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
 
 " NERD Commenter
 nmap c V\ci
