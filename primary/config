@@ -277,7 +277,7 @@ exec $term
 exec $term --title="scratch"
 exec firefox
 exec compton -f --shadow-opacity=0
-exec --no-startup-id xautolock -time 9 -notify 60 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto' 
+exec --no-startup-id xautolock -time 9 -notify 60 -notifier 'bash $loc/scripts/pre-i3lock.sh' -locker 'bash $loc/scripts/i3locker.sh auto'
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
@@ -286,7 +286,8 @@ exec systemctl start bluetooth.service
 exec --no-startup-id /usr/lib/kdeconnectd
 exec pcloudcc -u "pennbauman@protonmail.com" -d
 exec syndaemon -i 1 -t -K -R -d
-exec bash $loc/scripts/window-file-clear.sh
+exec rm -rf /home/penn/Storage/\$RECYCLE.BIN/
+exec rm -rf /home/penn/Storage/System\ Volume\ Information/
 exec bash $loc/scripts/ncmpcpp-start.sh $term
 exec bash /home/penn/Storage/torrents/.control/start.sh
 # wifi setup

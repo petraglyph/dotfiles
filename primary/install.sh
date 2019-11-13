@@ -47,11 +47,11 @@ echo "Configs Linked"
 if [ ! -d $HOME/.bin ]; then
 	mkdir $HOME/.bin
 fi
-for f in $loc/scripts/bin/*; do
-	rm $HOME/.bin/${f:$(echo "$loc/scripts/bin" | wc -c)}
+for f in $loc/scripts/*; do
+	rm -f $HOME/.bin/${f:$(echo "$loc/scripts" | wc -c)}
 	
 	if [[ "${f: -5}" != ".json" ]]; then
-		ln -s $f $HOME/.bin/${f:$(echo "$loc/scripts/bin" | wc -c)}
+		ln -s $f $HOME/.bin/${f:$(echo "$loc/scripts" | wc -c)}
 	fi
 done
 chmod 755 ~/.bin/*

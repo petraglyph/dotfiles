@@ -24,7 +24,7 @@ i3lock -e --color=$backcolor --indicator --force-clock --radius=100 --ring-width
 
 # Turn the screen off after a delay.
 if [[ $1 = "dark" ]]; then
-    sleep 10; pgrep i3lock && xset dpms force off
+    sleep 5; pgrep i3lock && xset dpms force off
 fi
 
 
