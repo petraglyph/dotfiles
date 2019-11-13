@@ -2,8 +2,9 @@
 local~/*
 archive/*
 **/error_log
+**/log
 scripts/lock-log.txt
-scripts/bin/weather*.json
-scripts/bin/log
+scripts/weather*.json
+scripts/log
 configs/vim/plugged/*
 configs/ranger/commands_full.py
