@@ -55,6 +55,7 @@ for_window [class="Termite" title="float"] floating enable
 for_window [class="Steam" title="Steam - News"] floating enable
 for_window [title="Java: *"] border normal
 for_window [title="Java: *"] floating enable
+for_window [class="Gcolor3"] floating enable
 # set non-primary matlab windows to floating
 #for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 #for_window [instance="sun-awt-X11-XFramePeer"] border normal
