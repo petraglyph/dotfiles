@@ -20,8 +20,6 @@ rm -r $HOME/.vim
 sudo rm -rf /etc/X11/xorg.conf.d
 sudo chattr -i /etc/resolv.conf
 sudo rm /etc/resolv.conf
-#sudo rm /etc/cron.weekly/backup
-#sudo rm /etc/cron.daily/backup
 echo "Configs Cleared"
 
 # LINK NEW CONFIGS
@@ -43,19 +41,20 @@ sudo cp $loc/configs/resolv.conf /etc/
 sudo chattr -i /etc/resolv.conf
 echo "Configs Linked"
 
+
 # CREATE ~/.bin
 if [ ! -d $HOME/.bin ]; then
 	mkdir $HOME/.bin
 fi
 for f in $loc/scripts/*; do
 	rm -f $HOME/.bin/${f:$(echo "$loc/scripts" | wc -c)}
-	
 	if [[ "${f: -5}" != ".json" ]]; then
 		ln -s $f $HOME/.bin/${f:$(echo "$loc/scripts" | wc -c)}
 	fi
 done
 chmod 755 ~/.bin/*
 echo "~/.bin/ created"
+
 
 # EDIT TERMITE GTK CSS
 if [ $(cat "$HOME/.config/gtk-3.0/gtk.css" | grep ".termite" | wc -l) == 0 ]; then 

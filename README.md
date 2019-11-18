@@ -1,65 +1,10 @@
 # i3 Config Files
 
-## Install
-Install [yay](https://aur.archlinux.org/packages/yay/) then:
+### Install
+To install config files and scripts run:
 
-    $ bash scripts/install.sh
+	./primary/install.sh
 
-The installer scripts setups config files and installs the following porgrams:
+To install programs install [yay](https://aur.archlinux.org/packages/yay/) then run:
 
-    * rofi
-    * compton
-    * feh
-    * redshift
-    * xorg-xbacklight
-    * xautolock
-    * pamixer
-    * playerctl
-    * mncli
-    * conky
-    * i3lock-color
-    * sddm
-    * sddm-maia-theme
-    * papirus-maia-icon-theme
-    * ttf-emojione-color
-    * ttf-font-awesome
-    * vimix-gtk-themes-git
-    * dunst
-
-    * termite
-    * lxappearance
-    * pcmanfm
-    * gparted
-    * neofetch
-    * pcloudcc
-    * kdeconnectd
-    * openvpn
-    * calc
-
-    * gimp
-    * transmission-gtk
-    * visual-studio-code-bin
-    * rhythmbox
-
-### Display Manager
-Manages login and desktop enviorment selection. Use [SDDM](https://wiki.archlinux.org/index.php/SDDM) with the sddm-maia-theme.
-
-### Other Programs to Install 
-
-    * android-studio
-    * arduino
-    * atom
-    * inkscape
-    * intellij
-    * lollypop
-    * pcloud-drive
-    * google-chrome
-    * unity-editor
-    * spotify
-    * dropbox
-    * gcolor2
-
-### FontAwesome
-[Download](https://github.com/FortAwesome/Font-Awesome), then move "Font Awesome 5 Free-Regular-400.otf" to ~/.fonts/
-
-[Reference](https://fontawesome.com/cheatsheet?from=io)
+	./primary/pgms.sh
