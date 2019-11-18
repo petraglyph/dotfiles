@@ -151,6 +151,8 @@ function md {
 	#echo $@
 }
 
+alias feh="feh -B '#141a1b' $@"
+
 ex ()
 {
   if [ -f $1 ] ; then
