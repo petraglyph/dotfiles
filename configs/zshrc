@@ -138,6 +138,9 @@ alias zshconf="vim ~/.zshrc"
 
 unsetopt share_history
 
+bindkey -r '^[[Z'
+zstyle ':completion:*' list-colors
+
 alias cds=". /home/penn/Storage/code/cds/cds -v $@"
 alias cd=". /home/penn/Storage/code/cds/cds -v $@"
 
@@ -152,6 +155,7 @@ function md {
 }
 
 alias feh="feh -B '#141a1b' $@"
+alias svim="sudoedit $@"
 
 ex ()
 {
@@ -178,4 +182,3 @@ ex ()
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export LC_ALL="C"
-alias svim="sudoedit $@"
