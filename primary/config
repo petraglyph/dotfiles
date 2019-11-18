@@ -14,11 +14,6 @@ set $c-high-b   #DB5B5B
 set $mod Mod4
 # default programs
 set $term termite
-# wasd arrow keys
-set $left-wasd a
-set $down-wasd s
-set $up-wasd w
-set $right-wasd d
 # vi arrow keys
 set $left-vi h
 set $down-vi j
@@ -138,25 +133,18 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 # Change focused Window
-bindsym $mod+$left-wasd focus left
-bindsym $mod+$down-wasd focus down
-bindsym $mod+$up-wasd focus up
-bindsym $mod+$right-wasd focus right
-# Change focused Window
 bindsym $mod+$left-vi focus left
 bindsym $mod+$down-vi focus down
 bindsym $mod+$up-vi focus up
 bindsym $mod+$right-vi focus right
+# Change focused Window
+bindsym $mod+Tab focus right
+bindsym $mod+Shift+Tab focus left
 # Move focused window
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-# Move focused window
-bindsym $mod+Shift+$left-wasd move left
-bindsym $mod+Shift+$down-wasd move down
-bindsym $mod+Shift+$up-wasd move up
-bindsym $mod+Shift+$right-wasd move right
 # Move focused window
 bindsym $mod+Shift+$left-vi move left
 bindsym $mod+Shift+$down-vi move down
@@ -186,11 +174,6 @@ mode "resize" {
 	bindsym Up          resize shrink height 100 px or 10 ppt
 	bindsym Right       resize grow width 100 px or 150 ppt
 	# letter large
-	bindsym $left-wasd   resize shrink width 100 px or 10 ppt
-	bindsym $down-wasd   resize grow height 100 px or 10 ppt
-	bindsym $up-wasd     resize shrink height 100 px or 10 ppt
-	bindsym $right-wasd  resize grow width 100 px or 10 ppt
-	# letter large
 	bindsym $left-vi   resize shrink width 100 px or 10 ppt
 	bindsym $down-vi   resize grow height 100 px or 10 ppt
 	bindsym $up-vi     resize shrink height 100 px or 10 ppt
@@ -200,11 +183,6 @@ mode "resize" {
 	bindsym Shift+Down        resize grow height 10 px or 10 ppt
 	bindsym Shift+Up          resize shrink height 10 px or 10 ppt
 	bindsym Shift+Right       resize grow width 10 px or 10 ppt
-	# letter small
-	bindsym Shift+$left-wasd   resize shrink width 10 px or 10 ppt
-	bindsym Shift+$down-wasd   resize grow height 10 px or 10 ppt
-	bindsym Shift+$up-wasd     resize shrink height 10 px or 10 ppt
-	bindsym Shift+$right-wasd  resize grow width 10 px or 10 ppt
 	# letter small
 	bindsym Shift+$left-vi   resize shrink width 10 px or 10 ppt
 	bindsym Shift+$down-vi   resize grow height 10 px or 10 ppt
@@ -257,8 +235,12 @@ bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~
 ## Folder Opening
 # Open ~/
 bindsym $mod+f exec $term -e "ranger $HOME/ $HOME/Storage/ $HOME/Storage"
+# Open ~/Downloads
+bindsym $mod+d exec $term -e "ranger $HOME/Downloads/ $HOME/Storage/ $HOME/Storage"
 # Open /
 bindsym $mod+Shift+r exec $term -e "ranger / / $HOME/Storage"
+# Open D&D
+bindsym $mod+Shift+d exec $term -e "ranger $HOME/Storage/dnd/ $HOME/Storage/dnd/5e-books/ $HOME/Storage"
 # Open 5e Rule Books
 bindsym $mod+Shift+b exec $term -e "ranger $HOME/Storage/dnd/5e-books/ $HOME/Storage/dnd/ $HOME/Storage"
 # Open pCloud Drive
