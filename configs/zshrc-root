@@ -1,0 +1,56 @@
+# Configure Prompt
+autoload -U colors && colors
+setopt PROMPT_SUBST
+
+# name@computer
+PS1='%{$fg_bold[red]%}[%m'
+# directory
+PS1+=" %{$fg_bold[white]%}%1~"
+# exit code
+PS1+="%b%(?.. $fg[blue]%?)"
+# ender
+PS1+="%{$fg_bold[red]%}]# %{$reset_color%}% "
+# partial command
+PS2="%{$fg[yellow]%}%_%{$reset_color%} %{$fg_bold[green]%}>%{$reset_color%} "
+
+unsetopt share_history
+
+bindkey -r '^[[Z'
+zstyle ':completion:*' list-colors
+
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+export LC_ALL="C"
+
+alias ls="ls -FAh --group-directories-first"
+alias cp="cp -r"
+alias rm="rm -r"
+alias feh="feh -B '#141a1b' $@"
+alias vim="vim -u /home/penn/.vimrc $@"
+
+function md {
+	command mkdir -p $@
+	cd $@
+	#echo $@
+}
+
+ex () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1 -d "${1:0: -4}" ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}

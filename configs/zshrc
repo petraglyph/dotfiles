@@ -6,30 +6,9 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/penn/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="penn"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -64,60 +43,35 @@ ZSH_THEME="penn"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+#plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Configure Prompt
 autoload -U colors && colors
 setopt PROMPT_SUBST
 
 set_prompt() {
-	PS1='%{$fg_bold[green]%}[%{$fg_bold[green]%}%n@%m'
-	
-	#PS1+="%{$fg_bold[cyan]%}${PWD/#$HOME/~}%{$reset_color%}"
-	PS1+=" %{$fg_bold[white]%}%c"
+	# name@computer
+	PS1='%{$fg_bold[green]%}[%n@%m'
+	# directory
+	PS1+=" %{$fg_bold[white]%}%1~"
 
 	# Git
 	if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' ; then
-		#PS1+=', '
 		PS1+=" %{$fg_bold[blue]%}$(git rev-parse --abbrev-ref HEAD 2> /dev/null)%{$reset_color%}"
 		if [ $(git status --short | wc -l) -gt 0 ]; then 
 			PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
 		fi
 	fi
 
-	# Timer: http://stackoverflow.com/questions/2704635/is-there-a-way-to-find-the-running-time-of-the-last-executed-command-in-the-shel
-	#if [[ $_elapsed[-1] -ne 0 ]]; then
-	#	PS1+=', '
-	#	PS1+="%{$fg[magenta]%}$_elapsed[-1]s%{$reset_color%}"
-	#fi
-
 	# PID
-	if [[ $! -ne 0 ]]; then
-		PS1+=', '
-		PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
-	fi
+	#if [[ $! -ne 0 ]]; then
+		#PS1+=', '
+		#PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
+	#fi
 
 	# Sudo: https://superuser.com/questions/195781/sudo-is-there-a-command-to-check-if-i-have-sudo-and-or-how-much-time-is-left
 	#CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
@@ -127,38 +81,38 @@ set_prompt() {
 	#	PS1+="%{$fg_bold[red]%}SUDO%{$reset_color%}"
 	#fi
 
+	# exit code
+	PS1+="%b%(?.. $fg[red]%?)"
+	# ender
 	PS1+="%{$fg_bold[green]%}]$ %{$reset_color%}% "
+	# partial command
+	PS2="%{$fg[yellow]%}%_%{$reset_color%} %{$fg_bold[green]%}>%{$reset_color%} "
 }
-
 precmd_functions+=set_prompt
-
-
-alias zshconf="vim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 unsetopt share_history
 
 bindkey -r '^[[Z'
 zstyle ':completion:*' list-colors
 
-alias cds=". /home/penn/Storage/code/cds/cds -v $@"
-alias cd=". /home/penn/Storage/code/cds/cds -v $@"
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+export LC_ALL="C"
+alias zshconf="vim ~/.zshrc"
 
 alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"
-#alias mkdir="mkdir -p $1; cd $@"
+alias feh="feh -B '#141a1b' $@"
+alias svim="sudoedit $@"
+
 function md {
 	command mkdir -p $@
 	cd $@
 	#echo $@
 }
 
-alias feh="feh -B '#141a1b' $@"
-alias svim="sudoedit $@"
-
-ex ()
-{
+ex () {
   if [ -f $1 ] ; then
     case $1 in
       *.tar.bz2)   tar xjf $1   ;;
@@ -179,6 +133,31 @@ ex ()
   fi
 }
 
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
-export LC_ALL="C"
+# Directory Bookmarks
+export down="$HOME/Downloads/"
+export pcloud="$HOME/pCloudDrive/"
+export pic="$HOME/Pictures/"
+export vid="$HOME/Videos/"
+
+export store="$HOME/Storage/"
+export img="$HOME/Storage/images/"
+export code="$HOME/Storage/code/"
+export torrent="$HOME/Storage/torrents/"
+export dnd="$HOME/Storage/dnd/"
+
+export linux="$HOME/Storage/linux/"
+export i3="$HOME/Storage/linux/i3-config/"
+export notes="$HOME/Storage/linux/notes/"
+export scripts="$HOME/Storage/linux/scripts/"
+
+export college="$HOME/Storage/college/"
+export cs21="$HOME/Storage/college/cs2150/"
+export cs31="$HOME/Storage/college/cs3102/"
+export cs32="$HOME/Storage/college/cs3205/"
+export phil="$HOME/Storage/college/phil2500/"
+export phys="$HOME/Storage/college/phys2620/"
+
+export site="$HOME/Storage/site/"
+export pbsite="$HOME/Storage/site/pb-site/"
+export dndsite="$HOME/Storage/site/dnd-site/"
+export php="$HOME/Storage/site/php/"

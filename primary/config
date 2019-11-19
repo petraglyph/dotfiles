@@ -236,7 +236,7 @@ bindsym Control+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~
 # Open ~/
 bindsym $mod+f exec $term -e "ranger $HOME/ $HOME/Storage/ $HOME/Storage"
 # Open ~/Downloads
-bindsym $mod+d exec $term -e "ranger $HOME/Downloads/ $HOME/Storage/ $HOME/Storage"
+#bindsym $mod+d exec $term -e "ranger $HOME/Downloads/ $HOME/Storage/ $HOME/Storage"
 # Open /
 bindsym $mod+Shift+r exec $term -e "ranger / / $HOME/Storage"
 # Open D&D

@@ -4,22 +4,23 @@
 loc="/home/penn/Storage/linux/i3-config"
 
 # REMOVE EXISTING CONFIGS
-rm $HOME/.config/i3/config
-rm $HOME/.config/rofi/config
-rm $HOME/.config/termite/config
-rm $HOME/.config/dunst/dunstrc
-rm $HOME/.config/ncmpcpp/config
-rm $HOME/.config/ncmpcpp/bindings
-rm $HOME/.config/polybar/config
-rm $HOME/.config/mpd/mpd.conf
-rm -r $HOME/.config/ranger
-rm $HOME/.zshrc
-rm $HOME/.vimrc
-rm -r $HOME/.vim
+rm -f $HOME/.config/i3/config
+rm -f $HOME/.config/rofi/config
+rm -f $HOME/.config/termite/config
+rm -f $HOME/.config/dunst/dunstrc
+rm -f $HOME/.config/ncmpcpp/config
+rm -f $HOME/.config/ncmpcpp/bindings
+rm -f $HOME/.config/polybar/config
+rm -f $HOME/.config/mpd/mpd.conf
+rm -rf $HOME/.config/ranger
+rm -f $HOME/.zshrc
+rm -f $HOME/.vimrc
+rm -rf $HOME/.vim
 
 sudo rm -rf /etc/X11/xorg.conf.d
 sudo chattr -i /etc/resolv.conf
-sudo rm /etc/resolv.conf
+sudo rm -f /etc/resolv.conf
+sudo rm -f /root/.zshrc
 echo "Configs Cleared"
 
 # LINK NEW CONFIGS
@@ -39,6 +40,7 @@ ln -s $loc/configs/vim $HOME/.vim
 sudo cp -r $loc/configs/xorg.conf.d /etc/X11/
 sudo cp $loc/configs/resolv.conf /etc/
 sudo chattr -i /etc/resolv.conf
+sudo cp $loc/configs/zshrc-root /root/.zshrc
 echo "Configs Linked"
 
 
