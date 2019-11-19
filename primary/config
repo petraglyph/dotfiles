@@ -25,7 +25,7 @@ set $loc "/home/penn/Storage/linux/i3-config"
 
 ### APPEARANCE
 ## Fonts
-font pango:DejaVu Sans Mono, "Material Design Icons", pango:EmojiOne Color 10
+font pango:DejaVu Sans Mono, "Material Design Icons", pango:EmojiOne Color 10.5
 
 ## Window Colors
 #                        border      background   text       indicator

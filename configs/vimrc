@@ -137,7 +137,7 @@ endif
 
 " vim-plug
 " :PlugInstall to install
-call plug#begin('~/.vim/plugged')
+call plug#begin('/home/penn/.vim/plugged')
 	Plug 'https://github.com/Yggdroot/indentLine.git'
 	Plug 'https://github.com/vim-airline/vim-airline.git'
 	Plug 'francoiscabrol/ranger.vim'
@@ -177,7 +177,8 @@ nmap <S-d> dd
 vmap <S-y> ! xsel -b<enter>u
 
 " Style
-colorscheme maia-custom
+"colorscheme maia-custom
+source /home/penn/.vim/colors/maia-custom.vim
 let g:airline_theme='maia_custom'
 let g:airline#extensions#tabline#enabled = 1
 set tabstop=4
