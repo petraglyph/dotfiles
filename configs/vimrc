@@ -160,12 +160,6 @@ noremap <silent> <S-j> 15gj
 noremap <silent> <S-k> 15gk
 noremap <silent> <S-l> g$
 nmap <S-u> :redo<Enter>
-" copy and paste
-"set clipboard=unnamedplus
-"vmap <C-c> "+yi
-"vmap <C-x> "+c
-"vmap <C-v> c<ESC>"+p
-"imap <C-v> <ESC>"+pa
 " editing
 nmap <enter> i<enter><esc>
 nmap <S-i> i<end>
@@ -174,6 +168,7 @@ nmap < v<
 nmap > v>
 nmap <S-o> o<esc>
 nmap <S-d> dd
+" copy and paste
 vmap <S-y> ! xsel -b<enter>u
 
 " Style
