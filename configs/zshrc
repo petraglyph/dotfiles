@@ -142,7 +142,7 @@ export vid="$HOME/Videos/"
 export store="$HOME/Storage/"
 export img="$HOME/Storage/images/"
 export code="$HOME/Storage/code/"
-export torrent="$HOME/Storage/torrents/"
+export tor="$HOME/Storage/torrents/"
 export dnd="$HOME/Storage/dnd/"
 
 export linux="$HOME/Storage/linux/"
@@ -152,8 +152,6 @@ export scripts="$HOME/Storage/linux/scripts/"
 
 export college="$HOME/Storage/college/"
 export cs21="$HOME/Storage/college/cs2150/"
-export cs31="$HOME/Storage/college/cs3102/"
-export cs32="$HOME/Storage/college/cs3205/"
 export phil="$HOME/Storage/college/phil2500/"
 export phys="$HOME/Storage/college/phys2620/"
 
