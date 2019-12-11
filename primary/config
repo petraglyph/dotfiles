@@ -147,9 +147,9 @@ bindsym $super+Shift+q kill
 
 ## Scratchpad
 # move currently window to scratchpad
-bindcode $super+Shift+` move scratchpad
+bindcode $super+Shift+49 move scratchpad
 # show or hide scratchpad window
-bindcode $super+` scratchpad show
+bindcode $super+49 scratchpad show
 
 ## Resizing Windows
 bindsym $super+r mode "resize"
