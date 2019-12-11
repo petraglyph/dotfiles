@@ -29,7 +29,7 @@ modules-center = datetime
 modules-right = wireless-short volume cpu battery
 tray-position = none
 
-[bar/pennbar]
+[bar/mainbar]
 monitor = eDP1
 width = 100%
 height = 50
