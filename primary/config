@@ -128,11 +128,6 @@ workspace $wsHDMI output DP2
 ### WINDOWS ARRANGEMENT
 ## General Window Controls
 # Change focused Window
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-# Change focused Window
 bindsym $mod+$left-vi focus left
 bindsym $mod+$down-vi focus down
 bindsym $mod+$up-vi focus up
@@ -140,11 +135,6 @@ bindsym $mod+$right-vi focus right
 # Change focused Window
 bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus left
-# Move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 # Move focused window
 bindsym $mod+Shift+$left-vi move left
 bindsym $mod+Shift+$down-vi move down
@@ -168,22 +158,12 @@ bindcode $mod+49 scratchpad show
 ## Resizing windows
 bindsym $mod+r mode "resize"
 mode "resize" {
-	# arrow large
-	bindsym Left        resize shrink width 100 px or 10 ppt
-	bindsym Down        resize grow height 100 px or 10 ppt
-	bindsym Up          resize shrink height 100 px or 10 ppt
-	bindsym Right       resize grow width 100 px or 150 ppt
-	# letter large
+	# Large
 	bindsym $left-vi   resize shrink width 100 px or 10 ppt
 	bindsym $down-vi   resize grow height 100 px or 10 ppt
 	bindsym $up-vi     resize shrink height 100 px or 10 ppt
 	bindsym $right-vi  resize grow width 100 px or 10 ppt
-	# arrow small
-	bindsym Shift+Left        resize shrink width 10 px or 10 ppt
-	bindsym Shift+Down        resize grow height 10 px or 10 ppt
-	bindsym Shift+Up          resize shrink height 10 px or 10 ppt
-	bindsym Shift+Right       resize grow width 10 px or 10 ppt
-	# letter small
+	# Small
 	bindsym Shift+$left-vi   resize shrink width 10 px or 10 ppt
 	bindsym Shift+$down-vi   resize grow height 10 px or 10 ppt
 	bindsym Shift+$up-vi     resize shrink height 10 px or 10 ppt
@@ -207,21 +187,31 @@ bindsym $mod+c exec $term --title="float" -e "calc -i read $loc/configs/val.cal"
 bindsym $mod+x exec $term --title="float" -e "bash $HOME/Storage/linux/scripts/quick-run.sh"
 
 ## System buttons
-# Pulse Audio controls
+# Volume controls
 bindsym XF86AudioRaiseVolume exec pamixer --increase 5 --allow-boost --unmute
 bindsym XF86AudioLowerVolume exec pamixer --decrease 5 --allow-boost --unmute
 bindsym XF86AudioMute exec pamixer --toggle-mute
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec bash $loc/scripts/backlight.sh +
-bindsym XF86MonBrightnessDown exec bash $loc/scripts/backlight.sh -
-bindcode 167 exec bash $loc/scripts/backlight.sh +
-bindcode 166 exec bash $loc/scripts/backlight.sh -
-bindsym $mod+Ctrl+Up exec bash $loc/scripts/backlight.sh +
-bindsym $mod+Ctrl+Down exec bash $loc/scripts/backlight.sh -
-# Media player controls
+#
+bindsym $mod+Up exec pamixer --increase 5 --allow-boost --unmute
+bindsym $mod+Down exec pamixer --decrease 5 --allow-boost --unmute
+bindsym $mod+Shift+Up exec pamixer --increase 2 --allow-boost --unmute
+bindsym $mod+Shift+Down exec pamixer --decrease 2 --allow-boost --unmute
+bindsym $mod+Delete exec pamixer --toggle-mute
+# Media controls
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
+#
+bindsym Pause exec mpc toggle
+bindsym $mod+Left exec mpc prev
+bindsym $mod+Right exec mpc next
+bindsym $mod+Shift+Left exec mpc seek +0:0:10
+bindsym $mod+Shift+Right exec mpc seek -0:0:10
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec bash $loc/scripts/backlight.sh +
+bindsym XF86MonBrightnessDown exec bash $loc/scripts/backlight.sh -
+bindsym $mod+Prior exec bash $loc/scripts/backlight.sh +
+bindsym $mod+Next exec bash $loc/scripts/backlight.sh -
 
 ## i3 Control
 # Restart i3
