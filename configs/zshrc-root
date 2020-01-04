@@ -7,7 +7,7 @@ PS1='%{$fg_bold[red]%}[%m'
 # directory
 PS1+=" %{$fg_bold[white]%}%1~"
 # exit code
-PS1+="%b%(?.. $fg[blue]%?)"
+#PS1+="%b%(?.. $fg[blue]%?)"
 # ender
 PS1+="%{$fg_bold[red]%}]# %{$reset_color%}% "
 # partial command
