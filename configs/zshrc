@@ -151,9 +151,10 @@ export notes="$HOME/Storage/linux/notes/"
 export scripts="$HOME/Storage/linux/scripts/"
 
 export college="$HOME/Storage/college/"
-export cs21="$HOME/Storage/college/cs2150/"
-export phil="$HOME/Storage/college/phil2500/"
-export phys="$HOME/Storage/college/phys2620/"
+export cs="$HOME/Storage/college/cs4102/"
+export phil="$HOME/Storage/college/phil2650/"
+export phys="$HOME/Storage/college/phys3210/"
+export apma="$HOME/Storage/college/apma3100/"
 
 export site="$HOME/Storage/site/"
 export pbsite="$HOME/Storage/site/pb-site/"
