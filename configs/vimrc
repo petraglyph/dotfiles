@@ -144,6 +144,7 @@ call plug#begin('/home/penn/.vim/plugged')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'scrooloose/nerdcommenter'
 	"Plug 'lervag/vimtex'
+	Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " Added by Penn
@@ -216,3 +217,9 @@ let g:coc_global_extensions=[
 " NERD Commenter
 nmap c V\ci
 vmap c \cc
+
+" VimWiki
+let g:vimwiki_list = [{
+	\ 'path': '~/Storage/linux/vimwiki/',
+	\ 'path_html': '~/.vimwiki-html/',
+	\ }]

@@ -105,6 +105,7 @@ alias cp="cp -r"
 alias rm="rm -r"
 alias feh="feh -B '#141a1b' $@"
 alias svim="sudoedit $@"
+alias vimwiki='vim -c VimwikiIndex'
 
 function md {
 	command mkdir -p $@
