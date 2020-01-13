@@ -234,7 +234,7 @@ bindsym $super+Shift+b exec $term -e "ranger $HOME/Storage/dnd/5e-books/ $HOME/S
 # open pCloudDrive
 bindsym $super+Shift+c exec $term -e "ranger $HOME/pCloudDrive/ $HOME/Storage/ $HOME/Storage"
 # open site
-bindsym $super+Shift+v exec $term -e "ranger $HOME/Storage/site/ $HOME/Storage/ $HOME/Storage"
+bindsym $super+Shift+v exec $term -e "ranger $HOME/Storage/code/site/ $HOME/Storage/ $HOME/Storage"
 # open storage
 bindsym $super+Shift+f exec $term -e "ranger $HOME/Storage/ $HOME/Storage/ $HOME/Storage"
 # open college
