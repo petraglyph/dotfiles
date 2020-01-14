@@ -143,7 +143,7 @@ call plug#begin('/home/penn/.vim/plugged')
 	Plug 'francoiscabrol/ranger.vim'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'scrooloose/nerdcommenter'
-	"Plug 'lervag/vimtex'
+	Plug 'lervag/vimtex'
 	Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -212,11 +212,20 @@ let g:coc_global_extensions=[
 	\ "coc-html",
 	\ "coc-phpls",
 	\ "coc-json",
+	\ "coc-vimtex",
 	\ ]
 
 " NERD Commenter
 nmap c V\ci
 vmap c \cc
+
+" VimTeX
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=0
+let g:tex_conceal=''
+nnoremap <C-l> :VimtexCompile<Enter>
 
 " VimWiki
 let g:vimwiki_list = [{
