@@ -36,7 +36,7 @@ client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
 client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
 # i3 gaps
-gaps inner 14
+gaps inner 10
 gaps outer -2
 smart_gaps on
 smart_borders on
@@ -50,10 +50,10 @@ for_window [class="Steam" title="Steam - News"] floating enable
 for_window [title="Java: *"] border normal
 for_window [title="Java: *"] floating enable
 for_window [class="Gcolor3"] floating enable
-#for_window [instance="sun-awt-X11-XFramePeer"] floating enable
-#for_window [instance="sun-awt-X11-XFramePeer"] border normal
-#for_window [title="MATLAB R2018b - academic use"] floating disable
-#for_window [title="MATLAB R2018b - academic use"] border none
+for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [instance="sun-awt-X11-XFramePeer"] border normal
+for_window [title="MATLAB R2019b - academic use"] floating disable
+for_window [title="MATLAB R2019b - academic use"] border none
 
 
 
