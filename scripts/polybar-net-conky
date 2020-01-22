@@ -18,8 +18,8 @@ local cerror = "DB5B5B"
 conky.text = [[
 ${if_existing /proc/net/dev_mcast wlp59s0}\
 ${if_existing /proc/net/route wlp59s0}\
-%{F\#2EB398}\
 ${if_up tun0}\
+%{F\#2EB398}\
 ${if_match ${wireless_link_qual_perc wlp59s0}>80}\
 朗\
 ${else}${if_match ${wireless_link_qual_perc wlp59s0}>60}\
@@ -32,6 +32,11 @@ ${else}\
 狼\
 ${endif}${endif}${endif}${endif}\
 ${else}\
+${if_match "${execi 10 nmcli dev wifi show | grep Security}"=="Security: None"}\
+%{F\#DB5B5B}\
+${else}\
+%{F\#2EB398}\
+${endif}\
 ${if_match ${wireless_link_qual_perc wlp59s0}>80}\
 蠟\
 ${else}${if_match ${wireless_link_qual_perc wlp59s0}>60}\
