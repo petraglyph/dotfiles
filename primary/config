@@ -36,7 +36,7 @@ client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
 client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
 # i3 gaps
-gaps inner 10
+gaps inner 13
 gaps outer -2
 smart_gaps on
 smart_borders on
@@ -260,6 +260,7 @@ exec syndaemon -i 1 -t -K -R -d
 exec pcloudcc -u "pennbauman@protonmail.com" -d
 exec rm -rf /home/penn/Storage/\$RECYCLE.BIN/
 exec rm -rf /home/penn/Storage/System\ Volume\ Information/
+exec rm -rf /home/penn/pagefile.sys
 exec --no-startup-id /usr/lib/kdeconnectd
 exec bash /home/penn/Storage/torrents/.control/start.sh
 # technical
