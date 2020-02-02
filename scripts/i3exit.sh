@@ -21,7 +21,6 @@ echo "  [s] shutdown"
 echo "  [r] reboot"
 echo "  [e] exit i3"
 echo "  [z] sleep"
-echo "  [l] lock i3"
 echo "  [c] cancel"
 while true; do 
     read -p ": " t
@@ -34,7 +33,7 @@ while true; do
 			exit 0;;
 		e) i3-msg exit
 			exit 0;;
-		z) bash i3lock
+		z) bash ~/.bin/i3locker.sh
 			xset dpms force off
 			i3exit suspend
 			exit 0;;
