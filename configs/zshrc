@@ -158,6 +158,4 @@ export apma="$HOME/Storage/college/apma3100"
 export sts="$HOME/Storage/college/sts2500"
 
 export site="$HOME/Storage/code/site"
-export pbsite="$HOME/Storage/code/site/pb-site"
-export dndsite="$HOME/Storage/code/site/dnd-site"
-export php="$HOME/Storage/code/site/php"
+export pbsite="$HOME/Storage/code/site/pennbauman.com"
