@@ -180,7 +180,7 @@ bindsym $super+Return exec $term
 # start calculator
 bindsym $super+c exec $term --title="float" -e "calc -i read $loc/configs/val.cal"
 # Custom program runner
-bindsym $super+x exec $term --title="float" -e "bash $HOME/Storage/linux/scripts/quick-run.sh"
+bindsym $super+x exec $term --title="float" -e "sh $HOME/Storage/linux/scripts/quick-run.sh"
 
 ## System Buttons
 # volume controls
@@ -204,18 +204,18 @@ bindsym $super+Right exec mpc next
 bindsym $super+Shift+Left exec mpc seek -0:0:10
 bindsym $super+Shift+Right exec mpc seek +0:0:10
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec bash $loc/scripts/backlight.sh +
-bindsym XF86MonBrightnessDown exec bash $loc/scripts/backlight.sh -
-bindsym $super+Prior exec bash $loc/scripts/backlight.sh +
-bindsym $super+Next exec bash $loc/scripts/backlight.sh -
+bindsym XF86MonBrightnessUp exec sh $loc/scripts/backlight.sh +
+bindsym XF86MonBrightnessDown exec sh $loc/scripts/backlight.sh -
+bindsym $super+Prior exec sh $loc/scripts/backlight.sh +
+bindsym $super+Next exec sh $loc/scripts/backlight.sh -
 
 ## i3 Control
 # restart i3
 bindsym $super+Shift+Escape restart
 # exit i3
-bindsym $super+Escape exec $term --title="float" -e "bash $loc/scripts/i3exit.sh"
+bindsym $super+Escape exec $term --title="float" -e "sh $loc/scripts/i3exit.sh"
 # lock i3
-bindsym $super+z exec bash $loc/scripts/i3locker.sh dark
+bindsym $super+z exec sh $loc/scripts/i3locker.sh dark
 # screenshots
 bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
 bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/' -s
@@ -249,10 +249,10 @@ exec $term
 exec $term
 exec $term --title="scratch"
 exec firefox
-exec bash $loc/scripts/ncmpcpp-start.sh $term
+exec sh $loc/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
 exec picom -b -f --shadow-opacity=0
-exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 15 "bash $loc/scripts/i3locker.sh" ""
+exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 15 "sh $loc/scripts/i3locker.sh" ""
 exec --no-startup-id redshift
 exec dunst
 exec syndaemon -i 1 -t -K -R -d
@@ -262,14 +262,14 @@ exec rm -rf /home/penn/Storage/\$RECYCLE.BIN/
 exec rm -rf /home/penn/Storage/System\ Volume\ Information/
 exec rm -f /home/penn/Storage/pagefile.sys
 exec --no-startup-id /usr/lib/kdeconnectd
-exec bash /home/penn/Storage/torrents/.control/start.sh
-exec bash $loc/scripts/network-start.sh
+exec sh /home/penn/Storage/torrents/.control/start.sh
+exec sh $loc/scripts/network-start.sh
 # technical
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
 ## Run on i3 Restart
-exec_always bash $loc/scripts/polybar-start.sh
+exec_always sh $loc/scripts/polybar-start.sh
 exec_always feh --bg-scale $loc/primary/background.jpg
 exec_always xrandr --output HDMI1 --auto --right-of eDP1
 exec_always xrandr --output DP2 --auto --right-of eDP1
