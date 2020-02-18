@@ -201,8 +201,8 @@ bindsym XF86AudioPrev exec mpc prev
 bindsym Pause exec mpc toggle
 bindsym $super+Left exec mpc prev
 bindsym $super+Right exec mpc next
-bindsym $super+Shift+Left exec mpc seek +0:0:10
-bindsym $super+Shift+Right exec mpc seek -0:0:10
+bindsym $super+Shift+Left exec mpc seek -0:0:10
+bindsym $super+Shift+Right exec mpc seek +0:0:10
 # screen brightness controls
 bindsym XF86MonBrightnessUp exec bash $loc/scripts/backlight.sh +
 bindsym XF86MonBrightnessDown exec bash $loc/scripts/backlight.sh -
@@ -260,16 +260,13 @@ exec syndaemon -i 1 -t -K -R -d
 exec pcloudcc -u "pennbauman@protonmail.com" -d
 exec rm -rf /home/penn/Storage/\$RECYCLE.BIN/
 exec rm -rf /home/penn/Storage/System\ Volume\ Information/
-exec rm -rf /home/penn/pagefile.sys
+exec rm -f /home/penn/Storage/pagefile.sys
 exec --no-startup-id /usr/lib/kdeconnectd
 exec bash /home/penn/Storage/torrents/.control/start.sh
+exec bash $loc/scripts/network-start.sh
 # technical
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-# wifi setup
-exec sleep 5 && nmcli con up "Bakuman-5G"
-exec sleep 5 && nmcli con up "wahoo"
-exec sleep 5 && ncmli con up "Grandmarc Wireless"
 
 ## Run on i3 Restart
 exec_always bash $loc/scripts/polybar-start.sh
