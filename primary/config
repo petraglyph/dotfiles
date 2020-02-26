@@ -54,6 +54,7 @@ for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 for_window [instance="sun-awt-X11-XFramePeer"] border normal
 for_window [title="MATLAB R2019b - academic use"] floating disable
 for_window [title="MATLAB R2019b - academic use"] border none
+for_window [class="stalonetray"] floating enable
 
 
 
@@ -179,8 +180,11 @@ bindsym $super+space exec rofi --enable-drun -show drun
 bindsym $super+Return exec $term
 # start calculator
 bindsym $super+c exec $term --title="float" -e "calc -i read $loc/configs/val.cal"
-# Custom program runner
+# Custom script runner
 bindsym $super+x exec $term --title="float" -e "sh $HOME/Storage/linux/scripts/quick-run.sh"
+# Show/hide tray
+bindsym $super+p exec sh $loc/scripts/stalonetray.sh
+
 
 ## System Buttons
 # volume controls
@@ -257,7 +261,7 @@ exec --no-startup-id redshift
 exec dunst
 exec syndaemon -i 1 -t -K -R -d
 # files and background processes
-exec pcloudcc -u "pennbauman@protonmail.com" -d
+exec pcloud
 exec rm -rf /home/penn/Storage/\$RECYCLE.BIN/
 exec rm -rf /home/penn/Storage/System\ Volume\ Information/
 exec rm -f /home/penn/Storage/pagefile.sys

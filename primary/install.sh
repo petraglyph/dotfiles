@@ -16,6 +16,7 @@ rm -rf $HOME/.config/ranger
 rm -f $HOME/.zshrc
 rm -f $HOME/.vimrc
 rm -rf $HOME/.vim
+rm -f $HOME/.stalonetrayrc
 
 sudo rm -rf /etc/X11/xorg.conf.d
 sudo chattr -i /etc/resolv.conf
@@ -36,6 +37,7 @@ ln -s $loc/configs/ranger $HOME/.config/ranger
 ln -s $loc/configs/zshrc $HOME/.zshrc
 ln -s $loc/configs/vimrc $HOME/.vimrc
 ln -s $loc/configs/vim $HOME/.vim
+ln -s $loc/configs/stalonetrayrc $HOME/.stalonetrayrc
 
 sudo cp -r $loc/configs/xorg.conf.d /etc/X11/
 sudo cp $loc/configs/resolv.conf /etc/

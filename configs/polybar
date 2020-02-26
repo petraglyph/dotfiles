@@ -50,13 +50,8 @@ font-1 = "Material Design Icons:size=28;0"
 modules-left = i3ws mpd 
 modules-center = datetime weather
 modules-right = updates wireless volume memory cpu battery transmission
-; storage   
-;
-tray-position = right
-tray-padding = 2
-tray-maxsize = 32
-tray-detached = false
-tray-background = ${root.background}
+; storage
+
 
 
 ; LEFT MODULES
