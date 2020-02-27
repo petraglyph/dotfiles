@@ -1,12 +1,6 @@
 NOTES
 
-# Colors
-set $c-backgnd  #141A1B
-set $c-text     #EEEEEE
-set $c-high-n   #2EB398
-set $c-high-b   #DB5B5B
-
-Material Icons  
+Material Icons
 https://cdn.materialdesignicons.com/3.4.93/
     Wifi 來 冷爛嵐襤蠟 狼鸞藍臘朗 
     Volume    
@@ -16,77 +10,3 @@ https://cdn.materialdesignicons.com/3.4.93/
     Weather                   稜
     Desktops 降   ﱨ粒精      
           精      
-
-Wunderground
-    https://www.wunderground.com/glossary/
-    https://www.wunderground.com/weather/api/d/docs?d=resources/phrase-glossary
-
-    sunny:
-    0/8 cloud cover
-    clear:
-    0/8 cloud cover
-
-    mostlysunny:
-    1-2/8 cloud cover, day
-
-    partlycloudy:
-    3-5/8 cloud cover
-    partlysunny:
-    3-5/8 cloud cover, day
-
-    mostlycloudy:
-    6-7/8 cloud cover
-    cloudy:
-    7-8/8 cloud cover
-
-    chanceflurries:
-    chancerain:
-    chancesleet:
-    chancesnow:
-    chancetstorms:
-
-    flurries:
-    fog:
-    hazy:
-    rain:
-    sleet:
-    snow:
-    tstorms:
-    unknown:稜
-            
-
-File Structure
-	~/.config/user-dirs.dirs
-
-	Desktop
-	home/ @ ssd (200G)
-		pCloudDrive @ cloud (2T)
-		pCloudStore @ harddrive (2T)
-		storage/
-			code/ 0G
-			college/ 0G
-			dnd/ 8G
-			images/ 0G
-			linux/ 0G
-			site/ 0G
-			videos/ 100G
-
-			downloads/ 0G
-		torrents @ harddrive (1T)
-	Windows (100G)
-		games @ harddrive (1T)
-
-	Laptop
-	home/ @ ssd (100G)
-		pCloudDrive @ cloud (2T)
-		storage/ 80G
-			code/ 0G
-			college/ 0G
-			dnd/ 8G
-			images/ 0G
-			linux/ 0G
-			music/ 20G
-			site/ 0G
-			videos/ 50G
-
-			downloads/ 0G
