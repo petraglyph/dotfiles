@@ -15,23 +15,23 @@ if !has("gui_running") && &t_Co < 256
   finish
 endif
 
-if ! exists("g:materialmonokai_gui_italic")
-    let g:materialmonokai_gui_italic = 1
+if ! exists("g:maiacustom_gui_italic")
+    let g:maiacustom_gui_italic = 1
 endif
 
-if ! exists("g:materialmonokai_italic")
-    let g:materialmonokai_italic = 0
+if ! exists("g:maiacustom_italic")
+    let g:maiacustom_italic = 0
 endif
 
-if ! exists("g:materialmonokai_subtle_spell")
-    let g:materialmonokai_subtle_spell = 0
+if ! exists("g:maiacustom_subtle_spell")
+    let g:maiacustom_subtle_spell = 0
 endif
 
-if ! exists("g:materialmonokai_custom_lint_indicators")
-    let g:materialmonokai_custom_lint_indicators = 1
+if ! exists("g:maiacustom_custom_lint_indicators")
+    let g:maiacustom_custom_lint_indicators = 1
 endif
 
-let g:materialmonokai_termcolors = 256 " does not support 16 color term right now.
+let g:maiacustom_termcolors = 256 " does not support 16 color term right now.
 
 set background=dark
 hi clear
@@ -40,7 +40,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "material-monokai-custom"
+let colors_name = "maia-custom"
 
 function! s:h(group, style)
   let s:ctermformat = "NONE"
@@ -49,17 +49,17 @@ function! s:h(group, style)
     let s:ctermformat = a:style.format
     let s:guiformat = a:style.format
   endif
-  if g:materialmonokai_italic == 0
+  if g:maiacustom_italic == 0
     let s:ctermformat = substitute(s:ctermformat, ",italic", "", "")
     let s:ctermformat = substitute(s:ctermformat, "italic,", "", "")
     let s:ctermformat = substitute(s:ctermformat, "italic", "", "")
   endif
-  if g:materialmonokai_gui_italic == 0
+  if g:maiacustom_gui_italic == 0
     let s:guiformat = substitute(s:guiformat, ",italic", "", "")
     let s:guiformat = substitute(s:guiformat, "italic,", "", "")
     let s:guiformat = substitute(s:guiformat, "italic", "", "")
   endif
-  if g:materialmonokai_termcolors == 16
+  if g:maiacustom_termcolors == 16
     let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm16 : "NONE")
     let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm16 : "NONE")
   else
@@ -133,7 +133,8 @@ call s:h("CursorLineNr",  { "fg": s:aqua,       "bg": s:darkblack })
 call s:h("SignColumn",    {                     "bg": s:lightblack })
 call s:h("SpellCap",      {                                           "format": "underline"})
 call s:h("SpellLocal",    { "fg": s:yellow,                           "format": "underline"})
-if g:materialmonokai_subtle_spell == 1
+call s:h("Conceal",       { "fg": s:purple })
+if g:maiacustom_subtle_spell == 1
   call s:h("SpellBad",    {                                           "format": "underline"})
 else
   call s:h("SpellBad",    { "fg": s:red,        "bg": s:yellow })
@@ -210,7 +211,7 @@ call s:h("Error",         { "fg": s:red, "bg": s:darkred })
 " ALE
 " ---
 
-if g:materialmonokai_custom_lint_indicators == 1
+if g:maiacustom_custom_lint_indicators == 1
   call s:h("ALEErrorSign",   { "fg": s:red,    "bg": s:darkgrey })
   call s:h("ALEWarningSign", { "fg": s:yellow, "bg": s:darkgrey })
 

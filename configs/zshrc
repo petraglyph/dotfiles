@@ -95,22 +95,24 @@ unsetopt share_history
 bindkey -r '^[[Z'
 zstyle ':completion:*' list-colors
 
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 export LC_ALL="C"
-alias zshconf="vim ~/.zshrc"
+alias zshconf="nvim ~/.zshrc"
 
 alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"
 alias feh="feh -B '#141a1b' $@"
-alias svim="sudoedit $@"
-alias vimwiki='vim -c VimwikiIndex'
+alias svim="sudoeit $@"
+alias vimwiki='nvim -c VimwikiIndex'
 
-function md {
-	command mkdir -p $@
-	cd $@
-	#echo $@
+vim () {
+	if [ -w $@ ]; then
+		nvim $@
+	else
+		sudoedit $@
+	fi
 }
 
 ex () {

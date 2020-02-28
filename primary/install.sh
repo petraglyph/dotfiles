@@ -14,9 +14,10 @@ rm -f $HOME/.config/polybar/config
 rm -f $HOME/.config/mpd/mpd.conf
 rm -rf $HOME/.config/ranger
 rm -f $HOME/.zshrc
-rm -f $HOME/.vimrc
-rm -rf $HOME/.vim
 rm -f $HOME/.stalonetrayrc
+rm -f $HOME/.config/nvim/init.vim
+rm -f $HOME/.local/share/nvim/site/colors/maia-custom.vim
+rm -f $HOME/.local/share/nvim/site/autoload/airline/themes/maia_custom.vim
 
 sudo rm -rf /etc/X11/xorg.conf.d
 sudo chattr -i /etc/resolv.conf
@@ -35,9 +36,14 @@ ln -s $loc/configs/polybar $HOME/.config/polybar/config
 ln -s $loc/configs/mpd.conf $HOME/.config/mpd/mpd.conf
 ln -s $loc/configs/ranger $HOME/.config/ranger
 ln -s $loc/configs/zshrc $HOME/.zshrc
-ln -s $loc/configs/vimrc $HOME/.vimrc
-ln -s $loc/configs/vim $HOME/.vim
 ln -s $loc/configs/stalonetrayrc $HOME/.stalonetrayrc
+ln -s $loc/configs/nvim.init.vim $HOME/.config/nvim/init.vim
+ln -s $loc/configs/maia-custom.vim $HOME/.local/share/nvim/site/colors/maia-custom.vim
+ln -s $loc/configs/airline-maia_custom.vim $HOME/.local/share/nvim/site/autoload/airline/themes/maia_custom.vim
+
+if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 sudo cp -r $loc/configs/xorg.conf.d /etc/X11/
 sudo cp $loc/configs/resolv.conf /etc/
