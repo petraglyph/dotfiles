@@ -1,5 +1,6 @@
 " NeoVim Config
 " Penn Bauman
+"   pennbauman@protonmail.com
 
 " From default vimrc
 set scrolloff=5
@@ -18,6 +19,7 @@ autocmd BufReadPost *
 augroup END
 
 
+
 " General
 filetype plugin on
 set encoding=utf8
@@ -30,8 +32,31 @@ set tabstop=4
 set shiftwidth=4
 set listchars=tab:¦\ ,trail:~,extends:>,precedes:<
 set list
-set conceallevel=1
+set guicursor=
 source /home/penn/.local/share/nvim/site/colors/maia-custom.vim
+" Netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+
+" Text conceal
+set conceallevel=1
+au BufLeave * call clearmatches()
+"au BufEnter * call matchadd('Conceal', '<=', 10, 199, {'conceal': '≤'})
+"au BufEnter * call matchadd('Conceal', '>=', 10, 198, {'conceal': '≥'})
+"au BufEnter * call matchadd('Conceal', '!=', 10, 197, {'conceal': '≠'})
+" Python
+"   Ƨ⊡⌽⚴
+au BufEnter *.py call matchadd('Conceal', 'self', 10, 99, {'conceal': '⚴'})
+" HTML
+au BufEnter *.html call matchadd('Conceal', '&amp;', 10, 99, {'conceal': '&'})
+au BufEnter *.html call matchadd('Conceal', '&apos;', 10, 98, {'conceal': '’'})
+au BufEnter *.html call matchadd('Conceal', '&copy;', 10, 97, {'conceal': '©'})
+" PHP
+au BufEnter *.php call matchadd('Conceal', '&amp;', 10, 99, {'conceal': '&'})
+au BufEnter *.php call matchadd('Conceal', '&apos;', 10, 98, {'conceal': '’'})
+au BufEnter *.php call matchadd('Conceal', '&copy;', 10, 97, {'conceal': '©'})
+
+
 
 " Keyboard Shortcuts
 nnoremap <S-tab> :bprev<Enter>
@@ -55,29 +80,30 @@ nmap <S-d> dd
 vmap <S-y> ! xsel -b<enter>u
 " Terminal
 nnoremap <C-t> :terminal<Enter>i<end>
-tnoremap <C-t> <C-\><C-n>:bnext<enter>
-tnoremap <Esc> <C-\><C-n>:bnext<enter>
 au TermOpen * setlocal nonumber
+
 
 
 " Plugins (vim-plug)
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'https://github.com/vim-airline/vim-airline.git'
-	Plug 'francoiscabrol/ranger.vim'
+	Plug 'https://github.com/Lokaltog/neoranger'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'lervag/vimtex'
 	Plug 'vimwiki/vimwiki'
 call plug#end()
 
+
 " vim-airline
 let g:airline_theme='maia_custom'
 let g:airline#extensions#tabline#enabled = 1
 
-" ranger.vim
-let g:ranger_map_keys = 0
-let g:ranger_replace_netrw = 0
-nnoremap <C-r> :Ranger<Enter>
+
+" neoranger
+let g:neoranger_viewmode='miller'
+nnoremap <C-r> :RangerCurrentFile<Enter>
+
 
 " COC.nvim
 set hidden
@@ -106,9 +132,11 @@ let g:coc_global_extensions=[
 	\ "coc-vimtex",
 	\ ]
 
+
 " NERD Commenter
 nmap c V\ci
 vmap c \cc
+
 
 " VimTeX
 let g:tex_flavor='latex'
@@ -118,8 +146,10 @@ let g:tex_conceal='mg'
 "abdmg
 nnoremap <C-l> :VimtexCompile<Enter>
 
+
 " VimWiki
 let g:vimwiki_list = [{
 	\ 'path': '~/Storage/linux/vimwiki/',
 	\ 'path_html': '~/.vimwiki-html/',
 	\ }]
+

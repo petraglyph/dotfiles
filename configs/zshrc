@@ -104,16 +104,9 @@ alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"
 alias feh="feh -B '#141a1b' $@"
+alias vim="nvim $@"
 alias svim="sudoeit $@"
 alias vimwiki='nvim -c VimwikiIndex'
-
-vim () {
-	if [ -w $@ ]; then
-		nvim $@
-	else
-		sudoedit $@
-	fi
-}
 
 ex () {
   if [ -f $1 ] ; then
