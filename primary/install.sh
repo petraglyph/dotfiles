@@ -12,6 +12,7 @@ rm -f $HOME/.config/ncmpcpp/config
 rm -f $HOME/.config/ncmpcpp/bindings
 rm -f $HOME/.config/polybar/config
 rm -f $HOME/.config/mpd/mpd.conf
+rm -f $HOME/.config/zathura/zathurarc
 rm -rf $HOME/.config/ranger
 rm -f $HOME/.zshrc
 rm -f $HOME/.stalonetrayrc
@@ -34,6 +35,7 @@ ln -s $loc/configs/ncmpcpp-config $HOME/.config/ncmpcpp/config
 ln -s $loc/configs/ncmpcpp-bindings $HOME/.config/ncmpcpp/bindings
 ln -s $loc/configs/polybar $HOME/.config/polybar/config
 ln -s $loc/configs/mpd.conf $HOME/.config/mpd/mpd.conf
+ln -s $loc/conigs/zathurarc $HOME/.config/zathura/zathurarc
 ln -s $loc/configs/ranger $HOME/.config/ranger
 ln -s $loc/configs/zshrc $HOME/.zshrc
 ln -s $loc/configs/stalonetrayrc $HOME/.stalonetrayrc
