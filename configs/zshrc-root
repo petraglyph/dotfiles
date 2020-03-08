@@ -26,13 +26,7 @@ alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"
 alias feh="feh -B '#141a1b' $@"
-alias vim="vim -u /home/penn/.vimrc $@"
-
-function md {
-	command mkdir -p $@
-	cd $@
-	#echo $@
-}
+alias vim="nvim -u /home/penn/.config/nvim/init.vim $@"
 
 ex () {
   if [ -f $1 ] ; then
