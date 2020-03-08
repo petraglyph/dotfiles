@@ -27,7 +27,7 @@ sudo rm -f /root/.zshrc
 echo "Configs Cleared"
 
 # LINK NEW CONFIGS
-ln -s $loc/primary/config $HOME/.config/i3/config
+ln -s $loc/hps2017-15/config $HOME/.config/i3/config
 ln -s $loc/configs/rofi-config $HOME/.config/rofi/config
 ln -s $loc/configs/termite-config $HOME/.config/termite/config
 ln -s $loc/configs/dunstrc $HOME/.config/dunst/dunstrc
