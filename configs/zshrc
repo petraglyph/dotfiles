@@ -105,7 +105,7 @@ alias cp="cp -r"
 alias rm="rm -r"
 alias feh="feh -B '#141a1b' $@"
 alias vim="nvim $@"
-alias svim="sudoeit $@"
+alias svim="sudoedit $@"
 alias vimwiki='nvim -c VimwikiIndex'
 
 ex () {

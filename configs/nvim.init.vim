@@ -70,12 +70,10 @@ noremap <silent> <S-k> 15gk
 noremap <silent> <S-l> g$
 nmap <S-u> :redo<Enter>
 " Editing
-nmap <enter> i<enter><esc>
-nmap <S-i> i<end>
+nmap <enter> o<esc>
 nmap ; :
 nmap < v<
 nmap > v>
-nmap <S-o> o<esc>
 nmap <S-d> dd
 vmap <S-y> ! xsel -b<enter>u
 " Terminal
