@@ -226,7 +226,7 @@ bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/
 
 ## Folder Opening
 # open ~/
-bindsym $super+f exec $term -e "ranger $HOME/ $HOME/Storage/ $HOME/Storage"
+bindsym $super+f exec $term -e "ranger --selectfile=$HOME/Documents $HOME/Storage/ $HOME/Storage"
 # open ~/Downloads
 bindsym $super+d exec $term -e "ranger $HOME/Downloads/ $HOME/Storage/ $HOME/Storage"
 # open /
