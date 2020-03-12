@@ -246,7 +246,7 @@ exec $term
 exec $term
 exec $term --title="scratch"
 exec firefox
-exec sh $loc/scripts/ncmpcpp-start.sh $term
+#exec sh $loc/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
 exec picom -b -f --shadow-opacity=0
 exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 15 "sh $loc/scripts/i3locker.sh" ""
@@ -255,8 +255,8 @@ exec dunst
 # files and background processes
 exec pcloud
 exec --no-startup-id /usr/lib/kdeconnectd
-exec sh /home/penn/storage/torrents/.control/start.sh
-exec sh $loc/scripts/network-start.sh
+#exec sh /home/penn/storage/torrents/.control/start.sh
+#exec sh $loc/scripts/network-start.sh
 # technical
 #exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &

@@ -25,8 +25,7 @@ rofi
 scrot
 termite
 ttf-material-icons
-vim
-vim-plug
+neovim
 xidlehook
 xorg-xbacklight
 zsh
