@@ -6,7 +6,7 @@ primary = #EEEEEE
 secondary = #2EB398
 alert = #DB5B5B
 
-[bar/hdmibar]
+[bar/hdmi]
 monitor = DP2
 width = 100%
 height = 24
@@ -29,7 +29,7 @@ modules-center = datetime
 modules-right = wireless-short volume cpu battery
 tray-position = none
 
-[bar/mainbar]
+[bar/hps2017-15]
 monitor = eDP1
 width = 100%
 height = 50
@@ -47,10 +47,32 @@ module-margin-right = 1
 font-0 = DejaVu Sans Mono:size=24;0
 font-1 = "Material Design Icons:size=28;0"
 ;
-modules-left = i3ws mpd 
+modules-left = i3ws mpd
 modules-center = datetime weather
 modules-right = updates wireless volume memory cpu battery transmission
 ; storage
+
+[bar/hps2017-15]
+;monitor = eDP1
+width = 100%
+height = 50
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.primary}
+line-size = 0
+line-color = ${colors.background}
+border-size = 0
+padding-left = 1
+padding-right = 1
+module-margin-left = 0
+module-margin-right = 1
+;
+font-0 = DejaVu Sans Mono:size=24;0
+font-1 = "Material Design Icons:size=28;0"
+;
+modules-left = i3ws mpd
+modules-center = datetime weather
+modules-right = updates wireless volume memory cpu battery transmission
 
 
 

@@ -273,7 +273,7 @@ exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
 ## Run on i3 Restart
-exec_always sh $loc/scripts/polybar-start.sh
+exec_always sh $loc/scripts/polybar-start.sh hps2017-15 hdmi
 exec_always feh --bg-scale $loc/hps2017-15/background.jpg
 exec_always xrandr --output HDMI1 --auto --right-of eDP1
 exec_always xrandr --output DP2 --auto --right-of eDP1

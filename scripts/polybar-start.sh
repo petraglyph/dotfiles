@@ -7,5 +7,6 @@ if [[ $(pgrep polybar | wc -l) > 0 ]]; then
 fi
 
 # Launch bar1 and bar2
-polybar mainbar &
-polybar hdmibar &
+for bar in "$@"; do
+	polybar $bar &
+done

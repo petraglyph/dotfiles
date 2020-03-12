@@ -262,5 +262,5 @@ exec sh $loc/scripts/network-start.sh
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
 ## Run on i3 Restart
-exec_always sh $loc/scripts/polybar-start.sh
+exec_always sh $loc/scripts/polybar-start.sh x570-2020
 exec_always feh --bg-scale $loc/x570-2020/background.jpg
