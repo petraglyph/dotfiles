@@ -19,6 +19,7 @@ rm -f $HOME/.stalonetrayrc
 rm -f $HOME/.config/nvim/init.vim
 rm -f $HOME/.local/share/nvim/site/colors/maia-custom.vim
 rm -f $HOME/.local/share/nvim/site/autoload/airline/themes/maia_custom.vim
+rm -f $HOME/.config/user-dirs.dirs
 
 sudo rm -rf /etc/X11/xorg.conf.d
 sudo chattr -i /etc/resolv.conf
@@ -42,6 +43,7 @@ ln -s $loc/configs/stalonetrayrc $HOME/.stalonetrayrc
 ln -s $loc/configs/nvim.init.vim $HOME/.config/nvim/init.vim
 ln -s $loc/configs/maia-custom.vim $HOME/.local/share/nvim/site/colors/maia-custom.vim
 ln -s $loc/configs/airline-maia_custom.vim $HOME/.local/share/nvim/site/autoload/airline/themes/maia_custom.vim
+ln -s $loc/configs/user-dirs.dirs $HOME/.config/user-dirs.dirs
 
 if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
