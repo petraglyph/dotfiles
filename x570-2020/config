@@ -246,7 +246,7 @@ exec $term
 exec $term
 exec $term --title="scratch"
 exec firefox
-#exec sh $loc/scripts/ncmpcpp-start.sh $term
+exec sh $loc/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
 exec picom -b -f --shadow-opacity=0
 exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 15 "sh $loc/scripts/i3locker.sh" ""
