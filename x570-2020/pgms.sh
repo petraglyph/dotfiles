@@ -8,6 +8,7 @@ firefox
 i3-gaps
 i3exit
 i3lock-color
+jq
 kdeconnect
 ly
 mpc
