@@ -247,14 +247,14 @@ tail = true
 type = custom/script
 interval = 1
 label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.bin/polybar-net-conky
+exec = conky -c $HOME/.bin/hps2017-15-net-conky
 tail = true
 
 [module/network-hps2017-15-short]
 type = custom/script
 interval = 1
 label = %output%
-exec = conky -c $HOME/.bin/polybar-net-conky-short
+exec = conky -c $HOME/.bin/hps2017-15-net-conky-short
 tail = true
 
 [module/updates]

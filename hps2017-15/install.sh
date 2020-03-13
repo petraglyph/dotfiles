@@ -2,6 +2,7 @@
 # bash scripts/install.sh [quick]
 
 loc="/home/penn/Storage/linux/i3-config"
+loc="$HOME/.i3-config"
 
 # REMOVE EXISTING CONFIGS
 rm -f $HOME/.config/i3/config
