@@ -24,6 +24,7 @@ ranger
 redshift
 rofi
 scrot
+stalonetray
 termite
 ttf-material-icons
 neovim
