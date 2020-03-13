@@ -47,7 +47,7 @@ if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-sudo cp -r $loc/configs/xorg.conf.d /etc/X11/
+sudo cp -r $loc/x570-2020/xorg /etc/X11/xorg.conf.d
 sudo cp $loc/configs/resolv.conf /etc/
 sudo chattr -i /etc/resolv.conf
 sudo cp $loc/configs/zshrc-root /root/.zshrc
