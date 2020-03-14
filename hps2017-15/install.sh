@@ -21,6 +21,7 @@ rm -f $HOME/.local/share/nvim/site/colors/maia-custom.vim
 rm -f $HOME/.local/share/nvim/site/autoload/airline/themes/maia_custom.vim
 rm -f $HOME/.config/user-dirs.dirs
 
+rm -f $HOME/.local/share/fonts/material_design_icons.ttf
 sudo rm -rf /etc/X11/xorg.conf.d
 sudo chattr -i /etc/resolv.conf
 sudo rm -f /etc/resolv.conf
@@ -49,6 +50,7 @@ if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+cp $loc/configs/material_design_icons.ttf $HOME/.local/share/fonts/material_design_icons.ttf
 sudo cp -r $loc/configs/xorg.conf.d /etc/X11/
 sudo cp $loc/configs/resolv.conf /etc/
 sudo chattr -i /etc/resolv.conf
