@@ -26,7 +26,7 @@ font-1 = "Material Design Icons:size=14;0"
 ;
 modules-left = hdmi
 modules-center = datetime
-modules-right = wireless-short volume cpu battery
+modules-right = network-hps2017-15-short volume cpu battery
 tray-position = none
 
 [bar/hps2017-15]
@@ -50,7 +50,7 @@ font-1 = "Material Design Icons:size=28;0"
 modules-left = i3ws mpd
 modules-center = datetime
 ;weather
-modules-right = updates wireless volume memory cpu battery transmission
+modules-right = updates network-hps2017-15 volume memory cpu battery transmission
 ; storage
 
 [bar/x570-2020]
@@ -72,9 +72,10 @@ font-0 = DejaVu Sans Mono:size=24;0
 font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
-modules-center = datetime;
-weather
-modules-right = updates wireless volume memory cpu battery transmission
+modules-center = datetime
+;weather
+modules-right = updates network-x570-2020 volume memory cpu
+;transmission hdmi
 
 
 
@@ -235,14 +236,21 @@ tail = true
 scroll-up = pamixer --decrease 5 --allow-boost 
 scroll-down = pamixer --increase 5 --allow-boost 
 
-[module/wireless]
+[module/network-x570-2020]
+type = custom/script
+interval = 1
+label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.bin/x570-2020-net-conky
+tail = true
+
+[module/network-hps2017-15]
 type = custom/script
 interval = 1
 label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
 exec = conky -c $HOME/.bin/polybar-net-conky
 tail = true
 
-[module/wireless-short]
+[module/network-hps2017-15-short]
 type = custom/script
 interval = 1
 label = %output%
