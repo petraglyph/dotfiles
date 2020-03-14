@@ -50,8 +50,8 @@ font-1 = "Material Design Icons:size=28;0"
 modules-left = i3ws mpd
 modules-center = datetime
 ;weather
-modules-right = updates network-hps2017-15 volume memory cpu battery transmission
-; storage
+modules-right = updates network-hps2017-15 volume memory cpu battery
+; storage transmission
 
 [bar/x570-2020]
 ;monitor = eDP1
@@ -74,8 +74,7 @@ font-1 = "Material Design Icons:size=28;0"
 modules-left = i3ws mpd
 modules-center = datetime
 ;weather
-modules-right = updates network-x570-2020 volume memory cpu
-;transmission hdmi
+modules-right = updates network-x570-2020 volume memory cpu transmission
 
 
 
@@ -159,7 +158,7 @@ interval = 5
 ;label = %{A:pgrm:}A%{A}
 label = %output%
 ;
-exec = echo "%{A:bash ~/Storage/torrents/.control/switch.sh toggle:}$(cat ~/Storage/torrents/.control/status)%{A}"
+exec = echo "%{A:bash ~/storage/torrents/.control/switch.sh toggle:}$(cat ~/storage/torrents/.control/status)%{A}"
 tail = true
 
 [module/battery]

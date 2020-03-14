@@ -221,7 +221,7 @@ bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/
 # open ~/
 bindsym $super+f exec $term -e "ranger --selectfile=$HOME/documents $HOME/documents $HOME/documents"
 # open ~/Downloads
-bindsym $super+d exec $term -e "ranger $HOME/Downloads $HOME/documents $HOME/documents"
+bindsym $super+d exec $term -e "ranger $HOME/downloads $HOME/documents $HOME/documents"
 # open /
 bindsym $super+Shift+r exec $term -e "ranger / / $HOME/documents"
 # open dnd
