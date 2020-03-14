@@ -20,7 +20,7 @@ set $down j
 set $up k
 set $right l
 # config location
-set $loc "/home/penn/Storage/linux/i3-config"
+set $loc "/home/penn/.i3-config"
 
 
 
