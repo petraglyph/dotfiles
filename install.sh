@@ -57,6 +57,7 @@ rm -f $HOME/.config/nvim/init.vim
 rm -f $HOME/.local/share/nvim/site/colors/maia-custom.vim
 rm -f $HOME/.local/share/nvim/site/autoload/airline/themes/maia_custom.vim
 rm -f $HOME/.config/user-dirs.dirs
+rm -f $HOME/.zsh-dirs
 
 rm -f $HOME/.local/share/fonts/material_design_icons.ttf
 sudo rm -rf /etc/X11/xorg.conf.d
@@ -82,6 +83,7 @@ ln -s $loc/configs/nvim.init.vim $HOME/.config/nvim/init.vim
 ln -s $loc/configs/maia-custom.vim $HOME/.local/share/nvim/site/colors/maia-custom.vim
 ln -s $loc/configs/airline-maia_custom.vim $HOME/.local/share/nvim/site/autoload/airline/themes/maia_custom.vim
 ln -s $loc/configs/user-dirs.dirs $HOME/.config/user-dirs.dirs
+ln -s $loc/$comp/zsh-dirs $HOME/.zsh-dirs
 
 if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
