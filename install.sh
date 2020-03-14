@@ -1,7 +1,44 @@
 #/bin/sh
 # bash scripts/install.sh [quick]
 
+# SET AND CHECK LCOATION
 loc="$HOME/.i3-config"
+if [[ $(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd) != $loc ]]; then
+	echo "Configuration not properly located, it should be at ~/.i3-config/"
+	exit 1
+fi
+# GET POSSIBLE COMPUTERS
+computers=()
+for f in $loc/*; do
+	if [ -d $f ]; then
+		d=$(basename $f)
+		if [[ $d != "configs" && $d != "scripts" ]]; then
+			#echo $d
+			computers+=($d)
+		fi
+	fi
+done
+# SELECT COMPUTER OR THROW ERROR
+if (( $# > 0 )); then
+	for c in "${computers[@]}"; do
+		if [[ $1 == $c ]]; then
+			comp="$1"
+		fi
+	done
+	if [[ $comp == "" ]]; then
+		echo "Unknown computer provided, options:"
+		for c in "${computers[@]}"; do
+			echo "  $c"
+		done
+		exit 1
+	fi
+else
+	echo "A computer must be provided, options:"
+	for c in "${computers[@]}"; do
+		echo "  $c"
+	done
+	exit 1
+fi
 
 # REMOVE EXISTING CONFIGS
 rm -f $HOME/.config/i3/config
@@ -29,7 +66,7 @@ sudo rm -f /root/.zshrc
 echo "Configs Cleared"
 
 # LINK NEW CONFIGS
-ln -s $loc/x570-2020/config $HOME/.config/i3/config
+ln -s $loc/$comp/config $HOME/.config/i3/config
 ln -s $loc/configs/rofi-config $HOME/.config/rofi/config
 ln -s $loc/configs/termite-config $HOME/.config/termite/config
 ln -s $loc/configs/dunstrc $HOME/.config/dunst/dunstrc
@@ -51,7 +88,7 @@ if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 fi
 
 cp $loc/configs/material_design_icons.ttf $HOME/.local/share/fonts/material_design_icons.ttf
-sudo cp -r $loc/x570-2020/xorg /etc/X11/xorg.conf.d
+sudo cp -r $loc/$comp/xorg /etc/X11/xorg.conf.d
 sudo cp $loc/configs/resolv.conf /etc/
 sudo chattr -i /etc/resolv.conf
 sudo cp $loc/configs/zshrc-root /root/.zshrc
