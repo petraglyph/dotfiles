@@ -2,11 +2,12 @@ NOTES
 
 Material Icons
 https://cdn.materialdesignicons.com/3.4.93/
-    Wifi 來 冷爛嵐襤蠟 狼鸞藍臘朗 
-    Volume    
-    System    
-    Battery  
-    Other  串
-    Weather                   稜
-    Desktops 降   ﱨ粒精      
-          精      
+	Wifi 來 冷爛嵐襤蠟 狼鸞藍臘朗 
+	Volume    
+	System    
+	Battery  
+	Other  串
+	Weather                   稜
+	Desktops 降   ﱨ粒精      
+		   精      
+	Ethernet     
