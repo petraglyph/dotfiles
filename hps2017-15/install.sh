@@ -51,7 +51,7 @@ if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 fi
 
 cp $loc/configs/material_design_icons.ttf $HOME/.local/share/fonts/material_design_icons.ttf
-sudo cp -r $loc/configs/xorg.conf.d /etc/X11/
+sudo cp -r $loc/hps2017-15/xorg /etc/X11/
 sudo cp $loc/configs/resolv.conf /etc/
 sudo chattr -i /etc/resolv.conf
 sudo cp $loc/configs/zshrc-root /root/.zshrc
