@@ -5,6 +5,6 @@ To install config files and scripts run:
 
 	./primary/install.sh
 
-To install programs install [yay](https://aur.archlinux.org/packages/yay/) then run:
+To install programs install [yay](https://github.com/Jguer/yay), then run:
 
-	./primary/pgms.sh
+	./programs.sh
