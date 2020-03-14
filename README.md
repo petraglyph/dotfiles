@@ -8,3 +8,6 @@ To install config files and scripts run:
 To install programs install [yay](https://github.com/Jguer/yay), then run:
 
 	./programs.sh
+
+#### Material Design Icons
+Source [github](https://github.com/google/material-design-icons)
