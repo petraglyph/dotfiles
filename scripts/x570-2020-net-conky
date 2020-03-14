@@ -17,7 +17,12 @@ local cerror = "DB5B5B"
 
 conky.text = [[
 ${if_existing /proc/net/dev_mcast enp39s0}\
-%{F\#2EB398}%{F} Wired \
+${if_up tun0}\
+%{F\#2EB398}%{F}\
+${else}
+%{F\#2EB398}%{F}\
+${endif}\
+ Wired \
 (${downspeed enp39s0}/${upspeed enp39s0})\
 ${else}${if_existing /proc/net/dev_mcast wlp41s0}\
 ${if_existing /proc/net/route wlp41s0}\
