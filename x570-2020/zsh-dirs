@@ -4,7 +4,6 @@ export code="$HOME/documents/code"
 export dnd="$HOME/documents/dnd"
 
 export linux="$HOME/documents/linux"
-export i3="$HOME/documents/linux/i3-config"
 export notes="$HOME/documents/linux/notes"
 export sh="$HOME/documents/linux/scripts"
 

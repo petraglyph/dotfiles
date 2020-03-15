@@ -1,11 +1,9 @@
 # Directory Bookmarks
 export img="$HOME/Storage/images"
 export code="$HOME/Storage/code"
-export tor="$HOME/Storage/torrents"
 export dnd="$HOME/Storage/dnd"
 
 export linux="$HOME/Storage/linux"
-export i3="$HOME/Storage/linux/i3-config"
 export notes="$HOME/Storage/linux/notes"
 export sh="$HOME/Storage/linux/scripts"
 
