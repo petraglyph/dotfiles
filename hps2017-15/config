@@ -266,7 +266,6 @@ exec rm -rf /home/penn/Storage/\$RECYCLE.BIN/
 exec rm -rf /home/penn/Storage/System\ Volume\ Information/
 exec rm -f /home/penn/Storage/pagefile.sys
 exec --no-startup-id /usr/lib/kdeconnectd
-exec sh /home/penn/Storage/torrents/.control/start.sh
 exec sh $loc/scripts/network-start.sh
 # technical
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
