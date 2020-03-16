@@ -134,7 +134,7 @@ label-maxlen = 50
 type = custom/script
 interval = 0
 label = %output%
-exec = echo HDMI %{A:termite -t hdmi -c $HOME/Storage/linux/i3-config/configs/termite-1080p:}termite%{A} %{A:termite -t hdmi -d $HOME/Storage -c $HOME/Storage/linux/i3-config/configs/termite-1080p -e ranger:}ranger%{A}
+exec = echo HDMI %{A:termite -t hdmi -c $HOME/.i3-config/configs/termite-1080p:}termite%{A} %{A:termite -t hdmi -d $HOME/Storage -c $HOME/.i3-config/configs/termite-1080p -e ranger:}ranger%{A}
 
 ; CENTER MODULE
 [module/datetime]
