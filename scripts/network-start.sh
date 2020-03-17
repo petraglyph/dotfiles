@@ -1,9 +1,8 @@
 #!/bin/sh
 
-while [ $(cat /proc/net/route | grep "wlp59s0" | wc -l) == 0 ]; do
+while [[ $(cat /proc/net/route) =~ 'wlp(59|41)s0|enp39s0' ]]; do
 	wifis=$(nmcli dev wifi list)
 	#echo "$wifis"
-	#if [ $(exit 0) ]; then
 	if [[ "$wifis" =~ "Grandmarc Wireless" ]]; then
 		echo "Grandmarc Wireless"
 		nmcli con up "Grandmarc Wireless"
@@ -15,11 +14,11 @@ while [ $(cat /proc/net/route | grep "wlp59s0" | wc -l) == 0 ]; do
 		nmcli con up "Bakuman"
 	else
 		echo "none"
+		break
 	fi
 done
 
 while [[ $(mount | grep pCloudDrive | wc -l) == 0 ]]; do
-	#echo "not p"
 	sleep 1
-	rm -rf $HOME/pCloudDrive/System\ Volume\ Information
 done
+rm -rf $HOME/pCloudDrive/System\ Volume\ Information
