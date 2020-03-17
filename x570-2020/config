@@ -69,6 +69,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $wsHDMI "HDMI"
 # switch to workspace
 bindsym $super+1 workspace $ws1
 bindsym $super+2 workspace $ws2
@@ -80,6 +81,7 @@ bindsym $super+7 workspace $ws7
 bindsym $super+8 workspace $ws8
 bindsym $super+9 workspace $ws9
 bindsym $super+0 workspace $ws10
+bindsym $super+m workspace $wsHDMI
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace $ws1
 bindsym $super+Shift+2 move container to workspace $ws2
@@ -91,6 +93,7 @@ bindsym $super+Shift+7 move container to workspace $ws7
 bindsym $super+Shift+8 move container to workspace $ws8
 bindsym $super+Shift+9 move container to workspace $ws9
 bindsym $super+Shift+0 move container to workspace $ws10
+bindsym $super+Shift+m move container to workspace $wsHDMI
 # workspace assignments
 assign [class="Firefox"] $ws2
 assign [class="firefox"] $ws2
@@ -101,17 +104,9 @@ assign [class="Transmission-gtk"] $ws9
 assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
 assign [class="Termite" title="ncmpcpp"] $ws10
+assign [class="Termite" title="hdmi"] $wsHDMI
 # workspace monitors
-workspace $ws1 output eDP1
-workspace $ws2 output eDP1
-workspace $ws3 output eDP1
-workspace $ws4 output eDP1
-workspace $ws5 output eDP1
-workspace $ws6 output eDP1
-workspace $ws7 output eDP1
-workspace $ws8 output eDP1
-workspace $ws9 output eDP1
-workspace $ws10 output eDP1
+workspace $wsHDMI output HDMI-A-0
 
 
 
@@ -255,12 +250,10 @@ exec dunst
 # files and background processes
 exec pcloud
 exec --no-startup-id /usr/lib/kdeconnectd
-exec sh /home/penn/storage/torrents/.control/start.sh
+exec sh $HOME/storage/torrents/.control/start.sh
 exec sh $loc/scripts/network-start.sh
-# technical
-#exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
-#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
 ## Run on i3 Restart
-exec_always sh $loc/scripts/polybar-start.sh x570-2020
+exec_always sh $loc/scripts/polybar-start.sh x570-2020 x570-2020-hdmi
 exec_always feh --bg-scale $loc/x570-2020/background.jpg
+exec_always xrandr --output HDMI-A-0 --auto --right-of DisplayPort-0
