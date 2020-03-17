@@ -108,6 +108,8 @@ alias vim="nvim $@"
 alias svim="sudoedit $@"
 alias vimwiki='nvim -c VimwikiIndex'
 
+alias weather='curl wttr.in'
+
 ex () {
   if [ -f $1 ] ; then
     case $1 in
