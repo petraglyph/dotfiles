@@ -26,6 +26,7 @@ rofi
 scrot
 stalonetray
 termite
+tldr
 ttf-material-icons
 neovim
 xidlehook

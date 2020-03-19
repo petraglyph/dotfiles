@@ -75,7 +75,7 @@ ln -s $loc/configs/ncmpcpp-config $HOME/.config/ncmpcpp/config
 ln -s $loc/configs/ncmpcpp-bindings $HOME/.config/ncmpcpp/bindings
 ln -s $loc/configs/polybar $HOME/.config/polybar/config
 ln -s $loc/configs/mpd.conf $HOME/.config/mpd/mpd.conf
-ln -s $loc/conigs/zathurarc $HOME/.config/zathura/zathurarc
+ln -s $loc/configs/zathurarc $HOME/.config/zathura/zathurarc
 ln -s $loc/configs/ranger $HOME/.config/ranger
 ln -s $loc/configs/zshrc $HOME/.zshrc
 ln -s $loc/configs/stalonetrayrc $HOME/.stalonetrayrc
