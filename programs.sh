@@ -38,6 +38,7 @@ android-file-transfer
 android-tools
 bash-language-server
 bumblebee
+conky
 feh
 ffmpeg
 gcolor3
