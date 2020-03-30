@@ -41,9 +41,9 @@ bumblebee
 feh
 ffmpeg
 gcolor3
+gnome-disk-utility
 gnuplot
 gotop
-gparted
 htop
 jpegexiforient
 lxappearance-gtk3
