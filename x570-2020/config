@@ -196,10 +196,10 @@ bindsym $super+Right exec mpc next
 bindsym $super+Shift+Left exec mpc seek -0:0:10
 bindsym $super+Shift+Right exec mpc seek +0:0:10
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec sh $loc/scripts/backlight.sh +
-bindsym XF86MonBrightnessDown exec sh $loc/scripts/backlight.sh -
-bindsym $super+Prior exec sh $loc/scripts/backlight.sh +
-bindsym $super+Next exec sh $loc/scripts/backlight.sh -
+bindsym XF86MonBrightnessUp exec sh $loc/scripts/dimlight.sh +
+bindsym XF86MonBrightnessDown exec sh $loc/scripts/dimlight.sh -
+bindsym $super+Prior exec sh $loc/scripts/dimlight.sh +
+bindsym $super+Next exec sh $loc/scripts/dimlight.sh -
 
 ## i3 Control
 # restart i3

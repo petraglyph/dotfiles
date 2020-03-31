@@ -104,10 +104,10 @@ fi
 chmod 755 $loc/scripts/*
 for f in $loc/scripts/*; do
 	rm -f $HOME/.bin/${f:$(echo "$loc/scripts" | wc -c)}
-	if [[ "${f: -5}" != ".json" ]]; then
-		ln -s $f $HOME/.bin/${f:$(echo "$loc/scripts" | wc -c)}
-	fi
+	ln -s $f $HOME/.bin/${f:$(echo "$loc/scripts" | wc -c)}
 done
+gcc -O2 $loc/scripts/brightcalc.c -o $HOME/.bin/brightcalc
+rm -rf $HOME/.bin/*.c
 echo "~/.bin/ created"
 
 
