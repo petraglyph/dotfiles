@@ -16,6 +16,7 @@ mpd
 mpv
 ncmpcpp
 networkmanager
+npm
 pamixer
 pcloud-drive
 picom
@@ -77,4 +78,4 @@ signal-desktop
 steam-native
 "
 
-exec yay -S $pgms
+exec yay -S --needed $pgms
