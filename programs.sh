@@ -53,6 +53,7 @@ matcha-gtk-theme
 neofetch
 openvpn
 papirus-maia-icon-theme
+pavucontrol
 perl-image-exiftool
 playerctl
 rhythmbox
