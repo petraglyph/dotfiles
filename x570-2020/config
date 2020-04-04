@@ -106,6 +106,16 @@ assign [class="Rhythmbox"] $ws10
 assign [class="Termite" title="ncmpcpp"] $ws10
 assign [class="Termite" title="hdmi"] $wsHDMI
 # workspace monitors
+workspace $ws1 output DisplayPort-0
+workspace $ws2 output DisplayPort-0
+workspace $ws3 output DisplayPort-0
+workspace $ws4 output DisplayPort-0
+workspace $ws5 output DisplayPort-0
+workspace $ws6 output DisplayPort-0
+workspace $ws7 output DisplayPort-0
+workspace $ws8 output DisplayPort-0
+workspace $ws9 output DisplayPort-0
+workspace $ws10 output DisplayPort-0
 workspace $wsHDMI output HDMI-A-0
 
 
