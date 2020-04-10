@@ -25,7 +25,7 @@ set $loc "/home/penn/.i3-config"
 
 ### APPEARANCE
 # fonts
-font pango:DejaVu Sans Mono, "Material Design Icons", pango:EmojiOne Color 10.5
+font pango:DejaVu Sans Mono, pango:JoyPixels 10.5
 
 ## Windows Borders
 new_window pixel 0

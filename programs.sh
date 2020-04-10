@@ -28,7 +28,7 @@ scrot
 stalonetray
 termite
 tldr
-ttf-material-icons
+ttf-joypixels
 neovim
 xidlehook
 xorg-xbacklight
