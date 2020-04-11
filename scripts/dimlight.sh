@@ -8,4 +8,4 @@ echo $new
 
 echo "$new" > $HOME/.dimbright
 killall redshift
-redshift -r -b "$new:$new" -l "38:-78"
+redshift -r -b "$new:$new" -l "38:-78" &
