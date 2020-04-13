@@ -257,7 +257,7 @@ exec sh $loc/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
 exec picom -b -f --shadow-opacity=0
 exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 15 "sh $loc/scripts/i3locker.sh" ""
-exec --no-startup-id redshift
+exec --no-startup-id redshift -t 6500K:3000K
 exec dunst
 exec syndaemon -i 1 -t -K -R -d
 # files and background processes
