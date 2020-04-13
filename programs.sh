@@ -1,6 +1,8 @@
 #!/bin/sh
 # PROGRAM INSTALLS
 pgms="
+bluez
+bluez-utils
 calc
 conky
 dunst

@@ -21,6 +21,8 @@ zstyle ':completion:*' list-colors
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export LC_ALL="C"
+export XDG_CONFIG_HOME=/home/penn/.config
+export XDG_DATA_HOME=/home/penn/.local/share
 
 alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"

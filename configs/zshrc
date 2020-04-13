@@ -98,7 +98,7 @@ zstyle ':completion:*' list-colors
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 export LC_ALL="C"
-alias zshconf="nvim ~/.zshrc"
+export GOPATH="$HOME/.go"
 
 alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"
