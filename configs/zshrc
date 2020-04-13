@@ -106,7 +106,6 @@ alias rm="rm -r"
 alias feh="feh -B '#141a1b' $@"
 alias vim="nvim $@"
 alias svim="sudoedit $@"
-alias vimwiki='nvim -c VimwikiIndex'
 
 alias weather='curl wttr.in'
 

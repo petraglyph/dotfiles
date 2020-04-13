@@ -89,7 +89,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'lervag/vimtex'
-	Plug 'vimwiki/vimwiki'
 call plug#end()
 
 
@@ -143,11 +142,4 @@ let g:vimtex_quickfix_mode=0
 let g:tex_conceal='mg'
 "abdmg
 nnoremap <C-l> :VimtexCompile<Enter>
-
-
-" VimWiki
-let g:vimwiki_list = [{
-	\ 'path': '~/Storage/linux/vimwiki/',
-	\ 'path_html': '~/.vimwiki-html/',
-	\ }]
 
