@@ -221,8 +221,8 @@ bindsym $super+Escape exec $term --title="float" -e "sh $loc/scripts/i3exit.sh"
 # lock i3
 bindsym $super+z exec sh $loc/scripts/i3locker.sh dark
 # screenshots
-bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
-bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/' -s
+bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/'
+bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/' -s
 
 ## Folder Opening
 # open ~/
