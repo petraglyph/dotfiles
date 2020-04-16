@@ -1,58 +1,34 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Oh My ZSH
 if [ ! -d /home/penn/.oh-my-zsh ]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
-# Path to your oh-my-zsh installation.
 export ZSH="/home/penn/.oh-my-zsh"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-#plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
+# General settings
+HYPHEN_INSENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files under VCS as dirty. This makes repository status check for large repositories much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+
 # User configuration
+unsetopt share_history
+bindkey -r '^[[Z'
+zstyle ':completion:*' list-colors
+#plugins=(git)
+
+# Externals
+source $HOME/.profile
+source $HOME/.zsh-dirs
 
 # Configure Prompt
 autoload -U colors && colors
 setopt PROMPT_SUBST
-
 set_prompt() {
 	# name@computer
 	PS1='%{$fg_bold[green]%}[%n@%m'
@@ -67,22 +43,9 @@ set_prompt() {
 		fi
 	fi
 
-	# PID
-	#if [[ $! -ne 0 ]]; then
-		#PS1+=', '
-		#PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
-	#fi
-
-	# Sudo: https://superuser.com/questions/195781/sudo-is-there-a-command-to-check-if-i-have-sudo-and-or-how-much-time-is-left
-	#CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
-	#if [ ${CAN_I_RUN_SUDO} -gt 0 ]
-	#then
-	#	PS1+=', '
-	#	PS1+="%{$fg_bold[red]%}SUDO%{$reset_color%}"
-	#fi
-
 	# exit code
 	#PS1+="%b%(?.. $fg[red]%?)"
+
 	# ender
 	PS1+="%{$fg_bold[green]%}]$ %{$reset_color%}% "
 	# partial command
@@ -90,44 +53,49 @@ set_prompt() {
 }
 precmd_functions+=set_prompt
 
-unsetopt share_history
-
-bindkey -r '^[[Z'
-zstyle ':completion:*' list-colors
-
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
-export LC_ALL="C"
-export GOPATH="$HOME/.go"
-
+# Aliases
 alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"
 alias feh="feh -B '#141a1b' $@"
 alias vim="nvim $@"
 alias svim="sudoedit $@"
-
 alias weather='curl wttr.in'
 
 ex () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1 -d "${1:0: -4}" ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+	if [ -f $1 ] ; then
+		case $1 in
+			*.tar.bz2)  tar xjf $1 ;;
+			*.tar.gz)   tar xzf $1 ;;
+			*.bz2)      bunzip2 $1 ;;
+			*.rar)      unrar x $1 ;;
+			*.gz)       gunzip $1 ;;
+			*.tar)      tar xf $1 ;;
+			*.tbz2)     tar xjf $1 ;;
+			*.tgz)      tar xzf $1 ;;
+			*.zip)
+				files=$(zipinfo -1 $1)
+				dir=""
+				if [[ $(echo $files | head -1) =~ '/' ]]; then
+					top=$(echo ${files} | head -1 | cut -d"/" -f 1)
+					#echo $top
+					all=$(echo $files | wc -l)
+					dired=$(echo $files | grep $top | wc -l)
+					#echo "$all $dired"
+					if [[ $all != $dired ]]; then
+						dir=${1:0: -4}
+					fi
+				else
+					dir=${1:0: -4}
+				fi
+				#echo "dir: $dir" ;;
+				unzip $1 -d "$dir" ;;
+			*.Z)        uncompress $1 ;;
+			*.7z)       7z x $1 ;;
+			*) echo "'$1' cannot be extracted via ex()" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
 
-source $HOME/.zsh-dirs

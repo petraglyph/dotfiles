@@ -1,0 +1,11 @@
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export LC_ALL="C"
+# editor
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+# go
+export GOPATH="$HOME/.go"
+export GOBIN="$GOPATH/bin"

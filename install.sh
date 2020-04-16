@@ -7,6 +7,7 @@ if [[ $(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd) != $loc ]]
 	echo "Configuration not properly located, it should be at ~/.i3-config/"
 	exit 1
 fi
+
 # GET POSSIBLE COMPUTERS
 computers=()
 for f in $loc/*; do
@@ -18,6 +19,7 @@ for f in $loc/*; do
 		fi
 	fi
 done
+
 # SELECT COMPUTER OR THROW ERROR
 if (( $# > 0 )); then
 	for c in "${computers[@]}"; do
@@ -52,6 +54,7 @@ rm -f $HOME/.config/mpd/mpd.conf
 rm -f $HOME/.config/zathura/zathurarc
 rm -rf $HOME/.config/ranger
 rm -f $HOME/.zshrc
+rm -f $HOME/.profile
 rm -f $HOME/.stalonetrayrc
 rm -f $HOME/.config/nvim/init.vim
 rm -f $HOME/.local/share/nvim/site/colors/maia-custom.vim
@@ -78,6 +81,7 @@ ln -s $loc/configs/mpd.conf $HOME/.config/mpd/mpd.conf
 ln -s $loc/configs/zathurarc $HOME/.config/zathura/zathurarc
 ln -s $loc/configs/ranger $HOME/.config/ranger
 ln -s $loc/configs/zshrc $HOME/.zshrc
+ln -s $loc/configs/profile $HOME/.profile
 ln -s $loc/configs/stalonetrayrc $HOME/.stalonetrayrc
 ln -s $loc/configs/nvim.init.vim $HOME/.config/nvim/init.vim
 ln -s $loc/configs/maia-custom.vim $HOME/.local/share/nvim/site/colors/maia-custom.vim
