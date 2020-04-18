@@ -1,0 +1,5 @@
+[user]
+	email = pennbauman@protonmail.com
+	name = Penn Bauman
+[core]
+	excludesfile = **~
