@@ -138,7 +138,7 @@ bindsym $super+Shift+$down move down
 bindsym $super+Shift+$up move up
 bindsym $super+Shift+$right move right
 # toggle split  orientation
-bindsym $super+v split toggle
+bindsym $super+Shift+t split toggle
 # container layout
 bindsym $super+t layout toggle tabbed split
 # toggle tiling / floating
@@ -227,8 +227,10 @@ bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/
 ## Folder Opening
 # open ~/
 bindsym $super+f exec $term -e "ranger --selectfile=$HOME/Documents $HOME/Storage $HOME/Storage"
-# open ~/Downloads
+# open ~/downloads
 bindsym $super+d exec $term -e "ranger $HOME/downloads $HOME/Storage $HOME/Storage"
+# open ~/videos
+bindsym $super+v exec $term -e "ranger $HOME/Storage/videos $HOME/Storage $HOME/Storage"
 # open /
 bindsym $super+Shift+r exec $term -e "ranger / / $HOME/Storage"
 # open dnd
@@ -274,5 +276,5 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 ## Run on i3 Restart
 exec_always sh $loc/scripts/polybar-start.sh hps2017-15 hdmi
 exec_always feh --bg-scale $loc/hps2017-15/background.jpg
-exec_always xrandr --output HDMI1 --auto --right-of eDP1
-exec_always xrandr --output DP2 --auto --right-of eDP1
+exec_always xrandr --output HDMI1 --auto --above eDP1
+exec_always xrandr --output DP2 --auto --above eDP1
