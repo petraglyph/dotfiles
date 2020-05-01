@@ -7,6 +7,7 @@ calc
 conky
 dunst
 firefox
+hunspell-en_US
 i3-gaps
 i3exit
 i3lock-color
@@ -58,6 +59,7 @@ papirus-maia-icon-theme
 pavucontrol
 perl-image-exiftool
 playerctl
+python-pip
 rhythmbox
 the_silver_searcher
 transmission-cli
