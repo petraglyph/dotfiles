@@ -1,0 +1,74 @@
+Super + Letter
+
+a
+b
+	B - open 5e-books
+c - calculator
+	C - open pCloudDrive
+d - open downloads
+	D - open dnd
+e
+	E - open college
+f - open ~
+	F - open storage
+g
+h - switch window left
+	H - move window left
+i
+j - switch window down
+	J - move window down
+k - switch window up
+	K - move window up
+l - switch window right
+	L - move window right
+m - desktop HDMI
+	M - move window to desktop HDMI
+n
+o
+p - toggle tray
+q
+	Q - close window
+r - resize window
+	R - open /
+s
+t - toggle tabbed mode
+	T - toggle vertical mode
+u
+v - open videos
+	V - open site
+w
+x - quick run scripts
+y
+z - lock screen
+
+1 - desktop 1
+2 - desktop 2
+3 - desktop 3
+4 - desktop 4
+5 - desktop 5
+6 - desktop 6
+7 - desktop 7
+8 - desktop 8
+9 - desktop 9
+0 - desktop 10
+
+tab - switch window right
+	TAB - switch window left
+space - program runner
+	SPACE - toggle floating
+~ - open scratchpad
+	S~ - send window to scratchpad
+return - terminal
+delete - mute
+pause - play/pause
+print - screenshot
+	PRINT - screenshot part of screen
+
+left - previous track
+	LEFT - seek -10 seconds
+right - next track
+	RIGHT - seek +10 seconds
+up - volume +5
+	UP - volume +2
+down - volume -5
+	DOWN - volume -2
