@@ -9,7 +9,7 @@ rofi.hide-scrollbar:	True
 rofi.show-match:	False
 rofi.disable-history:	False
 rofi.font:      Monospace 40
-rofi.color-normal:  #141A1B, #EEEEEE, #141A1B, #141A1B, #2EB398
-rofi.color-urgent:  #141A1B, #DB5B5B, #141A1B, #141A1B, #DB5B5B
-rofi.color-active:  #141A1B, #2EB398, #141A1B, #141A1B, #2EB398
-rofi.color-window:  #141A1B, #EEEEEE, #141A1B
+rofi.color-normal:  #000000, #EEEEEE, #000000, #000000, #2EB398
+rofi.color-urgent:  #000000, #DB5B5B, #000000, #000000, #DB5B5B
+rofi.color-active:  #000000, #2EB398, #000000, #000000, #2EB398
+rofi.color-window:  #000000, #EEEEEE, #000000

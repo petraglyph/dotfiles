@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "0x5-15+70"
+    geometry = "1200x5+1320+50"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -64,7 +64,7 @@
     frame_width = 3
 
     # Defines color of the frame around the notification window.
-    frame_color = "#141A1B"
+    frame_color = "#000000"
 
     # Define a color for the separator.
     # possible values are:
@@ -129,7 +129,7 @@
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = left
+    alignment = center
 
     # Show age of message if message is older than show_age_threshold
     # seconds.
@@ -245,19 +245,21 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#141A1B"
+    background = "#000000"
     foreground = "#EEEEEE"
+    #frame_color = "#EEEEEE"
     timeout = 10
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#141A1B"
+    background = "#000000"
     foreground = "#EEEEEE"
+    #frame_color = "#2EB398"
     timeout = 10
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#141A1B"
+    background = "#000000"
     foreground = "#DB5B5B"
     frame_color = "#DB5B5B"
     timeout = 0
