@@ -1,0 +1,9 @@
+! Fonts {{{
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.hintstyle: hintfull
+Xft.dpi:       230
+! }}}
+UXTerm.vt100.scrollBar: true
+

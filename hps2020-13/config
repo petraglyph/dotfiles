@@ -1,0 +1,250 @@
+## i3 Config File Penn Bauman
+# see https://i3wm.org/docs/userguide.html for reference
+# see this config at https://github.com/pennbauman/i3-config
+
+
+### VARIABLES
+# colors (matcha-dark-sea)
+set $c-backgnd  #000000
+set $c-text     #EEEEEE
+set $c-high-n   #2EB398
+set $c-high-b   #DB5B5B
+# mod key
+set $super Mod4
+# terminal
+set $term alacritty
+# vi arrow keys
+set $left h
+set $down j
+set $up k
+set $right l
+# config location
+set $loc "$HOME/.i3-config"
+
+
+
+### APPEARANCE
+# fonts
+font pango:DejaVu Sans Mono, pango:JoyPixels 10.5
+
+## Windows Borders
+new_window pixel 0
+# window colors          border      background   text       indicator
+client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
+client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
+client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
+client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
+# i3 gaps
+gaps inner 13
+gaps outer -2
+smart_gaps on
+smart_borders on
+
+floating_minimum_size 1500 x 1000
+## Special Window Configurations
+for_window [class="Termite" title="scratch"] move scratchpad
+for_window [class="Alacritty" title="scratch"] move scratchpad
+for_window [class="Gimp-2.10"] border normal
+# windows floating by default
+for_window [class="Termite" title="float"] floating enable
+for_window [class="Alacritty" title="float"] floating enable
+for_window [class="Steam" title="Steam - News"] floating enable
+for_window [title="Java: *"] border normal
+for_window [title="Java: *"] floating enable
+for_window [class="Gcolor3"] floating enable
+for_window [class="stalonetray"] floating enable
+
+
+
+### WORKSPACES
+# workspace names
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+# switch to workspace
+bindsym $super+1 workspace $ws1
+bindsym $super+2 workspace $ws2
+bindsym $super+3 workspace $ws3
+bindsym $super+4 workspace $ws4
+bindsym $super+5 workspace $ws5
+bindsym $super+6 workspace $ws6
+bindsym $super+7 workspace $ws7
+bindsym $super+8 workspace $ws8
+bindsym $super+9 workspace $ws9
+bindsym $super+0 workspace $ws10
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace $ws1
+bindsym $super+Shift+2 move container to workspace $ws2
+bindsym $super+Shift+3 move container to workspace $ws3
+bindsym $super+Shift+4 move container to workspace $ws4
+bindsym $super+Shift+5 move container to workspace $ws5
+bindsym $super+Shift+6 move container to workspace $ws6
+bindsym $super+Shift+7 move container to workspace $ws7
+bindsym $super+Shift+8 move container to workspace $ws8
+bindsym $super+Shift+9 move container to workspace $ws9
+bindsym $super+Shift+0 move container to workspace $ws10
+# workspace assignments
+assign [class="Firefox"] $ws2
+assign [class="firefox"] $ws2
+assign [class="Google-chrome"] $ws3
+assign [class="Gimp"] $ws7
+assign [class="Inkscape"] $ws7
+assign [class="Transmission-gtk"] $ws9
+assign [class="Spotify"] $ws10
+assign [class="Rhythmbox"] $ws10
+assign [class="Termite" title="ncmpcpp"] $ws10
+assign [class="Alacritty" title="ncmpcpp"] $ws10
+
+
+
+### WINDOWS ARRANGEMENT
+## General Window Controls
+# change focused Window
+bindsym $super+$left focus left
+bindsym $super+$down focus down
+bindsym $super+$up focus up
+bindsym $super+$right focus right
+# change focused Window
+bindsym $super+Tab focus right
+bindsym $super+Shift+Tab focus left
+# move focused window
+bindsym $super+Shift+$left move left
+bindsym $super+Shift+$down move down
+bindsym $super+Shift+$up move up
+bindsym $super+Shift+$right move right
+# container layout
+bindsym $super+t layout toggle tabbed split
+# toggle split  orientation
+bindsym $super+Shift+t split toggle
+# toggle tiling / floating
+bindsym $super+Shift+space floating toggle
+# kill focused window
+bindsym $super+Shift+q kill
+
+## Scratchpad
+# move currently window to scratchpad
+bindcode $super+Shift+49 move scratchpad
+# show or hide scratchpad window
+bindcode $super+49 scratchpad show
+
+## Resizing Windows
+bindsym $super+r mode "resize"
+mode "resize" {
+	# large
+	bindsym $left   resize shrink width 100 px or 10 ppt
+	bindsym $down   resize grow height 100 px or 10 ppt
+	bindsym $up     resize shrink height 100 px or 10 ppt
+	bindsym $right  resize grow width 100 px or 10 ppt
+	# small
+	bindsym Shift+$left   resize shrink width 10 px or 10 ppt
+	bindsym Shift+$down   resize grow height 10 px or 10 ppt
+	bindsym Shift+$up     resize shrink height 10 px or 10 ppt
+	bindsym Shift+$right  resize grow width 10 px or 10 ppt
+	# exit resize mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $super+r mode "default"
+}
+
+
+
+### KEYBOARD SHORTCUTS
+## Program Launching
+bindsym $super+space exec rofi --enable-drun -show drun
+# start terminal
+bindsym $super+Return exec $term
+# start calculator
+bindsym $super+c exec $term -t float -e qalc
+# Custom script runner
+bindsym $super+x exec $term -t float -e sh $HOME/documents/linux/scripts/quick-run.sh
+# Show/hide tray
+bindsym $super+p exec sh $loc/scripts/stalonetray.sh
+
+
+## System Buttons
+# volume controls
+bindsym XF86AudioRaiseVolume exec pamixer --increase 5 --allow-boost --unmute
+bindsym XF86AudioLowerVolume exec pamixer --decrease 5 --allow-boost --unmute
+bindsym XF86AudioMute exec pamixer --toggle-mute
+# volume controls
+bindsym $super+Up exec pamixer --increase 5 --allow-boost --unmute
+bindsym $super+Down exec pamixer --decrease 5 --allow-boost --unmute
+bindsym $super+Shift+Up exec pamixer --increase 2 --allow-boost --unmute
+bindsym $super+Shift+Down exec pamixer --decrease 2 --allow-boost --unmute
+bindsym $super+Delete exec pamixer --toggle-mute
+# media controls
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+# media controls
+bindsym Pause exec mpc toggle
+bindsym $super+Left exec mpc prev
+bindsym $super+Right exec mpc next
+bindsym $super+Shift+Left exec mpc seek -0:0:10
+bindsym $super+Shift+Right exec mpc seek +0:0:10
+# screen brightness controls
+bindsym XF86MonBrightnessUp exec sh $loc/scripts/dimlight.sh +
+bindsym XF86MonBrightnessDown exec sh $loc/scripts/dimlight.sh -
+bindsym $super+Prior exec sh $loc/scripts/dimlight.sh +
+bindsym $super+Next exec sh $loc/scripts/dimlight.sh -
+
+## i3 Control
+# restart i3
+bindsym $super+Shift+Escape restart
+# exit i3
+bindsym $super+Escape exec $term -t float -e $loc/scripts/i3exit.sh
+# lock i3
+bindsym $super+z exec sh $loc/scripts/i3locker.sh dark
+# screenshots
+bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/'
+bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/' -s
+
+## Folder Opening
+# open ~/
+bindsym $super+f exec $term -e ranger --selectfile=$HOME/documents $HOME/documents $HOME/documents
+# open ~/downloads
+bindsym $super+d exec $term -e ranger $HOME/downloads $HOME/documents $HOME/documents
+# open ~/videos
+bindsym $super+v exec $term -e ranger $HOME/videos $HOME/documents $HOME/documents
+# open /
+bindsym $super+Shift+r exec $term -e ranger / / $HOME/documents
+# open dnd
+bindsym $super+Shift+d exec $term -e ranger $HOME/documents/dnd $HOME/documents/dnd/5e-books $HOME/documents
+# open 5e-books
+bindsym $super+Shift+b exec $term -e ranger $HOME/documents/dnd/5e-books $HOME/documents/dnd $HOME/documents
+# open pCloudDrive
+bindsym $super+Shift+c exec $term -e ranger $HOME/pCloudDrive $HOME/documents $HOME/documents
+# open site
+bindsym $super+Shift+v exec $term -e ranger $HOME/documents/code/site $HOME/documents $HOME/documents
+# open college
+bindsym $super+Shift+e exec $term -e ranger $HOME/documents/college $HOME/documents $HOME/documents
+
+
+
+### STARTUP PROGRAMS
+## Run on i3 Startup
+# user windows
+exec $term
+exec $term
+exec $term -t scratch
+exec firefox
+exec sh $loc/scripts/ncmpcpp-start.sh $term
+# screen and appearance daemons
+exec picom -b -f -D 1
+exec xidlehook --not-when-fullscreen --not-when-audio --timer 120 "xset dpms force off" "" --timer 30 "sh $loc/scripts/i3locker.sh" "" --timer 150 "systemctl suspend"
+exec dunst
+# files and background processes
+exec pcloud
+exec sh $loc/scripts/dimlight.sh
+exec sh $loc/scripts/network-start.sh
+
+## Run on i3 Restart
+exec_always sh $loc/scripts/polybar-start.sh hps2020-13
+exec_always feh --bg-fill $loc/hps2020-13/background.png

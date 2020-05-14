@@ -1,7 +1,8 @@
 ; Polybar Config
 
 [colors]
-background = #141A1B
+;background = #141A1B
+background = #000000
 primary = #EEEEEE
 secondary = #2EB398
 alert = #DB5B5B
@@ -28,7 +29,7 @@ font-1 = "Material Design Icons:size=28;0"
 modules-left = i3ws mpd
 modules-center = datetime
 ;weather
-modules-right = updates network-hps2017-15 volume memory cpu battery
+modules-right = updates-yay network-hps2017-15 volume memory cpu battery
 ; storage transmission
 
 [bar/hps2017-15-hdmi]
@@ -54,6 +55,28 @@ modules-center = datetime
 modules-right = volume cpu battery
 
 
+[bar/hps2020-13]
+width = 100%
+height = 50
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.primary}
+line-size = 0
+line-color = ${colors.background}
+border-size = 0
+padding-left = 1
+padding-right = 1
+module-margin-left = 0
+module-margin-right = 1
+;
+font-0 = DejaVu Sans Mono:size=24;0
+font-1 = "Material Design Icons:size=28;0"
+;
+modules-left = i3ws mpd
+modules-center = datetime
+modules-right = updates-dnf network-hps2020-13 volume memory cpu battery
+
+
 [bar/x570-2020]
 ;monitor = DisplayPort-0 DisplayPort-1 DisplayPort-3
 width = 100%
@@ -75,7 +98,7 @@ font-1 = "Material Design Icons:size=28;0"
 modules-left = i3ws mpd
 modules-center = datetime
 ;weather
-modules-right = updates network-x570-2020 volume memory cpu transmission
+modules-right = updates-yay network-x570-2020 volume memory cpu transmission
 
 [bar/x570-2020-hdmi]
 monitor = HDMI-A-0
@@ -104,7 +127,7 @@ modules-right = volume cpu battery
 ; LEFT MODULES
 [module/i3ws]
 type = internal/i3
-;         
+;
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
@@ -262,24 +285,24 @@ scroll-down = pamixer --increase 5 --allow-boost
 type = custom/script
 interval = 1
 label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.bin/x570-2020-net-conky
+exec = conky -c $HOME/.bin/netconky-x570-2020
+tail = true
+
+[module/network-hps2020-13]
+type = custom/script
+interval = 1
+label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.bin/netconky-hps2020-13
 tail = true
 
 [module/network-hps2017-15]
 type = custom/script
 interval = 1
 label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.bin/hps2017-15-net-conky
+exec = conky -c $HOME/.bin/newconky-hps2017-15
 tail = true
 
-[module/network-hps2017-15-short]
-type = custom/script
-interval = 1
-label = %output%
-exec = conky -c $HOME/.bin/hps2017-15-net-conky-short
-tail = true
-
-[module/updates]
+[module/updates-yay]
 type = custom/script
 interval = 120
 label = %output%
@@ -287,3 +310,10 @@ exec = echo "%{A:termite --title="float" -e "yay":}%{F#DB5B5B}%{F}$(yay -Qu |
 exec-if = [[ $(yay -Qu | wc -l) != 0 ]]
 tail = true
 
+[module/updates-dnf]
+type = custom/script
+interval = 120
+label = %output%
+exec = echo "%{F#DB5B5B}%{F}"
+exec-if = [ $(dnf check-update) -ne 100 ]
+tail = true
