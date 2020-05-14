@@ -1,11 +1,13 @@
 #!/bin/sh
 
-current=$(cat $HOME/.dimbright)
+current=$(sed '1q;d' $HOME/.dimbright)
 echo "$current"
 
 new=$($HOME/.bin/brightcalc $current $1)
 echo $new
 
 echo "$new" > $HOME/.dimbright
-killall redshift
-redshift -r -b "$new:$new" -l "38:-78" &
+prev=$(pgrep redshift)
+#redshift -P -o -r -b "$new:$new"
+redshift -r -b $new -l "38:-78" &
+kill $prev

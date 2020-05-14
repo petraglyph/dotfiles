@@ -1,21 +1,6 @@
 #/bin/sh
 # i3 Exit
 
-function pacmaner {
-	if [ ! -z $(yay -Qu) ]; then
-		echo "$(yay -Qu | wc -l) packages ready to update"
-		while true; do
-			read -p "Would you like to update? [y/n] " $answer
-			case $answer in
-				y|Y) yay 
-					break;;
-				n|N) break;; 
-				*) echo 'Please enter "y" or "n"';;
-			esac
-		done
-	fi
-}
-
 echo "i3 System"
 echo "  [s] shutdown"
 echo "  [r] reboot"
@@ -25,11 +10,9 @@ echo "  [c] cancel"
 while true; do 
     read -p ": " t
 	case $t in
-		s) pacmaner
-			shutdown
+		s) systemctl poweroff
 			exit 0;;
-		r) pacmaner
-			reboot
+		r) systemctl reboot
 			exit 0;;
 		e) i3-msg exit
 			exit 0;;
