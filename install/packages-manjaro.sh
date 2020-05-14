@@ -3,7 +3,6 @@
 pgms="
 bluez
 bluez-utils
-calc
 conky
 dunst
 firefox
@@ -13,6 +12,7 @@ i3exit
 i3lock-color
 jq
 kdeconnect
+libqalculate
 ly
 mpc
 mpd

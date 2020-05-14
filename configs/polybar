@@ -299,7 +299,7 @@ tail = true
 type = custom/script
 interval = 1
 label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.bin/newconky-hps2017-15
+exec = conky -c $HOME/.bin/netconky-hps2017-15
 tail = true
 
 [module/updates-yay]

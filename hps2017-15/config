@@ -6,7 +6,7 @@
 
 ### VARIABLES
 # colors (matcha-dark-sea)
-set $c-backgnd  #141A1B
+set $c-backgnd  #000000
 set $c-text     #EEEEEE
 set $c-high-n   #2EB398
 set $c-high-b   #DB5B5B
@@ -179,9 +179,9 @@ bindsym $super+space exec rofi --enable-drun -show drun
 # start terminal
 bindsym $super+Return exec $term
 # start calculator
-bindsym $super+c exec $term --title="float" -e "calc -i read $loc/configs/val.cal"
+bindsym $super+c exec $term --title="float" -e "qalc"
 # Custom script runner
-bindsym $super+x exec $term --title="float" -e "sh $HOME/Storage/linux/scripts/quick-run.sh"
+bindsym $super+x exec $term --title="float" -e "sh $HOME/documents/linux/scripts/quick-run.sh"
 # Show/hide tray
 bindsym $super+p exec sh $loc/scripts/stalonetray.sh
 
@@ -226,25 +226,23 @@ bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/
 
 ## Folder Opening
 # open ~/
-bindsym $super+f exec $term -e "ranger --selectfile=$HOME/Documents $HOME/Storage $HOME/Storage"
+bindsym $super+f exec $term -e "ranger --selectfile=$HOME/documents $HOME/documents $HOME/documents"
 # open ~/downloads
-bindsym $super+d exec $term -e "ranger $HOME/downloads $HOME/Storage $HOME/Storage"
+bindsym $super+d exec $term -e "ranger $HOME/downloads $HOME/documents $HOME/documents"
 # open ~/videos
-bindsym $super+v exec $term -e "ranger $HOME/Storage/videos $HOME/Storage $HOME/Storage"
+bindsym $super+v exec $term -e "ranger $HOME/videos $HOME/documents $HOME/documents"
 # open /
-bindsym $super+Shift+r exec $term -e "ranger / / $HOME/Storage"
+bindsym $super+Shift+r exec $term -e "ranger / / $HOME/documents"
 # open dnd
-bindsym $super+Shift+d exec $term -e "ranger $HOME/Storage/dnd $HOME/Storage/dnd/5e-books $HOME/Storage"
+bindsym $super+Shift+d exec $term -e "ranger $HOME/documents/dnd $HOME/documents/dnd/5e-books $HOME/documents"
 # open 5e-books
-bindsym $super+Shift+b exec $term -e "ranger $HOME/Storage/dnd/5e-books $HOME/Storage/dnd $HOME/Storage"
+bindsym $super+Shift+b exec $term -e "ranger $HOME/documents/dnd/5e-books $HOME/documents/dnd $HOME/documents"
 # open pCloudDrive
-bindsym $super+Shift+c exec $term -e "ranger $HOME/pCloudDrive $HOME/Storage $HOME/Storage"
+bindsym $super+Shift+c exec $term -e "ranger $HOME/pCloudDrive $HOME/documents $HOME/documents"
 # open site
-bindsym $super+Shift+v exec $term -e "ranger $HOME/Storage/code/site $HOME/Storage $HOME/Storage"
-# open storage
-bindsym $super+Shift+f exec $term -e "ranger $HOME/Storage $HOME/Storage $HOME/Storage"
+bindsym $super+Shift+v exec $term -e "ranger $HOME/documents/code/site $HOME/documents $HOME/documents"
 # open college
-bindsym $super+Shift+e exec $term -e "ranger $HOME/Storage/college $HOME/Storage $HOME/Storage"
+bindsym $super+Shift+e exec $term -e "ranger $HOME/documents/college $HOME/documents $HOME/documents"
 
 
 
@@ -264,9 +262,9 @@ exec dunst
 exec syndaemon -i 1 -t -K -R -d
 # files and background processes
 exec pcloud
-exec rm -rf /home/penn/Storage/\$RECYCLE.BIN/
-exec rm -rf /home/penn/Storage/System\ Volume\ Information/
-exec rm -f /home/penn/Storage/pagefile.sys
+#exec rm -rf /home/penn/Storage/\$RECYCLE.BIN/
+#exec rm -rf /home/penn/Storage/System\ Volume\ Information/
+#exec rm -f /home/penn/Storage/pagefile.sys
 exec --no-startup-id /usr/lib/kdeconnectd
 exec sh $loc/scripts/network-start.sh
 # technical
