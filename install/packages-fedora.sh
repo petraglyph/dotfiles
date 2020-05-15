@@ -31,6 +31,7 @@ termite
 openvpn
 python3-pip
 jq
+latexmk
 nodejs
 texlive-latex
 the_silver_searcher
