@@ -6,8 +6,8 @@ sudo dnf -y update
 
 echo "Enabling copr Repositories"
 sudo dnf copr enable opuk/pamixer 1> /dev/null
-sudo dnf copr enable skidnik/termite !> /dev/null
-sudo dnf copr enable yaroslav/i3desktop !> /dev/null
+sudo dnf copr enable skidnik/termite 1> /dev/null
+sudo dnf copr enable yaroslav/i3desktop 1> /dev/null
 #sudo dnf copr enable pschyska/alacritty 1> /dev/null
 
 echo "Enabling Google Chrome"

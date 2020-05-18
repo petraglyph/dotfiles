@@ -3,14 +3,14 @@
 CLONE_LOC=$HOME/.builds
 mkdir -p $CLONE_LOC
 
-sudo dnf -y install cargo libX11-devel
+sudo dnf -y install cargo libX11-devel 1> /dev/null
 cargo install xidlehook
 
 cd $CLONE_LOC
 
 sudo dnf -y install autoconf automake libev-devel cairo-devel pam-devel \
 	xcb-util-image-devel xcb-util-devel xcb-util-xrm-devel \
-	libxkbcommon-devel libxkbcommon-x11-devel libjpeg-turbo-devel
+	libxkbcommon-devel libxkbcommon-x11-devel libjpeg-turbo-devel 1> /dev/null
 if [ ! -d $CLONE_LOC/i3lock-color ]; then
 	git clone https://github.com/Raymo111/i3lock-color.git
 fi

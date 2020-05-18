@@ -315,5 +315,5 @@ type = custom/script
 interval = 120
 label = %output%
 exec = echo "%{F#DB5B5B}%{F}"
-exec-if = [ $(dnf check-update) -ne 100 ]
+exec-if = dnf check-update; [ $? -eq 100 ]
 tail = true
