@@ -1,17 +1,14 @@
 # Directory Bookmarks
-export img="$HOME/Storage/images"
-export code="$HOME/Storage/code"
-export dnd="$HOME/Storage/dnd"
+export img="$HOME/documents/images"
+export code="$HOME/documents/code"
+export dnd="$HOME/documents/dnd"
 
-export linux="$HOME/Storage/linux"
-export notes="$HOME/Storage/linux/notes"
-export sh="$HOME/Storage/linux/scripts"
+export linux="$HOME/documents/linux"
+export notes="$HOME/documents/linux/notes"
+export sh="$HOME/documents/linux/scripts"
 
-export college="$HOME/Storage/college"
-export cs="$HOME/Storage/college/cs4102"
-export phys="$HOME/Storage/college/phys3210"
-export apma="$HOME/Storage/college/apma3100"
-export sts="$HOME/Storage/college/sts2500"
+export college="$HOME/documents/college"
+export cs="$HOME/documents/college/cs3710"
 
-export site="$HOME/Storage/code/site"
-export pbsite="$HOME/Storage/code/site/pennbauman.com"
+export site="$HOME/documents/code/site"
+export pbsite="$HOME/documents/code/site/pennbauman.com"

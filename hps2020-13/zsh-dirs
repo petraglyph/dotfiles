@@ -8,10 +8,7 @@ export notes="$HOME/documents/linux/notes"
 export sh="$HOME/documents/linux/scripts"
 
 export college="$HOME/documents/college"
-export cs="$HOME/documents/college/cs4102"
-export phys="$HOME/documents/college/phys3210"
-export apma="$HOME/documents/college/apma3100"
-export sts="$HOME/documents/college/sts2500"
+export cs="$HOME/documents/college/cs3710"
 
 export site="$HOME/documents/code/site"
 export pbsite="$HOME/documents/code/site/pennbauman.com"

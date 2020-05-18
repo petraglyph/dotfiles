@@ -4,4 +4,4 @@ Xft.hinting:   true
 Xft.rgba:      rgb
 Xft.hintstyle: hintfull
 ! }}}
-Xft.dpi:       230
+Xft.dpi:       220
