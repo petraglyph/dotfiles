@@ -1,13 +1,25 @@
-# i3 Config Files
+# i3 Configuration Files
+Personal configuration files for the i3 window manager for Linux.
 
-### Install
-To install config files and scripts run:
+## Installation
+For the installation to function properly the repository must be cloned to `~/.i3-config`.
+To install configuration files and scripts move to the directory and run:
 
-	./primary/install.sh
+	./install/configure.sh
 
-To install programs install [yay](https://github.com/Jguer/yay), then run:
+#### Programs on Manjaro
+To install programs on Manjaro, ensure [yay](https://github.com/Jguer/yay) is installed, then run:
 
-	./programs.sh
+	./install/packages-manjaro.sh
 
-#### Material Design Icons
+#### Programs on Manjaro
+To install programs on Fedora run:
+
+	./install/packages-fedora.sh
+
+And to install programs not provided by Fedora or Copr packages run:
+
+	./install/builds-fedora.sh
+
+### Material Design Icons
 Source [github](https://github.com/google/material-design-icons)
