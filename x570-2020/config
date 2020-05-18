@@ -5,7 +5,7 @@
 
 ### VARIABLES
 # colors (matcha-dark-sea)
-set $c-backgnd  #141A1B
+set $c-backgnd  #000000
 set $c-text     #EEEEEE
 set $c-high-n   #2EB398
 set $c-high-b   #DB5B5B
@@ -19,7 +19,7 @@ set $down j
 set $up k
 set $right l
 # config location
-set $loc "/home/penn/.i3-config"
+set $loc "$HOME/.i3-config"
 
 
 
