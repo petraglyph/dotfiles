@@ -10,11 +10,32 @@ if [[ $1 == "network" ]]; then
 	ip6=$(echo $"$info" | grep "IP6.ADDRESS" | head -n 1 | cut -d":" -f 2,3,4,5,6,7)
 	mac=$(echo $"$info" | grep "GENERAL.HWADDR" | head -n 1 | cut -d":" -f 2,3,4,5,6,7)
 	notify-send -u low -t 5000 "Network" "$(printf 'IP4: %s\nIP6: %s\nMAC: %s' $ip4 $ip6 $mac)"
-	echo "1" >> /home/penn/Storage/Linux/i3-config/scripts/log
 	exit 0
-elif [[ $1 == "disk" ]]; then 
-	main=$(df -h | grep "/$" | cut -d"%" -f 1)
-	store=$(df -h | grep "/home/penn/storage" | cut -d"%" -f 1)
-	pcloud=$(df -h | grep "/home/penn/pCloudDrive" | cut -d"%" -f 1)
-	exec dunstify -u low -t 5000 "Storage" "$(printf 'Disk:    %s%%\nStorage: %s%%\npCloud:  %s%%' ${main: -2} ${store: -2} ${pcloud: -2})"
+elif [[ $1 == "disk" ]]; then
+	root_prec="$(df -h --output / | tail -n 1 | xargs | cut -d" " -f 10)"
+	root_size="($(df -h --output / | tail -n 1 | xargs | cut -d" " -f 8)/$(df -h --output / | tail -n 1 | xargs | cut -d" " -f 9))"
+
+	home_prec="$(df -h --output /home | tail -n 1 | xargs | cut -d" " -f 10)"
+	home_size="($(df -h --output /home | tail -n 1 | xargs | cut -d" " -f 8)/$(df -h --output /home | tail -n 1 | xargs | cut -d" " -f 9))"
+
+	store_prec="$(df -h --output $HOME/storage | tail -n 1 | xargs | cut -d" " -f 10)"
+	store_size="($(df -h --output $HOME/storage | tail -n 1 | xargs | cut -d" " -f 8)/$(df -h --output $HOME/storage | tail -n 1 | xargs | cut -d" " -f 9))"
+
+	pcloud_prec="$(df -h --output $HOME/pCloudDrive | tail -n 1 | xargs | cut -d" " -f 10)"
+	pcloud_size="($(df -h --output $HOME/pCloudDrive | tail -n 1 | xargs | cut -d" " -f 8)/$(df -h --output $HOME/pCloudDrive | tail -n 1 | xargs | cut -d" " -f 9))"
+
+	message="Root:    $root_prec $(printf '%11s' $root_size)"
+	if [[ $(df -h | grep /home$ | wc -l) != 0 ]]; then
+		message="$message\nHome:    $home_prec $(printf '%11s' $home_size)"
+	fi
+	if [[ $(df -h | grep $HOME/storage$ | wc -l) != 0 ]]; then
+		message="$message\nStorage: $store_prec $(printf '%11s' $store_size)"
+	fi
+	if [[ $(df -h | grep $HOME/pCloudDrive$ | wc -l) != 0 ]]; then
+		message="$message\npCloud:  $pcloud_prec $(printf '%11s' $pcloud_size)"
+	fi
+
+	notify-send -u low -t 5000 "Storage" "$message"
+else
+	echo "No target provided"
 fi
