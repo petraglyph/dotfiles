@@ -17,9 +17,11 @@ i3lock -e --color=$backcolor --indicator --force-clock --radius=100 --ring-width
 
 # Turn the screen off after a delay.
 if [[ $1 = "dark" ]]; then
-    sleep 5
+	sleep 5
+	xset dpms force off
+if [[ $1 = "suspend" ]]; then
+	sleep 5
 	pgrep i3lock && systemctl suspend
-	#xset dpms force off
 fi
 
 
