@@ -98,7 +98,7 @@ font-1 = "Material Design Icons:size=28;0"
 modules-left = i3ws mpd
 modules-center = datetime
 ;weather
-modules-right = updates-yay network-x570-2020 volume memory cpu transmission
+modules-right = updates-dnf network-x570-2020 volume memory cpu transmission
 
 [bar/x570-2020-hdmi]
 monitor = HDMI-A-0

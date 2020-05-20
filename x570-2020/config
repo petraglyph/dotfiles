@@ -255,13 +255,13 @@ exec $term --title="scratch"
 exec firefox
 exec sh $loc/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
-exec picom -b -f --shadow-opacity=0
+exec picom -b -f -D 1
 exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 15 "sh $loc/scripts/i3locker.sh" ""
 exec --no-startup-id redshift
 exec dunst
 # files and background processes
 exec pcloud
-exec --no-startup-id /usr/lib/kdeconnectd
+#exec --no-startup-id /usr/lib/kdeconnectd
 exec sh $HOME/storage/torrents/.control/start.sh
 exec sh $loc/scripts/network-start.sh
 

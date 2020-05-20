@@ -19,7 +19,7 @@ computers=()
 for f in $loc/*; do
 	if [ -d $f ]; then
 		d=$(basename $f)
-		if [[ $d != "configs" && $d != "scripts" ]]; then
+		if [[ $d != "configs" && $d != "scripts" && $d != "install" ]]; then
 			#echo $d
 			computers+=($d)
 		fi
