@@ -78,7 +78,6 @@ modules-right = updates-dnf network-hps2020-13 volume memory cpu battery
 
 
 [bar/x570-2020]
-;monitor = DisplayPort-0 DisplayPort-1 DisplayPort-3
 width = 100%
 height = 50
 fixed-center = true
@@ -101,7 +100,7 @@ modules-center = datetime
 modules-right = updates-dnf network-x570-2020 volume memory cpu transmission
 
 [bar/x570-2020-hdmi]
-monitor = HDMI-A-0
+monitor = HDMI-1
 width = 100%
 height = 32
 fixed-center = true
