@@ -267,5 +267,5 @@ exec sh $loc/scripts/network-start.sh
 
 ## Run on i3 Restart
 exec_always sh $loc/scripts/polybar-start.sh x570-2020 x570-2020-hdmi
-exec_always feh --bg-scale $loc/x570-2020/background.jpg
+exec_always feh --bg-scale $loc/x570-2020/background.png
 exec_always xrandr --output HDMI-1 --auto --above DP-1
