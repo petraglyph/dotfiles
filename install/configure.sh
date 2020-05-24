@@ -14,6 +14,7 @@ if [[ $(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd) != $loc/in
 	exit 1
 fi
 
+
 # GET POSSIBLE COMPUTERS
 computers=()
 for f in $loc/*; do
@@ -26,31 +27,32 @@ for f in $loc/*; do
 	fi
 done
 
-# SELECT COMPUTER OR THROW ERROR
-if (( $# > 0 )); then
-	for c in "${computers[@]}"; do
-		if [[ $1 == $c ]]; then
-			comp="$1"
-		fi
-	done
-	if [[ $comp == "" ]]; then
-		echo "Unknown computer provided, options:"
-		for c in "${computers[@]}"; do
-			echo "  $c"
-		done
-		exit 1
-	fi
+if [ -z $1 ]; then
+	provided_comp=$(hostname)
 else
-	echo "A computer must be provided, options:"
+	provided_comp=$1
+fi
+
+
+# SELECT COMPUTER OR THROW ERROR
+for c in "${computers[@]}"; do
+	if [[ $provided_comp == $c ]]; then
+		comp="$provided_comp"
+	fi
+done
+if [[ $comp == "" ]]; then
+	echo "Unknown computer, a computer must be provided, options:"
 	for c in "${computers[@]}"; do
 		echo "  $c"
 	done
 	exit 1
 fi
 
+
 # REMOVE EXISTING CONFIGS
 rm -rf $HOME/.config/ranger
 sudo rm -rf /etc/X11/xorg.conf.d
+
 
 # MAKE NECESSARY DIRECTORIES
 mkdir -p $XDG_CONFIG_HOME/i3
@@ -68,6 +70,7 @@ mkdir -p $XDG_CONFIG_HOME/zathura
 mkdir -p $XDG_DATA_HOME/nvim/site/colors
 mkdir -p $XDG_DATA_HOME/nvim/site/autoload/airline/themes
 mkdir -p $XDG_DATA_HOME/fonts
+
 
 # LINK NEW CONFIGS
 ln -fs $loc/$comp/config $XDG_CONFIG_HOME/i3/config
