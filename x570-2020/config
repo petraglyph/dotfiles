@@ -12,7 +12,7 @@ set $c-high-b   #DB5B5B
 # mod key
 set $super Mod4
 # terminal
-set $term termite
+set $term alacritty
 # vi arrow keys
 set $left h
 set $down j
@@ -42,9 +42,11 @@ smart_borders on
 
 ## Special Window Configurations
 for_window [class="Termite" title="scratch"] move scratchpad
+for_window [class="Alacritty" title="scratch"] move scratchpad
 for_window [class="Gimp-2.10"] border normal
 # windows floating by default
 for_window [class="Termite" title="float"] floating enable
+for_window [class="Alacritty" title="float"] floating enable
 for_window [class="Steam" title="Steam - News"] floating enable
 for_window [title="Java: *"] border normal
 for_window [title="Java: *"] floating enable
@@ -53,6 +55,8 @@ for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 for_window [instance="sun-awt-X11-XFramePeer"] border normal
 for_window [title="MATLAB R2019b - academic use"] floating disable
 for_window [title="MATLAB R2019b - academic use"] border none
+for_window [title="Terraria: *"] floating enable
+for_window [title="Terraria: *"] border normal
 for_window [class="stalonetray"] floating enable
 
 
@@ -105,6 +109,8 @@ assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
 assign [class="Termite" title="ncmpcpp"] $ws10
 assign [class="Termite" title="hdmi"] $wsHDMI
+assign [class="Alacritty" title="ncmpcpp"] $ws10
+assign [class="Alacritty" title="hdmi"] $wsHDMI
 # workspace monitors
 workspace $ws1 output DP-1
 workspace $ws2 output DP-1
@@ -177,9 +183,9 @@ bindsym $super+space exec rofi --enable-drun -show drun
 # start terminal
 bindsym $super+Return exec $term
 # start calculator
-bindsym $super+c exec $term --title="float" -e "calc -i read $loc/configs/val.cal"
+bindsym $super+c exec $term -t float -e qalc
 # Custom script runner
-bindsym $super+x exec $term --title="float" -e "sh $HOME/documents/linux/scripts/quick-run.sh"
+bindsym $super+x exec $term -t float -e sh $HOME/documents/linux/scripts/quick-run.sh
 # Show/hide tray
 bindsym $super+p exec sh $loc/scripts/stalonetray.sh
 
@@ -215,7 +221,7 @@ bindsym $super+Next exec sh $loc/scripts/dimlight.sh -
 # restart i3
 bindsym $super+Shift+Escape restart
 # exit i3
-bindsym $super+Escape exec $term --title="float" -e "sh $loc/scripts/i3exit.sh"
+bindsym $super+Escape exec $term -t float -e sh $loc/scripts/i3exit.sh
 # lock i3
 bindsym $super+z exec sh $loc/scripts/i3locker.sh dark
 # screenshots
@@ -224,25 +230,25 @@ bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/
 
 ## Folder Opening
 # open ~/
-bindsym $super+f exec $term -e "ranger --selectfile=$HOME/documents $HOME/documents $HOME/documents"
+bindsym $super+f exec $term -e ranger --selectfile=$HOME/documents $HOME/documents $HOME/documents
 # open ~/downloads
-bindsym $super+d exec $term -e "ranger $HOME/downloads $HOME/documents $HOME/documents"
+bindsym $super+d exec $term -e ranger $HOME/downloads $HOME/documents $HOME/documents
 # open ~/videos
-bindsym $super+v exec $term -e "ranger $HOME/videos $HOME/documents $HOME/documents"
+bindsym $super+v exec $term -e ranger $HOME/videos $HOME/documents $HOME/documents
 # open /
-bindsym $super+Shift+r exec $term -e "ranger / / $HOME/documents"
+bindsym $super+Shift+r exec $term -e ranger / / $HOME/documents
 # open dnd
-bindsym $super+Shift+d exec $term -e "ranger $HOME/documents/dnd $HOME/documents/dnd/5e-books $HOME/documents"
+bindsym $super+Shift+d exec $term -e ranger $HOME/documents/dnd $HOME/documents/dnd/5e-books $HOME/documents
 # open 5e-books
-bindsym $super+Shift+b exec $term -e "ranger $HOME/documents/dnd/5e-books $HOME/documents/dnd $HOME/documents"
+bindsym $super+Shift+b exec $term -e ranger $HOME/documents/dnd/5e-books $HOME/documents/dnd $HOME/documents
 # open pCloudDrive
-bindsym $super+Shift+c exec $term -e "ranger $HOME/pCloudDrive $HOME/documents $HOME/documents"
+bindsym $super+Shift+c exec $term -e ranger $HOME/pCloudDrive $HOME/documents $HOME/documents
 # open site
-bindsym $super+Shift+v exec $term -e "ranger $HOME/documents/code/site $HOME/documents $HOME/documents"
+bindsym $super+Shift+v exec $term -e ranger $HOME/documents/code/site $HOME/documents $HOME/documents
 # open storage
-bindsym $super+Shift+f exec $term -e "ranger $HOME/storage $HOME/documents $HOME/documents"
+bindsym $super+Shift+f exec $term -e ranger $HOME/storage $HOME/documents $HOME/documents
 # open college
-bindsym $super+Shift+e exec $term -e "ranger $HOME/documents/college $HOME/documents $HOME/documents"
+bindsym $super+Shift+e exec $term -e ranger $HOME/documents/college $HOME/documents $HOME/documents
 
 
 

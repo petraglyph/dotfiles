@@ -9,9 +9,9 @@ sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 
 echo "Enabling copr Repositories"
 sudo dnf -y copr enable opuk/pamixer 1> /dev/null
-sudo dnf -y copr enable skidnik/termite 1> /dev/null
 sudo dnf -y copr enable yaroslav/i3desktop 1> /dev/null
-#sudo dnf -y copr enable pschyska/alacritty 1> /dev/null
+sudo dnf -y copr enable pschyska/alacritty 1> /dev/null
+#sudo dnf -y copr enable skidnik/termite 1> /dev/null
 
 echo "Enabling Google Chrome"
 sudo dnf -y install fedora-workstation-repositories 1> /dev/null
@@ -29,7 +29,7 @@ polybar
 stalonetray
 picom
 dunst
-termite
+alacritty
 
 openvpn
 python3-pip
