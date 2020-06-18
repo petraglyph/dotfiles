@@ -3,3 +3,4 @@
 	name = Penn Bauman
 [core]
 	excludesfile = **~
+	pager = less -x4

@@ -20,6 +20,7 @@ COMPLETION_WAITING_DOTS="true"
 unsetopt share_history
 bindkey -r '^[[Z'
 zstyle ':completion:*' list-colors
+tabs -4
 #plugins=(git)
 
 # Externals
@@ -57,6 +58,7 @@ precmd_functions+=set_prompt
 alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"
+alias less="less -x4"
 alias feh="feh -B '#141a1b' $@"
 alias vim="nvim $@"
 alias svim="sudoedit $@"
