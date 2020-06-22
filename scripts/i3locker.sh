@@ -1,6 +1,6 @@
 #/bin/sh -e
 # $ bash ~/.i3/scripts/i3locker.#!/bin/sh
-    
+
 ## Color i3lock
 backcolor="000000FF"
 plaincolor="EEEEEEFF"
@@ -19,9 +19,7 @@ i3lock -e --color=$backcolor --indicator --force-clock --radius=100 --ring-width
 if [[ $1 = "dark" ]]; then
 	sleep 5
 	xset dpms force off
-if [[ $1 = "suspend" ]]; then
-	sleep 5
-	pgrep i3lock && systemctl suspend
+elif [[ $1 = "suspend" ]]; then
+	sleep 1
+	systemctl suspend
 fi
-
-
