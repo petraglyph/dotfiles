@@ -81,6 +81,9 @@ echo "Setting Up ZSH"
 sudo chsh -s /usr/bin/zsh root
 chsh -s /usr/bin/zsh
 
+echo "Installing Sass"
+sudo npm install -g sass > /dev/null
+
 echo "Install Desktop Programs?"
 while true; do
     read -p "[y/n]: " n
