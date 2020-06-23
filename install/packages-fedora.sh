@@ -68,14 +68,16 @@ echo "Install Packages"
 sudo dnf -y install $packages 1> /dev/null
 
 echo "Installing Flatpaks"
+flatpaks="
+org.gimp.GIMP
+org.inkscape.Inkscape
+com.valvesoftware.Steam
+org.signal.Signal
+com.mojang.Minecraft
+"
 sudo dnf -y install flatpak 1> /dev/null
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 1> /dev/null
-
-sudo flatpak -y install flathub org.gimp.GIMP 1> /dev/null
-sudo flatpak -y install flathub org.inkscape.Inkscape 1> /dev/null
-sudo flatpak -y install flathub com.valvesoftware.Steam 1> /dev/null
-sudo flatpak -y install flathub org.signal.Signal 1> /dev/null
-sudo flatpak -y install flathub com.mojang.Minecraft 1> /dev/null
+sudo flatpak -y install flathub $flatpaks 1> /dev/null
 
 echo "Setting Up ZSH"
 sudo chsh -s /usr/bin/zsh root
@@ -85,10 +87,15 @@ echo "Installing Sass"
 sudo npm install -g sass > /dev/null
 
 echo "Install Desktop Programs?"
+desktop="
+transmission-daemon
+transmission-remote-gtk
+fahclient
+"
 while true; do
     read -p "[y/n]: " n
 	case $n in
-		y|Y) sudo dnf -y install transmission-daemon transmission-remote-gtk 1> /dev/null 
+		y|Y) sudo dnf -y install $desktop 1> /dev/null 
 			break;;
 		n|N) break;;
 		*) echo "Please enter 'y' or 'n'";;
