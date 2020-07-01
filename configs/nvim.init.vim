@@ -133,6 +133,11 @@ let g:coc_global_extensions=[
 " NERD Commenter
 nmap c V\ci
 vmap c \cc
+let g:NERDCustomDelimiters = {
+	\ 'c': {'left': '//', 'right': ''},
+	\ 'python': {'left': '#', 'right': ''}
+	\ }
+
 
 
 " VimTeX
