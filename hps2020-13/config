@@ -67,6 +67,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $wsHDMI "HDMI"
 # switch to workspace
 bindsym $super+1 workspace $ws1
 bindsym $super+2 workspace $ws2
@@ -78,6 +79,7 @@ bindsym $super+7 workspace $ws7
 bindsym $super+8 workspace $ws8
 bindsym $super+9 workspace $ws9
 bindsym $super+0 workspace $ws10
+bindsym $super+m workspace $wsHDMI
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace $ws1
 bindsym $super+Shift+2 move container to workspace $ws2
@@ -89,6 +91,7 @@ bindsym $super+Shift+7 move container to workspace $ws7
 bindsym $super+Shift+8 move container to workspace $ws8
 bindsym $super+Shift+9 move container to workspace $ws9
 bindsym $super+Shift+0 move container to workspace $ws10
+bindsym $super+Shift+m move container to workspace $wsHDMI
 # workspace assignments
 assign [class="Firefox"] $ws2
 assign [class="firefox"] $ws2
@@ -100,6 +103,18 @@ assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
 assign [class="Termite" title="ncmpcpp"] $ws10
 assign [class="Alacritty" title="ncmpcpp"] $ws10
+# workspace monitors
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+workspace $ws6 output eDP-1
+workspace $ws7 output eDP-1
+workspace $ws8 output eDP-1
+workspace $ws9 output eDP-1
+workspace $ws10 output eDP-1
+workspace $wsHDMI output DP-2
 
 
 
@@ -241,9 +256,12 @@ exec xidlehook --not-when-fullscreen --not-when-audio --timer 120 "xset dpms for
 exec dunst
 # files and background processes
 exec pcloud
+exec --no-startup-id /usr/libexec/kdeconnectd
 exec sh $loc/scripts/dimlight.sh
 exec sh $loc/scripts/network-start.sh
 
 ## Run on i3 Restart
-exec_always sh $loc/scripts/polybar-start.sh hps2020-13
+exec_always sh $loc/scripts/polybar-start.sh hps2020-13 hps2020-13-hdmi
 exec_always feh --bg-fill $loc/hps2020-13/background.png
+#exec_always xrandr --output DP-1 --auto --above eDP-1
+exec_always xrandr --output DP-2 --auto --above eDP-1

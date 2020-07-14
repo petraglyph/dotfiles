@@ -52,7 +52,8 @@ font-1 = "Material Design Icons:size=16;0"
 ;
 modules-left = hdmi
 modules-center = datetime
-modules-right = volume cpu battery
+modules-right = network-hps2017-15 volume cpu battery
+
 
 
 [bar/hps2020-13]
@@ -75,6 +76,29 @@ font-1 = "Material Design Icons:size=28;0"
 modules-left = i3ws mpd
 modules-center = datetime
 modules-right = updates-dnf network-hps2020-13 volume memory cpu battery
+
+[bar/hps2020-13-hdmi]
+monitor = DP-2
+width = 100%
+height = 32
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.primary}
+line-size = 0
+line-color = ${colors.background}
+border-size = 0
+padding-left = 1
+padding-right = 1
+module-margin-left = 0
+module-margin-right = 1
+;
+font-0 = DejaVu Sans Mono:size=14;0
+font-1 = "Material Design Icons:size=16;0"
+;
+modules-left = hdmi
+modules-center = datetime
+modules-right = network-hps2020-13 volume cpu battery
+
 
 
 [bar/x570-2020]
