@@ -72,6 +72,7 @@ org.inkscape.Inkscape
 com.valvesoftware.Steam
 org.signal.Signal
 com.mojang.Minecraft
+com.discordapp.Discord
 "
 sudo dnf -y install flatpak 1> /dev/null
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 1> /dev/null
