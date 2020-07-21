@@ -19,6 +19,7 @@ sudo dnf config-manager --set-enabled google-chrome 1> /dev/null
 
 packages="
 alacritty
+android-tools
 clang
 conky
 dmenu
@@ -32,6 +33,7 @@ htop
 i3-gaps
 i3status
 jq
+kdeconnectd
 latexmk
 lxappearance
 mpc
