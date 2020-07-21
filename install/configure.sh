@@ -87,6 +87,7 @@ ln -fs $loc/configs/rofi-config $XDG_CONFIG_HOME/rofi/config
 ln -fs $loc/configs/termite $XDG_CONFIG_HOME/termite/config
 ln -fs $loc/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
 ln -fs $loc/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
+ln -fs $loc/configs/coc-settings.json $XDG_CONFIG_HOME/nvim/coc-settings.json
 
 ln -fs $loc/configs/profile $HOME/.profile
 ln -fs $loc/configs/stalonetrayrc $HOME/.stalonetrayrc
