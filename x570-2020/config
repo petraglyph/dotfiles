@@ -185,7 +185,7 @@ bindsym $super+Return exec $term
 # start calculator
 bindsym $super+c exec $term -t float -e qalc
 # Custom script runner
-bindsym $super+x exec $term -t float -e sh $HOME/documents/linux/scripts/quick-run.sh
+bindsym $super+x exec $term -t float -e sh $HOME/documents/other/linux/scripts/quick-run.sh
 # Show/hide tray
 bindsym $super+p exec sh $loc/scripts/stalonetray.sh
 
@@ -267,7 +267,7 @@ exec --no-startup-id redshift
 exec dunst
 # files and background processes
 exec pcloud
-#exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id /usr/libexec/kdeconnectd
 exec sh $HOME/storage/torrents/.control/start.sh
 exec sh $loc/scripts/network-start.sh
 
