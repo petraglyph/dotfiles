@@ -210,12 +210,6 @@ time = "%a %Y-%m-%d %H:%M:%S"
 format-underline = ${colors.secondary}
 label = %time%
 
-[module/weather]
-type = custom/script
-interval = 100
-label = %output%
-exec = bash ~/.bin/darksky-weather.sh bar
-
 
 ; RIGHT MODULES
 [module/transmission]
@@ -270,7 +264,7 @@ ramp-load-4 = %{F#DB5B5B}%{F}
 [module/memory]
 type = internal/memory
 interval = 5
-format = %{A:bash /home/penn/.bin/system-notify.sh disk:}<ramp-used><label>%{A}
+format = %{A:bash /home/penn/.i3-config/scripts/system-notify.sh disk:}<ramp-used><label>%{A}
 label = %percentage_used:02%% %percentage_swap_used:02%%
 ;
 ramp-used-0 = %{F#2EB398}%{F}
@@ -295,7 +289,7 @@ label-mounted = %percentage_used%%
 type = custom/script
 interval = 1
 label = %output%
-exec = ~/.bin/volume.sh
+exec = ~/.i3-config/scripts/volume.sh
 ;exec-if = [ -p /tmp/.xmonad-workspace-log ]
 tail = true
 scroll-up = pamixer --decrease 5 --allow-boost 
@@ -304,22 +298,22 @@ scroll-down = pamixer --increase 5 --allow-boost
 [module/network-x570-2020]
 type = custom/script
 interval = 1
-label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.bin/netconky-x570-2020
+label = %{A:bash /home/penn/.i3-config/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.i3-config/scripts/netconky-x570-2020
 tail = true
 
 [module/network-hps2020-13]
 type = custom/script
 interval = 1
-label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.bin/netconky-hps2020-13
+label = %{A:bash /home/penn/.i3-config/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.i3-config/scripts/netconky-hps2020-13
 tail = true
 
 [module/network-hps2017-15]
 type = custom/script
 interval = 1
-label = %{A:bash /home/penn/.bin/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.bin/netconky-hps2017-15
+label = %{A:bash /home/penn/.i3-config/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.i3-config/scripts/netconky-hps2017-15
 tail = true
 
 [module/updates-yay]

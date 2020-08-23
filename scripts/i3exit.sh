@@ -16,10 +16,6 @@ while true; do
 			exit 0;;
 		e) i3-msg exit
 			exit 0;;
-		#z) bash ~/.bin/i3locker.sh
-			#xset dpms force off
-			#i3exit suspend
-			#exit 0;;
 		c) exit 0;;
 		*) echo " Invalid input."
 	esac

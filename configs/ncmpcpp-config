@@ -7,7 +7,7 @@ mpd_connection_timeout = 5
 mpd_music_dir = ~/music
 
 # Settings
-#execute_on_song_change = bash ~/.bin/ncmpcpp-notifier.sh
+#execute_on_song_change = bash ~/.i3-config/scripts/ncmpcpp-notifier.sh
 user_interface = alternative
 media_library_primary_tag = album_artist
 cyclic_scrolling = yes

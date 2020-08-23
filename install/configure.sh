@@ -110,18 +110,10 @@ sudo cp -f $loc/configs/zshrc-root /root/.zshrc
 echo "Configs Setup"
 
 
-# CREATE ~/.bin
-if [ ! -d $HOME/.bin ]; then
-	mkdir $HOME/.bin
-fi
-chmod 755 $loc/scripts/*
-for f in $loc/scripts/*; do
-	rm -f $HOME/.bin/$(basename $f)
-	ln -s $f $HOME/.bin/$(basename $f)
-done
-gcc -O2 $loc/scripts/brightcalc.c -o $HOME/.bin/brightcalc
-rm -rf $HOME/.bin/*.c
-echo "~/.bin/ created"
+# COMPILE brightcalc
+mkdir -p $loc/local
+gcc -O2 $loc/scripts/brightcalc.c -o $loc/local/brightcalc
+echo "brightcalc compiled"
 
 
 # EDIT TERMITE GTK CSS

@@ -10,3 +10,4 @@ configs/vim/plugged/*
 configs/ranger/commands_full.py
 **/__pycache__
 **/__init__.py
+/local/
