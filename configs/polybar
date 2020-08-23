@@ -28,9 +28,7 @@ font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
 modules-center = datetime
-;weather
 modules-right = updates-yay network-hps2017-15 volume memory cpu battery
-; storage transmission
 
 [bar/hps2017-15-hdmi]
 monitor = DP2
@@ -75,7 +73,7 @@ font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
 modules-center = datetime
-modules-right = updates-dnf network-hps2020-13 volume memory cpu battery
+modules-right = updates network-hps2020-13 volume memory cpu battery
 
 [bar/hps2020-13-hdmi]
 monitor = DP-2
@@ -120,8 +118,7 @@ font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
 modules-center = datetime
-;weather
-modules-right = updates-dnf network-x570-2020 volume memory cpu transmission
+modules-right = updates network-x570-2020 volume memory cpu transmission
 
 [bar/x570-2020-hdmi]
 monitor = HDMI-1
@@ -333,10 +330,10 @@ exec = echo "%{A:termite --title="float" -e "yay":}%{F#DB5B5B}%{F}$(yay -Qu |
 exec-if = [[ $(yay -Qu | wc -l) != 0 ]]
 tail = true
 
-[module/updates-dnf]
+[module/updates]
 type = custom/script
 interval = 120
 label = %output%
-exec = echo "%{F#DB5B5B}%{F}"
-exec-if = dnf check-update; [ $? -eq 100 ]
+exec = echo "%{F#DB5B5B}%{F}$(pmi --count)"
+exec-if = [[ $(pmi --count) != 0 ]]
 tail = true
