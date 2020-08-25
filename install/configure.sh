@@ -113,7 +113,13 @@ echo "Configs Setup"
 # COMPILE brightcalc
 mkdir -p $loc/local
 gcc -O2 $loc/scripts/brightcalc.c -o $loc/local/brightcalc
-echo "brightcalc compiled"
+echo "'brightcalc.c' Compiled"
+
+# CUSTOM PER COMPUTER CONFIGS
+if [ $comp == "hps2020-13" ]; then
+	ln -fs $loc/hps2020-13/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+	echo "hps2020-13 Custom Configs Setup"
+fi
 
 
 # EDIT TERMITE GTK CSS
