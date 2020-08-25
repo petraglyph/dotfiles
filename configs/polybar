@@ -28,7 +28,7 @@ font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
 modules-center = datetime
-modules-right = updates-yay network-hps2017-15 volume memory cpu battery
+modules-right = updates network-hps2017-15 volume memory cpu battery
 
 [bar/hps2017-15-hdmi]
 monitor = DP2
@@ -314,14 +314,6 @@ type = custom/script
 interval = 1
 label = %{A:bash /home/penn/.i3-config/scripts/system-notify.sh network:}%output%%{A}
 exec = conky -c $HOME/.i3-config/scripts/netconky-hps2017-15
-tail = true
-
-[module/updates-yay]
-type = custom/script
-interval = 120
-label = %output%
-exec = echo "%{A:termite --title="float" -e "yay":}%{F#DB5B5B}%{F}$(yay -Qu | wc -l) %{A}"
-exec-if = [[ $(yay -Qu | wc -l) != 0 ]]
 tail = true
 
 [module/updates]
