@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CLONE_LOC=$HOME/.builds
+CLONE_LOC=$HOME/.i3-config/local
 mkdir -p $CLONE_LOC
 
 sudo dnf -y install cargo libX11-devel 1> /dev/null
