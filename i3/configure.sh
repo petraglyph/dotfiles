@@ -1,6 +1,14 @@
 #!/bin/bash
 # Configure i3
 
+loc="$HOME/.dotfiles"
+# Check comp
+comp=$1
+if [ ! -d $loc/$comp ] || [ -z $comp ]; then
+	echo "Unknown Computer '$comp'"
+	exit 1
+fi
+
 # Making necessary directories
 mkdir -p $XDG_CONFIG_HOME/i3
 mkdir -p $XDG_CONFIG_HOME/alacritty

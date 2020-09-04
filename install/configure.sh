@@ -1,11 +1,12 @@
 #/bin/sh
 # General Configuration
 
-# Check comp
 loc="$HOME/.dotfiles"
+# Check comp
 comp=$1
-if [ ! -d $loc/$comp ]; then
+if [ ! -d $loc/$comp ] || [ -z $comp ]; then
 	echo "Unknown Computer '$comp'"
+	exit 1
 fi
 
 # Set ENV variables
