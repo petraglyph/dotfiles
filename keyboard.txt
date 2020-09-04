@@ -7,7 +7,7 @@ c - calculator
 	C - open pCloudDrive
 d - open downloads
 	D - open dnd
-e
+e - open code
 	E - open college
 f - open ~
 	F - open storage

@@ -235,6 +235,8 @@ bindsym $super+f exec $term -e ranger --selectfile=$HOME/documents $HOME/documen
 bindsym $super+d exec $term -e ranger $HOME/downloads $HOME/documents $HOME/documents
 # open ~/videos
 bindsym $super+v exec $term -e ranger $HOME/videos $HOME/documents $HOME/documents
+# open code
+bindsym $super+e exec $term -e ranger $HOME/documents/code $HOME/documents $HOME/documents
 # open /
 bindsym $super+Shift+r exec $term -e ranger / / $HOME/documents
 # open dnd
@@ -262,7 +264,7 @@ exec firefox
 exec sh $loc/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
 exec picom -b -f -D 1
-exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 15 "sh $loc/scripts/i3locker.sh" ""
+exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 300 "sh $loc/scripts/i3locker.sh" ""
 exec --no-startup-id redshift
 exec dunst
 # files and background processes
