@@ -1,13 +1,6 @@
 **~
-local~/*
-archive/*
-**/error_log
-**/log
-scripts/lock-log.txt
-scripts/weather*.json
-scripts/log
-configs/vim/plugged/*
-configs/ranger/commands_full.py
+**/*log
 **/__pycache__
 **/__init__.py
-/local/
+/local
+
