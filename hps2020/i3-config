@@ -19,7 +19,9 @@ set $down j
 set $up k
 set $right l
 # config location
-set $loc "$HOME/.i3-config"
+set $loc "$HOME/.dotfiles"
+# computer name
+set $name "hps2020"
 
 
 
@@ -179,7 +181,7 @@ bindsym $super+c exec $term -t float -e qalc
 # Custom script runner
 bindsym $super+x exec $term -t float -e sh $HOME/documents/other/linux/scripts/quick-run.sh
 # Show/hide tray
-bindsym $super+p exec sh $loc/scripts/stalonetray.sh
+bindsym $super+p exec sh $loc/i3/scripts/stalonetray.sh
 
 
 ## System Buttons
@@ -204,18 +206,18 @@ bindsym $super+Right exec mpc next
 bindsym $super+Shift+Left exec mpc seek -0:0:10
 bindsym $super+Shift+Right exec mpc seek +0:0:10
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec sh $loc/scripts/dimlight.sh +
-bindsym XF86MonBrightnessDown exec sh $loc/scripts/dimlight.sh -
-bindsym $super+Prior exec sh $loc/scripts/dimlight.sh +
-bindsym $super+Next exec sh $loc/scripts/dimlight.sh -
+bindsym XF86MonBrightnessUp exec sh $loc/i3/scripts/dimlight.sh +
+bindsym XF86MonBrightnessDown exec sh $loc/i3/scripts/dimlight.sh -
+bindsym $super+Prior exec sh $loc/i3/scripts/dimlight.sh +
+bindsym $super+Next exec sh $loc/i3/scripts/dimlight.sh -
 
 ## i3 Control
 # restart i3
 bindsym $super+Shift+Escape restart
 # exit i3
-bindsym $super+Escape exec $term -t float -e $loc/scripts/i3exit.sh
+bindsym $super+Escape exec $term -t float -e $loc/i3/scripts/i3exit.sh
 # lock i3
-bindsym $super+z exec sh $loc/scripts/i3locker.sh suspend
+bindsym $super+z exec sh $loc/i3/scripts/i3locker.sh suspend
 # screenshots
 bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/'
 bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/' -s
@@ -251,19 +253,19 @@ exec $term
 exec $term
 exec $term -t scratch
 exec firefox
-exec sh $loc/scripts/ncmpcpp-start.sh $term
+exec sh $loc/i3/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
 exec picom -b -f -D 1
-exec xidlehook --not-when-fullscreen --not-when-audio --timer 120 "xset dpms force off" "" --timer 30 "sh $loc/scripts/i3locker.sh" "" --timer 150 "systemctl suspend"
+exec xidlehook --not-when-fullscreen --not-when-audio --timer 120 "xset dpms force off" "" --timer 30 "sh $loc/i3/scripts/i3locker.sh" "" --timer 150 "systemctl suspend"
 exec dunst
 # files and background processes
 exec pcloud
 exec --no-startup-id /usr/libexec/kdeconnectd
-exec sh $loc/scripts/dimlight.sh
-exec sh $loc/scripts/network-start.sh
+exec sh $loc/i3/scripts/dimlight.sh
+exec sh $loc/i3/scripts/network-start.sh
 
 ## Run on i3 Restart
-exec_always sh $loc/scripts/polybar-start.sh hps2020-13 hps2020-13-hdmi
-exec_always feh --bg-fill $loc/hps2020-13/background.png
+exec_always sh $loc/i3/scripts/polybar-start.sh hps2020-13 hps2020-13-hdmi
+exec_always feh --bg-fill $loc/$name/background.png
 #exec_always xrandr --output DP-1 --auto --above eDP-1
 exec_always xrandr --output DP-2 --auto --above eDP-1

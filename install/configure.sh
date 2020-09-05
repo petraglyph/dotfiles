@@ -2,8 +2,9 @@
 # General Configuration
 
 loc="$HOME/.dotfiles"
-# Check comp
 comp=$1
+
+# Check comp
 if [ ! -d $loc/$comp ] || [ -z $comp ]; then
 	echo "Unknown Computer '$comp'"
 	exit 1
@@ -50,9 +51,6 @@ sudo cp -f $loc/configs/resolv.conf /etc/resolv.conf
 sudo chattr -i /etc/resolv.conf
 sudo cp -f $loc/configs/zshrc-root /root/.zshrc
 
-
-# Adding local directory
-mkdir -p $loc/.local
 
 echo "Setting Up ZSH"
 sudo chsh -s /usr/bin/zsh root
