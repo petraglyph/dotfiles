@@ -1,20 +1,18 @@
 #!/bin/bash
-# SETUP x570 Desktop
+# Setup x570 Desktop
 #   Fedora
 #   i3
 
+# Check install location
+source "$(dirname $BASH_SOURCE)/../install/check.sh"
+
+loc="$HOME/.dotfiles"
 comp="x570"
 
-if [[ "$(cd "$(dirname "$BASH_SOURCE")"; pwd)/$(basename "$BASH_SOURCE")" != \
-	"$HOME/.dotfiles/$comp/setup.sh" ]]; then
-	echo "Inproper Loc"
-	exit 1
-fi
-
 # Fedora Installs
-bash ~/.dotfiles/install/fedora.sh $comp
+bash ~/.dotfiles/install/fedora.sh $loc/$comp/fedora-packages.txt
 # i3 Fedora Installs
-bash ~/.dotfiles/i3/fedora-install.sh $comp
+bash ~/.dotfiles/i3/fedora-install.sh
 # General Configuration
 bash ~/.dotfiles/install/configure.sh $comp
 # i3 Configuration

@@ -1,17 +1,13 @@
 #!/bin/bash
-# SETUP ubuntu on hps2017
-#   Fedora
-#   i3
+# Setup hps2017
+#   Ubuntu
 
-comp="hops2017-ubuntu"
+# Check install location
+source "$(dirname $BASH_SOURCE)/../install/check.sh"
 
-if [[ "$(cd "$(dirname "$BASH_SOURCE")"; pwd)/$(basename "$BASH_SOURCE")" != \
-	"$HOME/.dotfiles/$comp/setup.sh" ]]; then
-	echo "Inproper Loc"
-	exit 1
-fi
+comp="hps2017-ubuntu"
 
 # Ubuntu Installs
-bash ~/.dotfiles/install/ubuntu.sh $comp
+bash ~/.dotfiles/install/ubuntu.sh
 # General Configuration
 bash ~/.dotfiles/install/configure.sh $comp

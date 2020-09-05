@@ -1,8 +1,7 @@
 #!/bin/sh
 # General Fedora Installs
 
-loc="$HOME/.dotfiles"
-comp=$1
+loc="$(dirname $BASH_SOURCE)"
 
 echo "Updating"
 sudo dnf -y upgrade 1> /dev/null
@@ -17,10 +16,10 @@ sudo dnf config-manager --set-enabled google-chrome 1> /dev/null
 packages="
 kdeconnectd
 rclone
-$(cat "$loc/install/fedora-packages.txt")
-$(cat "$loc/$comp/fedora-packages.txt")
+$(cat "$loc/fedora-packages.txt")
+$(cat "$1")
 "
-echo "Install Packages"
+echo "Installing Packages"
 sudo dnf -y install $packages 1> /dev/null
 
 

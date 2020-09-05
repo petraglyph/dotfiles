@@ -1,20 +1,18 @@
 #!/bin/bash
-# SETUP HP Spectre 2020 13in
+# Setup hps2020
 #   Fedora
 #   i3
 
+# Check install location
+source "$(dirname $BASH_SOURCE)/../install/check.sh"
+
+loc="$HOME/.dotfiles"
 comp="hps2020"
 
-if [[ "$(cd "$(dirname "$BASH_SOURCE")"; pwd)/$(basename "$BASH_SOURCE")" != \
-	"$HOME/.dotfiles/$comp/setup.sh" ]]; then
-	echo "Inproper Loc"
-	exit 1
-fi
-
 # Fedora Installs
-bash ~/.dotfiles/install/fedora.sh $comp
+bash ~/.dotfiles/install/fedora.sh
 # i3 Fedora Installs
-bash ~/.dotfiles/i3/fedora-install.sh $comp
+bash ~/.dotfiles/i3/fedora-install.sh
 # General Configuration
 bash ~/.dotfiles/install/configure.sh $comp
 # i3 Configuration

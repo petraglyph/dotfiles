@@ -1,6 +1,9 @@
 #!/bin/sh
 # i3 Fedora Installs
 
+# Check install location
+source "$(dirname $BASH_SOURCE)/../install/check.sh"
+
 loc="$HOME/.dotfiles"
 
 echo "Enabling copr Repositories"
@@ -35,6 +38,7 @@ cargo install xidlehook
 mkdir -p "$loc/.local"
 cd "$loc/.local"
 
+
 echo "  i3lock-color"
 sudo dnf -y install autoconf automake libev-devel cairo-devel pam-devel \
 	xcb-util-image-devel xcb-util-devel xcb-util-xrm-devel \
@@ -50,6 +54,7 @@ chmod +x build.sh
 ./build.sh
 chmod +x install-i3lock-color.sh
 sudo ./install-i3lock-color.sh
+
 
 echo "  gotop"
 cd "$loc/.local"

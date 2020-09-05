@@ -1,6 +1,9 @@
 #!/bin/bash
 # Configure i3
 
+# Check install location
+source "$(dirname $BASH_SOURCE)/../install/check.sh"
+
 loc="$HOME/.dotfiles"
 comp=$1
 # Check comp
