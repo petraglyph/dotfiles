@@ -32,14 +32,14 @@ echo "  xidlehook"
 sudo dnf -y install cargo libX11-devel 1> /dev/null
 cargo install xidlehook
 
-mkdir -p "$loc/local"
-cd "$loc/local"
+mkdir -p "$loc/.local"
+cd "$loc/.local"
 
 echo "  i3lock-color"
 sudo dnf -y install autoconf automake libev-devel cairo-devel pam-devel \
 	xcb-util-image-devel xcb-util-devel xcb-util-xrm-devel \
 	libxkbcommon-devel libxkbcommon-x11-devel libjpeg-turbo-devel 1> /dev/null
-if [ ! -d $loc/local/i3lock-color ]; then
+if [ ! -d $loc/.local/i3lock-color ]; then
 	git clone https://github.com/Raymo111/i3lock-color.git
 fi
 cd i3lock-color
@@ -52,7 +52,7 @@ chmod +x install-i3lock-color.sh
 sudo ./install-i3lock-color.sh
 
 echo "  gotop"
-cd "$loc/local"
+cd "$loc/.local"
 git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop
 /tmp/gotop/scripts/download.sh
 sudo mv gotop /bin

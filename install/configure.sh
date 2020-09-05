@@ -52,7 +52,7 @@ sudo cp -f $loc/configs/zshrc-root /root/.zshrc
 
 
 # Adding local directory
-mkdir -p $loc/local
+mkdir -p $loc/.local
 
 echo "Setting Up ZSH"
 sudo chsh -s /usr/bin/zsh root

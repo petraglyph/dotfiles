@@ -1,14 +1,14 @@
 #!/bin/sh
 
-loc="$HOME/.i3-config"
+loc="$HOME/.dotfiles/.local"
 
-current=$(sed '1q;d' $loc/local/dimbright)
+current=$(sed '1q;d' $loc/dimbright)
 echo "$current"
 
-new=$($HOME/.i3-config/local/brightcalc $current $1)
+new=$($loc/brightcalc $current $1)
 echo $new
 
-echo "$new" > $loc/local/dimbright
+echo "$new" > $loc/dimbright
 prev=$(pgrep redshift)
 #redshift -P -o -r -b "$new:$new"
 redshift -r -b $new -l "38:-78" &

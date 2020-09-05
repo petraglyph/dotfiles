@@ -1,5 +1,5 @@
 #!/bin/bash
-# SETUP x570 Desktop
+# SETUP HP Spectre 2020 13in
 #   Fedora
 #   i3
 
