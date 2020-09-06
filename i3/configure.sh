@@ -1,16 +1,11 @@
 #!/bin/bash
 # Configure i3
 
-# Check install location
-source "$(dirname $BASH_SOURCE)/../install/check.sh"
-
 loc="$HOME/.dotfiles"
 comp=$1
-# Check comp
-if [ ! -d $loc/$comp ] || [ -z $comp ]; then
-	echo "Unknown Computer '$comp'"
-	exit 1
-fi
+
+# Check install location and comp
+source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
 
 # Set ENV variables
 if [ -z $XDG_CONFIG_HOME ]; then

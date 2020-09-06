@@ -1,11 +1,11 @@
 #/bin/sh
 # General Configuration
 
-# Check install location
-source "$(dirname $BASH_SOURCE)/../install/check.sh"
-
 loc="$HOME/.dotfiles"
 comp=$1
+
+# Check install location and comp
+source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
 
 # Check comp
 if [ ! -d $loc/$comp ] || [ -z $comp ]; then

@@ -2,10 +2,11 @@
 # Setup hps2017
 #   Ubuntu
 
-# Check install location
-source "$(dirname $BASH_SOURCE)/../install/check.sh"
-
+loc="$HOME/.dotfiles"
 comp="hps2017-ubuntu"
+
+# Check install location and comp
+source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
 
 # Ubuntu Installs
 bash ~/.dotfiles/install/ubuntu.sh

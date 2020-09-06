@@ -1,10 +1,10 @@
 #!/bin/sh
 # i3 Fedora Installs
 
-# Check install location
-source "$(dirname $BASH_SOURCE)/../install/check.sh"
-
 loc="$HOME/.dotfiles"
+
+# Check install location and comp
+source "$(dirname $BASH_SOURCE)/../install/check.sh" "none"
 
 echo "Enabling copr Repositories"
 sudo dnf -y copr enable opuk/pamixer 1> /dev/null

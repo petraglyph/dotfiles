@@ -3,11 +3,11 @@
 #   Fedora
 #   i3
 
-# Check install location
-source "$(dirname $BASH_SOURCE)/../install/check.sh"
-
 loc="$HOME/.dotfiles"
 comp="x570"
+
+# Check install location and comp
+source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
 
 # Fedora Installs
 bash ~/.dotfiles/install/fedora.sh $loc/$comp/fedora-packages.txt
