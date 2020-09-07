@@ -1,3 +1,4 @@
+fahclient
+rclone
 transmission-daemon
 transmission-remote-gtk
-fahclient

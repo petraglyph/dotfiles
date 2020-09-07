@@ -18,8 +18,37 @@ sudo dnf -y install fedora-workstation-repositories
 sudo dnf config-manager --set-enabled google-chrome
 
 packages="
+android-tools
+clang
+feh
+ffmpeg
+gcolor3
+gnuplot
+google-chrome-stable
+htop
+jq
 kdeconnectd
-rclone
+latexmk
+mpc
+mpd
+mpv
+ncmpcpp
+neofetch
+neovim
+nethogs
+nodejs
+openvpn
+pamixer
+pavucontrol
+perl-Image-ExifTool
+python3-pip
+qalc
+ranger
+texlive-latex
+the_silver_searcher
+tldr
+zathura-pdf-mupdf
+zsh
 $(cat "$loc/fedora-packages.txt")
 "
 if (( $# > 0 )); then

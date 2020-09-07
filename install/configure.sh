@@ -45,8 +45,8 @@ if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 fi
 
 message "Copying Root Configs"
-sudo rm /etc/resolv.conf
-sudo rm /root/.zshrc
+sudo rm -f /etc/resolv.conf
+sudo rm -f /root/.zshrc
 
 sudo cp -f $loc/configs/resolv.conf /etc/resolv.conf
 sudo chattr -i /etc/resolv.conf
