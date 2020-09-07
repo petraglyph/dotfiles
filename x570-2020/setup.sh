@@ -4,7 +4,7 @@
 #   i3
 
 loc="$HOME/.dotfiles"
-comp="x570"
+comp="x570-2020"
 
 # Check install location and comp
 source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"

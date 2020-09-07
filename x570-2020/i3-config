@@ -21,7 +21,7 @@ set $right l
 # config location
 set $loc "$HOME/.dotfiles"
 # computer name
-set $name "x570"
+set $name "x570-2020"
 
 
 
@@ -277,6 +277,6 @@ exec sh $loc/i3/scripts/dimlight.sh
 exec sh $loc/i3/scripts/network-start.sh
 
 ## Run on i3 Restart
-exec_always sh $loc/i3/scripts/polybar-start.sh x570-2020 x570-2020-hdmi
+exec_always sh $loc/i3/scripts/polybar-start.sh $name $name-hdmi
 exec_always feh --bg-scale $loc/$name/background.png
 exec_always xrandr --output HDMI-1 --auto --above DP-1
