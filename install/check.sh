@@ -15,7 +15,18 @@ fi
 
 # Check computer is valid or 'none'
 if [ -d $loc/$comp ]; then
-	continue
+	if [[ $(hostname) != $comp ]]; then
+		echo "Wrong computer, should be $(hostname)"
+		while true; do
+			read -p "Continue anyway [y/n]: " input
+			case $input in
+				y|Y) break;;
+				n|N) exit 0
+					break;;
+				*) ;;
+			esac
+		done
+	fi
 elif [[ $1 == "none" ]]; then
 	continue
 else
