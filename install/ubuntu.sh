@@ -12,9 +12,12 @@ curl
 feh
 gcc
 git
+mpd
+ncmpcpp
 nodejs
 npm
 qalc
+zsh
 "
 message "Installing Packages"
 sudo apt -y install $packages
