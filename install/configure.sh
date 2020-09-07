@@ -44,6 +44,10 @@ if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+message "Copying Root Configs"
+sudo rm /etc/resolv.conf
+sudo rm /root/.zshrc
+
 sudo cp -f $loc/configs/resolv.conf /etc/resolv.conf
 sudo chattr -i /etc/resolv.conf
 sudo cp -f $loc/configs/zshrc-root /root/.zshrc
