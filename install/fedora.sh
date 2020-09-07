@@ -1,29 +1,36 @@
 #!/bin/sh
 # General Fedora Installs
 
+message() {
+	echo -e "\033[1;32m$1\033[0m"
+}
+
 loc="$(dirname $BASH_SOURCE)"
 
-echo "Updating"
-sudo dnf -y upgrade 1> /dev/null
+message "Updating"
+sudo dnf -y upgrade
 
-echo "Enabling RPM Fusion"
-sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm 1> /dev/null
+message "Enabling RPM Fusion"
+sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-echo "Enabling Google Chrome"
-sudo dnf -y install fedora-workstation-repositories 1> /dev/null
-sudo dnf config-manager --set-enabled google-chrome 1> /dev/null
+message "Enabling Google Chrome"
+sudo dnf -y install fedora-workstation-repositories
+sudo dnf config-manager --set-enabled google-chrome
 
 packages="
 kdeconnectd
 rclone
 $(cat "$loc/fedora-packages.txt")
-$(cat "$1")
 "
-echo "Installing Packages"
-sudo dnf -y install $packages 1> /dev/null
+if (( $# > 0 )); then
+	packages="$packages
+	$(cat "$1")"
+fi
+message "Installing Packages"
+sudo dnf -y install $packages
 
 
-echo "Installing Flatpaks"
+message "Installing Flatpaks"
 flatpaks="
 org.gimp.GIMP
 org.inkscape.Inkscape
@@ -32,10 +39,11 @@ org.signal.Signal
 com.mojang.Minecraft
 com.discordapp.Discord
 "
-sudo dnf -y install flatpak 1> /dev/null
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 1> /dev/null
-sudo flatpak -y install flathub $flatpaks 1> /dev/null
+sudo dnf -y install flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak -y install flathub $flatpaks
 
 
-echo "Installing Sass (from npm)"
-sudo npm install -g sass &> /dev/null
+message "Installing Sass (from npm)"
+sudo npm install -g npm
+sudo npm install -g sass

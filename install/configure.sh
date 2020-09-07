@@ -7,12 +7,6 @@ comp=$1
 # Check install location and comp
 source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
 
-# Check comp
-if [ ! -d $loc/$comp ] || [ -z $comp ]; then
-	echo "Unknown Computer '$comp'"
-	exit 1
-fi
-
 # Set ENV variables
 if [ -z $XDG_CONFIG_HOME ]; then
 	XDG_CONFIG_HOME=$HOME/.config
@@ -31,7 +25,7 @@ mkdir -p $XDG_CONFIG_HOME/nvim
 mkdir -p $XDG_DATA_HOME/nvim/site/colors
 mkdir -p $XDG_DATA_HOME/nvim/site/autoload/airline/themes
 
-echo "Linking Configs"
+message "Linking Configs"
 ln -fs $loc/configs/gitconfig $XDG_CONFIG_HOME/git/config
 ln -fs $loc/configs/mpd.conf $XDG_CONFIG_HOME/mpd/mpd.conf
 ln -fs $loc/configs/ncmpcpp-bindings $XDG_CONFIG_HOME/ncmpcpp/bindings
@@ -55,6 +49,6 @@ sudo chattr -i /etc/resolv.conf
 sudo cp -f $loc/configs/zshrc-root /root/.zshrc
 
 
-echo "Setting Up ZSH"
+message "Setting Up ZSH"
 sudo chsh -s /usr/bin/zsh root
 chsh -s /usr/bin/zsh

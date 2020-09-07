@@ -1,7 +1,11 @@
 #!/bin/sh
 # General Ubuntu Installs
 
-sudo apt update 1> /dev/null
+message() {
+	echo -e "\033[1;32m$1\033[0m"
+}
+
+sudo apt update
 
 packages="
 curl
@@ -12,12 +16,13 @@ nodejs
 npm
 qalc
 "
-echo "Installing Packages"
-sudo apt -y install $packages 1> /dev/null
+message "Installing Packages"
+sudo apt -y install $packages
 
-echo "Setting Up ZSH"
+message "Setting Up ZSH"
 sudo chsh -s /usr/bin/zsh root
 chsh -s /usr/bin/zsh
 
-echo "Installing Sass (from npm)"
-sudo npm install -g sass &> /dev/null
+message "Installing Sass (from npm)"
+sudo npm install -g npm
+sudo npm install -g sass

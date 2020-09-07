@@ -1,5 +1,9 @@
 #!/bin/sh
 
+message() {
+	echo -e "\033[1;32m$1\033[0m"
+}
+
 # Check dotfiles location and comp
 if [[ "$(cd "$(dirname "$BASH_SOURCE")"; pwd)/$(basename "$BASH_SOURCE")" != \
 		"$HOME/.dotfiles/install/check.sh" ]]; then
