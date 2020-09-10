@@ -8,53 +8,8 @@ secondary = #2EB398
 alert = #DB5B5B
 
 
-[bar/hps2017-15]
-monitor = eDP1
-width = 100%
-height = 50
-fixed-center = true
-background = ${colors.background}
-foreground = ${colors.primary}
-line-size = 0
-line-color = ${colors.background}
-border-size = 0
-padding-left = 1
-padding-right = 1
-module-margin-left = 0
-module-margin-right = 1
-;
-font-0 = DejaVu Sans Mono:size=24;0
-font-1 = "Material Design Icons:size=28;0"
-;
-modules-left = i3ws mpd
-modules-center = datetime
-modules-right = updates network-hps2017-15 volume memory cpu battery
 
-[bar/hps2017-15-hdmi]
-monitor = DP2
-width = 100%
-height = 32
-fixed-center = true
-background = ${colors.background}
-foreground = ${colors.primary}
-line-size = 0
-line-color = ${colors.background}
-border-size = 0
-padding-left = 1
-padding-right = 1
-module-margin-left = 0
-module-margin-right = 1
-;
-font-0 = DejaVu Sans Mono:size=14;0
-font-1 = "Material Design Icons:size=16;0"
-;
-modules-left = hdmi
-modules-center = datetime
-modules-right = network-hps2017-15 volume cpu battery
-
-
-
-[bar/hps2020-13]
+[bar/hps2020]
 width = 100%
 height = 50
 fixed-center = true
@@ -75,7 +30,7 @@ modules-left = i3ws mpd
 modules-center = datetime
 modules-right = updates network-hps2020-13 volume memory cpu battery
 
-[bar/hps2020-13-hdmi]
+[bar/hps2020-hdmi]
 monitor = DP-2
 width = 100%
 height = 32
@@ -200,7 +155,7 @@ label-maxlen = 50
 type = custom/script
 interval = 0
 label = %output%
-exec = echo HDMI %{A:termite -t hdmi -c $HOME/.i3-config/configs/termite-1080p:}termite%{A} %{A:termite -t hdmi -d $HOME/videos -c $HOME/.i3-config/configs/termite-1080p -e ranger:}ranger%{A}
+exec = echo HDMI
 
 ; CENTER MODULE
 [module/datetime]
@@ -264,7 +219,7 @@ ramp-load-4 = %{F#DB5B5B}%{F}
 [module/memory]
 type = internal/memory
 interval = 5
-format = %{A:bash /home/penn/.i3-config/scripts/system-notify.sh disk:}<ramp-used><label>%{A}
+format = %{A:bash /home/penn/.dotfiles/i3/scripts/system-notify.sh disk:}<ramp-used><label>%{A}
 label = %percentage_used:02%% %percentage_swap_used:02%%
 ;
 ramp-used-0 = %{F#2EB398}%{F}
@@ -289,7 +244,7 @@ label-mounted = %percentage_used%%
 type = custom/script
 interval = 1
 label = %output%
-exec = ~/.i3-config/scripts/volume.sh
+exec = ~/.dotfiles/i3/scripts/volume.sh
 ;exec-if = [ -p /tmp/.xmonad-workspace-log ]
 tail = true
 scroll-up = pamixer --decrease 5 --allow-boost 
@@ -298,22 +253,22 @@ scroll-down = pamixer --increase 5 --allow-boost
 [module/network-x570-2020]
 type = custom/script
 interval = 1
-label = %{A:bash /home/penn/.i3-config/scripts/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.i3-config/scripts/netconky-x570-2020
+label = %{A:bash /home/penn/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.dotfiles/i3/scripts/netconky-x570-2020
 tail = true
 
 [module/network-hps2020-13]
 type = custom/script
 interval = 1
-label = %{A:bash /home/penn/.i3-config/scripts/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.i3-config/scripts/netconky-hps2020-13
+label = %{A:bash /home/penn/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.dotfiles/i3/scripts/netconky-hps2020-13
 tail = true
 
 [module/network-hps2017-15]
 type = custom/script
 interval = 1
-label = %{A:bash /home/penn/.i3-config/scripts/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.i3-config/scripts/netconky-hps2017-15
+label = %{A:bash /home/penn/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c $HOME/.dotfiles/i3/scripts/netconky-hps2017-15
 tail = true
 
 [module/updates]
