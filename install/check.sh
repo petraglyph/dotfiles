@@ -21,7 +21,9 @@ if (( $# == 0 )) || [[ $1 == "" ]]; then
 fi
 
 # Check computer is valid or 'none'
-if [ -d $loc/$comp ]; then
+if [[ $1 == "none" ]]; then
+	continue
+elif [ -d $loc/$comp ]; then
 	if [[ $(hostname) != $comp ]]; then
 		error "Wrong computer, should be '$(hostname)'"
 		while true; do
@@ -34,8 +36,6 @@ if [ -d $loc/$comp ]; then
 			esac
 		done
 	fi
-elif [[ $1 == "none" ]]; then
-	continue
 else
 	error "Unknown computer '$comp'"
 	exit 1
