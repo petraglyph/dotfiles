@@ -17,3 +17,5 @@ bash ~/.dotfiles/i3/fedora-install.sh
 bash ~/.dotfiles/install/configure.sh $comp
 # i3 Configuration
 bash ~/.dotfiles/i3/configure.sh $comp
+# Folding@Home Configuration
+bash ~/.dotfiles/install/fah.sh
