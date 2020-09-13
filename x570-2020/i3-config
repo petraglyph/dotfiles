@@ -272,7 +272,7 @@ exec dunst
 # files and background processes
 exec pcloud
 exec --no-startup-id /usr/libexec/kdeconnectd
-exec sh $HOME/storage/torrents/.control/start.sh
+exec sh $loc/.local/start.sh
 exec sh $loc/i3/scripts/dimlight.sh
 exec sh $loc/i3/scripts/network-start.sh
 

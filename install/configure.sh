@@ -61,5 +61,5 @@ message "Setting up Crontab"
 echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
 cat $loc/$comp/crontab.txt | crontab -
 
-message "External Setup"
+message "Running External Setup"
 bash $HOME/documents/other/linux/scripts/setup.sh

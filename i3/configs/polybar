@@ -73,7 +73,7 @@ font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
 modules-center = datetime
-modules-right = updates network-x570-2020 volume memory cpu transmission
+modules-right = updates network-x570-2020 volume memory cpu status
 
 [bar/x570-2020-hdmi]
 monitor = HDMI-1
@@ -167,13 +167,11 @@ label = %time%
 
 
 ; RIGHT MODULES
-[module/transmission]
+[module/status]
 type = custom/script
 interval = 5
-;label = %{A:pgrm:}A%{A}
 label = %output%
-;
-exec = echo "%{A:bash ~/storage/torrents/.control/switch.sh toggle:}$(cat ~/storage/torrents/.control/status)%{A}"
+exec = echo "%{A:bash ~/.dotfiles/.local/switch.sh toggle:}$(cat ~/.dotfiles/.local/status)%{A}"
 tail = true
 
 [module/battery]
