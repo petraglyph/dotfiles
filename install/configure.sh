@@ -5,7 +5,7 @@ loc="$HOME/.dotfiles"
 comp=$1
 
 # Check install location and comp
-source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
+source "$(dirname $BASH_SOURCE)/check.sh" "$comp"
 
 # Set ENV variables
 if [ -z $XDG_CONFIG_HOME ]; then
@@ -56,3 +56,10 @@ sudo cp -f $loc/configs/zshrc-root /root/.zshrc
 message "Setting Up ZSH"
 sudo chsh -s /usr/bin/zsh root
 chsh -s /usr/bin/zsh
+
+message "Setting up Crontab"
+echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
+cat $loc/$comp/crontab.txt | crontab -
+
+message "External Setup"
+bash $HOME/documents/other/linux/scripts/setup.sh

@@ -1,0 +1,21 @@
+# Clean cache
+0 4 * * * rm -rf $(find ~/.cache -type -f -mtime +30 -print)
+
+# Make backups
+0 4 * * 0 bash ~/documents/other/linux/scripts/backup.sh
+
+# Update neovim
+0 4 * * 0 nvim +PlugInstall +qall
+0 4 * * 0 nvim +CocUpdate +qall
+
+# Make playlists
+0 4 * * * bash ~/music/.playlists/.list-gen.sh
+
+# pCloud backups
+*/30 * * * * rclone sync pcloud:archive   $HOME/storage/pcloud/archive
+*/30 * * * * rclone sync pcloud:documents $HOME/storage/pcloud/documents
+*/30 * * * * rclone sync pcloud:downloads $HOME/storage/pcloud/downloads
+*/30 * * * * rclone sync pcloud:music     $HOME/storage/pcloud/music
+*/30 * * * * rclone sync pcloud:other     $HOME/storage/pcloud/other
+*/30 * * * * rclone sync pcloud:videos    $HOME/storage/pcloud/videos
+
