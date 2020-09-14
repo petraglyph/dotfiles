@@ -38,6 +38,7 @@ v - open videos
 	V - open site
 w
 x - quick run scripts
+	X - open linux
 y
 z - lock screen
 

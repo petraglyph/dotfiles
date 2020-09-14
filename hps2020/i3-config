@@ -243,6 +243,8 @@ bindsym $super+Shift+c exec $term -e ranger $HOME/pCloudDrive $HOME/documents $H
 bindsym $super+Shift+v exec $term -e ranger $HOME/documents/code/site $HOME/documents $HOME/documents
 # open college
 bindsym $super+Shift+e exec $term -e ranger $HOME/documents/college $HOME/documents $HOME/documents
+# open linux
+bindsym $super+Shift+x exec $term -e ranger $HOME/documents/other/linux $HOME/documents $HOME/documents
 
 
 
