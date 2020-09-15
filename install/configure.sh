@@ -62,4 +62,8 @@ echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo cront
 cat $loc/$comp/crontab.txt | crontab -
 
 message "Running External Setup"
-bash $HOME/documents/other/linux/scripts/setup.sh
+if [ -e $HOME/documents/other/linux/scripts/setup.sh ]; then
+	bash $HOME/documents/other/linux/scripts/setup.sh
+else
+	error "  ~linux/scripts/setup.sh not available"
+fi

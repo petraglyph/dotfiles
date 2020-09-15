@@ -31,8 +31,15 @@ source $HOME/.zsh-dirs
 autoload -U colors && colors
 setopt PROMPT_SUBST
 set_prompt() {
+	# starter
+	PS1='%{$fg_bold[green]%}['
+	# ssh indicator
+	if [ ! -z $SSH_CONNECTION ]; then
+		#PS1+='%{$fg_bold[magenta]%}ssh:'
+		PS1+='%{$reset_color%}%{$fg[yellow]%}ssh:'
+	fi
 	# name@computer
-	PS1='%{$fg_bold[green]%}[%n@%m'
+	PS1+='%{$fg_bold[green]%}%n@%m'
 	# directory
 	PS1+=" %{$fg_bold[white]%}%1~"
 
