@@ -10,7 +10,7 @@ comp="x570-2020"
 source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
 
 # Fedora Installs
-bash ~/.dotfiles/install/fedora.sh $loc/$comp/fedora-packages.txt
+bash ~/.dotfiles/install/fedora.sh
 # i3 Fedora Installs
 bash ~/.dotfiles/i3/fedora-install.sh
 # General Configuration

@@ -44,12 +44,12 @@ perl-Image-ExifTool
 python3-pip
 qalc
 ranger
+rclone
 texlive-latex
 the_silver_searcher
 tldr
 zathura-pdf-mupdf
 zsh
-$(cat "$loc/fedora-packages.txt")
 "
 if (( $# > 0 )); then
 	packages="$packages
