@@ -72,6 +72,9 @@ sudo dnf -y install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak -y install flathub $flatpaks
 
+message "Linking ~/.minecraft/"
+mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft
+ln -fs $HOME/.var/app/com.mojang.Minecraft/data/minecraft $HOME/.minecraft
 
 message "Installing Sass (from npm)"
 sudo npm install -g npm
