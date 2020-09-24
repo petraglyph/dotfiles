@@ -3,3 +3,4 @@
 @weekly bash ~/documents/other/linux/scripts/backup.sh
 @reboot rm -rf $(find $HOME/.cache -type f -mtime +30 -print)
 @daily  rm -rf $(find $HOME/.cache -type f -mtime +30 -print)
+* * * * * bash ~/.dotfiles/i3/scripts/battery.sh

@@ -260,7 +260,7 @@
 
 [urgency_critical]
     background = "#000000"
-    foreground = "#DB5B5B"
+    foreground = "#EEEEEE"
     frame_color = "#DB5B5B"
     timeout = 0
     #icon = /path/to/icon
