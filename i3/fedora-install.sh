@@ -23,11 +23,12 @@ lxappearance
 picom
 polybar
 rofi
+scrot
 stalonetray
 redshift
 "
 message "Install Packages"
-sudo dnf -y install $packages
+sudo dnf -y install $packages --skip-broken
 
 
 message "Builds From Source"
