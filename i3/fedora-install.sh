@@ -61,3 +61,18 @@ cd "$loc/.local"
 git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop
 /tmp/gotop/scripts/download.sh
 sudo mv gotop /bin
+
+
+message "  pmi"
+cd "$loc/.local"
+if [ -e pmi ]; then
+	cd pmi
+	git pull
+else
+	git clone git@github.com:pennbauman/pmi.git
+	cd pmi
+fi
+./install.sh
+pmi enable --yes
+pmi disable yum
+pmi disable pip
