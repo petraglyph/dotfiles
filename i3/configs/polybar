@@ -211,7 +211,7 @@ ramp-load-4 = %{F#DB5B5B}%{F}
 [module/memory]
 type = internal/memory
 interval = 5
-format = %{A:bash /home/penn/.dotfiles/i3/scripts/system-notify.sh disk:}<ramp-used><label>%{A}
+format = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh disk:}<ramp-used><label>%{A}
 label = %percentage_used:02%% %percentage_swap_used:02%%
 ;
 ramp-used-0 = %{F#2EB398}%{F}
@@ -232,15 +232,15 @@ scroll-down = pamixer --increase 5 --allow-boost
 [module/network-x570-2020]
 type = custom/script
 interval = 1
-label = %{A:bash /home/penn/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.dotfiles/i3/scripts/netconky-x570-2020
+label = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c ~/.dotfiles/i3/scripts/netconky-x570-2020
 tail = true
 
 [module/network-hps2020]
 type = custom/script
 interval = 1
-label = %{A:bash /home/penn/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
-exec = conky -c $HOME/.dotfiles/i3/scripts/netconky-hps2020
+label = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c ~/.dotfiles/i3/scripts/netconky-hps2020
 tail = true
 
 [module/updates]
