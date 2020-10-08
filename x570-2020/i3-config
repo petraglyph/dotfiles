@@ -53,10 +53,10 @@ for_window [class="Steam" title="Steam - News"] floating enable
 for_window [title="Java: *"] border normal
 for_window [title="Java: *"] floating enable
 for_window [class="Gcolor3"] floating enable
-for_window [instance="sun-awt-X11-XFramePeer"] floating enable
-for_window [instance="sun-awt-X11-XFramePeer"] border normal
-for_window [title="MATLAB R2019b - academic use"] floating disable
-for_window [title="MATLAB R2019b - academic use"] border none
+#for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+#for_window [instance="sun-awt-X11-XFramePeer"] border normal
+#for_window [title="MATLAB R2019b - academic use"] floating disable
+#for_window [title="MATLAB R2019b - academic use"] border none
 for_window [title="Terraria: *"] floating enable
 for_window [title="Terraria: *"] border normal
 for_window [class="stalonetray"] floating enable
