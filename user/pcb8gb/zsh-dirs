@@ -1,0 +1,7 @@
+# Directory Bookmarks
+export college="$HOME/college"
+export cs3240="$HOME/college/cs3240"
+export cs3330="$HOME/college/cs3330"
+export cs4630="$HOME/college/cs4630"
+export ece="$HOME/college/ece3501"
+export phys="$HOME/college/phys3110"
