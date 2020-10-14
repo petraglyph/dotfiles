@@ -76,6 +76,7 @@ nmap < v<
 nmap > v>
 nmap <S-d> dd
 vmap <S-y> ! xsel -b<enter>u
+command! Tabify :%s/    /\t/g
 " Terminal
 nnoremap <C-t> :terminal<Enter>i<end>
 au TermOpen * setlocal nonumber
