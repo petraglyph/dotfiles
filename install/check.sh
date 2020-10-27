@@ -22,7 +22,7 @@ fi
 
 # Check computer is valid or 'none'
 if [[ $1 == "none" ]]; then
-	continue
+	sleep 0
 elif [ -d $loc/$comp ]; then
 	if [[ $(hostname) != $comp ]]; then
 		error "Wrong computer, should be '$(hostname)'"

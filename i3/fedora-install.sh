@@ -7,10 +7,16 @@ loc="$HOME/.dotfiles"
 source "$(dirname $BASH_SOURCE)/../install/check.sh" "none"
 
 message "Enabling copr Repositories"
-sudo dnf -y copr enable opuk/pamixer
-sudo dnf -y copr enable yaroslav/i3desktop
-sudo dnf -y copr enable pschyska/alacritty
-#sudo dnf -y copr enable skidnik/termite
+copr() {
+	result=$(sudo dnf -y copr enable $1 2>&1 | tail -1)
+	if [[ $result != "Bugzilla. In case of problems, contact the owner of this repository." ]]; then
+		echo $result
+	fi
+}
+copr opuk/pamixer
+copr yaroslav/i3desktop
+copr pschyska/alacritty
+#copr skidnik/termite
 
 packages="
 alacritty
@@ -32,15 +38,14 @@ sudo dnf -y install $packages --skip-broken
 
 
 message "Builds From Source"
+mkdir -p "$loc/.local"
+
 message "  xidlehook"
 sudo dnf -y install cargo libX11-devel
 cargo install xidlehook
 
-mkdir -p "$loc/.local"
-cd "$loc/.local"
-
-
 message "  i3lock-color"
+cd "$loc/.local"
 sudo dnf -y install autoconf automake libev-devel cairo-devel pam-devel \
 	xcb-util-image-devel xcb-util-devel xcb-util-xrm-devel \
 	libxkbcommon-devel libxkbcommon-x11-devel libjpeg-turbo-devel
@@ -48,7 +53,6 @@ if [ ! -d $loc/.local/i3lock-color ]; then
 	git clone https://github.com/Raymo111/i3lock-color.git
 fi
 cd i3lock-color
-
 git pull
 git tag -f "git-$(git rev-parse --short HEAD)"
 chmod +x build.sh
@@ -56,24 +60,3 @@ chmod +x build.sh
 chmod +x install-i3lock-color.sh
 sudo ./install-i3lock-color.sh
 
-
-message "  gotop"
-cd "$loc/.local"
-git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop
-/tmp/gotop/scripts/download.sh
-sudo mv gotop /bin
-
-
-message "  pmi"
-cd "$loc/.local"
-if [ -e pmi ]; then
-	cd pmi
-	git pull
-else
-	git clone git@github.com:pennbauman/pmi.git
-	cd pmi
-fi
-./install.sh
-pmi enable --yes
-pmi disable yum
-pmi disable pip

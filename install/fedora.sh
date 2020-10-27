@@ -79,3 +79,13 @@ ln -fs $HOME/.var/app/com.mojang.Minecraft/data/minecraft $HOME/.minecraft
 message "Installing Sass (from npm)"
 sudo npm install -g npm
 sudo npm install -g sass
+
+
+message "Builds From Source"
+mkdir -p $loc/.local
+
+message "  gotop"
+cd "$loc/.local"
+git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop
+/tmp/gotop/scripts/download.sh
+sudo mv gotop /bin
