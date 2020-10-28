@@ -19,3 +19,5 @@ bash ~/.dotfiles/install/configure.sh $comp
 bash ~/.dotfiles/i3/configure.sh $comp
 # Folding@Home Configuration
 bash ~/.dotfiles/install/fah.sh
+# Install Personal Programs
+bash ~/.dotfiles/install/personal.sh

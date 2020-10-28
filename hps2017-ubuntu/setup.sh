@@ -12,3 +12,5 @@ source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
 bash ~/.dotfiles/install/ubuntu.sh
 # General Configuration
 bash ~/.dotfiles/install/configure.sh $comp
+# Install Personal Programs
+bash ~/.dotfiles/install/personal.sh
