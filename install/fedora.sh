@@ -48,6 +48,7 @@ rclone
 texlive-latex
 the_silver_searcher
 tldr
+util-linux-user
 zathura-pdf-mupdf
 zsh
 "
@@ -56,7 +57,7 @@ if (( $# > 0 )); then
 	$(cat "$1")"
 fi
 message "Installing Packages"
-sudo dnf -y install $packages
+sudo dnf -y install $packages --skip-broken
 
 
 message "Installing Flatpaks"

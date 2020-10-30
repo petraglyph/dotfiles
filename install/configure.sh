@@ -43,6 +43,7 @@ ln -fs $loc/configs/airline-maia_custom.vim $XDG_DATA_HOME/nvim/site/autoload/ai
 if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+nvim +PlugInstall +qall
 
 message "Copying Root Configs"
 sudo rm -f /etc/resolv.conf

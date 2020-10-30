@@ -14,9 +14,12 @@ copr() {
 	fi
 }
 copr opuk/pamixer
-copr yaroslav/i3desktop
 copr pschyska/alacritty
+copr sentry/i3desktop
 #copr skidnik/termite
+
+message "Getting Required Perl Version"
+sudo dnf module install perl:5.30 --allowerasing
 
 packages="
 alacritty
@@ -24,6 +27,7 @@ conky
 dmenu
 dunst
 i3-gaps
+i3lock-color
 i3status
 lxappearance
 picom
@@ -43,20 +47,4 @@ mkdir -p "$loc/.local"
 message "  xidlehook"
 sudo dnf -y install cargo libX11-devel
 cargo install xidlehook
-
-message "  i3lock-color"
-cd "$loc/.local"
-sudo dnf -y install autoconf automake libev-devel cairo-devel pam-devel \
-	xcb-util-image-devel xcb-util-devel xcb-util-xrm-devel \
-	libxkbcommon-devel libxkbcommon-x11-devel libjpeg-turbo-devel
-if [ ! -d $loc/.local/i3lock-color ]; then
-	git clone https://github.com/Raymo111/i3lock-color.git
-fi
-cd i3lock-color
-git pull
-git tag -f "git-$(git rev-parse --short HEAD)"
-chmod +x build.sh
-./build.sh
-chmod +x install-i3lock-color.sh
-sudo ./install-i3lock-color.sh
 
