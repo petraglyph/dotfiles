@@ -13,12 +13,12 @@ copr() {
 		echo $result
 	fi
 }
-copr opuk/pamixer
 copr pschyska/alacritty
 copr sentry/i3desktop
+#copr opuk/pamixer
 #copr skidnik/termite
 
-message "Getting Required Perl Version"
+#Getting required Perl version"
 sudo dnf module install perl:5.30 --allowerasing
 
 packages="
@@ -48,3 +48,14 @@ message "  xidlehook"
 sudo dnf -y install cargo libX11-devel
 cargo install xidlehook
 
+message "  xidlehook"
+sudo dnf -y install boost-devel pulseaudio-libs-devel
+cd "$loc/.local"
+if [ -e pamixer ]; then
+	cd pamixer
+	git pull
+else
+	git clone https://github.com/cdemoulins/pamixer.git
+	cd pamixer
+fi
+make && sudo cp pamixer /bin
