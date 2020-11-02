@@ -17,6 +17,7 @@ copr pschyska/alacritty
 
 packages="
 alacritty
+gammastep
 sway
 swaybg
 swayidle

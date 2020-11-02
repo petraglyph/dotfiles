@@ -46,10 +46,10 @@ output * bg $loc/$name/background.png fill
 output * scale 2
 
 ## Special Window Configurations
-#for_window [class="Alacritty" title="scratch"] move scratchpad
+for_window [app_id="Alacritty" title="scratch"] move scratchpad
 #for_window [class="Gimp-2.10"] border normal
 # windows floating by default
-for_window [class="Alacritty" title="float"] floating enable
+for_window [app_id="Alacritty" title="float"] floating enable
 #for_window [class="Steam" title="Steam - News"] floating enable
 #for_window [title="Java: *"] border normal
 #for_window [title="Java: *"] floating enable
@@ -189,7 +189,7 @@ bindsym $super+Space exec dmenu_run
 # start terminal
 bindsym $super+Return exec $term
 # start calculator
-#bindsym $super+c exec $term -t float -e qalc
+bindsym $super+c exec $term -t float -e qalc
 # Custom script runner
 bindsym $super+x exec $term -t float -e sh $HOME/documents/other/linux/scripts/quick-run.sh
 # Show/hide tray
@@ -218,10 +218,10 @@ bindsym $super+Right exec mpc next
 bindsym $super+Shift+Left exec mpc seek -0:0:10
 bindsym $super+Shift+Right exec mpc seek +0:0:10
 # screen brightness controls
-#bindsym XF86MonBrightnessUp exec sh $loc/i3/scripts/dimlight.sh +
-#bindsym XF86MonBrightnessDown exec sh $loc/i3/scripts/dimlight.sh -
-#bindsym $super+Prior exec sh $loc/i3/scripts/dimlight.sh +
-#bindsym $super+Next exec sh $loc/i3/scripts/dimlight.sh -
+bindsym XF86MonBrightnessUp exec sh $loc/sway/scripts/dimlight.sh +
+bindsym XF86MonBrightnessDown exec sh $loc/sway/scripts/dimlight.sh -
+bindsym $super+Prior exec sh $loc/sway/scripts/dimlight.sh +
+bindsym $super+Next exec sh $loc/sway/scripts/dimlight.sh -
 
 ## Sway Control
 # restart swat
@@ -272,17 +272,15 @@ exec $term -t scratch
 exec firefox
 exec sh $loc/i3/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
-#exec picom -b -f -D 1
 #exec xidlehook --not-when-fullscreen --not-when-audio --timer 120 "xset dpms force off" "" --timer 30 "sh $loc/i3/scripts/i3locker.sh" "" --timer 150 "systemctl suspend"
 #exec dunst
 # files and background processes
 exec pcloud
 #exec --no-startup-id /usr/libexec/kdeconnectd
-#exec sh $loc/i3/scripts/dimlight.sh
+exec sh $loc/sway/scripts/dimlight.sh
 exec sh $loc/i3/scripts/network-start.sh
 
 ## Run on i3 Restart
-#exec_always sh $loc/i3/scripts/polybar-start.sh $name $name-hdmi
 exec_always killall waybar; waybar
 #exec_always xrandr --output DP-1 --auto --above eDP-1
 #exec_always xrandr --output DP-2 --auto --above eDP-1
