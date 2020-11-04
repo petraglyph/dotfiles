@@ -3,8 +3,8 @@
 while [[ $(cat /proc/net/route) =~ 'wlp(59|41)s0|enp39s0' ]]; do
 	wifis=$(nmcli dev wifi list)
 	#echo "$wifis"
-	if [[ "$wifis" =~ "Grandmarc Wireless" ]]; then
-		echo "Grandmarc Wireless"
+	if [[ "$wifis" =~ "Bougie Ass Bitches" ]]; then
+		echo "Bougie Ass Bitches"
 		nmcli con up "Grandmarc Wireless"
 	elif [[ "$wifis" =~ "wahoo" ]]; then
 		echo "wahoo"
