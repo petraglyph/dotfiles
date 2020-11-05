@@ -46,6 +46,7 @@ qalc
 ranger
 rclone
 texlive-latex
+texlive-scheme-medium
 the_silver_searcher
 tldr
 util-linux-user
