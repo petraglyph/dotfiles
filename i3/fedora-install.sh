@@ -19,6 +19,7 @@ copr sentry/i3desktop
 #copr skidnik/termite
 
 #Getting required Perl version"
+sudo dnf module reset perl
 sudo dnf module install perl:5.30 --allowerasing
 
 packages="
