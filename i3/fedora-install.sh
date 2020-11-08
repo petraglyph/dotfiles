@@ -27,6 +27,7 @@ alacritty
 conky
 dmenu
 dunst
+feh
 i3-gaps
 i3lock-color
 i3status
@@ -49,7 +50,7 @@ message "  xidlehook"
 sudo dnf -y install cargo libX11-devel
 cargo install xidlehook
 
-message "  xidlehook"
+message "  pamixer"
 sudo dnf -y install boost-devel pulseaudio-libs-devel
 cd "$loc/.local"
 if [ -e pamixer ]; then

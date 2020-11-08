@@ -26,3 +26,19 @@ waybar
 "
 message "Install Packages"
 sudo dnf -y install $packages --skip-broken
+
+
+message "Builds From Source"
+mkdir -p "$loc/.local"
+
+message "  pamixer"
+sudo dnf -y install boost-devel pulseaudio-libs-devel
+cd "$loc/.local"
+if [ -e pamixer ]; then
+	cd pamixer
+	git pull
+else
+	git clone https://github.com/cdemoulins/pamixer.git
+	cd pamixer
+fi
+make && sudo cp pamixer /bin

@@ -20,7 +20,6 @@ sudo dnf config-manager --set-enabled google-chrome
 packages="
 android-tools
 clang
-feh
 ffmpeg
 gcolor3
 gnuplot
@@ -38,7 +37,6 @@ neovim
 nethogs
 nodejs
 openvpn
-pamixer
 pavucontrol
 perl-Image-ExifTool
 python3-pip
