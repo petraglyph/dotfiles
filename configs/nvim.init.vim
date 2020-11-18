@@ -29,6 +29,7 @@ set clipboard+=unnamedplus
 set number
 set wrap lbr
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set listchars=tab:¦\ ,trail:~,extends:>,precedes:<
 set list
@@ -40,6 +41,7 @@ let g:netrw_liststyle = 3
 
 " Text conceal
 set conceallevel=1
+set concealcursor=
 au BufLeave * call clearmatches()
 "au BufEnter * call matchadd('Conceal', '<=', 10, 199, {'conceal': '≤'})
 "au BufEnter * call matchadd('Conceal', '>=', 10, 198, {'conceal': '≥'})
