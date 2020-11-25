@@ -14,7 +14,7 @@ f - open ~
 g
 h - switch window left
 	H - move window left
-i
+i - open images
 j - switch window down
 	J - move window down
 k - switch window up
