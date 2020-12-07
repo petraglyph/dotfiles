@@ -60,7 +60,7 @@ chsh -s /usr/bin/zsh
 
 message "Setting up Crontab"
 echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
-cat $loc/$comp/crontab.txt | crontab -
+crontab $loc/$comp/crontab.txt
 
 message "Running External Setup"
 if [ -e $HOME/documents/other/linux/scripts/setup.sh ]; then
