@@ -27,6 +27,7 @@ mkdir -p $XDG_DATA_HOME/nvim/site/autoload/airline/themes
 
 message "Linking Configs"
 ln -fs $loc/configs/gitconfig $XDG_CONFIG_HOME/git/config
+ln -fs $loc/configs/gitignore $XDG_CONFIG_HOME/git/ignore
 ln -fs $loc/configs/mpd.conf $XDG_CONFIG_HOME/mpd/mpd.conf
 ln -fs $loc/configs/ncmpcpp-bindings $XDG_CONFIG_HOME/ncmpcpp/bindings
 ln -fs $loc/configs/ncmpcpp-config $XDG_CONFIG_HOME/ncmpcpp/config

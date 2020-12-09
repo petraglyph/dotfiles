@@ -2,7 +2,7 @@
 	email = pennbauman@protonmail.com
 	name = Penn Bauman
 [core]
-	excludesfile = **~
+	excludesfile = ~/.config/git/ignore
 	pager = less -x4
 [pull]
 	rebase = false
