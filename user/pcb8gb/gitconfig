@@ -1,6 +1,0 @@
-[user]
-	email = pcb8gb@virginia.edu
-	name = Penn Bauman
-[core]
-	excludesfile = **~
-	pager = less -x4
