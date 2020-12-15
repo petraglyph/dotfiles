@@ -65,6 +65,7 @@ precmd_functions+=set_prompt
 alias ls="ls -FAh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"
+alias chx="chmod +x"
 alias less="less -x4"
 alias feh="feh -Z -B '#000000' $@"
 alias vim="nvim $@"
