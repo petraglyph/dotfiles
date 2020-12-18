@@ -34,7 +34,7 @@ set shiftwidth=4
 set listchars=tab:¦\ ,trail:~,extends:>,precedes:<
 set list
 set guicursor=
-source $HOME/.local/share/nvim/site/colors/maia-custom.vim
+source $XDG_DATA_HOME/nvim/site/colors/maia-custom.vim
 " Netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
