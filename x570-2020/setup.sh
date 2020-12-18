@@ -13,8 +13,10 @@ source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
 bash ~/.dotfiles/install/fedora.sh
 # i3 Fedora Installs
 bash ~/.dotfiles/i3/fedora-install.sh
-# General Configuration
-bash ~/.dotfiles/install/configure.sh $comp
+# Terminal Configuration
+bash ~/.dotfiles/install/terminal.sh $comp
+# Desktop Configuration
+bash ~/.dotfiles/install/desktop.sh $comp
 # i3 Configuration
 bash ~/.dotfiles/i3/configure.sh $comp
 # Folding@Home Configuration

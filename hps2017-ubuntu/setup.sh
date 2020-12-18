@@ -10,7 +10,9 @@ source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
 
 # Ubuntu Installs
 bash ~/.dotfiles/install/ubuntu.sh
-# General Configuration
-bash ~/.dotfiles/install/configure.sh $comp
+# Terminal Configuration
+bash ~/.dotfiles/install/terminal.sh $comp
+# Desktop Configuration
+bash ~/.dotfiles/install/desktop.sh $comp
 # Install Personal Programs
 bash ~/.dotfiles/install/personal.sh

@@ -1,5 +1,5 @@
 #/bin/sh
-# General Configuration
+# Terminal Configuration
 
 loc="$HOME/.dotfiles"
 comp=$1
@@ -23,7 +23,7 @@ mkdir -p $XDG_CONFIG_HOME/nvim
 mkdir -p $XDG_DATA_HOME/nvim/site/colors
 mkdir -p $XDG_DATA_HOME/nvim/site/autoload/airline/themes
 
-message "Linking Configs"
+message "Linking Terminal Configs"
 ln -fs $loc/configs/gitconfig $XDG_CONFIG_HOME/git/config
 ln -fs $loc/configs/gitignore $XDG_CONFIG_HOME/git/ignore
 ln -fs $loc/configs/nvim.init.vim $XDG_CONFIG_HOME/nvim/init.vim
@@ -40,5 +40,16 @@ if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 fi
 nvim +PlugInstall +qall
 
-message "Setting Up ZSH"
+
+message "Root Zsh Config"
+sudo rm -f /root/.zshrc
+sudo cp -f $loc/configs/zshrc-root /root/.zshrc
+
+message "Setting Up Zsh"
+sudo chsh -s /usr/bin/zsh root
 chsh -s /usr/bin/zsh
+
+
+message "Setting up Crontab"
+echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
+crontab $loc/$comp/crontab.txt
