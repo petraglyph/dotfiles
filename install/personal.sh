@@ -33,7 +33,6 @@ elif [ $(command -v apt) ]; then
 elif [ $(command -v yay) ]; then
 	pmi enable yay
 fi
-pmi enable npm
 
 
 build "bool-test"

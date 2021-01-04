@@ -51,5 +51,9 @@ chsh -s /usr/bin/zsh
 
 
 message "Setting up Crontab"
-echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
+if [ $(command -v npm) ]; then
+	sudo crontab $loc/configs/sudo-crontab.txt
+else
+	echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
+fi
 crontab $loc/$comp/crontab.txt
