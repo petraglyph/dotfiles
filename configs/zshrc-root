@@ -1,3 +1,13 @@
+# Oh My ZSH
+if [ ! -d $HOME/.oh-my-zsh ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+
+HYPHEN_INSENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
+
 # Configure Prompt
 autoload -U colors && colors
 setopt PROMPT_SUBST
@@ -5,7 +15,7 @@ setopt PROMPT_SUBST
 # name@computer
 PS1='%{$fg_bold[red]%}[%m'
 # directory
-PS1+=" %{$fg_bold[white]%}%1~"
+PS1+=" %{$fg_bold[white]%}%1/"
 # exit code
 #PS1+="%b%(?.. $fg[blue]%?)"
 # ender
