@@ -107,14 +107,11 @@ bindsym $super+Shift+9 move container to workspace $ws9
 bindsym $super+Shift+0 move container to workspace $ws10
 bindsym $super+Shift+m move container to workspace $wsHDMI
 # workspace assignments
-assign [class="Firefox"] $ws2
-assign [class="firefox"] $ws2
-assign [class="Google-chrome"] $ws3
-assign [class="Gimp"] $ws7
-assign [class="Inkscape"] $ws7
+assign [app_id="firefox"] $ws2
+assign [app_id="Google-chrome"] $ws3
+#assign [class="Gimp"] $ws7
+#assign [class="Inkscape"] $ws7
 #assign [class="Transmission-gtk"] $ws9
-#assign [class="Spotify"] $ws10
-#assign [class="Rhythmbox"] $ws10
 assign [app_id="Alacritty" title="ncmpcpp"] $ws10
 # workspace monitors
 #workspace $ws1 output eDP-1
