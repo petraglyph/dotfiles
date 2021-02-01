@@ -41,9 +41,16 @@ gaps inner 13
 gaps outer -2
 smart_gaps on
 smart_borders on
-# display
+
+## Displays
 output * bg $loc/$name/background.png fill
-output * scale 2
+output eDP-1 scale 2
+output eDP-1 pos 0 1080 res 3840x2160
+# hdmi
+output DP-1 scale 1
+output DP-1 pos 0 0 res 1920x1080
+output DP-2 scale 1
+output DP-2 pos 0 0 res 1920x1080
 
 ## Special Window Configurations
 for_window [app_id="Alacritty" title="scratch"] move scratchpad
@@ -51,9 +58,6 @@ for_window [app_id="Alacritty" title="scratch"] move scratchpad
 # windows floating by default
 for_window [app_id="Alacritty" title="float"] floating enable
 #for_window [class="Steam" title="Steam - News"] floating enable
-#for_window [title="Java: *"] border normal
-#for_window [title="Java: *"] floating enable
-#for_window [class="Gcolor3"] floating enable
 
 
 
@@ -114,17 +118,18 @@ assign [app_id="Google-chrome"] $ws3
 #assign [class="Transmission-gtk"] $ws9
 assign [app_id="Alacritty" title="ncmpcpp"] $ws10
 # workspace monitors
-#workspace $ws1 output eDP-1
-#workspace $ws2 output eDP-1
-#workspace $ws3 output eDP-1
-#workspace $ws4 output eDP-1
-#workspace $ws5 output eDP-1
-#workspace $ws6 output eDP-1
-#workspace $ws7 output eDP-1
-#workspace $ws8 output eDP-1
-#workspace $ws9 output eDP-1
-#workspace $ws10 output eDP-1
-#workspace $wsHDMI output DP-2
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+workspace $ws6 output eDP-1
+workspace $ws7 output eDP-1
+workspace $ws8 output eDP-1
+workspace $ws9 output eDP-1
+workspace $ws10 output eDP-1
+workspace $wsHDMI output DP-1
+workspace $wsHDMI output DP-2
 
 
 
@@ -226,7 +231,7 @@ bindsym $super+Shift+Escape reload
 # exit sway
 bindsym $super+Escape exec $term -t float -e $loc/i3/scripts/i3exit.sh
 # lock sway
-#bindsym $super+z exec sh $loc/i3/scripts/i3locker.sh suspend
+bindsym $super+z exec sh $loc/sway/scripts/locker.sh suspend
 # screenshots
 bindsym Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc_grim.png')
 bindsym $super+Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc_grim.png') -g $(slurp)
@@ -269,7 +274,12 @@ exec $term -t scratch
 exec firefox
 exec sh $loc/sway/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
-#exec xidlehook --not-when-fullscreen --not-when-audio --timer 120 "xset dpms force off" "" --timer 30 "sh $loc/i3/scripts/i3locker.sh" "" --timer 150 "systemctl suspend"
+exec_always swayidle -w \
+	timeout 120 'swaymsg "output * dpms off"' \
+		resume 'swaymsg "output * dpms on"' \
+	timeout 200 $loc/sway/scripts/locker.sh \
+	before-sleep $loc/sway/scripts/locker.sh \
+	after-resume 'swaymsg "output * dpms on"'
 #exec dunst
 # files and background processes
 exec pcloud
@@ -279,20 +289,3 @@ exec sh $loc/sway/scripts/network-start.sh
 
 ## Run on i3 Restart
 exec_always killall waybar; waybar
-#exec_always xrandr --output DP-1 --auto --above eDP-1
-#exec_always xrandr --output DP-2 --auto --above eDP-1
-
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
