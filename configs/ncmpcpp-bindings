@@ -1,29 +1,39 @@
-# Media Button Type Controls
 def_key "space"
 	pause
-def_key "ctrl-left"
-	previous
-def_key "ctrl-right"
-	next
 
 #Vi Bindings
 def_key "h"
-	push_character "left"
+	previous_column
 def_key "j"
-	push_character "down"
+	scroll_down
 def_key "k"
-	push_character "up"
+	scroll_up
 def_key "l"
-	push_character "right"
+	next_column
 
-#def_key "H"
 def_key "J"
-	push_character "page_down"
+	scroll_down
+	scroll_down
+	scroll_down
+	scroll_down
+	scroll_down
+	scroll_down
+	scroll_down
+	scroll_down
+	scroll_down
+	scroll_down
+	scroll_down
+	scroll_down
 def_key "K"
-	push_character "page_up"
-#def_key "L"
-
-def_key "ctrl-h"
-	previous
-def_key "ctrl-l"
-	next
+	scroll_up
+	scroll_up
+	scroll_up
+	scroll_up
+	scroll_up
+	scroll_up
+	scroll_up
+	scroll_up
+	scroll_up
+	scroll_up
+	scroll_up
+	scroll_up
