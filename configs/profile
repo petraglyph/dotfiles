@@ -9,7 +9,7 @@ export LC_ALL="C"
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 # rust
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 # go
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
