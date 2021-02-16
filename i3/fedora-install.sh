@@ -34,10 +34,11 @@ i3status
 lxappearance
 picom
 polybar
+redshift
 rofi
 scrot
+shutter
 stalonetray
-redshift
 "
 message "Install Packages"
 sudo dnf -y install $packages --skip-broken
