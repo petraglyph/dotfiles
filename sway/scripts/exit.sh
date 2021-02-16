@@ -4,9 +4,9 @@
 echo "i3 System"
 echo "  [s] shutdown"
 echo "  [r] reboot"
-echo "  [e] exit i3"
+echo "  [e] exit sway"
 echo "  [c] cancel"
-while true; do 
+while true; do
     read -p ": " t
 	case $t in
 		s) systemctl poweroff
