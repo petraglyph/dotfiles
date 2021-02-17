@@ -1,6 +1,4 @@
-## i3 Config File Penn Bauman
-# see https://i3wm.org/docs/userguide.html for reference
-# see this config at https://github.com/pennbauman/i3-config
+## Sway Config - Penn Bauman
 
 
 ### VARIABLES
@@ -36,7 +34,7 @@ client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
 client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
-# i3 gaps
+# gaps
 gaps inner 13
 gaps outer -2
 smart_gaps on
@@ -231,7 +229,7 @@ bindsym $super+Next exec sh $loc/sway/scripts/dimlight.sh -
 # restart swat
 bindsym $super+Shift+Escape reload
 # exit sway
-bindsym $super+Escape exec $term -t float -e $loc/i3/scripts/i3exit.sh
+bindsym $super+Escape exec $term -t float -e $loc/sway/scripts/exit.sh
 # lock sway
 bindsym $super+z exec sh $loc/sway/scripts/locker.sh suspend
 # screenshots
@@ -268,7 +266,7 @@ bindsym $super+Shift+f exec $term -e ssh x570
 
 
 ### STARTUP PROGRAMS
-## Run on i3 Startup
+## Run on Startup
 # user windows
 exec $term
 exec $term
@@ -289,5 +287,5 @@ exec pcloud
 exec sh $loc/sway/scripts/dimlight.sh
 exec sh $loc/sway/scripts/network-start.sh
 
-## Run on i3 Restart
+## Run on Restart
 exec_always killall waybar; waybar

@@ -1,7 +1,7 @@
 #/bin/sh
 # Exit sway
 
-echo "i3 System"
+echo "Sway System"
 echo "  [s] shutdown"
 echo "  [r] reboot"
 echo "  [e] exit sway"
