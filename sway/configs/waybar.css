@@ -5,57 +5,40 @@
 	font-size: 16px;
 	min-height: 0;
 }
-
 window#waybar {
 	background: #000000;
 	color: #eeeeee;
 }
 
 #workspaces button {
-	padding: 0 10px;
+	padding: 0 8px;
 	font-size:28px;
 }
 #workspaces button.focused {
 	color:#2EB398;
 }
+#mode {
+	color:#DB5B5B;
+	margin-left:8px;
+}
 #mpd {
 	margin-left:20px;
 }
 
-
-#mode, #clock, #battery {
+#cpu, #memory, #pulseaudio {
+	padding: 0 8px;
+}
+#cpu, #memory, #pulseaudio, #network {
+	color:#2EB398;
+}
+#cpu.warning, #memory.warning, #pulseaudio.loud, #network.disconnected {
+	color:#DB5B5B;
+}
+#battery {
 	padding: 0 10px;
 	margin: 0 5px;
+	color:#2EB398;
 }
-
-#mode {
-	background: #64727D;
-	border-bottom: 3px solid white;
-}
-
-#battery {
-	background-color: #ffffff;
-	color: black;
-}
-
-#battery.charging {
-	color: white;
-	background-color: #26A65B;
-}
-
-@keyframes blink {
-	to {
-		background-color: #ffffff;
-		color: black;
-	}
-}
-
 #battery.warning:not(.charging) {
-	background: #f53c3c;
-	color: white;
-	animation-name: blink;
-	animation-duration: 0.5s;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
+	color:#DB5B5B;
 }

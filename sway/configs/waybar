@@ -1,12 +1,9 @@
 {
-	// "layer": "top", // Waybar at top layer
-	// "position": "bottom", // Waybar position (top|bottom|left|right)
-	"height": 30, // Waybar height (to be removed for auto height)
-	// "width": 1280, // Waybar width
-	// Choose the order of the modules
-	"modules-left": ["sway/workspaces", "mpd"],
+	"height": 30,
+	"modules-left": ["sway/workspaces", "sway/mode", "mpd"],
 	"modules-center": ["clock"],
-	"modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "sway/language", "battery", "battery#bat2", "tray"],
+	"modules-right": ["network", "pulseaudio", "memory", "cpu", "battery"],
+
 
 	// Left Modules
 	"sway/workspaces": {
@@ -44,82 +41,53 @@
 
 	// Right Modules
 	"network": {
-		"format-wifi": "{essid} ({signalStrength}%) {bandwidthUpOctets}",
-		"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-		"format-linked": "{ifname} (No IP) ",
-		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+		"interval": 1,
+		"format-wifi": "{icon} <span color=\"#eeeeee\">{essid} {bandwidthDownOctets},{bandwidthUpOctets:}</span>",
+		"format-ethernet": " <span color=\"#eeeeee\">{ipaddr} {bandwidthDownOctets},{bandwidthUpOctets:}</span>",
+		"format-disconnected": "來 <span color=\"#eeeeee\">Disconnected</span>",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"format-icons": ["冷", "爛", "爛", "襤", "蠟"],
+	},
+	"pulseaudio": {
+		"format": "{icon}<span color=\"#eeeeee\">{volume}%</span>",
+		"format-muted": "<span color=\"#eeeeee\">{volume}%</span>",
+		"states": {
+			"loud": 101,
+		},
+		"format-icons": {
+			"default": ["", ""]
+		},
+	},
+	"memory": {
+		"interval": 5,
+		"format": "<span color=\"#eeeeee\">{percentage:02}%</span>",
+		"states": {
+			"warning": 80,
+		},
+		"tooltip": false
+	},
+	"cpu": {
+		"interval": 1,
+		"format": "<span color=\"#eeeeee\">{usage:02}%</span>",
+		"states": {
+			"warning": 80,
+		},
+		"tooltip": false
+	},
+	"battery": {
+		"bat": "BAT0",
+		"states": {
+			"warning": 30,
+		},
+		"format": "{icon}<span color=\"#eeeeee\">{capacity}%</span>",
+		"format-charging": " {capacity}%",
+		// "format-plugged": "{capacity}% ",
+		// "format-full": "",
+		"format-icons": ["", "", "", "", "", "", "", "", "", ""]
 	},
 
-	"idle_inhibitor": {
-		"format": "{icon}",
-		"format-icons": {
-			"activated": "",
-			"deactivated": ""
-		}
-	},
 	"tray": {
 		// "icon-size": 21,
 		"spacing": 10
 	},
-	"cpu": {
-		"format": "{usage}% ",
-		"tooltip": false
-	},
-	"memory": {
-		"format": "{}% "
-	},
-	"backlight": {
-		// "device": "acpi_video1",
-		"format": "{percent}% {icon}",
-		"format-icons": ["", ""]
-	},
-	"battery": {
-		"states": {
-			// "good": 95,
-			"warning": 30,
-			"critical": 15
-		},
-		"format": "{capacity}% {icon}",
-		"format-charging": "{capacity}% ",
-		"format-plugged": "{capacity}% ",
-		"format-alt": "{time} {icon}",
-		// "format-good": "", // An empty format will hide the module
-		// "format-full": "",
-		"format-icons": ["", "", "", "", ""]
-	},
-	"battery#bat2": {
-		"bat": "BAT2"
-	},
-	"pulseaudio": {
-		// "scroll-step": 1, // %, can be a float
-		"format": "{volume}% {icon} {format_source}",
-		"format-bluetooth": "{volume}% {icon} {format_source}",
-		"format-bluetooth-muted": " {icon} {format_source}",
-		"format-muted": " {format_source}",
-		"format-source": "{volume}% ",
-		"format-source-muted": "",
-		"format-icons": {
-			"headphone": "",
-			"hands-free": "",
-			"headset": "",
-			"phone": "",
-			"portable": "",
-			"car": "",
-			"default": ["", "", ""]
-		},
-		"on-click": "pavucontrol"
-	},
-	"custom/media": {
-		"format": "{icon} {}",
-		"return-type": "json",
-		"max-length": 40,
-		"format-icons": {
-			"spotify": "",
-			"default": "🎜"
-		},
-		"escape": true,
-		"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-		// "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-	}
 }
