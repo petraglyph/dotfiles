@@ -7,7 +7,7 @@ For scripts to work, clone the repository to `~/.dofiles`.
 
 To install, clone the repository to `~/.dofiles` with:
 
-	git clone git@github.com:pennbauman/i3-config.git ~/.dotfiles
+	git clone https://github.com/pennbauman/dotfiles.git ~/.dotfiles
 
 And run the install scripts for what you want to setup.
 

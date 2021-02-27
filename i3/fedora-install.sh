@@ -49,7 +49,7 @@ mkdir -p "$loc/.local"
 
 message "  xidlehook"
 sudo dnf -y install cargo libX11-devel
-cargo install xidlehook
+cargo install xidlehook --locked --bins
 
 message "  pamixer"
 sudo dnf -y install boost-devel pulseaudio-libs-devel
