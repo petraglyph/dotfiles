@@ -25,7 +25,9 @@ tabs -4
 
 # Externals
 source $HOME/.profile
-source $HOME/.zsh-dirs
+if [ -e $HOME/.zsh-dirs ]; then
+	source $HOME/.zsh-dirs
+fi
 
 # Configure Prompt
 autoload -U colors && colors
