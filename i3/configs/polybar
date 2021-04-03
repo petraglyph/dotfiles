@@ -98,6 +98,52 @@ modules-right = network-x570-2020 volume cpu battery
 
 
 
+[bar/hps2017-ubuntu]
+monitor = eDP-1
+width = 100%
+height = 50
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.primary}
+line-size = 0
+line-color = ${colors.background}
+border-size = 0
+padding-left = 1
+padding-right = 1
+module-margin-left = 0
+module-margin-right = 1
+;
+font-0 = DejaVu Sans Mono:size=24;0
+font-1 = "Material Design Icons:size=28;0"
+;
+modules-left = i3ws mpd
+modules-center = datetime
+modules-right = updates network-hps2017 volume memory cpu battery
+
+[bar/hps2017-ubuntu-hdmi]
+monitor = HDMI-1
+width = 100%
+height = 32
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.primary}
+line-size = 0
+line-color = ${colors.background}
+border-size = 0
+padding-left = 1
+padding-right = 1
+module-margin-left = 0
+module-margin-right = 1
+;
+font-0 = DejaVu Sans Mono:size=14;0
+font-1 = "Material Design Icons:size=16;0"
+;
+modules-left = hdmi
+modules-center = datetime
+modules-right = network-hps2017 volume cpu battery
+
+
+
 ; LEFT MODULES
 [module/i3ws]
 type = internal/i3
@@ -241,6 +287,13 @@ type = custom/script
 interval = 1
 label = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
 exec = conky -c ~/.dotfiles/i3/scripts/netconky-hps2020
+tail = true
+
+[module/network-hps2017]
+type = custom/script
+interval = 1
+label = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
+exec = conky -c ~/.dotfiles/i3/scripts/netconky-hps2017
 tail = true
 
 [module/updates]
