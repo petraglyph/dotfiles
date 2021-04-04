@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 vol=$(pamixer --get-volume)
 mute=$(pamixer --get-mute)

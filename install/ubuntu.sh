@@ -27,6 +27,21 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 rm ./google-chrome-stable_current_amd64.deb
 
+message "Enabling Flatpak"
+
+message "Installing Flatpaks"
+flatpaks="
+org.gimp.GIMP
+org.inkscape.Inkscape
+com.valvesoftware.Steam
+org.signal.Signal
+com.mojang.Minecraft
+com.discordapp.Discord
+"
+sudo apt -y install flatpak gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak -y install flathub $flatpaks
+
 message "Installing Sass (from npm)"
 sudo npm install -g npm
 sudo npm install -g sass

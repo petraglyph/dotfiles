@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash
 
 if [[ $1 == "network" ]]; then
 	dev=$(nmcli | grep connected | head -n 1 | cut -d":" -f 1)
