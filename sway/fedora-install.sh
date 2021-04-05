@@ -1,5 +1,5 @@
 #!/bin/sh
-# i3 Fedora Installs
+# Sway Fedora Installs
 
 loc="$HOME/.dotfiles"
 
