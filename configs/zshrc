@@ -73,6 +73,7 @@ alias feh="feh -Z -B '#000000' $@"
 alias vim="nvim $@"
 alias svim="sudoedit $@"
 alias weather='curl wttr.in'
+alias zoomkill='killall zoom; rm -rf ~/Documents'
 
 ex () {
 	if [ -f $1 ] ; then
