@@ -23,7 +23,8 @@ l - switch window right
 	L - move window right
 m - desktop HDMI
 	M - move window to desktop HDMI
-n
+n - show last notification
+	N - open notes
 o
 p - toggle tray
 q

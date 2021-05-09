@@ -247,6 +247,8 @@ bindsym $super+Shift+e exec $term -e ranger $HOME/documents/college $HOME/docume
 bindsym $super+Shift+x exec $term -e ranger $HOME/documents/other/linux $HOME/documents $HOME/documents
 # open images
 bindsym $super+i exec $term -e ranger $HOME/documents/images $HOME/documents $HOME/documents
+# open notes
+bindsym $super+Shift+n exec $term -e ranger $HOME/documents/other/notes $HOME/documents $HOME/documents
 
 # open x570-2020 ssh
 bindsym $super+Shift+f exec $term -e ssh x570
