@@ -1,4 +1,4 @@
-#/bin/sh -e
+#/bin/bash -e
 # $ bash ~/.i3/scripts/i3locker.#!/bin/sh
 
 ## Color i3lock

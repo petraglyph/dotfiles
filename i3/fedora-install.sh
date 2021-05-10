@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # i3 Fedora Installs
 
 loc="$HOME/.dotfiles"

@@ -1,4 +1,4 @@
-#/bin/sh
+#/bin/bash
 # i3 Exit
 
 echo "i3 System"

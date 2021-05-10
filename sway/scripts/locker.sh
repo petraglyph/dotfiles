@@ -1,4 +1,4 @@
-#/bin/sh
+#/bin/bash
 
 ## Lock Color
 backcolor="000000FF"

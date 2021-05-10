@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Setup PIA connections
 
 $loc="~/.dotfiles/.local"

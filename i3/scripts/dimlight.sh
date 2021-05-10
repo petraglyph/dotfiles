@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 loc="$HOME/.dotfiles/.local"
 

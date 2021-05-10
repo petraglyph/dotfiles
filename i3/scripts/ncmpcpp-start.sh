@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Start and Setup mpd and ncmpcpp
 
 term=$1

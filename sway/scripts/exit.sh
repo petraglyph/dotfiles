@@ -1,4 +1,4 @@
-#/bin/sh
+#/bin/bash
 # Exit sway
 
 echo "Sway System"

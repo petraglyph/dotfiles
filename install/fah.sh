@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Install and setup folding@home
 
 loc="$HOME/.dotfiles"

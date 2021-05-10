@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 while [[ $(cat /proc/net/route) =~ 'wlp(59|41)s0|enp39s0' ]]; do
 	wifis=$(nmcli dev wifi list)

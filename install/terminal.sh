@@ -1,4 +1,4 @@
-#/bin/sh
+#/bin/bash
 # Terminal Configuration
 
 loc="$HOME/.dotfiles"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Sway Ubuntu Installs
 
 loc="$HOME/.dotfiles"
