@@ -1,7 +1,7 @@
 #!/bin/bash
 # Setup PIA connections
 
-$loc="~/.dotfiles/.local"
+loc="$HOME/.dotfiles/.local"
 
 mkdir -p $loc
 cd $loc

@@ -3,7 +3,7 @@
 
 # Oh My ZSH
 if [ ! -d $HOME/.oh-my-zsh ]; then
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --keep-zshrc
 fi
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh

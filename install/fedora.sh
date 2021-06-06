@@ -7,6 +7,11 @@ message() {
 
 loc="$(dirname $BASH_SOURCE)"
 
+message "Configure DNF"
+sudo echo "max_parallel_downloads=8" >> /etc/dnf/dnf.conf
+sudo echo "fastestmirror=True" >> /etc/dnf/dnf.conf
+
+
 message "Updating"
 sudo dnf -y upgrade
 
@@ -70,10 +75,13 @@ com.discordapp.Discord
 "
 sudo dnf -y install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-delete --user fedora
 sudo flatpak -y install flathub $flatpaks
 
 message "Linking ~/.minecraft/"
-mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft
+mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft/saves
+mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft/resourcepacks
+rm $HOME/.minecraft
 ln -fs $HOME/.var/app/com.mojang.Minecraft/data/minecraft $HOME/.minecraft
 
 message "Installing Sass (from npm)"
