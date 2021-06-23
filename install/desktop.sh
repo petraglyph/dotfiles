@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 # Desktop Configuration
 
 loc="$HOME/.dotfiles"
