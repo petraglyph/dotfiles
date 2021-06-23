@@ -21,6 +21,7 @@ message "Linking Desktop Configs"
 ln -fs $loc/configs/mpd.conf $XDG_CONFIG_HOME/mpd/mpd.conf
 ln -fs $loc/configs/ncmpcpp-bindings $XDG_CONFIG_HOME/ncmpcpp/bindings
 ln -fs $loc/configs/ncmpcpp-config $XDG_CONFIG_HOME/ncmpcpp/config
+ln -fs $loc/configs/gtk-settings.ini $XDG_CONFIG_HOME/gtk-3.0/settings.ini
 ln -fs $loc/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
 
 
