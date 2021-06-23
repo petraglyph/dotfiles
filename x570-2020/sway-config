@@ -19,7 +19,7 @@ set $right l
 # config location
 set $loc "$HOME/.dotfiles"
 # computer name
-set $name "hps2020"
+set $name "x570-2020"
 
 
 
@@ -42,17 +42,12 @@ smart_borders on
 
 ## Displays
 output * bg $loc/$name/background.png fill
-output eDP-1 scale 2
-output eDP-1 pos 0 1080 res 3840x2160
-# hdmi
-output DP-1 scale 1
-output DP-1 pos 0 0 res 1920x1080
-output DP-2 scale 1
-output DP-2 pos 0 0 res 1920x1080
+output * scale 2
 
 ## Special Window Configurations
-for_window [app_id="Alacritty" title="scratch"] move scratchpad
-#for_window [class="Gimp-2.10"] border normal
+for_window [class="Termite" title="scratch"] move scratchpad
+for_window [class="Alacritty" title="scratch"] move scratchpad
+for_window [class="Gimp-2.10"] border normal
 # windows floating by default
 for_window [app_id="Alacritty" title="float"] floating enable
 #for_window [class="Steam" title="Steam - News"] floating enable
@@ -63,12 +58,6 @@ for_window [app_id="Alacritty" title="float"] floating enable
 input type:keyboard {
 	xkb_layout us
 	xkb_options ctrl:swap_lalt_lctl,caps:escape,altwin_menu_win
-}
-input type:touchpad {
-	tap enabled
-	natural_scroll enabled
-	click_method clickfinger
-	tap_button_map lrm
 }
 
 
@@ -118,18 +107,17 @@ assign [app_id="Google-chrome"] $ws3
 #assign [class="Transmission-gtk"] $ws9
 assign [app_id="Alacritty" title="ncmpcpp"] $ws10
 # workspace monitors
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output eDP-1
-workspace $ws6 output eDP-1
-workspace $ws7 output eDP-1
-workspace $ws8 output eDP-1
-workspace $ws9 output eDP-1
-workspace $ws10 output eDP-1
-workspace $wsHDMI output DP-1
-workspace $wsHDMI output DP-2
+workspace $ws1 output DP-1
+workspace $ws2 output DP-1
+workspace $ws3 output DP-1
+workspace $ws4 output DP-1
+workspace $ws5 output DP-1
+workspace $ws6 output DP-1
+workspace $ws7 output DP-1
+workspace $ws8 output DP-1
+workspace $ws9 output DP-1
+workspace $ws10 output DP-1
+workspace $wsHDMI output HDMI-1
 
 
 
@@ -186,8 +174,7 @@ mode "resize" {
 
 ### KEYBOARD SHORTCUTS
 ## Program Launching
-#bindsym $super+space exec rofi --enable-drun -show drun
-bindsym $super+Space exec dmenu_run
+bindsym $super+space exec dmenu_run
 # start terminal
 bindsym $super+Return exec $term
 # start calculator
@@ -225,16 +212,16 @@ bindsym XF86MonBrightnessDown exec sh $loc/sway/scripts/dimlight.sh -
 bindsym $super+Prior exec sh $loc/sway/scripts/dimlight.sh +
 bindsym $super+Next exec sh $loc/sway/scripts/dimlight.sh -
 
-## Sway Control
-# restart swat
+## sway Control
+# restart sway
 bindsym $super+Shift+Escape reload
 # exit sway
 bindsym $super+Escape exec $term -t float -e $loc/sway/scripts/exit.sh
 # lock sway
-bindsym $super+z exec sh $loc/sway/scripts/locker.sh suspend
+bindsym $super+z exec sh $loc/sway/scripts/swaylocker.sh dark
 # screenshots
-bindsym Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc_grim.png')
-bindsym $super+Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc_grim.png') -g $(slurp)
+bindsym Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc.png')
+bindsym $super+Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc.png') -g $(slurp)
 
 ## Folder Opening
 # open ~/
@@ -255,6 +242,8 @@ bindsym $super+Shift+b exec $term -e ranger $HOME/documents/dnd/5e-books $HOME/d
 bindsym $super+Shift+c exec $term -e ranger $HOME/pCloudDrive $HOME/documents $HOME/documents
 # open site
 bindsym $super+Shift+v exec $term -e ranger $HOME/documents/code/site $HOME/documents $HOME/documents
+# open storage
+bindsym $super+Shift+f exec $term -e ranger $HOME/storage $HOME/documents $HOME/documents
 # open college
 bindsym $super+Shift+e exec $term -e ranger $HOME/documents/college $HOME/documents $HOME/documents
 # open linux
@@ -264,9 +253,6 @@ bindsym $super+i exec $term -e ranger $HOME/documents/images $HOME/documents $HO
 # open notes
 bindsym $super+Shift+n exec $term -e ranger $HOME/documents/other/notes $HOME/documents $HOME/documents
 
-# open x570-2020 ssh
-bindsym $super+Shift+f exec $term -e ssh x570
-
 
 
 ### STARTUP PROGRAMS
@@ -274,7 +260,7 @@ bindsym $super+Shift+f exec $term -e ssh x570
 # user windows
 exec $term
 exec $term
-exec $term -t scratch
+exec $term --title="scratch"
 exec firefox
 exec sh $loc/sway/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
@@ -288,6 +274,7 @@ exec_always swayidle -w \
 # files and background processes
 exec pcloud
 #exec --no-startup-id /usr/libexec/kdeconnectd
+exec sh $loc/.local/start.sh
 exec sh $loc/sway/scripts/dimlight.sh
 exec sh $loc/sway/scripts/network-start.sh
 

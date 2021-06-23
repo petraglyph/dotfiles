@@ -1,10 +1,10 @@
 #!/bin/bash
-# Setup hps2020
+# Setup x570 Desktop
 #   Fedora
 #   i3
 
 loc="$HOME/.dotfiles"
-comp="hps2020"
+comp="x570-2020"
 
 # Check install location and comp
 source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
@@ -17,7 +17,9 @@ bash ~/.dotfiles/sway/fedora-install.sh
 bash ~/.dotfiles/install/terminal.sh $comp
 # Desktop Configuration
 bash ~/.dotfiles/install/desktop.sh $comp
-# Sway Configuration
+# i3 Configuration
 bash ~/.dotfiles/sway/configure.sh $comp
+# Folding@Home Configuration
+bash ~/.dotfiles/install/fah.sh
 # Install Personal Programs
 bash ~/.dotfiles/install/personal.sh
