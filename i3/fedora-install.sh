@@ -44,7 +44,11 @@ message "Builds From Source"
 mkdir -p "$loc/.local"
 
 message "  xidlehook"
-sudo dnf -y install cargo libX11-devel
+sudo dnf -y install libX11-devel
+if [ -z $HOME/.cargo/env ]; then
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+fi
+source $HOME/.cargo/env
 cargo install xidlehook --locked --bins
 
 message "  pamixer"

@@ -28,6 +28,9 @@ source $HOME/.profile
 if [ -e $HOME/.zsh-dirs ]; then
 	source $HOME/.zsh-dirs
 fi
+if [ -e $HOME/.cargo/env ]; then
+	source $HOME/.cargo/env
+fi
 
 # Configure Prompt
 autoload -U colors && colors

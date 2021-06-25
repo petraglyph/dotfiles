@@ -88,6 +88,9 @@ message "Installing Sass (from npm)"
 sudo npm install -g npm
 sudo npm install -g sass
 
+message "Installing Rust (with rustup)"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+
 
 message "Builds From Source"
 mkdir -p $loc/.local
