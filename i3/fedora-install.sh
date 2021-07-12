@@ -32,9 +32,8 @@ picom
 polybar
 redshift
 rofi
-scrot
-shutter
 stalonetray
+xset
 "
 message "Install Packages"
 sudo dnf -y install $packages --skip-broken
@@ -62,3 +61,19 @@ else
 	cd pamixer
 fi
 make && sudo cp pamixer /bin
+
+message "  scrot"
+
+cd "$loc/.local"
+sudo dnf -y install autoconf-archive imlib2-devel libtool libXcomposite-devel libXfixes-devel
+if [ -e scrot ]; then
+	cd scrot
+	git pull
+else
+	git clone https://github.com/resurrecting-open-source-projects/scrot.git
+	cd scrot
+fi
+./autogen.sh
+./configure
+make
+sudo make install

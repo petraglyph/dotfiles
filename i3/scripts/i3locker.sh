@@ -1,5 +1,5 @@
 #/bin/bash -e
-# $ bash ~/.i3/scripts/i3locker.#!/bin/sh
+# $ bash ~/.i3/scripts/i3locker.sh
 
 ## Color i3lock
 backcolor="000000FF"

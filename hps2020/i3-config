@@ -219,9 +219,7 @@ bindsym $super+Escape exec $term -t float -e $loc/i3/scripts/i3exit.sh
 # lock i3
 bindsym $super+z exec sh $loc/i3/scripts/i3locker.sh suspend
 # screenshots
-#bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/'
-#bindsym $super+Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/' -s
-bindsym Print exec shutter -f -e -o '~/%Y-%m-%d_%H:%M:%S_$wx$h_shutter.png'
+bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/'
 
 ## Folder Opening
 # open ~/
@@ -277,5 +275,5 @@ exec sh $loc/i3/scripts/network-start.sh
 ## Run on i3 Restart
 exec_always sh $loc/i3/scripts/polybar-start.sh $name $name-hdmi
 exec_always feh --bg-fill $loc/$name/background.png
-#exec_always xrandr --output DP-1 --auto --above eDP-1
+exec_always xrandr --output DP-1 --auto --above eDP-1
 exec_always xrandr --output DP-2 --auto --above eDP-1
