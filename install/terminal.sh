@@ -53,11 +53,7 @@ fi
 
 
 message "Setting up Crontab"
-if [ $(command -v sass) ]; then
-	sudo crontab $loc/configs/sudo-crontab.txt
-else
-	echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
-fi
+echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
 if [ -f $loc/$comp/crontab.txt ]; then
 	crontab $loc/$comp/crontab.txt
 else

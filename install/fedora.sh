@@ -48,6 +48,7 @@ python3-pip
 qalc
 ranger
 rclone
+sassc
 texlive-latex
 texlive-scheme-medium
 the_silver_searcher
@@ -83,10 +84,6 @@ mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft/saves
 mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft/resourcepacks
 rm $HOME/.minecraft
 ln -fs $HOME/.var/app/com.mojang.Minecraft/data/minecraft $HOME/.minecraft
-
-message "Installing Sass (from npm)"
-sudo npm install -g npm
-sudo npm install -g sass
 
 message "Installing Rust (with rustup)"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path

@@ -1,2 +1,0 @@
-@daily rm -rf $(find /var/cache/ -type f -mtime +30 -print)
-@daily npm -g update
