@@ -39,23 +39,21 @@ if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 fi
 nvim +PlugInstall +qall
 
-
-message "Root Zsh Config"
-sudo rm -f /root/.zshrc
-sudo cp -f $loc/configs/zshrc-root /root/.zshrc
-
 message "Setting Up Zsh"
-sudo chsh -s /usr/bin/zsh root
 chsh -s /usr/bin/zsh
 if [ -f $loc/$comp/zsh-dirs ]; then
 	ln -fs $loc/$comp/zsh-dirs $HOME/.zsh-dirs
 fi
+sudo chsh -s /usr/bin/zsh root
+sudo cp -f $loc/configs/zshrc-root /root/.zshrc
 
 
 message "Setting up Crontab"
 echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
-if [ -f $loc/$comp/crontab.txt ]; then
-	crontab $loc/$comp/crontab.txt
-else
-	crontab $loc/configs/crontab.txt
+if [[ $(crontab -l) == "" ]]; then
+	if [ -f $loc/$comp/crontab.txt ]; then
+		crontab $loc/$comp/crontab.txt
+	else
+		crontab $loc/configs/crontab.txt
+	fi
 fi
