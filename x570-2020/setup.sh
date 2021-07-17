@@ -18,6 +18,6 @@ bash ~/.dotfiles/install/terminal.sh $comp
 # Desktop Configuration
 bash ~/.dotfiles/install/desktop.sh $comp
 # i3 Configuration
-bash ~/.dotfiles/i3/configure.sh $comp
+bash ~/.dotfiles/i3/setup.sh $comp
 # Install Personal Programs
 bash ~/.dotfiles/install/personal.sh

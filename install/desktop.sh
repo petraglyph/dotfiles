@@ -25,6 +25,21 @@ ln -fs $loc/configs/gtk-settings.ini $XDG_CONFIG_HOME/gtk-3.0/settings.ini
 ln -fs $loc/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
 
 
+message "Setting Up Crontab"
+echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
+if [[ $(crontab -l) == "" ]]; then
+	if [ -f $loc/$comp/crontab.txt ]; then
+		crontab $loc/$comp/crontab.txt
+	else
+		crontab $loc/configs/crontab.txt
+	fi
+fi
+
+message "Setting Up Root Zsh"
+sudo chsh -s /usr/bin/zsh root
+sudo cp -f $loc/configs/zshrc-root /root/.zshrc
+
+
 message "Running External Setup"
 if [ -e $HOME/documents/other/linux/scripts/setup.sh ]; then
 	bash $HOME/documents/other/linux/scripts/setup.sh
