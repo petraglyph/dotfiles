@@ -283,5 +283,5 @@ exec sh $loc/i3/scripts/network-start.sh
 
 ## Run on i3 Restart
 exec_always sh $loc/i3/scripts/polybar-start.sh $name $name-hdmi
-exec_always feh --bg-scale $loc/$name/background.png
+exec_always feh --bg-scale $loc/$name/background.jpg
 exec_always xrandr --output HDMI-1 --auto --above DP-1
