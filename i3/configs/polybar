@@ -1,4 +1,5 @@
 ; Polybar Config
+;   Penn Bauman <me@pennbauman.com>
 
 [colors]
 background = #000000

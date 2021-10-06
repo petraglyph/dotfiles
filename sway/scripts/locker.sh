@@ -1,4 +1,6 @@
 #!/bin/bash
+# Lock Sway
+#   Penn Bauman <me@pennbauman.com>
 
 ## Lock Color
 backcolor="000000FF"

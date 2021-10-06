@@ -1,3 +1,5 @@
+// Way Configuration
+//   Penn Bauman <me@pennbauman.com>
 {
 	"height": 30,
 	"modules-left": ["sway/workspaces", "sway/mode", "mpd"],

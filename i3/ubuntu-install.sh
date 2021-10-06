@@ -1,5 +1,6 @@
 #!/bin/bash
-# i3 Fedora Installs
+# i3 Ubuntu Installs
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 

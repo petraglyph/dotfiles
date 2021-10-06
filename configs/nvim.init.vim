@@ -1,6 +1,6 @@
 " NeoVim Config
 " Penn Bauman
-"   pennbauman@protonmail.com
+"   me@pennbauman.com
 
 " From default vimrc
 set scrolloff=5

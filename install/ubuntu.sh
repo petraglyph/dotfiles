@@ -1,5 +1,6 @@
 #!/bin/bash
 # General Ubuntu Installs
+#   Penn Bauman <me@pennbauman.com>
 
 message() {
 	echo -e "\033[1;32m$1\033[0m"

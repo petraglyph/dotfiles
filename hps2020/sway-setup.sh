@@ -1,7 +1,6 @@
 #!/bin/bash
 # Setup hps2020
-#   Fedora
-#   i3
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 comp="hps2020"

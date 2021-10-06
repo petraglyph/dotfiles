@@ -1,5 +1,5 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# ZSH Configuration
+#   Penn Bauman <me@pennbauman.com>
 
 # Oh My ZSH
 if [ ! -d $HOME/.oh-my-zsh ]; then
@@ -12,16 +12,12 @@ source $ZSH/oh-my-zsh.sh
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files under VCS as dirty. This makes repository status check for large repositories much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 
 # User configuration
 unsetopt share_history
 bindkey -r '^[[Z'
 zstyle ':completion:*' list-colors
 tabs -4
-#plugins=(git)
 
 # Externals
 source $HOME/.profile
@@ -47,18 +43,13 @@ set_prompt() {
 	PS1+='%{$fg_bold[green]%}%n@%m'
 	# directory
 	PS1+=" %{$fg_bold[white]%}%1~"
-
-	# Git
+	# git
 	if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' ; then
 		PS1+=" %{$fg_bold[blue]%}$(git rev-parse --abbrev-ref HEAD 2> /dev/null)%{$reset_color%}"
 		if [ $(git status --short | wc -l) -gt 0 ]; then 
 			PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
 		fi
 	fi
-
-	# exit code
-	#PS1+="%b%(?.. $fg[red]%?)"
-
 	# ender
 	PS1+="%{$fg_bold[green]%}]$ %{$reset_color%}% "
 	# partial command
@@ -75,7 +66,6 @@ alias less="less -x4"
 alias feh="feh -Z -B '#000000' $@"
 alias vim="nvim $@"
 alias svim="sudoedit $@"
-alias weather='curl wttr.in'
 alias zoomkill='killall zoom; rm -rf ~/Documents'
 
 ex () {

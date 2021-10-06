@@ -1,4 +1,6 @@
 #!/bin/bash
+# Dim Screen Colors in Wayland
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles/.local"
 

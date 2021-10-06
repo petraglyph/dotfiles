@@ -1,4 +1,5 @@
-// Calculate Brightness Change
+// Calculate Logarithmic Brightness Change
+//   Penn Bauman <me@pennbauman.com>
 #include "stdio.h"
 #include "stdlib.h"
 

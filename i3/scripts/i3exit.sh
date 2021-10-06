@@ -1,5 +1,6 @@
 #/bin/bash
 # i3 Exit
+#   Penn Bauman <me@pennbauman.com>
 
 echo "i3 System"
 echo "  [s] shutdown"

@@ -1,4 +1,6 @@
-# Options
+# Root ZSH Configuration
+#   Penn Bauman <me@pennbauman.com>
+
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 

@@ -1,5 +1,6 @@
 #!/bin/bash
 # Configure i3
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 comp=$1

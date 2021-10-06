@@ -1,5 +1,6 @@
 #!/bin/bash
-# Terminal Configuration
+# Configure for Terminal Use
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 comp=$1

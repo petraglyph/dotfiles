@@ -1,5 +1,6 @@
 #!/bin/bash
-# Exit sway
+# Exit Sway
+#   Penn Bauman <me@pennbauman.com>
 
 echo "Sway System"
 echo "  [s] shutdown"

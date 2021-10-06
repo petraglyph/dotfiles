@@ -1,5 +1,6 @@
 #/bin/bash -e
-# $ bash ~/.i3/scripts/i3locker.sh
+# Lock i3
+#   Penn Bauman <me@pennbauman.com>
 
 ## Color i3lock
 backcolor="000000FF"

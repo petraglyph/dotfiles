@@ -1,7 +1,6 @@
 #!/bin/bash
 # Setup x570 Desktop
-#   Fedora
-#   i3
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 comp="x570-2020"

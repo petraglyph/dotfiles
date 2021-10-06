@@ -1,5 +1,6 @@
 #!/bin/bash
 # Install and setup personal programs
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 

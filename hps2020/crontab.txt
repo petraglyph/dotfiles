@@ -1,3 +1,5 @@
+# hps2020 Crontab
+#   Penn Bauman <me@pennbauman.com>
 @daily  vim +PlugUpdate +qall
 @daily  vim +CocUpdate +qall
 @weekly bash ~/documents/other/linux/scripts/backup.sh

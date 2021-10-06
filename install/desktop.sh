@@ -1,5 +1,6 @@
 #!/bin/bash
-# Desktop Configuration
+# Configure for Desktop Use
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 comp=$1

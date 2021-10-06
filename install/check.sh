@@ -1,4 +1,6 @@
 #!/bin/bash
+# Check config repo locations and computer name
+#   Penn Bauman <me@pennbauman.com>
 
 message() {
 	echo -e "\033[1;32m$1\033[0m"

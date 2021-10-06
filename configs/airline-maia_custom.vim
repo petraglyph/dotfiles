@@ -1,3 +1,6 @@
+" Custom Maia Color Scheme
+"   Penn Bauman <me@pennbauman.com>
+
 " Color palette
 let s:yellow = { "cterm": 3, "gui": "#f0c07e" }
 let s:purple = { "cterm": 5, "gui": "#b56ea7" }
