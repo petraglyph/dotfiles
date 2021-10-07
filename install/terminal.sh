@@ -29,7 +29,6 @@ ln -fs $loc/configs/gitconfig $XDG_CONFIG_HOME/git/config
 echo "*~" > $XDG_CONFIG_HOME/git/ignore
 ln -fs $loc/configs/nvim.init.vim $XDG_CONFIG_HOME/nvim/init.vim
 ln -fs $loc/configs/ranger $XDG_CONFIG_HOME/ranger
-ln -fs $loc/configs/coc-settings.json $XDG_CONFIG_HOME/nvim/coc-settings.json
 ln -fs $loc/configs/profile $HOME/.profile
 ln -fs $loc/configs/zshrc $HOME/.zshrc
 ln -fs $loc/configs/maia-custom.vim $XDG_DATA_HOME/nvim/site/colors/maia-custom.vim
@@ -40,7 +39,6 @@ if [ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 nvim +PlugInstall +qall
-nvim +CocUpdate +qall
 
 message "Setting Up Zsh"
 chsh -s /usr/bin/zsh

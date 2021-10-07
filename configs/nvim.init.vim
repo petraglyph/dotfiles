@@ -1,6 +1,5 @@
 " NeoVim Config
-" Penn Bauman
-"   me@pennbauman.com
+" Penn Bauman <me@pennbauman.com>
 
 " From default vimrc
 set scrolloff=5
@@ -89,10 +88,24 @@ au TermOpen * setlocal nonumber
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'https://github.com/vim-airline/vim-airline.git'
 	Plug 'https://github.com/Lokaltog/neoranger'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'lervag/vimtex'
+	Plug 'nvim-lua/completion-nvim'
+	Plug 'steelsojka/completion-buffers'
 call plug#end()
+
+
+" completion-nvim
+autocmd BufEnter * lua require'completion'.on_attach()
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" Set completion sources
+let g:completion_chain_complete_list = [{'complete_items':
+	\['buffer', 'buffers', 'path']}]
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 
 " vim-airline
@@ -105,42 +118,13 @@ let g:neoranger_viewmode='miller'
 nnoremap <C-r> :RangerCurrentFile<Enter>
 
 
-" COC.nvim
-set hidden
-set nobackup
-set nowritebackup
-set updatetime=300
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-" Use Shift tab for trigger completion with characters ahead and navigate.
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-let g:coc_global_extensions=[
-	\ "coc-pairs",
-	\ "coc-emmet",
-	\ "coc-css",
-	\ "coc-html",
-	\ "coc-phpls",
-	\ "coc-json",
-	\ "coc-vimtex",
-	\ ]
-
-
-" NERD Commenter
+" nerdcommenter
 nmap c V\ci
 vmap c \cc
 let g:NERDCustomDelimiters = {
 	\ 'c': {'left': '//', 'right': ''},
 	\ 'python': {'left': '#', 'right': ''}
 	\ }
-
 
 
 " VimTeX
@@ -150,4 +134,3 @@ let g:vimtex_quickfix_mode=0
 let g:tex_conceal='mg'
 "abdmg
 nnoremap <C-l> :VimtexCompile<Enter>
-
