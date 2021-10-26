@@ -23,7 +23,7 @@ To setup terminal only run:
 ## Tiny Config
 To setup minimal bash configuration without cloning run:
 
-	curl https://raw.githubusercontent.com/pennbauman/dotfiles/main/install/tiny.sh | bash -s
+	curl -s https://raw.githubusercontent.com/pennbauman/dotfiles/main/install/tiny.sh | bash -s
 
 
 ## Sources

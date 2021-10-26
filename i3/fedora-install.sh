@@ -14,7 +14,6 @@ copr() {
 		echo $result
 	fi
 }
-copr pschyska/alacritty
 copr sentry/i3desktop
 #copr opuk/pamixer
 

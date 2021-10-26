@@ -9,8 +9,8 @@ message() {
 loc="$(dirname $BASH_SOURCE)"
 
 message "Configure DNF"
-sudo echo "max_parallel_downloads=8" >> /etc/dnf/dnf.conf
-sudo echo "fastestmirror=True" >> /etc/dnf/dnf.conf
+echo "max_parallel_downloads=8" | sudo tee -a /etc/dnf/dnf.conf
+echo "fastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf
 
 
 message "Updating"
