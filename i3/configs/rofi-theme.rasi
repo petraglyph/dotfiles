@@ -1,0 +1,64 @@
+* {
+	bg: #000000;
+	fg: #EEEEEE;
+	green: #2EB398;
+	red: #DB5B5B;
+
+	font: "Mono 40";
+
+	background-color: @bg;
+	border-color: @bg;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	spacing: 0;
+
+	normal-background: @bg;
+	alternate-normal-background: @bg;
+	selected-normal-background: @bg;
+}
+
+/* layout */
+window {
+	fullscreen: true;
+	padding: 700;
+	background-color: @bg;
+}
+mainbox {
+	children: [inputbar, listview];
+}
+inputbar {
+	children: [prompt, entry];
+}
+
+/* search box */
+prompt {
+	padding: 12;
+	text-color: @fg;
+}
+entry {
+	background-color: @bg;
+	padding: 12 0 12 3;
+	text-color: @fg;
+	placeholder: "";
+}
+
+
+/* results list */
+listview {
+	columns: 2;
+	lines: 10;
+	scrollbar: false;
+	border-color: @bg;
+}
+element normal {
+	padding: 12;
+	background-color: @bg;
+	border-color: @bg;
+}
+element-text {
+	text-color: @fg;
+}
+element-text selected {
+	text-color: @green;
+}

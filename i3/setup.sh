@@ -30,7 +30,7 @@ ln -fs $loc/$comp/i3-config $XDG_CONFIG_HOME/i3/config
 ln -fs $loc/$comp/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 ln -fs $loc/i3/configs/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc
 ln -fs $loc/i3/configs/polybar $XDG_CONFIG_HOME/polybar/config
-ln -fs $loc/i3/configs/rofi-config $XDG_CONFIG_HOME/rofi/config
+ln -fs $loc/i3/configs/rofi-theme.rasi $XDG_CONFIG_HOME/rofi/config.rasi
 ln -fs $loc/i3/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
 ln -fs $loc/i3/configs/stalonetrayrc $HOME/.stalonetrayrc
 ln -fs $loc/$comp/Xresources $HOME/.Xresources

@@ -181,7 +181,7 @@ mode "resize" {
 
 ### KEYBOARD SHORTCUTS
 ## Program Launching
-bindsym $super+space exec rofi --enable-drun -show drun
+bindsym $super+space exec rofi -modi drun -show drun
 # start terminal
 bindsym $super+Return exec $term
 # start calculator
