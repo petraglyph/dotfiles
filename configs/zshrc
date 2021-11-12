@@ -28,11 +28,14 @@ fi
 if [ -e $HOME/.cargo/env ]; then
 	source $HOME/.cargo/env
 fi
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+	source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
 
 # Configure Prompt
 autoload -U colors && colors
 setopt PROMPT_SUBST
-set_prompt() {
+set-prompt() {
 	# starter
 	PS1='%{$fg_bold[green]%}['
 	# ssh indicator
@@ -51,12 +54,22 @@ set_prompt() {
 			PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
 		fi
 	fi
+	case ${KEYMAP} in
+		(vicmd)      VI_MODE="%{$fg[magenta]%}%%" ;;
+		(main|viins) VI_MODE="$" ;;
+		(*)          VI_MODE="$" ;;
+	esac
 	# ender
-	PS1+="%{$fg_bold[green]%}]$ %{$reset_color%}% "
+	PS1+="%{$fg_bold[green]%}]$VI_MODE %{$reset_color%}% "
 	# partial command
 	PS2="%{$fg[yellow]%}%_%{$reset_color%} %{$fg_bold[green]%}>%{$reset_color%} "
 }
-precmd_functions+=set_prompt
+function zle-line-init zle-keymap-select {
+    set-prompt
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # Aliases
 alias ls="ls -FAh --group-directories-first"
@@ -105,3 +118,9 @@ ex () {
 	fi
 }
 
+# Vim mode
+bindkey -v
+set KEYTIMEOUT=1
+bindkey -M vicmd "^V" edit-command-line
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
