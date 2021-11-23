@@ -290,13 +290,6 @@ label = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
 exec = conky -c ~/.dotfiles/i3/scripts/netconky-hps2020
 tail = true
 
-[module/network-hps2017]
-type = custom/script
-interval = 1
-label = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
-exec = conky -c ~/.dotfiles/i3/scripts/netconky-hps2017
-tail = true
-
 [module/updates]
 type = custom/script
 interval = 120

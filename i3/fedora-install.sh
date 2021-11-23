@@ -50,20 +50,7 @@ fi
 source $HOME/.cargo/env
 cargo install xidlehook --locked --bins
 
-message "  pamixer"
-sudo dnf -y install boost-devel pulseaudio-libs-devel
-cd "$loc/.local"
-if [ -e pamixer ]; then
-	cd pamixer
-	git pull
-else
-	git clone https://github.com/cdemoulins/pamixer.git
-	cd pamixer
-fi
-make && sudo cp pamixer /bin
-
 message "  scrot"
-
 cd "$loc/.local"
 sudo dnf -y install autoconf-archive imlib2-devel libtool libXcomposite-devel libXfixes-devel
 if [ -e scrot ]; then

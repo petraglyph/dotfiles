@@ -1,14 +1,14 @@
 #!/bin/bash
 
-vol=$(pamixer --get-volume)
-mute=$(pamixer --get-mute)
+vol=$(amixer -D pipewire sget Master | grep -oE '\[[0-9]*%\]' | head -n 1 | grep -oE '[0-9]*')
+mute=$(amixer -D pipewire sget Master | grep -oE '\[[0-9]*%\] \[[a-z]*\]')
 
 if (( $vol > 100 )); then 
     color="DB5B5B"
 else
     color="2EB398"
 fi
-if (( $vol == 0 )) || [[ $mute == true ]]; then 
+if (( $vol == 0 )) || [[ $mute =~ off ]]; then 
     icon=""
 elif (( $vol < 50 )); then 
     icon=""
