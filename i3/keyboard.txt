@@ -1,7 +1,7 @@
 Super + Letter
 
 a
-b
+b - open besic
 	B - open 5e-books
 c - calculator
 	C - open pCloudDrive
