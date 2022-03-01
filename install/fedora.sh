@@ -25,7 +25,9 @@ sudo dnf config-manager --set-enabled google-chrome
 
 packages="
 android-tools
+ccls
 clang
+cronie
 ffmpeg
 gcolor3
 gnuplot
@@ -78,12 +80,14 @@ com.discordapp.Discord
 sudo dnf -y install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-delete --user fedora
-sudo flatpak -y install flathub $flatpaks
+flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+flatpak -y install flathub-beta com.google.Chrome
+flatpak -y install flathub $flatpaks
 
 message "Linking ~/.minecraft/"
 mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft/saves
 mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft/resourcepacks
-rm $HOME/.minecraft
+rm -rf $HOME/.minecraft
 ln -fs $HOME/.var/app/com.mojang.Minecraft/data/minecraft $HOME/.minecraft
 
 message "Installing Rust (with rustup)"

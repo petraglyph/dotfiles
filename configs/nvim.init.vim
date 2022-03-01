@@ -38,6 +38,11 @@ source $XDG_DATA_HOME/nvim/site/colors/maia-custom.vim
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 
+" Set spellcheck
+autocmd FileType markdown setlocal spell
+autocmd FileType tex setlocal spell
+autocmd FileType text setlocal spell
+
 " Text conceal
 set conceallevel=1
 set concealcursor=
@@ -75,9 +80,10 @@ nmap <enter> o<esc>
 nmap ; :
 nmap < v<
 nmap > v>
-nmap <S-d> dd
 vmap <S-y> ! xsel -b<enter>u
 command! Tabify :%s/    /\t/g
+command! Spacify :%s/\t/    /g
+command! TexWC :w !detex | wc -w
 " Terminal
 nnoremap <C-t> :terminal<Enter>i<end>
 au TermOpen * setlocal nonumber

@@ -10,14 +10,21 @@ else
 	echo -e "\033[31mUnkown package manager\033[0m"
 fi
 
-# Improve bash history and autocomplete
-if [ ! -f $HOME/.inputrc ] || [ -z "$(grep '"\e[A":history-search-backward' $HOME/.inputrc)" ]; then
-	echo '# arrow up
+# Setup bash
+if [ ! -f $HOME/.inputrc ] || [ -z "$(grep '## pennbauman dotfiles tiny' $HOME/.inputrc)" ]; then
+	echo '## pennbauman dotfiles tiny
+# arrow up
 "\e[A":history-search-backward
 # arrow down
 "\e[B":history-search-forward
 # ignore cases for auto-complete
-set completion-ignore-case on' >> $HOME/.inputrc
+set completion-ignore-case on
+# vi mode
+set editing-mode vi
+# vi jk search
+set keymap vi-command
+k:history-search-backward
+j:history-search-forward' >> $HOME/.inputrc
 fi
 
 # Add vimrc
