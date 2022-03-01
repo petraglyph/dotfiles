@@ -32,6 +32,7 @@ picom
 polybar
 redshift
 rofi
+scrot
 stalonetray
 xset
 "
@@ -49,18 +50,3 @@ if [ -z $HOME/.cargo/env ]; then
 fi
 source $HOME/.cargo/env
 cargo install xidlehook --locked --bins
-
-message "  scrot"
-cd "$loc/.local"
-sudo dnf -y install autoconf-archive imlib2-devel libtool libXcomposite-devel libXfixes-devel
-if [ -e scrot ]; then
-	cd scrot
-	git pull
-else
-	git clone https://github.com/resurrecting-open-source-projects/scrot.git
-	cd scrot
-fi
-./autogen.sh
-./configure
-make
-sudo make install
