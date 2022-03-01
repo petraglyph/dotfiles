@@ -36,10 +36,6 @@ if [[ $(crontab -l) == "" ]]; then
 	fi
 fi
 
-message "Setting Up Root Zsh"
-sudo chsh -s /usr/bin/zsh root
-sudo cp -f $loc/configs/zshrc-root /root/.zshrc
-
 
 message "Running External Setup"
 if [ -e $HOME/documents/other/linux/scripts/setup.sh ]; then
