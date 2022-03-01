@@ -36,13 +36,13 @@ client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
 client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
 # gaps
-gaps inner 13
-gaps outer -2
+gaps inner 15
+gaps outer 0
 smart_gaps on
 smart_borders on
 
 ## Displays
-output * bg $loc/$name/background.png fill
+output * bg $loc/$name/background.jpg fill
 output eDP-1 scale 2
 output eDP-1 pos 0 1080 res 3840x2160
 # hdmi

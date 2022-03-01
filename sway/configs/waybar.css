@@ -4,6 +4,7 @@
 	font-family: DejaVu Sans Mono, Material Design Icons;
 	font-size: 16px;
 	min-height: 0;
+	padding:0;
 }
 window#waybar {
 	background: #000000;

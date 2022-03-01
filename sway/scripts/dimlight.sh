@@ -13,5 +13,5 @@ echo $new
 echo "$new" > $loc/dimbright
 prev=$(pgrep gammastep)
 #redshift -P -o -r -b "$new:$new"
-gammastep -r -b $new -l "38:-78" &
 kill $prev
+gammastep -r -b $new -l "38:-78" &
