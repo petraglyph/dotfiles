@@ -8,8 +8,7 @@ export sh="$HOME/documents/other/linux/scripts"
 export notes="$HOME/documents/other/notes"
 
 export college="$HOME/documents/college"
-export besic="$HOME/documents/college/besic"
-export tecc="$HOME/documents/college/tecc-lab"
+export besic="$HOME/documents/besic"
 
 export site="$HOME/documents/code/site"
 export pbsite="$HOME/documents/code/site/pennbauman.com"
