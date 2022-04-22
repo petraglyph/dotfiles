@@ -44,10 +44,12 @@
 	// Right Modules
 	"network": {
 		"interval": 1,
-		"format-wifi": "{icon} <span color=\"#eeeeee\">{essid} {bandwidthDownOctets},{bandwidthUpOctets:}</span>",
-		"format-ethernet": " <span color=\"#eeeeee\">{ipaddr} {bandwidthDownOctets},{bandwidthUpOctets:}</span>",
+		/*"interface": "wlo1",*/
+		"timeless-units": true,
+		"format-wifi": "{icon} <span color=\"#eeeeee\">{essid} ({bandwidthDownBytes}/{bandwidthUpBytes})</span>",
+		"format-ethernet": " <span color=\"#eeeeee\">{ipaddr} ({bandwidthDownBytes}/{bandwidthUpBytes})</span>",
 		"format-disconnected": "來 <span color=\"#eeeeee\">Disconnected</span>",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"tooltip-format": "{ifname}: {ipaddr}/{cidr}",
 		"format-icons": ["冷", "爛", "爛", "襤", "蠟"],
 	},
 	"pulseaudio": {
@@ -82,7 +84,7 @@
 			"warning": 30,
 		},
 		"format": "{icon}<span color=\"#eeeeee\">{capacity}%</span>",
-		"format-charging": " {capacity}%",
+		"format-charging": " <span color=\"#eeeeee\">{capacity}%</span>",
 		// "format-plugged": "{capacity}% ",
 		// "format-full": "",
 		"format-icons": ["", "", "", "", "", "", "", "", "", ""]

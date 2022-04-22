@@ -5,6 +5,7 @@
 	font-size: 16px;
 	min-height: 0;
 	padding:0;
+	font-weight:normal;
 }
 window#waybar {
 	background: #000000;
@@ -26,20 +27,15 @@ window#waybar {
 	margin-left:20px;
 }
 
-#cpu, #memory, #pulseaudio {
-	padding: 0 8px;
+
+
+#battery, #cpu, #memory, #pulseaudio, #network {
+	padding:0;
+	margin:0 3px;
 }
-#cpu, #memory, #pulseaudio, #network {
+#battery, #cpu, #memory, #pulseaudio, #network {
 	color:#2EB398;
 }
-#cpu.warning, #memory.warning, #pulseaudio.loud, #network.disconnected {
-	color:#DB5B5B;
-}
-#battery {
-	padding: 0 10px;
-	margin: 0 5px;
-	color:#2EB398;
-}
-#battery.warning:not(.charging) {
+#battery.warning:not(.charging), #cpu.warning, #memory.warning, #pulseaudio.loud, #network.disconnected {
 	color:#DB5B5B;
 }

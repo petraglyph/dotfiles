@@ -175,7 +175,7 @@ mode "resize" {
 
 ### KEYBOARD SHORTCUTS
 ## Program Launching
-bindsym $super+space exec dmenu_run
+bindsym $super+Space exec wofi --show drun
 # start terminal
 bindsym $super+Return exec $term
 # start calculator
@@ -188,15 +188,15 @@ bindsym $super+x exec $term -t float -e sh $HOME/documents/other/linux/scripts/q
 
 ## System Buttons
 # volume controls
-bindsym XF86AudioRaiseVolume exec pamixer --increase 5 --allow-boost --unmute
-bindsym XF86AudioLowerVolume exec pamixer --decrease 5 --allow-boost --unmute
-bindsym XF86AudioMute exec pamixer --toggle-mute
+bindsym XF86AudioRaiseVolume exec amixer -D pipewire sset Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -D pipewire sset Master 5%- unmute
+bindsym XF86AudioMute exec amixer -D pipewire sset Master toggle
 # volume controls
-bindsym $super+Up exec pamixer --increase 5 --allow-boost --unmute
-bindsym $super+Down exec pamixer --decrease 5 --allow-boost --unmute
-bindsym $super+Shift+Up exec pamixer --increase 2 --allow-boost --unmute
-bindsym $super+Shift+Down exec pamixer --decrease 2 --allow-boost --unmute
-bindsym $super+Delete exec pamixer --toggle-mute
+bindsym $super+Up exec amixer -D pipewire sset Master 5%+ unmute
+bindsym $super+Down exec amixer -D pipewire sset Master 5%- unmute
+bindsym $super+Shift+Up exec amixer -D pipewire sset Master 2%+ unmute
+bindsym $super+Shift+Down exec amixer -D pipewire sset Master 2%- unmute
+bindsym $super+Delete exec amixer -D pipewire sset Master toggle
 # media controls
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next

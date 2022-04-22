@@ -187,8 +187,7 @@ mode "resize" {
 
 ### KEYBOARD SHORTCUTS
 ## Program Launching
-#bindsym $super+space exec rofi --enable-drun -show drun
-bindsym $super+Space exec dmenu_run
+bindsym $super+Space exec wofi --show drun
 # start terminal
 bindsym $super+Return exec $term
 # start calculator
@@ -201,15 +200,15 @@ bindsym $super+x exec $term -t float -e sh $HOME/documents/other/linux/scripts/q
 
 ## System Buttons
 # volume controls
-bindsym XF86AudioRaiseVolume exec pamixer --increase 5 --allow-boost --unmute
-bindsym XF86AudioLowerVolume exec pamixer --decrease 5 --allow-boost --unmute
-bindsym XF86AudioMute exec pamixer --toggle-mute
+bindsym XF86AudioRaiseVolume exec amixer -D pipewire sset Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -D pipewire sset Master 5%- unmute
+bindsym XF86AudioMute exec amixer -D pipewire sset Master toggle
 # volume controls
-bindsym $super+Up exec pamixer --increase 5 --allow-boost --unmute
-bindsym $super+Down exec pamixer --decrease 5 --allow-boost --unmute
-bindsym $super+Shift+Up exec pamixer --increase 2 --allow-boost --unmute
-bindsym $super+Shift+Down exec pamixer --decrease 2 --allow-boost --unmute
-bindsym $super+Delete exec pamixer --toggle-mute
+bindsym $super+Up exec amixer -D pipewire sset Master 5%+ unmute
+bindsym $super+Down exec amixer -D pipewire sset Master 5%- unmute
+bindsym $super+Shift+Up exec amixer -D pipewire sset Master 2%+ unmute
+bindsym $super+Shift+Down exec amixer -D pipewire sset Master 2%- unmute
+bindsym $super+Delete exec amixer -D pipewire sset Master toggle
 # media controls
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
@@ -280,9 +279,9 @@ exec firefox
 exec sh $loc/sway/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
 exec_always swayidle -w \
-	timeout 120 'swaymsg "output * dpms off"' \
+	timeout 300 'swaymsg "output * dpms off"' \
 		resume 'swaymsg "output * dpms on"' \
-	timeout 200 $loc/sway/scripts/locker.sh \
+	timeout 300 $loc/sway/scripts/locker.sh \
 	before-sleep $loc/sway/scripts/locker.sh \
 	after-resume 'swaymsg "output * dpms on"'
 #exec dunst
