@@ -57,7 +57,9 @@ texlive-scheme-medium
 the_silver_searcher
 tldr
 util-linux-user
-zathura-pdf-mupdf
+zathura
+zathura-plugins-all
+zathura-zsh-completion
 zsh
 "
 if (( $# > 0 )); then
