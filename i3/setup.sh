@@ -41,9 +41,3 @@ cp -f $loc/i3/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_de
 message "Configuring Xorg"
 sudo rm -rf /etc/X11/xorg.conf.d
 sudo cp -rf $loc/$comp/xorg /etc/X11/xorg.conf.d
-
-# Adding local directory
-mkdir -p $loc/.local
-
-message "Compiling brightcalc.c"
-gcc -O2 $loc/i3/scripts/brightcalc.c -o $loc/.local/brightcalc
