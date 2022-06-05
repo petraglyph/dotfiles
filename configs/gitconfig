@@ -5,7 +5,7 @@
 	excludesfile = ~/.config/git/ignore
 	pager = less -x4
 [pull]
-	rebase = false
+	ff = only
 [init]
 	defaultBranch = main
 
