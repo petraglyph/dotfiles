@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/sh
 # i3 Exit
 #   Penn Bauman <me@pennbauman.com>
 

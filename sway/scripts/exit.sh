@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Exit Sway
 #   Penn Bauman <me@pennbauman.com>
 

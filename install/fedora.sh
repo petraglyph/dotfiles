@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 # General Fedora Installs
 #   Penn Bauman <me@pennbauman.com>
 
 message() {
-	echo -e "\033[1;32m$1\033[0m"
+	if [ -z $BASH_SOURCE ]; then
+		echo "\033[1;32m$1\033[0m"
+	else
+		echo -e "\033[1;32m$1\033[0m"
+	fi
 }
-
-loc="$(dirname $BASH_SOURCE)"
 
 message "Configure DNF"
 echo "max_parallel_downloads=8" | sudo tee -a /etc/dnf/dnf.conf
@@ -62,9 +64,8 @@ zathura-plugins-all
 zathura-zsh-completion
 zsh
 "
-if (( $# > 0 )); then
-	packages="$packages
-	$(cat "$1")"
+if [ $# -ne 0 ]; then
+	packages="$packages $(cat "$1")"
 fi
 message "Installing Packages"
 sudo dnf -y install $packages --skip-broken
@@ -95,12 +96,8 @@ ln -fs $HOME/.var/app/com.mojang.Minecraft/data/minecraft $HOME/.minecraft
 message "Installing Rust (with rustup)"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 
-
-message "Builds From Source"
-mkdir -p $loc/.local
-
-message "  gotop"
-cd "$loc/.local"
+message "Installing gotop"
+mkdir -p $HOME/.bin
 git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop
 /tmp/gotop/scripts/download.sh
-sudo mv gotop /bin
+mv gotop $HOME/.bin

@@ -1,18 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 # Install and setup personal programs
 #   Penn Bauman <me@pennbauman.com>
 
-loc="$HOME/.dotfiles"
-
-# Check install location
-source "$(dirname $BASH_SOURCE)/check.sh" "none"
-
-# Adding local directory
-mkdir -p $loc/.local
+loc="$(mktemp -d)"
 
 build() {
-	message "$1"
-	cd "$loc/.local"
+	if [ -z $BASH_SOURCE ]; then
+		echo "\033[1;32m$1\033[0m"
+	else
+		echo -e "\033[1;32m$1\033[0m"
+	fi
+
+	cd $loc
 	if [ -e $1 ]; then
 		cd $1
 		git pull
@@ -42,3 +41,4 @@ build "dndice"
 
 build "ibcmer"
 
+rm -rf $loc

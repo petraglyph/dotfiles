@@ -1,4 +1,4 @@
-#/bin/bash -e
+#!/bin/sh
 # Lock i3
 #   Penn Bauman <me@pennbauman.com>
 
@@ -10,17 +10,17 @@ errorcolor="DB5B5BFF"
 linecolor="000000FF"
 
 i3lock -e --color=$backcolor --indicator --force-clock --radius=100 --ring-width=9 \
---insidevercolor=$linecolor --insidewrongcolor=$linecolor --insidecolor=$linecolor \
---ringvercolor=$plaincolor --ringwrongcolor=$errorcolor --ringcolor=$highcolor \
---linecolor=$linecolor --keyhlcolor=$plaincolor --bshlcolor=$errorcolor --separatorcolor=$linecolor \
---veriftext="" --wrongtext="" --noinputtext="" --locktext="" --lockfailedtext="" --datestr="%a %Y-%m-%d" \
---timecolor=$highcolor --datecolor=$plaincolor --time-font=Monospace --date-font=Monospace
+--insidever-color=$linecolor --insidewrong-color=$linecolor --inside-color=$linecolor \
+--ringver-color=$plaincolor --ringwrong-color=$errorcolor --ring-color=$highcolor \
+--line-color=$linecolor --keyhl-color=$plaincolor --bshl-color=$errorcolor --separator-color=$linecolor \
+--verif-text="" --wrong-text="" --noinput-text="" --lock-text="" --lockfailed-text="" --date-str="%a %Y-%m-%d" \
+--time-color=$highcolor --date-color=$plaincolor --time-font=Monospace --date-font=Monospace
 
 # Turn the screen off after a delay.
-if [[ $1 = "dark" ]]; then
+if [ "$1" = "dark" ]; then
 	sleep 5
 	xset dpms force off
-elif [[ $1 = "suspend" ]]; then
+elif [ "$1" = "suspend" ]; then
 	sleep 1
 	systemctl suspend
 fi

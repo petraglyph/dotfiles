@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/sh
 # Start polybar
 
 for n in $(pgrep polybar); do

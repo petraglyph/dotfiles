@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Configure for Desktop Use
 #   Penn Bauman <me@pennbauman.com>
 
@@ -6,7 +6,7 @@ loc="$HOME/.dotfiles"
 comp=$1
 
 # Check install location and comp
-source "$(dirname $BASH_SOURCE)/check.sh" "$comp"
+. "$(dirname $(readlink -f $0))/check.sh" "$comp"
 
 # Set ENV variables
 if [ -z $XDG_CONFIG_HOME ]; then
@@ -28,7 +28,7 @@ ln -fs $loc/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
 
 message "Setting Up Crontab"
 echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
-if [[ $(crontab -l) == "" ]]; then
+if [ "$(crontab -l)" = "" ]; then
 	if [ -f $loc/$comp/crontab.txt ]; then
 		crontab $loc/$comp/crontab.txt
 	else

@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 # i3 Ubuntu Installs
 #   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 
 # Check install location and comp
-source "$(dirname $BASH_SOURCE)/../install/check.sh" "none"
+. "$(dirname $(readlink -f $0))/../install/check.sh" "$comp"
 
 
 # alacritty
@@ -13,10 +13,6 @@ sudo add-apt-repository -y ppa:aslatter/ppa
 # i3-gaps picom polybar
 sudo add-apt-repository -y ppa:kgilmer/speed-ricer
 sudo apt update
-
-#Getting required Perl version"
-sudo dnf module reset perl
-sudo dnf module install perl:5.30 --allowerasing
 
 packages="
 alacritty

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Configure i3
 #   Penn Bauman <me@pennbauman.com>
 
@@ -6,7 +6,7 @@ loc="$HOME/.dotfiles"
 comp=$1
 
 # Check install location and comp
-source "$(dirname $BASH_SOURCE)/../install/check.sh" "$comp"
+. "$(dirname $(readlink -f $0))/../install/check.sh" "$comp"
 
 # Set ENV variables
 if [ -z $XDG_CONFIG_HOME ]; then

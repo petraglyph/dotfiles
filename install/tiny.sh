@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Install Basic Bash Setup
 #   Penn Bauman <me@pennbauman.com>
 
@@ -7,7 +7,7 @@ if [ $(command -v apt) ]; then
 elif [ $(command -v yum) ]; then
 	sudo yum install -y vim ranger
 else
-	echo -e "\033[31mUnkown package manager\033[0m"
+	echo "Unkown package manager"
 fi
 
 # Setup bash
@@ -31,7 +31,7 @@ fi
 if [ -f $home/.vimrc ]; then
 	mv $home/.vimrc $home/.vimrc.old
 fi
-echo -e "\" Put these in an autocmd group, so that you can revert them with:
+echo "\" Put these in an autocmd group, so that you can revert them with:
 \" \":augroup vimStartup | au! | augroup END\"
 augroup vimStartup
 au!

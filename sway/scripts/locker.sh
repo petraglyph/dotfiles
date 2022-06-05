@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Lock Sway
 #   Penn Bauman <me@pennbauman.com>
 
@@ -21,10 +21,10 @@ swaylock -f --color=$backcolor --indicator-idle-visible --indicator-thickness 15
 #--veriftext="" --wrongtext="" --noinputtext="" --locktext="" --lockfailedtext="" --datestr="%a %Y-%m-%d" --indicator --force-clock --time-font=Monospace --date-font=Monospace
 
 # Turn the screen off after a delay.
-if [[ $1 = "dark" ]]; then
+if [ "$1" = "dark" ]; then
 	sleep 3
 	#swaymsg "output * dpms off"
-elif [[ $1 = "suspend" ]]; then
+elif [ "$1" = "suspend" ]; then
 	sleep 1
 	systemctl suspend
 fi

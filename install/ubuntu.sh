@@ -1,9 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 # General Ubuntu Installs
 #   Penn Bauman <me@pennbauman.com>
 
 message() {
-	echo -e "\033[1;32m$1\033[0m"
+	if [ -z $BASH_SOURCE ]; then
+		echo "\033[1;32m$1\033[0m"
+	else
+		echo -e "\033[1;32m$1\033[0m"
+	fi
 }
 
 sudo apt update
