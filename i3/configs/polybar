@@ -28,7 +28,7 @@ font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
 modules-center = datetime
-modules-right = updates nmcli volume memory cpu battery
+modules-right = updates vpn wireless volume memory cpu battery
 
 [bar/hps2020-hdmi]
 monitor = DP-2
@@ -50,7 +50,7 @@ font-1 = "Material Design Icons:size=16;0"
 ;
 modules-left = hdmi
 modules-center = datetime
-modules-right = nmcli volume cpu battery
+modules-right = wireless volume cpu battery
 
 
 
@@ -213,7 +213,7 @@ ramp-load-4 = %{F#DB5B5B}%{F}
 [module/memory]
 type = internal/memory
 interval = 5
-format = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh disk:}<ramp-used><label>%{A}
+format = %{A:sh ~/.dotfiles/i3/scripts/system-notify.sh disk:}<ramp-used><label>%{A}
 label = %percentage_used:02%% %percentage_swap_used:02%%
 ;
 ramp-used-0 = %{F#2EB398}%{F}
@@ -231,25 +231,40 @@ tail = true
 scroll-up = pamixer --decrease 5 --allow-boost
 scroll-down = pamixer --increase 5 --allow-boost
 
-[module/nmcli]
+[module/wireless]
+type = internal/network
+interface-type = wireless
+speed-unit =
+format-connected = %{F#2EB398}<ramp-signal>%{F} <label-connected>
+format-disconnected = %{F#DB5B5B}來%{F} Disconnected
+label-connected = %{A:sh ~/.dotfiles/i3/scripts/system-notify.sh network:}%essid% (%downspeed%/%upspeed%)%{A}
+ramp-signal-4 = 冷
+ramp-signal-3 = 爛
+ramp-signal-2 = 爛
+ramp-signal-1 = 襤
+ramp-signal-0 = 蠟
+
+[module/wired]
+type = internal/network
+interface-type = wired
+speed-unit =
+format-connected = %{F#2EB398}%{F} <label-connected>
+format-disconnected = %{F#DB5B5B}%{F} Disconnected
+label-connected = %{A:sh ~/.dotfiles/i3/scripts/system-notify.sh network:}%local_ip% (%downspeed%/%upspeed%)%{A}
+
+[module/vpn]
 type = custom/script
-interval = 1
+interval = 2
 label = %output%
-exec = nmcli | head -n 1 | sed 's/ \(connected to\|connection\)//'
+exec = echo "%{F#2EB398}%{F} VPN"
+exec-if = [ -n "$(nmcli | grep "tun0: connected")" ]
 tail = true
 
 [module/network-x570-2020]
 type = custom/script
 interval = 1
-label = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
+label = %{A:sh ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
 exec = conky -c ~/.dotfiles/i3/scripts/netconky-x570-2020
-tail = true
-
-[module/network-hps2020]
-type = custom/script
-interval = 1
-label = %{A:bash ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
-exec = conky -c ~/.dotfiles/i3/scripts/netconky-hps2020
 tail = true
 
 [module/updates]
