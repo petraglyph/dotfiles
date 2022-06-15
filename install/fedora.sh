@@ -100,4 +100,4 @@ message "Installing gotop"
 mkdir -p $HOME/.bin
 git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop
 /tmp/gotop/scripts/download.sh
-mv gotop $HOME/.bin
+mv gotop $HOME/.local/bin

@@ -28,6 +28,9 @@ fi
 if [ -e $HOME/.zsh-dirs ]; then
 	source $HOME/.zsh-dirs
 fi
+if [ -f $HOME/.aliasrc ]; then
+	source $HOME/.aliasrc
+fi
 if [ -e $HOME/.cargo/env ]; then
 	source $HOME/.cargo/env
 fi
@@ -45,14 +48,13 @@ set-prompt() {
 	if [ ! -z $SSH_CONNECTION ]; then
 		PS1+='%{$reset_color%}%{$fg[yellow]%}ssh:'
 	fi
-	if [ $HOST = toolbox ]; then
-		source /etc/os-release
-		PS1+='%{$fg_bold[yellow]%}toolbx:'
-		PS1+="%{$fg_bold[green]%}$ID-$VERSION_ID"
-	else
-		# name@computer
-		PS1+='%{$fg_bold[green]%}%n@%m'
+	# toolbox/distrobox indicator
+	if [[ $(cat /proc/$PID/mounts| grep -w / | cut -d" " -f 1) == "overlay" ]]; then
+		PS1+='%{$reset_color%}%{$fg[yellow]%}box:'
 	fi
+
+	# name@computer
+	PS1+='%{$fg_bold[green]%}%n@%m'
 	# directory
 	PS1+=" %{$fg_bold[white]%}%1~"
 	# git
@@ -79,15 +81,6 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-# Aliases
-alias ls="ls -FAh --group-directories-first"
-alias cp="cp -r"
-alias rm="rm -r"
-alias chx="chmod +x"
-alias less="less -x4"
-alias feh="feh -Z -B '#000000' $@"
-alias v="nvim $@"
-alias svim="sudoedit $@"
 
 ex () {
 	if [ -f $1 ] ; then

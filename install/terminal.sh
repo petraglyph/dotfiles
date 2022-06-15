@@ -30,6 +30,8 @@ echo "*~\n*.swp" > $XDG_CONFIG_HOME/git/ignore
 ln -fs $loc/configs/nvim.init.vim $XDG_CONFIG_HOME/nvim/init.vim
 ln -fs $loc/configs/ranger $XDG_CONFIG_HOME/ranger
 ln -fs $loc/configs/profile $HOME/.profile
+ln -fs $loc/configs/aliasrc $HOME/.aliasrc
+ln -fs $loc/configs/bashrc $HOME/.bashrc
 ln -fs $loc/configs/zshrc $HOME/.zshrc
 ln -fs $loc/configs/maia-custom.vim $XDG_DATA_HOME/nvim/site/colors/maia-custom.vim
 ln -fs $loc/configs/airline-maia_custom.vim $XDG_DATA_HOME/nvim/site/autoload/airline/themes/maia_custom.vim
