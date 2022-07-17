@@ -49,8 +49,10 @@ set-prompt() {
 		PS1+='%{$reset_color%}%{$fg[yellow]%}ssh:'
 	fi
 	# toolbox/distrobox indicator
-	if [[ $(cat /proc/$PID/mounts| grep -w / | cut -d" " -f 1) == "overlay" ]]; then
-		PS1+='%{$reset_color%}%{$fg[yellow]%}box:'
+	if uname -s 2> /dev/null | grep -q "Linux" ; then
+		if [[ $(cat /proc/$PID/mounts| grep -w / | cut -d" " -f 1) == "overlay" ]]; then
+			PS1+='%{$reset_color%}%{$fg[yellow]%}box:'
+		fi
 	fi
 
 	# name@computer
