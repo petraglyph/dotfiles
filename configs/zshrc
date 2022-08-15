@@ -38,6 +38,16 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
 	source $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
+# Add user local to PATH
+if ! [[ "$PATH" =~ "$HOME/.local/bin" ]]; then
+	PATH="$HOME/.local/bin:$PATH"
+fi
+if ! [[ "$PATH" =~ "$HOME/.local/share/flatpak/exports/bin" ]]; then
+	PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
+fi
+export PATH=$PATH
+
+
 # Configure Prompt
 autoload -U colors && colors
 setopt PROMPT_SUBST

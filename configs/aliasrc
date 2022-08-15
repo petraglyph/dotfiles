@@ -2,7 +2,7 @@
 #   Penn Bauman <me@pennbauman.com>
 
 # Aliases
-alias ls="ls -FAh --group-directories-first"
+alias ls="ls -Fh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"
 alias less="less -x4"
@@ -10,4 +10,3 @@ alias feh="feh -Z -B '#000000'"
 alias ps="ps -H"
 alias dbx="distrobox"
 alias l="ls -hla --group-directories-first --file-type"
-

@@ -2,6 +2,8 @@
 #   Penn Bauman <me@pennbauman.com>
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
+export XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
+
 
 export TERM=xterm
 export SYSTEMD_PAGER=
@@ -10,10 +12,8 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export LC_ALL="C"
 # editor
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
-# rust
-export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export EDITOR=nvim
+export VISUAL=nvim
 # go
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"

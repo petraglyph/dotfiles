@@ -24,11 +24,14 @@ if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
 	source $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:" ]]; then
-    PATH="$HOME/.local/bin:$PATH"
+# Add user local to PATH
+if ! [[ "$PATH" =~ "$HOME/.local/bin" ]]; then
+	PATH="$HOME/.local/bin:$PATH"
 fi
-export PATH
+if ! [[ "$PATH" =~ "$HOME/.local/share/flatpak/exports/bin" ]]; then
+	PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
+fi
+export PATH=$PATH
 
 
 # Enable programmable completion features
@@ -55,8 +58,6 @@ if [[ ${SHELLOPTS} =~ (vi|emacs) ]]; then
 	bind '"\e[B":history-search-forward'
 	# ignore cases for auto-complete
 	bind 'set completion-ignore-case on'
-	# Allow the command prompt to wrap to the next line
-	bind 'set horizontal-scroll-mode on'
 	# vi mode
 	bind 'set editing-mode vi'
 	#bind 'set show-mode-in-prompt on'
@@ -70,21 +71,20 @@ fi
 # Prompt
 force_color_prompt=yes
 # starter
-PS1='\033[1;36m['
+PS1='\[\033[1;34m\]['
 # ssh indicator
 if [ ! -z "$SSH_CONNECTION" ]; then
-	PS1+='\033[0;33mssh:'
+	PS1+='\[\033[0;33m\]ssh:'
 fi
 # toolbox/distrobox indicator
 if [[ $(cat /proc/$PID/mounts| grep -w / | cut -d" " -f 1) == "overlay" ]]; then
-	PS1+='\033[0;33mbox:'
+	PS1+='\[\033[0;33m\]box:'
 fi
-
 # name@computer
-PS1+='\033[1;36m\u@\H'
+PS1+='\[\033[1;34m\]\u@\H'
 # directory
-PS1+=' \033[1;37m\W'
+PS1+=' \[\033[1;37m\]\W'
 # ender
-PS1+='\033[1;36m]\$ \033[0m'
+PS1+='\[\033[1;34m\]]\$ \[\033[0m\]'
 # partial command
-PS2='\033[1;36m[ \033[1;33m>\033[0m '
+PS2=' \]\033[1;33m\]-\[\033[1;34m\]>\[\033[0m\] '
