@@ -8,6 +8,8 @@ comp="x570-2020"
 # Check install location and comp
 . "$(dirname $(readlink -f $0))/../install/check.sh" "$comp"
 
+hostnamectl set-hostname $comp
+
 # Fedora Installs
 sh ~/.dotfiles/install/fedora.sh
 # i3 Fedora Installs
