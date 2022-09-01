@@ -33,7 +33,7 @@ fi
 if [ $1 = "none" ]; then
 	sleep 0
 elif [ -d $loc/$comp ]; then
-	if [ $(hostname) != $comp ]; then
+	if [ $(cat /etc/hostname) != $comp ]; then
 		error "Wrong computer, should be '$(hostname)'"
 		while true; do
 			read -p "  Continue anyway [y/n]: " input
