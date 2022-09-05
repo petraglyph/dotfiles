@@ -6,16 +6,23 @@ loc="$HOME/.dotfiles/.local"
 
 if [ -f $loc/dimbright ]; then
 	current=$(sed '1q;d' $loc/dimbright)
+	if [ -z "$current" ]; then
+		current=1.0
+	fi
 else
 	mkdir -p $loc
 	current="1.0"
 fi
-echo "$current"
+echo "prev: $current"
 
 new=$current
-if [ $1 = "+" ]; then
+if [ $# -eq 0 ]; then
+	echo "missing operator"
+	exit 1
+fi
+if [ "$1" = "+" ]; then
 	new=$(echo "scale = 4; $current*1.5" | bc)
-elif [ $1 = "-" ]; then
+elif [ "$1" = "-" ]; then
 	new=$(echo "scale = 4; $current/1.5" | bc)
 else
 	echo "unknown operator"
@@ -27,7 +34,7 @@ fi
 if [ $(echo "$new < 0.1" | bc) -eq 1 ]; then
 	new="0.1"
 fi
-echo $new
+echo "new:  $new"
 
 echo "$new" > $loc/dimbright
 prev=$(pgrep gammastep)

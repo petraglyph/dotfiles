@@ -42,7 +42,7 @@ smart_gaps on
 smart_borders on
 
 ## Displays
-output * bg $loc/$name/background.png fill
+output * bg $loc/$name/background.jpg fill
 output * scale 2
 
 ## Special Window Configurations
