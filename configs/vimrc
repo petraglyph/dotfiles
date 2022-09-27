@@ -1,0 +1,59 @@
+" NeoVim Config
+"   Penn Bauman <me@pennbauman.com>
+
+filetype plugin on
+set encoding=utf8
+set clipboard+=unnamedplus
+
+
+" Appearance
+set number
+set wrap lbr
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set listchars=tab:¦\ ,trail:~,extends:>,precedes:<
+set list
+set guicursor=
+set scrolloff=5
+
+
+" Keyboard Shortcuts
+nnoremap <S-tab> :bprev<Enter>
+nnoremap <tab>   :bnext<Enter>
+" document navigation
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> <S-h> g^
+noremap <silent> <S-j> 15gj
+noremap <silent> <S-k> 15gk
+noremap <silent> <S-l> g$
+nmap <S-u> :redo<Enter>
+" editing
+nmap <enter> o<esc>
+nmap ; :
+nmap < v<
+nmap > v>
+
+
+" Terminal
+nnoremap <C-t> :terminal<Enter>i<end>
+au TermOpen * setlocal nonumber
+
+" Netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+
+" Spellcheck
+autocmd FileType markdown setlocal spell
+autocmd FileType tex setlocal spell
+autocmd FileType text setlocal spell
+
+
+" Remember cursor position
+augroup vimStartup
+	autocmd!
+	autocmd BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+		\ | exe "normal! g`\""
+	\ | endif
+augroup END
