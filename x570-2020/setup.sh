@@ -12,6 +12,8 @@ hostnamectl set-hostname $comp
 
 # Fedora Installs
 sh ~/.dotfiles/install/fedora.sh
+# Flatpak Installs
+sh ~/.dotfiles/install/flatpak.sh
 # i3 Fedora Installs
 sh ~/.dotfiles/i3/fedora-install.sh
 # Terminal Configuration

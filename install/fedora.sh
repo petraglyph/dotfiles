@@ -71,33 +71,5 @@ message "Installing Packages"
 sudo dnf -y install $packages --skip-broken
 
 
-message "Installing Flatpaks"
-flatpaks="
-org.gimp.GIMP
-org.inkscape.Inkscape
-com.valvesoftware.Steam
-org.signal.Signal
-com.mojang.Minecraft
-com.discordapp.Discord
-"
-sudo dnf -y install flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak remote-delete --user fedora
-flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-flatpak -y install flathub-beta com.google.Chrome
-flatpak -y install flathub $flatpaks
-
-message "Linking ~/.minecraft/"
-mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft/saves
-mkdir -p $HOME/.var/app/com.mojang.Minecraft/data/minecraft/resourcepacks
-rm -rf $HOME/.minecraft
-ln -fs $HOME/.var/app/com.mojang.Minecraft/data/minecraft $HOME/.minecraft
-
 message "Installing Rust (with rustup)"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
-
-message "Installing gotop"
-mkdir -p $HOME/.bin
-git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop
-/tmp/gotop/scripts/download.sh
-mv gotop $HOME/.local/bin

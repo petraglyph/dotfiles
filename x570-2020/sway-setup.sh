@@ -10,6 +10,8 @@ comp="x570-2020"
 
 # Fedora Installs
 sh ~/.dotfiles/install/fedora.sh
+# Flatpak Installs
+sh ~/.dotfiles/install/flatpak.sh
 # Sway Fedora Installs
 sh ~/.dotfiles/sway/fedora-install.sh
 # Terminal Configuration
