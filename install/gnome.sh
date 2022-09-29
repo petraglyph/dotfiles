@@ -76,6 +76,7 @@ gsettings set org.gnome.desktop.sound allow-volume-above-100-percent "true"
 # Keyboard
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:swap_lalt_lctl', 'caps:escape']"
 
+
 # Edit keybindings
 for i in {1..9}; do
 	gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"
@@ -86,6 +87,12 @@ for i in {1..10}; do
 	#echo "$i ${i: -1}"
 done
 gsettings set org.gnome.desktop.wm.keybindings close "['<Super><Shift>q']"
+gsettings set org.gnome.shell.keybindings toggle-application-view "['<Super>space']"
+# Application switching
+gsettings set org.gnome.desktop.wm.keybindings switch-group "['<Super>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-group-backward "['<Super><Shift>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Above_Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Above_Tab']"
 
 
 # Custom keybindings
