@@ -16,4 +16,4 @@ export EDITOR=nvim
 export VISUAL=nvim
 # go
 export GOPATH="$HOME/.go"
-export GOBIN="$GOPATH/bin"
+export GOBIN="$HOME/.local/bin"
