@@ -36,11 +36,13 @@ fi
 message "Installing Flatpaks"
 flatpaks="
 com.discordapp.Discord
+com.github.finefindus.eyedropper
 com.google.Chrome
 com.mojang.Minecraft
 com.valvesoftware.Steam
 org.inkscape.Inkscape
 org.mozilla.firefox
+us.zoom.Zoom
 "
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo

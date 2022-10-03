@@ -26,7 +26,8 @@ mkdir -p $XDG_DATA_HOME/nvim/site/autoload/airline/themes
 
 message "Linking Terminal Configs"
 ln -fs $loc/configs/gitconfig $XDG_CONFIG_HOME/git/config
-echo "*~\n*.swp" > $XDG_CONFIG_HOME/git/ignore
+echo "*~
+*.swp" > $XDG_CONFIG_HOME/git/ignore
 ln -fs $loc/configs/ranger $XDG_CONFIG_HOME/ranger
 ln -fs $loc/configs/profile $HOME/.profile
 ln -fs $loc/configs/aliasrc $HOME/.aliasrc

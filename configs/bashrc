@@ -73,6 +73,7 @@ force_color_prompt=yes
 red='\[\033[1;31m\]'
 blue='\[\033[1;34m\]'
 yellow='\[\033[0;33m\]'
+magenta='\[\033[0;35m\]'
 white='\[\033[1;37m\]'
 none='\[\033[0m\]'
 # check root
@@ -89,7 +90,7 @@ if [ ! -z "$SSH_CONNECTION" ]; then
 fi
 # toolbox/distrobox indicator
 if [[ $(cat /proc/$PID/mounts| grep -w / | cut -d" " -f 1) == "overlay" ]]; then
-	PS1+="${yellow}box:"
+	PS1+="${magenta}box:"
 fi
 # name@computer
 PS1+="$color\u@\H"
