@@ -36,10 +36,6 @@ nmap < v<
 nmap > v>
 
 
-" Terminal
-nnoremap <C-t> :terminal<Enter>i<end>
-au TermOpen * setlocal nonumber
-
 " Netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3

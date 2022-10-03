@@ -1,16 +1,12 @@
 #!/bin/sh
 # Sway Fedora Installs
+#   Penn Bauman <me@pennbauman.com>
 
-loc="$HOME/.dotfiles"
-
-# Check install location and comp
-. "$(dirname $(readlink -f $0))/../install/check.sh" "$comp"
-
-message "Enabling copr Repositories"
-copr() {
-	result=$(sudo dnf -y copr enable $1 2>&1 | tail -1)
-	if [ "$result" != "Bugzilla. In case of problems, contact the owner of this repository." ]; then
-		echo $result
+message() {
+	if [ -z $BASH_SOURCE ]; then
+		echo "\033[1;32m$1\033[0m"
+	else
+		echo -e "\033[1;32m$1\033[0m"
 	fi
 }
 

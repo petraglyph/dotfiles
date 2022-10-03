@@ -1,5 +1,6 @@
 #!/bin/sh
 # Configure i3
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 comp="$1"
@@ -34,4 +35,5 @@ ln -fs $loc/sway/configs/envvars.conf $XDG_CONFIG_HOME/environment.d/envvars.con
 ln -fs $loc/sway/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
 
 message "Adding Font"
+mkdir -p $XDG_DATA_HOME/fonts
 cp -f $loc/sway/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_design_icons.ttf

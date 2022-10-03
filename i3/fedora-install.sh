@@ -2,10 +2,13 @@
 # i3 Fedora Installs
 #   Penn Bauman <me@pennbauman.com>
 
-loc="$HOME/.dotfiles"
-
-# Check install location and comp
-. "$(dirname $(readlink -f $0))/../install/check.sh" "$comp"
+message() {
+	if [ -z $BASH_SOURCE ]; then
+		echo "\033[1;32m$1\033[0m"
+	else
+		echo -e "\033[1;32m$1\033[0m"
+	fi
+}
 
 message "Enabling copr Repositories"
 copr() {

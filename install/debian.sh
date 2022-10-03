@@ -1,5 +1,5 @@
 #!/bin/sh
-# General Ubuntu Installs
+# General Debian Installs
 #   Penn Bauman <me@pennbauman.com>
 
 message() {
@@ -14,15 +14,24 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 packages="
+clang
 curl
 feh
+ffmpeg
 gcc
 git
+htop
+mpc
 mpd
+mpv
 ncmpcpp
-nodejs
-npm
+ncmpcpp
+neovim
+nethogs
 qalc
+ranger
+rclone
+tldr
 zsh
 "
 message "Installing Packages"

@@ -1,5 +1,6 @@
 #!/bin/sh
 # Setup GNOME desktop
+#   Penn Bauman <me@pennbauman.com>
 
 loc="$HOME/.dotfiles"
 comp=$1

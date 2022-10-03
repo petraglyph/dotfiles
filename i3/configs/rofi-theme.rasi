@@ -55,10 +55,8 @@ element normal {
 	padding: 12;
 	background-color: @bg;
 	border-color: @bg;
-}
-element-text {
 	text-color: @fg;
 }
-element-text selected {
+element selected {
 	text-color: @green;
 }
