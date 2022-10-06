@@ -17,6 +17,8 @@ Options:
   --all, -a            Preform all manual configurations
   --no, -n             Do not ask to preform manual configurations
   --config, -c [file]  Configuration file to autofill settings
+  --armhf, -32         Use the 32-bit version of Raspbian as default image
+  --arm64, -64         Use the 64-bit version of Raspbian as default image
 
 Configuration File Settings:
   USER_ID=\"username\"        Default user on system
@@ -43,6 +45,8 @@ IMAGE=""
 ALL="no"
 NO="no"
 CONFIG=""
+ARM64="no"
+ARM32="no"
 
 # Read command line options
 if [ $# -gt 0 ]; then
@@ -72,6 +76,8 @@ if [ $# -gt 0 ]; then
 			--all|-a) ALL="YES" ;;
 			--no|-n) NO="YES" ;;
 			--config|-c) GET_VALUE="$arg" ;;
+			--arm64|-64) ARM64="YES" ;;
+			--armhf|-32) ARM32="YES" ;;
 			*) echo "! Unknown arguement '$arg'"
 				exit 1 ;;
 		esac
@@ -89,33 +95,56 @@ if [ "$ALL" = "YES" ] && [ "$NO" = "YES" ]; then
 	echo "! Cannot specify both --all and --no, they conflict"
 	exit 1
 fi
+if [ "$ARM64" = "YES" ] && [ "$ARM32" = "YES" ]; then
+	echo "! Cannot specify both --arm64 and --armhf, they conflict"
+	exit 1
+fi
 
 # Check for image to write, autodownload if necessary
 if [ "$WRITE" = "YES" ]; then
 	if [ -z "$IMAGE" ]; then
+		if [ ! "$AUTODOWNLOAD" = "YES" ]; then
+			echo "No image provided for writing to SD card (--image option is missing)"
+			question="Would you like to download Raspbian? [y/n] "
+			while true; do
+				read -p "$question" c
+				case $c in
+					y|Y|yes) break ;;
+					n|N|no) echo "! No image available to write"
+						exit 0 ;;
+					*) echo "  Invalid option, please use 'y' or 'n'" ;;
+				esac
+				question="Download Raspbian? [y/n] "
+			done
+		fi
+
 		# Default image from https://www.raspberrypi.com/software/operating-systems
-		img_url="https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2022-09-07/2022-09-06-raspios-bullseye-armhf-lite.img.xz"
+		if [ "$ARM64" = "no" ] && [ "$ARM32" = "no" ]; then
+			question="Would you like to install 32-bit or 64-bit Raspbian? [64/32/quit] "
+			while true; do
+				read -p "$question" c
+				case $c in
+					64) ARM64="YES" ; break ;;
+					32) ARM32="YES" ; break ;;
+					q|Q|quit) exit 0 ;;
+					*) echo "  Invalid option, please use '64', '32', or 'q'" ;;
+				esac
+				question="32-bit or 64-bit Raspbian? [64/32] "
+			done
+		fi
+		if [ "$ARM64" = "YES" ]; then
+			img_url="https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2022-09-26/2022-09-22-raspios-bullseye-arm64-lite.img.xz"
+		elif [ "$ARM32" = "YES" ]; then
+			img_url="https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2022-09-26/2022-09-22-raspios-bullseye-armhf-lite.img.xz"
+		else
+			echo "! Unknown architecture selected"
+			exit 1
+		fi
 		compressed_img="$CACHE_DIR/$(basename $img_url)"
 		IMAGE=$(echo $compressed_img | sed 's/\.xz$//')
 
 		# Download image if necessary
 		if [ ! -f $IMAGE ]; then
-			echo down
-			if [ ! "$AUTODOWNLOAD" = "YES" ]; then
-				echo "No image provided for writing to SD card"
-				echo "Images can be provided with --image option"
-				question="Would you like to download one? [y/n] "
-				while true; do
-					read -p "$question" c
-					case $c in
-						y|Y|yes) break ;;
-						n|N|no) echo "! No image available to write"
-							exit 0 ;;
-						*) echo "  Invalid input, please use 'y' or 'n'" ;;
-					esac
-					question="Download? [y/n] "
-				done
-			fi
 			echo "> Downloading Raspbian image"
 
 			mkdir -p $CACHE_DIR
@@ -186,13 +215,14 @@ if [ "$WRITE" = "YES" ]; then
 		exit 1
 	fi
 	echo "> Image written to SD CARD"
+	sudo udevadm trigger
 else
 	if [ ! -e ${DISK}p2 ]; then
 		echo "! SD card does not contain raspbian"
 		exit 1
 	fi
 	sudo mount ${DISK}p2 $MNT_POINT
-	if [ ! $(grep -E '^ID=' $MNT_POINT/etc/os-release | sed 's/ID=//') = "raspbian" ]; then
+	if [ ! -e $MNT_POINT/usr/bin/raspi-config ]; then
 		echo "! SD card does not contain raspbian"
 		sudo umount $MNT_POINT
 		exit 1
@@ -256,7 +286,7 @@ if [ "$USER_SETUP" = "no" ]; then
 		case $c in
 			y|Y|yes) USER_SETUP="YES" ; break ;;
 			n|N|no) break ;;
-			*) echo "  Invalid input, please use 'y' or 'n'" ;;
+			*) echo "  Invalid option, please use 'y' or 'n'" ;;
 		esac
 	done
 fi
@@ -280,7 +310,7 @@ if [ "$WIFI_SETUP" = "no" ]; then
 		case $c in
 			y|Y|yes) WIFI_SETUP="YES" ; break ;;
 			n|N|no) break ;;
-			*) echo "  Invalid input, please use 'y' or 'n'" ;;
+			*) echo "  Invalid option, please use 'y' or 'n'" ;;
 		esac
 	done
 fi
@@ -313,7 +343,7 @@ if [ "$SSH_SETUP" = "no" ]; then
 		case $c in
 			y|Y|yes) SSH_SETUP="YES" ; break ;;
 			n|N|no) break ;;
-			*) echo "  Invalid input, please use 'y' or 'n'" ;;
+			*) echo "  Invalid option, please use 'y' or 'n'" ;;
 		esac
 	done
 fi
