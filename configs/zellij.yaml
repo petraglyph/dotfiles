@@ -1,0 +1,32 @@
+# Configuration for zellij
+#   Penn Bauman <me@pennbauman.com>
+
+# Check config
+#   zellij setup --check
+# Print default config
+#   zellij setup --dump-config
+
+# Send a request for a simplified ui (without arrow fonts) to plugins
+simplified_ui: true
+
+# Choose the theme that is specified in the themes section.
+# For some examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
+theme: maia
+
+# Custom themes
+themes:
+  maia:
+    fg: [87, 91, 97] #575b61
+    bg: [144, 144, 144] #909090
+    red: [219, 91, 91] #db5b5b
+    green: [46, 179, 152] #2eb398
+    yellow: [240, 192, 126] #f0c07e
+    blue: [78, 162, 193] #4ea2c1
+    magenta: [181, 110, 167] #b56ea7
+    orange: [210, 132, 69] #d28445
+    cyan: [181, 228, 244] #b5e4f4
+    black: [144, 144, 144] #909090
+    white: [0, 0, 0] #000000
+
+# Configure the scroll back buffer size
+scroll_buffer_size: 10000

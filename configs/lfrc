@@ -1,0 +1,31 @@
+# lf configuration
+#   Penn Bauman <me@pennbauman.com>
+${{ mkdir -p ~/.trash }}
+
+# settings
+set info size:time
+set dircounts on
+set globsearch
+
+# Custom commands
+cmd open ${{
+	case $(file --mime-type -Lb $f) in
+		text/*) $EDITOR $fx ;;
+		*) for f in "$fx"; do
+			xdg-open "$f" > /dev/null 2> /dev/null &
+		done ;;
+	esac
+}}
+cmd runshell ${{
+	$SHELL
+}}
+cmd trash ${{
+	IFS="$(printf '\n\t')"
+	touch $fx
+	mv $fx ~/.trash
+}}
+
+map S :runshell
+map x :delete
+map D :trash
+map <enter> open

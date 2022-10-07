@@ -21,6 +21,8 @@ fi
 rm -rf $HOME/.config/ranger
 mkdir -p $XDG_CONFIG_HOME/git
 mkdir -p $XDG_CONFIG_HOME/nvim
+mkdir -p $XDG_CONFIG_HOME/lf
+mkdir -p $XDG_CONFIG_HOME/zellij
 mkdir -p $XDG_DATA_HOME/nvim/site/colors
 mkdir -p $XDG_DATA_HOME/nvim/site/autoload/airline/themes
 
@@ -37,6 +39,9 @@ ln -fs $loc/configs/vimrc $HOME/.vimrc
 ln -fs $loc/configs/nvim.init.lua $XDG_CONFIG_HOME/nvim/init.lua
 ln -fs $loc/configs/maia-custom.vim $XDG_DATA_HOME/nvim/site/colors/maia-custom.vim
 ln -fs $loc/configs/airline-maia_custom.vim $XDG_DATA_HOME/nvim/site/autoload/airline/themes/maia_custom.vim
+ln -fs $loc/configs/lfrc $XDG_CONFIG_HOME/lf/lfrc
+ln -fs $loc/configs/lfcolors $XDG_CONFIG_HOME/lf/colors
+ln -fs $loc/configs/zellij.yaml $XDG_CONFIG_HOME/zellij/config.yaml
 
 message "Setting Up Zsh"
 if [ "$(basename $SHELL)" != "zsh" ]; then

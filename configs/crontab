@@ -1,5 +1,4 @@
 # Default Crontab
 #   Penn Bauman <me@pennbauman.com>
-@weekly vim +PlugUpdate +qall
-@weekly vim +CocUpdate +qall
 @daily  rm -rf $(find $HOME/.cache -type f -mtime +30 -print)
+@daily  rm -rf $(find $HOME/.trash -type f -atime +5 -print)

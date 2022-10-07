@@ -1,0 +1,60 @@
+# lf colors
+#   Penn Bauman <me@pennbauman.com>
+
+# Main colors
+ln      01;34   # LINK
+or      31;01   # ORPHAN
+tw      01;32   # STICKY_OTHER_WRITABLE
+ow      01;32   # OTHER_WRITABLE
+st      01;32   # STICKY
+di      01;32   # DIR
+pi      33      # FIFO
+so      01;35   # SOCK
+bd      33;01   # BLK
+cd      33;01   # CHR
+su      01;34   # SETUID
+sg      01;34   # SETGID
+ex      36      # EXEC
+fi      00      # FILE
+
+# File types
+*.tar   31
+*.tgz   31
+*.lzma  31
+*.zip   31
+*.z     31
+*.gz    31
+*.lz    31
+*.xz    31
+*.zst   31
+*.zstd  31
+*.bz2   31
+*.bz    31
+*.tbz   31
+*.tbz2  31
+*.deb   31
+*.rpm   31
+*.jar   31
+*.rar   31
+*.7z    31
+*.rz    31
+
+*.jpg   33
+*.jpeg  33
+*.gif   33
+*.png   33
+*.svg   33
+*.webm  33
+*.xcf   33
+
+*.mp4   35
+*.m4v   35
+*.avi   35
+*.webp  35
+*.mkv   35
+
+*.aac   36
+*.flac  36
+*.m4a   36
+*.mp3   36
+*.wav   36

@@ -68,12 +68,16 @@ require('packer').startup(function(use)
 	use {'lervag/vimtex', ft = {'tex'}}
 	use 'nvim-lua/completion-nvim'
 	use {'steelsojka/completion-buffers', requires = {'nvim-lua/completion-nvim'}}
+	use 'weebcyberpunk/lf.vim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
 		require('packer').sync()
 	end
 end)
+
+-- lf.vim
+vim.keymap.set('n', '<C-f>', ':Lf<Enter>', {noremap = true, silent = true})
 
 -- vim-airline
 vim.api.nvim_set_var('airline_theme', 'maia_custom')

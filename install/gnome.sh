@@ -99,7 +99,7 @@ gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<
 # Custom keybindings
 KEYBINDING_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 KEYBINDING_CMD="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEYBINDING_PATH"
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$KEYBINDING_PATH/custom0/', '$KEYBINDING_PATH/custom1/', '$KEYBINDING_PATH/custom2/', '$KEYBINDING_PATH/custom3/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$KEYBINDING_PATH/custom0/', '$KEYBINDING_PATH/custom1/', '$KEYBINDING_PATH/custom2/', '$KEYBINDING_PATH/custom3/', '$KEYBINDING_PATH/custom4/']"
 
 $KEYBINDING_CMD/custom0/ name "alacritty"
 $KEYBINDING_CMD/custom0/ command "alacritty"
@@ -111,6 +111,10 @@ $KEYBINDING_CMD/custom1/ binding "<Super><Shift>Return"
 
 $KEYBINDING_CMD/custom2/ name "alacritty distrobox ranger"
 $KEYBINDING_CMD/custom2/ command "alacritty -e distrobox enter system -- ranger --selectfile=$HOME/documents $HOME/documents $HOME/documents"
+$KEYBINDING_CMD/custom2/ binding "<Super>f"
+
+$KEYBINDING_CMD/custom2/ name "alacritty distrobox ranger"
+$KEYBINDING_CMD/custom2/ command "alacritty -e distrobox enter system -- zellij"
 $KEYBINDING_CMD/custom2/ binding "<Super>f"
 
 $KEYBINDING_CMD/custom3/ name "Files"
