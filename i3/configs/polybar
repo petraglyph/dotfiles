@@ -9,51 +9,6 @@ alert = #DB5B5B
 
 
 
-[bar/hps2020]
-width = 100%
-height = 50
-fixed-center = true
-background = ${colors.background}
-foreground = ${colors.primary}
-line-size = 0
-line-color = ${colors.background}
-border-size = 0
-padding-left = 1
-padding-right = 1
-module-margin-left = 0
-module-margin-right = 1
-;
-font-0 = DejaVu Sans Mono:size=24;0
-font-1 = "Material Design Icons:size=28;0"
-;
-modules-left = i3ws mpd
-modules-center = datetime
-modules-right = updates vpn wireless volume memory cpu battery
-
-[bar/hps2020-hdmi]
-monitor = DP-2
-width = 100%
-height = 32
-fixed-center = true
-background = ${colors.background}
-foreground = ${colors.primary}
-line-size = 0
-line-color = ${colors.background}
-border-size = 0
-padding-left = 1
-padding-right = 1
-module-margin-left = 0
-module-margin-right = 1
-;
-font-0 = DejaVu Sans Mono:size=14;0
-font-1 = "Material Design Icons:size=16;0"
-;
-modules-left = hdmi
-modules-center = datetime
-modules-right = wireless volume cpu battery
-
-
-
 [bar/x570-2020]
 width = 100%
 height = 50

@@ -14,13 +14,11 @@ hostnamectl set-hostname $comp
 sh ~/.dotfiles/install/fedora.sh
 # Flatpak Installs
 sh ~/.dotfiles/install/flatpak.sh
-# i3 Fedora Installs
-sh ~/.dotfiles/i3/fedora-install.sh
+# ~/.local/bin Installs
+sh ~/.dotfiles/install/bin.sh
 # Terminal Configuration
 sh ~/.dotfiles/install/terminal.sh $comp
 # Desktop Configuration
 sh ~/.dotfiles/install/desktop.sh $comp
-# i3 Configuration
-sh ~/.dotfiles/i3/setup.sh $comp
-# Install Personal Programs
-sh ~/.dotfiles/install/personal.sh
+# GNOME Configuration
+sh ~/.dotfiles/install/gnome.sh $comp

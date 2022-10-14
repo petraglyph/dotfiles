@@ -20,5 +20,3 @@ sh ~/.dotfiles/install/terminal.sh $comp
 sh ~/.dotfiles/install/desktop.sh $comp
 # Sway Configuration
 sh ~/.dotfiles/sway/setup.sh $comp
-# Install Personal Programs
-sh ~/.dotfiles/install/personal.sh
