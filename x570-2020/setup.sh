@@ -22,5 +22,3 @@ sh ~/.dotfiles/install/terminal.sh $comp
 sh ~/.dotfiles/install/desktop.sh $comp
 # i3 Configuration
 sh ~/.dotfiles/i3/setup.sh $comp
-# Install Personal Programs
-sh ~/.dotfiles/install/personal.sh

@@ -20,5 +20,3 @@ sh ~/.dotfiles/install/terminal.sh $comp
 sh ~/.dotfiles/install/desktop.sh $comp
 # i3 Configuration
 sh ~/.dotfiles/sway/setup.sh $comp
-# Install Personal Programs
-sh ~/.dotfiles/install/personal.sh
