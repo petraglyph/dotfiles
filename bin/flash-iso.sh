@@ -21,8 +21,14 @@ fi
 
 check_device () {
 	if [ -e "$1" ]; then
+		if [ ! -z "$(lsblk -n -o MOUNTPOINTS "$1")" ]; then
+			sudo umount -A $(lsblk -n -o MOUNTPOINTS "$1")
+		fi
 		echo "$1"
 	elif [ -e "/dev/$1" ]; then
+		if [ ! -z "$(lsblk -n -o MOUNTPOINTS "/dev/$1")" ]; then
+			sudo umount -A $(lsblk -n -o MOUNTPOINTS "/dev/$1")
+		fi
 		echo "/dev/$1"
 	else
 		echo "Unknown device '$1'" >&2
