@@ -1,5 +1,6 @@
 # ZSH Configuration
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 # Oh My ZSH
 if [ ! -d $HOME/.oh-my-zsh ]; then

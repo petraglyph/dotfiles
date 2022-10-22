@@ -1,5 +1,6 @@
 # Bash Configuration
-#  Penn Bauman <me@pennbauman.com>
+#   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 # Prevent multiple sourcing
 if [[ "$BASHRC" == "BASHRC" ]]; then

@@ -1,5 +1,6 @@
 # Default User Directories
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 XDG_DOWNLOAD_DIR="$HOME/downloads"
 XDG_DOCUMENTS_DIR="$HOME/documents"
 XDG_MUSIC_DIR="$HOME/music"

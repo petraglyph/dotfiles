@@ -1,6 +1,7 @@
 #!/bin/sh
 # Numbered Files Formating Script
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 HELP_TEXT="Numbered Files Formating Script
 
   $ $(basename $0) [directory]

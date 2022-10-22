@@ -1,6 +1,7 @@
 #!/bin/sh
 # WEBP to JPG Conversion Script
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 HELP_TEXT="WEBP to JPG Conversion Script
 
   $ $(basename $0) [directory|file.webp]

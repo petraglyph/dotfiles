@@ -1,5 +1,6 @@
 -- NeoVim Config
 --   Penn Bauman <me@pennbauman.com>
+--   https://github.com/pennbauman/dotfiles
 
 -- General
 vim.opt.filetype = 'plugin'

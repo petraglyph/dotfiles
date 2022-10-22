@@ -1,5 +1,6 @@
 # Shell aliases
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 # Aliases
 alias ls="ls -Fh --group-directories-first"

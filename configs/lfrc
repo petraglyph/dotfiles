@@ -1,5 +1,6 @@
 # lf configuration
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 ${{ mkdir -p ~/.trash }}
 
 # settings

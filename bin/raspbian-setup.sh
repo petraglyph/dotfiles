@@ -1,6 +1,7 @@
 #!/bin/sh
 # Setup Raspbian Image and/or Write to SD Card
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 CACHE_DIR="$HOME/.cache/raspbian"
 MNT_POINT=$(mktemp -d)
 TMP_FILE=$(mktemp)
