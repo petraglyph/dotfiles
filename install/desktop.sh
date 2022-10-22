@@ -27,19 +27,14 @@ ln -fs $loc/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
 
 
 message "Setting Up Crontab"
-echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | sudo crontab -
-if [ "$(crontab -l)" = "" ]; then
-	if [ -f $loc/$comp/crontab.txt ]; then
-		crontab $loc/$comp/crontab.txt
-	else
-		crontab $loc/configs/crontab.txt
-	fi
+if [ ! -f /etc/cron.d/clear-cache ]; then
+	echo "@daily rm -rf \$(find /var/cache/ -type f -mtime +30 -print)" | \
+		sudo tee /etc/cron.d/clear-cache > /dev/null
 fi
-
-
-message "Running External Setup"
-if [ -e $HOME/documents/other/linux/scripts/setup.sh ]; then
-	bash $HOME/documents/other/linux/scripts/setup.sh
-else
-	error "  ~linux/scripts/setup.sh not available"
+if [ "$(crontab -l)" = "" ]; then
+	if [ -f $loc/$comp/crontab ]; then
+		crontab $loc/$comp/crontab
+	else
+		crontab $loc/configs/crontab
+	fi
 fi

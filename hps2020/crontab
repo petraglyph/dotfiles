@@ -4,4 +4,3 @@
 @daily  rm -rf $(find $HOME/.cache -type f -mtime +30 -print)
 @reboot rm -rf $(find $HOME/.trash -type f -atime +5 -print)
 @daily  rm -rf $(find $HOME/.trash -type f -atime +5 -print)
-* * * * * bash ~/.dotfiles/i3/scripts/battery.sh

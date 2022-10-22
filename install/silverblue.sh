@@ -1,5 +1,5 @@
 #!/bin/sh
-# General Debian Installs
+# Fedora Silverblue Install Layered Packages
 #   Penn Bauman <me@pennbauman.com>
 
 message() {
@@ -10,32 +10,29 @@ message() {
 	fi
 }
 
-sudo apt-get update
-sudo apt-get -y upgrade
+message "Updating"
+rpm-ostree upgrade
 
 packages="
+alacritty
 clang
-curl
+cronie
+dash
+distrobox
 feh
-ffmpeg
-gcc
-git
 htop
-mpc
-mpd
-mpv
-ncmpcpp
-ncmpcpp
+lsyncd
 neovim
 nethogs
+openssl
+postfix
 qalc
 ranger
 rclone
-tldr
 zsh
 "
 if [ $# -ne 0 ]; then
 	packages="$packages $@"
 fi
 message "Installing Packages"
-sudo apt-get -y install $packages
+rpm-ostree install --idempotent $packages

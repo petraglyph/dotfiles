@@ -11,9 +11,11 @@ comp="hps2020"
 hostnamectl set-hostname $comp
 
 # Fedora Installs
-sh ~/.dotfiles/install/fedora.sh
+sh ~/.dotfiles/install/silverblue.sh
 # Flatpak Installs
-sh ~/.dotfiles/install/flatpak.sh
+sh ~/.dotfiles/install/flatpak.sh org.gnome.Geary
+# Rust Install
+sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs
 sh ~/.dotfiles/install/bin.sh
 # Terminal Configuration

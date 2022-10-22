@@ -34,19 +34,27 @@ fi
 
 
 message "Installing Flatpaks"
-flatpaks="
+packages="
 com.discordapp.Discord
 com.github.finefindus.eyedropper
 com.google.Chrome
 com.mojang.Minecraft
 com.valvesoftware.Steam
 org.inkscape.Inkscape
-org.mozilla.firefox
 us.zoom.Zoom
+io.mpv.Mpv
 "
+if [ $# -ne 0 ]; then
+	packages="$packages $@"
+fi
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-flatpak -y install flathub $flatpaks
+if [ ! -z "$(flatpak remotes | grep fedora)" ]; then
+	flatpak -y install fedora $(echo $packages | grep -oE 'org.gnome.[a-zA-Z]*')
+	flatpak -y install flathub $(echo $packages | sed 's/org.gnome.[a-zA-Z]*//g')
+else
+	flatpak -y install flathub $packages
+fi
 flatpak -y install flathub-beta "org.gimp.GIMP"
 
 

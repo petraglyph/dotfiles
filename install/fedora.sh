@@ -65,11 +65,7 @@ zathura-zsh-completion
 zsh
 "
 if [ $# -ne 0 ]; then
-	packages="$packages $(cat "$1")"
+	packages="$packages $@"
 fi
 message "Installing Packages"
 sudo dnf -y install $packages --skip-broken
-
-
-message "Installing Rust (with rustup)"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
