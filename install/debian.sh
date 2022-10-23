@@ -10,8 +10,14 @@ message() {
 	fi
 }
 
+message "Updating"
 sudo apt-get update
 sudo apt-get -y upgrade
+
+if [ ! -z "$(grep 'ID=ubuntu' /etc/os-release)" ]; then
+	message "Adding Neovim Stable PPA"
+	sudo add-apt-repository -y ppa:neovim-ppa/stable
+fi
 
 packages="
 clang

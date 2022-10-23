@@ -6,12 +6,6 @@
 0 4 * * * rm -rf $(find ~/.cache -type -f -mtime +30 -print)
 0 4 * * * rm -rf $(find ~/.trash -type f -atime +5 -print)
 
-# Make backups
-0 4 * * 0 bash ~/documents/other/linux/scripts/backup.sh
-
-# Make playlists
-0 4 * * * bash ~/music/.playlists/.list-gen.sh
-
 # pCloud backups
 0 */12 * * * rclone sync pcloud:archive   $HOME/storage/pcloud/archive
 */30 * * * * rclone sync pcloud:documents $HOME/storage/pcloud/documents --exclude "target/**"

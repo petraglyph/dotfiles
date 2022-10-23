@@ -6,12 +6,3 @@ export dnd="$HOME/documents/dnd"
 export linux="$HOME/documents/other/linux"
 export sh="$HOME/documents/other/linux/scripts"
 export notes="$HOME/documents/other/notes"
-
-export college="$HOME/documents/college"
-export besic="$HOME/documents/besic"
-
-export site="$HOME/documents/code/site"
-export pbsite="$HOME/documents/code/site/pennbauman.com"
-
-export pcloud="$HOME/storage/pcloud"
-export tor="$HOME/storage/torrents"

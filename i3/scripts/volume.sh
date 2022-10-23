@@ -1,17 +1,17 @@
 #!/bin/sh
 # Print volume for polybar
 
-vol=$(amixer -D pipewire sget Master | grep -oE '\[[0-9]*%\]' | head -n 1 | grep -oE '[0-9]*')
-mute=$(amixer -D pipewire sget Master | grep -oE '\[[0-9]*%\] \[[a-z]*\]')
+vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oE '[0-9]*%' | head -n 1 | sed 's/%//')
+mute=$(pactl get-sink-mute @DEFAULT_SINK@)
 
-if [ $vol -gt 100 ]; then
+if [ "$vol" -gt 100 ]; then
     color="DB5B5B"
 else
     color="2EB398"
 fi
-if [ $vol -eq 0 ] || [ -n "$(echo $mute | grep off)" ]; then
+if [ "$vol" -eq 0 ] || [ -n "$(echo $mute | grep yes)" ]; then
     icon=""
-elif [ $vol -le 50 ]; then
+elif [ "$vol" -le 50 ]; then
     icon=""
 else
     icon=""

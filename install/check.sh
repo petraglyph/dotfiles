@@ -28,12 +28,13 @@ if [ -z "$1" ]; then
 	error "Computer required"
 	exit 1
 fi
+comp="$1"
 
 # Check computer is valid or 'none'
-if [ $1 = "none" ]; then
+if [ "$comp" = "none" ]; then
 	sleep 0
 elif [ -d $loc/$comp ]; then
-	if [ $(cat /etc/hostname) != $comp ]; then
+	if [ $(cat /etc/hostname) != "$comp" ]; then
 		error "Wrong computer, should be '$(hostname)'"
 		while true; do
 			read -p "  Continue anyway [y/n]: " input

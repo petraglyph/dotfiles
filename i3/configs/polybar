@@ -9,7 +9,7 @@ alert = #DB5B5B
 
 
 
-[bar/x570-2020]
+[bar/tower3800x]
 width = 100%
 height = 50
 fixed-center = true
@@ -28,9 +28,9 @@ font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
 modules-center = datetime
-modules-right = updates network-x570-2020 volume memory cpu status
+modules-right = updates network-tower3800x volume memory cpu status
 
-[bar/x570-2020-hdmi]
+[bar/tower3800x-hdmi]
 monitor = HDMI-1
 width = 100%
 height = 32
@@ -50,7 +50,7 @@ font-1 = "Material Design Icons:size=16;0"
 ;
 modules-left = hdmi
 modules-center = datetime
-modules-right = network-x570-2020 volume cpu battery
+modules-right = network-tower3800x volume cpu battery
 
 
 
@@ -215,11 +215,11 @@ exec = echo "%{F#2EB398}%{F} VPN"
 exec-if = [ -n "$(nmcli | grep "tun0: connected")" ]
 tail = true
 
-[module/network-x570-2020]
+[module/network-tower3800x]
 type = custom/script
 interval = 1
 label = %{A:sh ~/.dotfiles/i3/scripts/system-notify.sh network:}%output%%{A}
-exec = conky -c ~/.dotfiles/i3/scripts/netconky-x570-2020
+exec = conky -c ~/.dotfiles/i3/scripts/netconky-tower3800x
 tail = true
 
 [module/updates]

@@ -10,6 +10,7 @@ message() {
 	fi
 }
 
+
 packages="
 i3-wm
 conky
@@ -47,6 +48,13 @@ message "Installing xidlehook (from cargo)"
 sudo apt-get -y install libx11-xcb-dev libxcb-screensaver0-dev
 cargo install xidlehook --locked --bins
 
-message "Installing alacritty (from cargo)"
-sudo apt-get -y install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-cargo install alacritty --locked --bins
+
+if [ ! -z "$(grep 'ID=ubuntu' /etc/os-release)" ]; then
+	message "Installing alacritty (from PPA)"
+	sudo add-apt-repository -y ppa:aslatter/ppa
+	sudo apt-get -y install alacritty
+else
+	message "Installing alacritty (from cargo)"
+	sudo apt-get -y install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+	cargo install alacritty --locked --bins
+fi

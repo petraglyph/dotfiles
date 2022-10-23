@@ -1,5 +1,6 @@
-## Sway Config
+## i3 Config File
 #   Penn Bauman <me@pennbauman.com>
+# see https://i3wm.org/docs/userguide.html for reference
 
 
 ### VARIABLES
@@ -20,7 +21,7 @@ set $right l
 # config location
 set $loc "$HOME/.dotfiles"
 # computer name
-set $name "x570-2020"
+set $name "tower3800x"
 
 
 
@@ -29,37 +30,36 @@ set $name "x570-2020"
 font pango:DejaVu Sans Mono, pango:JoyPixels 10.5
 
 ## Windows Borders
-default_border pixel 0
+new_window pixel 0
 # window colors          border      background   text       indicator
 client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
 client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
-# gaps
-gaps inner 13
-gaps outer -2
-smart_gaps on
-smart_borders on
-
-## Displays
-output * bg $loc/$name/background.jpg fill
-output * scale 2
+# i3 gaps
+#gaps inner 13
+#gaps outer -2
+#smart_gaps on
+#smart_borders on
 
 ## Special Window Configurations
 for_window [class="Termite" title="scratch"] move scratchpad
 for_window [class="Alacritty" title="scratch"] move scratchpad
 for_window [class="Gimp-2.10"] border normal
 # windows floating by default
-for_window [app_id="Alacritty" title="float"] floating enable
-#for_window [class="Steam" title="Steam - News"] floating enable
-
-
-
-### Inputs
-input type:keyboard {
-	xkb_layout us
-	xkb_options ctrl:swap_lalt_lctl,caps:escape,altwin_menu_win
-}
+for_window [class="Termite" title="float"] floating enable
+for_window [class="Alacritty" title="float"] floating enable
+for_window [class="Steam" title="Steam - News"] floating enable
+for_window [title="Java: *"] border normal
+for_window [title="Java: *"] floating enable
+for_window [class="Gcolor3"] floating enable
+#for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+#for_window [instance="sun-awt-X11-XFramePeer"] border normal
+#for_window [title="MATLAB R2019b - academic use"] floating disable
+#for_window [title="MATLAB R2019b - academic use"] border none
+for_window [title="Terraria: *"] floating enable
+for_window [title="Terraria: *"] border normal
+for_window [class="stalonetray"] floating enable
 
 
 
@@ -101,12 +101,18 @@ bindsym $super+Shift+9 move container to workspace $ws9
 bindsym $super+Shift+0 move container to workspace $ws10
 bindsym $super+Shift+m move container to workspace $wsHDMI
 # workspace assignments
-assign [app_id="firefox"] $ws2
-assign [app_id="Google-chrome"] $ws3
-#assign [class="Gimp"] $ws7
-#assign [class="Inkscape"] $ws7
-#assign [class="Transmission-gtk"] $ws9
-assign [app_id="Alacritty" title="ncmpcpp"] $ws10
+assign [class="Firefox"] $ws2
+assign [class="firefox"] $ws2
+assign [class="Google-chrome"] $ws3
+assign [class="Gimp"] $ws7
+assign [class="Inkscape"] $ws7
+assign [class="Transmission-gtk"] $ws9
+assign [class="Spotify"] $ws10
+assign [class="Rhythmbox"] $ws10
+assign [class="Termite" title="ncmpcpp"] $ws10
+assign [class="Termite" title="hdmi"] $wsHDMI
+assign [class="Alacritty" title="ncmpcpp"] $ws10
+assign [class="Alacritty" title="hdmi"] $wsHDMI
 # workspace monitors
 workspace $ws1 output DP-1
 workspace $ws2 output DP-1
@@ -175,7 +181,7 @@ mode "resize" {
 
 ### KEYBOARD SHORTCUTS
 ## Program Launching
-bindsym $super+Space exec wofi --show drun
+bindsym $super+space exec rofi -modi drun -show drun
 # start terminal
 bindsym $super+Return exec $term
 # start calculator
@@ -183,20 +189,20 @@ bindsym $super+c exec $term -t float -e qalc
 # Custom script runner
 bindsym $super+x exec $term -t float -e sh $HOME/documents/other/linux/scripts/quick-run.sh
 # Show/hide tray
-#bindsym $super+p exec sh $loc/i3/scripts/stalonetray.sh
+bindsym $super+p exec sh $loc/i3/scripts/stalonetray.sh
 
 
 ## System Buttons
 # volume controls
-bindsym XF86AudioRaiseVolume exec amixer -D pipewire sset Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -D pipewire sset Master 5%- unmute
-bindsym XF86AudioMute exec amixer -D pipewire sset Master toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # volume controls
-bindsym $super+Up exec amixer -D pipewire sset Master 5%+ unmute
-bindsym $super+Down exec amixer -D pipewire sset Master 5%- unmute
-bindsym $super+Shift+Up exec amixer -D pipewire sset Master 2%+ unmute
-bindsym $super+Shift+Down exec amixer -D pipewire sset Master 2%- unmute
-bindsym $super+Delete exec amixer -D pipewire sset Master toggle
+bindsym $super+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Shift+Up exec pactl set-sink-volume @DEFAULT_SINK@ +2% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Shift+Down exec pactl set-sink-volume @DEFAULT_SINK@ -2% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Delete exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # media controls
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
@@ -208,21 +214,20 @@ bindsym $super+Right exec mpc next
 bindsym $super+Shift+Left exec mpc seek -0:0:10
 bindsym $super+Shift+Right exec mpc seek +0:0:10
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec sh $loc/sway/scripts/dimlight.sh +
-bindsym XF86MonBrightnessDown exec sh $loc/sway/scripts/dimlight.sh -
-bindsym $super+Prior exec sh $loc/sway/scripts/dimlight.sh +
-bindsym $super+Next exec sh $loc/sway/scripts/dimlight.sh -
+bindsym XF86MonBrightnessUp exec sh $loc/i3/scripts/dimlight.sh +
+bindsym XF86MonBrightnessDown exec sh $loc/i3/scripts/dimlight.sh -
+bindsym $super+Prior exec sh $loc/i3/scripts/dimlight.sh +
+bindsym $super+Next exec sh $loc/i3/scripts/dimlight.sh -
 
-## sway Control
-# restart sway
-bindsym $super+Shift+Escape reload
-# exit sway
-bindsym $super+Escape exec $term -t float -e $loc/sway/scripts/exit.sh
-# lock sway
-bindsym $super+z exec sh $loc/sway/scripts/swaylocker.sh dark
+## i3 Control
+# restart i3
+bindsym $super+Shift+Escape restart
+# exit i3
+bindsym $super+Escape exec $term -t float -e sh $loc/i3/scripts/i3exit.sh
+# lock i3
+bindsym $super+z exec sh $loc/i3/scripts/i3locker.sh dark
 # screenshots
-bindsym Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc.png')
-bindsym $super+Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc.png') -g $(slurp)
+bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/'
 
 ## Folder Opening
 # open ~/
@@ -245,6 +250,8 @@ bindsym $super+Shift+c exec $term -e ranger $HOME/pCloudDrive $HOME/documents $H
 bindsym $super+Shift+v exec $term -e ranger $HOME/documents/code/site $HOME/documents $HOME/documents
 # open storage
 bindsym $super+Shift+f exec $term -e ranger $HOME/storage $HOME/documents $HOME/documents
+# open besic
+bindsym $super+b exec $term -e ranger $HOME/documents/besic $HOME/documents $HOME/documents
 # open college
 bindsym $super+Shift+e exec $term -e ranger $HOME/documents/college $HOME/documents $HOME/documents
 # open linux
@@ -257,27 +264,26 @@ bindsym $super+Shift+n exec $term -e ranger $HOME/documents/other/notes $HOME/do
 
 
 ### STARTUP PROGRAMS
-## Run on Startup
+## Run on i3 Startup
 # user windows
 exec $term
 exec $term
 exec $term --title="scratch"
 exec firefox
-exec sh $loc/sway/scripts/ncmpcpp-start.sh $term
+exec sh $loc/i3/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
-exec_always swayidle -w \
-	timeout 120 'swaymsg "output * dpms off"' \
-		resume 'swaymsg "output * dpms on"' \
-	timeout 200 $loc/sway/scripts/locker.sh \
-	before-sleep $loc/sway/scripts/locker.sh \
-	after-resume 'swaymsg "output * dpms on"'
-#exec dunst
+exec picom -b -f -D 1
+exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 600 "sh $loc/i3/scripts/i3locker.sh" ""
+exec --no-startup-id redshift
+exec dunst
 # files and background processes
 exec pcloud
-#exec --no-startup-id /usr/libexec/kdeconnectd
+exec --no-startup-id /usr/libexec/kdeconnectd
 exec sh $loc/.local/start.sh
-exec sh $loc/sway/scripts/dimlight.sh
-exec sh $loc/sway/scripts/network-start.sh
+exec sh $loc/i3/scripts/dimlight.sh
+exec sh $loc/i3/scripts/network-start.sh
 
-## Run on Restart
-exec_always killall waybar; waybar
+## Run on i3 Restart
+exec_always sh $loc/i3/scripts/polybar-start.sh $name $name-hdmi
+exec_always feh --bg-scale $loc/$name/background.jpg
+exec_always xrandr --output HDMI-1 --auto --above DP-1
