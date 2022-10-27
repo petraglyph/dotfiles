@@ -2,7 +2,7 @@
 # Dim Screen Colors in Wayland
 #   Penn Bauman <me@pennbauman.com>
 
-loc="$HOME/.dotfiles/.local"
+loc="$HOME/.local/state"
 
 if [ -f $loc/dimbright ]; then
 	current=$(sed '1q;d' $loc/dimbright)

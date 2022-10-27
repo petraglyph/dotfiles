@@ -7,24 +7,18 @@ For scripts to work, clone the repository to `~/.dofiles`.
 
 	git clone https://github.com/pennbauman/dotfiles.git ~/.dotfiles
 
-To setup Fedora with i3 on HP Spectre 2020 run:
+To setup Fedora Silverblue on HP Spectre 2020 run:
 
 	~/.dotfiles/hps2020/setup.sh
 
-To setup Fedora with i3 on 2020 AMD Desktop run:
+To setup Ubuntu with i3 on desktop run:
 
-	~/.dotfiles/x570-2020/setup.sh
+	~/.dotfiles/tower3800x/setup.sh
 
 To setup terminal only run:
 
 	~/.dotfiles/install/terminal.sh none
 
 
-## Tiny Config
-To setup minimal bash configuration without cloning run:
-
-	curl -s https://raw.githubusercontent.com/pennbauman/dotfiles/main/install/tiny.sh | sh -s
-
-
 ## Sources
-[Material Design Icons](https://github.com/google/material-design-icons)
+[i3/configs/material_design_icons.ttf](/i3/configs/material_design_icons.ttf) from [Google Material Icons/Symbols](https://github.com/google/material-design-icons)

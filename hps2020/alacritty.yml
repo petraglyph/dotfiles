@@ -1,7 +1,7 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 window:
   dimensions:
-    columns: 72
+    columns: 80
     lines: 24
   padding:
     x: 2

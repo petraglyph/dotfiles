@@ -28,7 +28,7 @@ font-1 = "Material Design Icons:size=28;0"
 ;
 modules-left = i3ws mpd
 modules-center = datetime
-modules-right = updates network-tower3800x volume memory cpu status
+modules-right = updates network-tower3800x volume memory cpu
 
 [bar/tower3800x-hdmi]
 monitor = HDMI-1
@@ -118,13 +118,6 @@ label = %time%
 
 
 ; RIGHT MODULES
-[module/status]
-type = custom/script
-interval = 5
-label = %output%
-exec = echo "%{A:bash ~/.dotfiles/.local/switch.sh toggle:}$(cat ~/.dotfiles/.local/status)%{A}"
-tail = true
-
 [module/battery]
 type = internal/battery
 interval = 5
