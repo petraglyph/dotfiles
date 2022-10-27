@@ -1,3 +1,5 @@
+[include]
+	path = "email"
 [user]
 	email = me@pennbauman.com
 	name = Penn Bauman
@@ -8,6 +10,5 @@
 	ff = only
 [init]
 	defaultBranch = main
-
 [advice]
 	addIgnoredFile = false

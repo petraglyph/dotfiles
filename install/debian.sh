@@ -25,7 +25,7 @@ curl
 feh
 ffmpeg
 gcc
-git
+git-email
 htop
 mpc
 mpd
@@ -37,6 +37,7 @@ nethogs
 qalc
 ranger
 rclone
+ssmtp
 tldr
 zsh
 "

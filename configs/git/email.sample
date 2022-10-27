@@ -1,0 +1,7 @@
+[sendemail]
+	smtpDomain = pennbauman.com
+	smtpServer = <mail.domain.tld>
+	smtpServerPort = 587
+	smtpEncryption = tls
+	smtpUser = "me@pennbauman.com"
+	smtpPass = "<PASSWORD>"

@@ -20,12 +20,14 @@ cronie
 dash
 distrobox
 feh
+git-email
 htop
 neovim
 nethogs
 qalc
 ranger
 rclone
+ssmtp
 util-linux-user
 zsh
 "

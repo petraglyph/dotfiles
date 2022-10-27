@@ -26,6 +26,7 @@ android-tools
 clang
 cronie
 ffmpeg
+git-email
 gnuplot
 htop
 jq
@@ -41,6 +42,7 @@ qalc
 ranger
 rclone
 sassc
+ssmtp
 texlive-latex
 texlive-scheme-medium
 tldr
