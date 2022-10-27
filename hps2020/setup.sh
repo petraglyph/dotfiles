@@ -13,7 +13,7 @@ hostnamectl set-hostname $comp
 # Fedora Installs
 sh ~/.dotfiles/install/silverblue.sh
 # Flatpak Installs
-sh ~/.dotfiles/install/flatpak.sh org.gnome.Geary
+sh ~/.dotfiles/install/flatpak.sh org.gnome.Geary io.mpv.Mpv
 # Rust Install
 sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs

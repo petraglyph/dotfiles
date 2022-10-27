@@ -42,7 +42,6 @@ com.mojang.Minecraft
 com.valvesoftware.Steam
 org.inkscape.Inkscape
 us.zoom.Zoom
-io.mpv.Mpv
 "
 if [ $# -ne 0 ]; then
 	packages="$packages $@"

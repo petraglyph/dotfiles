@@ -21,6 +21,9 @@ copr sentry/i3desktop
 
 
 packages="
+mpc
+mpd
+ncmpcpp
 alacritty
 conky
 dmenu
@@ -30,6 +33,7 @@ i3-gaps
 i3lock-color
 i3status
 lxappearance
+pavucontrol
 picom
 polybar
 redshift

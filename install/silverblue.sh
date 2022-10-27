@@ -21,14 +21,12 @@ dash
 distrobox
 feh
 htop
-lsyncd
 neovim
 nethogs
-openssl
-postfix
 qalc
 ranger
 rclone
+util-linux-user
 zsh
 "
 if [ $# -ne 0 ]; then

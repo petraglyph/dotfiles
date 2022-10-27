@@ -21,33 +21,20 @@ sudo dnf -y upgrade
 message "Enabling RPM Fusion"
 sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-message "Enabling Google Chrome"
-sudo dnf -y install fedora-workstation-repositories
-sudo dnf config-manager --set-enabled google-chrome
-
 packages="
 android-tools
-ccls
 clang
 cronie
 ffmpeg
-gcolor3
 gnuplot
-google-chrome-stable
 htop
 jq
-kdeconnectd
 latexmk
-mpc
-mpd
-mpv
-ncmpcpp
 neofetch
 neovim
 nethogs
 nodejs
 openvpn
-pavucontrol
 perl-Image-ExifTool
 python3-pip
 qalc
@@ -56,7 +43,6 @@ rclone
 sassc
 texlive-latex
 texlive-scheme-medium
-the_silver_searcher
 tldr
 util-linux-user
 zathura
