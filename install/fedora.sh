@@ -39,7 +39,6 @@ openvpn
 perl-Image-ExifTool
 python3-pip
 qalc
-ranger
 rclone
 sassc
 ssmtp

@@ -19,7 +19,7 @@ vim.opt.scrolloff = 5
 vim.cmd('colorscheme maia-custom')
 -- Netrw
 vim.api.nvim_set_var('netrw_banner', 0)
-vim.api.nvim_set_var('netrw_liststyle', 3)
+vim.api.nvim_set_var('netrw_liststyle', 1)
 
 local augroup = vim.api.nvim_create_augroup('custom', {clear = true})
 -- Set spellcheck
@@ -64,12 +64,11 @@ end
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'https://github.com/vim-airline/vim-airline.git'
-	use 'https://github.com/Lokaltog/neoranger'
+	use 'weebcyberpunk/lf.vim'
 	use "terrortylor/nvim-comment"
-	use {'lervag/vimtex', ft = {'tex'}}
 	use 'nvim-lua/completion-nvim'
 	use {'steelsojka/completion-buffers', requires = {'nvim-lua/completion-nvim'}}
-	use 'weebcyberpunk/lf.vim'
+	use {'lervag/vimtex', ft = {'tex'}}
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
@@ -77,16 +76,16 @@ require('packer').startup(function(use)
 	end
 end)
 
--- lf.vim
-vim.keymap.set('n', '<C-f>', ':Lf<Enter>', {noremap = true, silent = true})
-
 -- vim-airline
 vim.api.nvim_set_var('airline_theme', 'maia_custom')
 vim.api.nvim_set_var('airline#extensions#tabline#enabled', 1)
 
--- neoranger
-vim.api.nvim_set_var('neoranger_viewmode', 'miller')
-vim.keymap.set('n', '<C-r>', ':RangerCurrentFile<Enter>', {noremap = true, silent = true})
+-- lf.vim
+if vim.fn.executable('lf') == 1 then
+	vim.keymap.set('n', '<C-f>', ':Lf<Enter>', {noremap = true, silent = true})
+else
+	vim.keymap.set('n', '<C-f>', ':Explore<Enter>', {noremap = true, silent = true})
+end
 
 -- nvim-comment
 if pcall(require, 'nvim_comment') then

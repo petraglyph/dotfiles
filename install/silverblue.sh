@@ -25,7 +25,6 @@ htop
 neovim
 nethogs
 qalc
-ranger
 rclone
 ssmtp
 util-linux-user

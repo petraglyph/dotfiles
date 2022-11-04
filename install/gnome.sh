@@ -106,11 +106,11 @@ $KEYBINDING_CMD/custom0/ command "alacritty"
 $KEYBINDING_CMD/custom0/ binding "<Super>Return"
 
 $KEYBINDING_CMD/custom1/ name "alacritty distrobox"
-$KEYBINDING_CMD/custom1/ command "alacritty -e distrobox enter system"
+$KEYBINDING_CMD/custom1/ command "alacritty -e distrobox enter"
 $KEYBINDING_CMD/custom1/ binding "<Super><Shift>Return"
 
-$KEYBINDING_CMD/custom2/ name "alacritty ranger"
-$KEYBINDING_CMD/custom2/ command "alacritty -e ranger --selectfile=$HOME/documents $HOME/documents $HOME/documents"
+$KEYBINDING_CMD/custom2/ name "alacritty lf"
+$KEYBINDING_CMD/custom2/ command "alacritty -e lf"
 $KEYBINDING_CMD/custom2/ binding "<Super>f"
 
 $KEYBINDING_CMD/custom3/ name "Files"

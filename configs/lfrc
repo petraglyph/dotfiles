@@ -1,17 +1,17 @@
 # lf configuration
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
-${{ mkdir -p ~/.trash }}
 
 # settings
 set info size:time
 set dircounts on
 set globsearch
+set sortby name
 
 # Custom commands
 cmd open ${{
 	case $(file --mime-type -Lb $f) in
-		text/*) $EDITOR $fx ;;
+		text/*|*/*zip*|*/x-xz|*/zstd) nvim $fx ;;
 		*) for f in "$fx"; do
 			xdg-open "$f" > /dev/null 2> /dev/null &
 		done ;;
@@ -22,8 +22,20 @@ cmd runshell ${{
 }}
 cmd trash ${{
 	IFS="$(printf '\n\t')"
+	DIR="$(findmnt -n -o TARGET --target $fx)"
+	if [ "$DIR" = "/" ] || [ ! -z $(echo "$DIR" | grep 'home') ]; then
+		DIR="$HOME"
+	fi
 	touch $fx
-	mv $fx ~/.trash
+	mkdir -p "$DIR/.trash"
+	mv $fx $DIR/.trash
+}}
+# Shell wrappers
+cmd mkdir ${{
+	mkdir $@
+}}
+cmd touch ${{
+	touch $@
 }}
 
 map S :runshell
