@@ -41,7 +41,7 @@ ln -fs $loc/configs/maia-custom.vim $XDG_DATA_HOME/nvim/site/colors/maia-custom.
 ln -fs $loc/configs/airline-maia_custom.vim $XDG_DATA_HOME/nvim/site/autoload/airline/themes/maia_custom.vim
 ln -fs $loc/configs/lfrc $XDG_CONFIG_HOME/lf/lfrc
 ln -fs $loc/configs/lfcolors $XDG_CONFIG_HOME/lf/colors
-ln -fs $loc/configs/zellij.yaml $XDG_CONFIG_HOME/zellij/config.yaml
+ln -fs $loc/configs/zellij.kdl $XDG_CONFIG_HOME/zellij/config.kdl
 
 message "Setting Up Zsh"
 if [ "$(basename $SHELL)" != "zsh" ]; then
