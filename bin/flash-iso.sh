@@ -22,19 +22,37 @@ fi
 
 check_device () {
 	if [ -e "$1" ]; then
-		if [ ! -z "$(lsblk -n -o MOUNTPOINTS "$1")" ]; then
-			sudo umount -A $(lsblk -n -o MOUNTPOINTS "$1")
-		fi
-		echo "$1"
+		dev="$1"
 	elif [ -e "/dev/$1" ]; then
-		if [ ! -z "$(lsblk -n -o MOUNTPOINTS "/dev/$1")" ]; then
-			sudo umount -A $(lsblk -n -o MOUNTPOINTS "/dev/$1")
-		fi
-		echo "/dev/$1"
+		dev="/dev/$1"
 	else
 		echo "Unknown device '$1'" >&2
 		exit 1
 	fi
+
+	if [ ! -z "$(grep -oE "($(lsblk -n -o UUID "$dev" | sed -z 's/\n/|/g'))" /etc/fstab)" ]; then
+		while true; do
+			read -p "$dev was found in /etc/fstab
+Are you sure you want to write to $dev? [y/n] " yn
+			case $yn in
+				y|Y|yes) break ;;
+				n|N|no) exit 1 ;;
+				*) echo "Please enter 'y' or 'n'" ;;
+			esac
+		done
+	fi
+
+	if [ ! -z "$(lsblk -n -o MOUNTPOINTS "$dev")" ]; then
+		for d in $(lsblk -n -o PATH "$dev"); do
+			while true; do
+				sudo umount -A "$d" &> /dev/null
+				if [ $? -ne 0 ]; then
+					break
+				fi
+			done
+		done
+	fi
+	echo "$dev"
 }
 
 if [ $# -eq 2 ]; then
