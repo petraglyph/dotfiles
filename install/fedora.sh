@@ -2,57 +2,35 @@
 # General Fedora Installs
 #   Penn Bauman <me@pennbauman.com>
 
-message() {
-	if [ -z $BASH_SOURCE ]; then
-		echo "\033[1;32m$1\033[0m"
-	else
-		echo -e "\033[1;32m$1\033[0m"
+if [ ! -z "$(command -v rpm-ostree)" ]; then
+	printf "\033[1;34m%s\033[0m\n" "[Fedora] OSTree packaging detected"
+
+	$(dirname $0)/rpm-ostree.sh
+elif [ ! -z "$(command -v dnf)" ]; then
+	printf "\033[1;34m%s\033[0m\n" "[Fedora] Traditional packaging detected"
+
+	printf "\033[1;32m%s\033[0m\n" "[Fedora] Configure DNF"
+	if [ ! -f /etc/dnf/dnf.conf ]; then
+		if [ -z "$(command -v dnf)" ]; then
+			printf "\033[1;31m%s\033[0m\n" "DNF not installed"
+			exit 1
+		fi
+		echo "[main]" | sudo tee /etc/dnf/dnf.conf
 	fi
-}
+	echo "max_parallel_downloads=8" | sudo tee -a /etc/dnf/dnf.conf
+	echo "fastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf
 
-message "Configure DNF"
-echo "max_parallel_downloads=8" | sudo tee -a /etc/dnf/dnf.conf
-echo "fastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf
+	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling RPM Fusion"
+	sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-
-message "Updating"
-sudo dnf -y upgrade
-
-message "Enabling RPM Fusion"
-sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
-packages="
-android-tools
-clang
-cronie
-ffmpeg
-git-email
-gnuplot
-htop
-jq
-latexmk
-neofetch
-neovim
-nethogs
-nodejs
-openvpn
-perl-Image-ExifTool
-python3-pip
-qalc
-rclone
-sassc
-ssmtp
-texlive-latex
-texlive-scheme-medium
-tldr
-util-linux-user
-zathura
-zathura-plugins-all
-zathura-zsh-completion
-zsh
-"
-if [ $# -ne 0 ]; then
-	packages="$packages $@"
+	$(dirname $0)/dnf.sh
+else
+	printf "\033[1;31m%s\033[0m\n" "[Fedora] Package management not detected"
+	exit 1
 fi
-message "Installing Packages"
-sudo dnf -y install $packages --skip-broken
+
+
+
+
+
+

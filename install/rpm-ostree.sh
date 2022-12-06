@@ -1,16 +1,13 @@
 #!/bin/sh
-# Fedora Silverblue Install Layered Packages
+# General rpm-ostree Installs
 #   Penn Bauman <me@pennbauman.com>
 
-message() {
-	if [ -z $BASH_SOURCE ]; then
-		echo "\033[1;32m$1\033[0m"
-	else
-		echo -e "\033[1;32m$1\033[0m"
-	fi
-}
+if [ -z "$(command -v rpm-ostree)" ]; then
+	printf "\033[1;31m%s\033[0m\n" "rpm-ostree not installed"
+	exit 1
+fi
 
-message "Updating"
+printf "\033[1;32m%s\033[0m\n" "[rpm-ostree] Updating"
 rpm-ostree upgrade
 
 packages="
@@ -33,5 +30,5 @@ zsh
 if [ $# -ne 0 ]; then
 	packages="$packages $@"
 fi
-message "Installing Packages"
+printf "\033[1;32m%s\033[0m\n" "[rpm-ostree] Installing Packages"
 rpm-ostree install --idempotent $packages

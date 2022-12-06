@@ -2,13 +2,10 @@
 # Sway Fedora Installs
 #   Penn Bauman <me@pennbauman.com>
 
-message() {
-	if [ -z $BASH_SOURCE ]; then
-		echo "\033[1;32m$1\033[0m"
-	else
-		echo -e "\033[1;32m$1\033[0m"
-	fi
-}
+if [ -z "$(command -v dnf)" ]; then
+	printf "\033[1;31m%s\033[0m\n" "DNF not installed"
+	exit 1
+fi
 
 packages="
 alacritty
@@ -19,5 +16,5 @@ swayidle
 swaylock
 waybar
 "
-message "Install Packages"
+printf "\033[1;32m%s\033[0m\n" "[Sway Fedora] Install Packages"
 sudo dnf -y install $packages --skip-broken
