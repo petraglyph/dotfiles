@@ -10,10 +10,10 @@ comp="tower3800x"
 
 hostnamectl set-hostname $comp
 
-# Debian Installs
-sh ~/.dotfiles/install/debian.sh
-# i3 Debian Installs
-sh ~/.dotfiles/i3/debian-install.sh
+# Ubuntu Installs
+sh ~/.dotfiles/install/ubuntu.sh
+# i3 Ubuntu Installs
+sh ~/.dotfiles/i3/ubuntu-install.sh
 # Flatpak Installs
 sh ~/.dotfiles/install/flatpak.sh org.mozilla.firefox
 # Rust Install

@@ -2,47 +2,15 @@
 # General Debian Installs
 #   Penn Bauman <me@pennbauman.com>
 
-message() {
-	if [ -z $BASH_SOURCE ]; then
-		echo "\033[1;32m$1\033[0m"
-	else
-		echo -e "\033[1;32m$1\033[0m"
-	fi
-}
+. /etc/os-release
 
-message "Updating"
-sudo apt-get update
-sudo apt-get -y upgrade
-
-if [ ! -z "$(grep 'ID=ubuntu' /etc/os-release)" ]; then
-	message "Adding Neovim Stable PPA"
-	sudo add-apt-repository -y ppa:neovim-ppa/stable
+if [ -z "$VERSION_CODENAME" ]; then
+	printf "\033[1;31m%s\033[0m\n" "\$VERSION_CODENAME missing"
+	exit 1
 fi
 
-packages="
-clang
-curl
-feh
-ffmpeg
-gcc
-git-email
-htop
-mpc
-mpd
-mpv
-ncmpcpp
-ncmpcpp
-neovim
-nethogs
-qalc
-ranger
-rclone
-ssmtp
-tldr
-zsh
-"
-if [ $# -ne 0 ]; then
-	packages="$packages $@"
-fi
-message "Installing Packages"
-sudo apt-get -y install $packages
+printf "\033[1;32m%s\033[0m\n" "[Debian] Enable backports"
+echo "deb http://deb.debian.org/debian $VERSION_CODENAME-backports main" | sudo tee /etc/apt/sources.list.d/backports.list
+
+
+$(dirname $0)/apt.sh

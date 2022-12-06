@@ -2,13 +2,10 @@
 # Sway Debian Installs
 #   Penn Bauman <me@pennbauman.com>
 
-message() {
-	if [ -z $BASH_SOURCE ]; then
-		echo "\033[1;32m$1\033[0m"
-	else
-		echo -e "\033[1;32m$1\033[0m"
-	fi
-}
+if [ -z "$(command -v apt-get)" ]; then
+	printf "\033[1;31m%s\033[0m\n" "APT not installed"
+	exit 1
+fi
 
 packages="
 bc
@@ -20,11 +17,11 @@ swaylock
 waybar
 wofi
 "
-message "Install Packages"
+printf "\033[1;32m%s\033[0m\n" "[Sway Debian] Install Packages"
 sudo apt -y install $packages
 
 
-message "Installing alacritty (from cargo)"
+printf "\033[1;32m%s\033[0m\n" "[Sway Debian] Installing alacritty (from cargo)"
 if [ -z $HOME/.cargo/env ]; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 fi
