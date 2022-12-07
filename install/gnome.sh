@@ -6,10 +6,13 @@ loc="$HOME/.dotfiles"
 comp=$1
 
 # Check install location and comp
-. "$(dirname $(readlink -f $0))/check.sh" "$comp"
+$(dirname $(readlink -f $0))/check.sh "$comp"
+if [ $? -ne 0 ]; then
+	exit 1
+fi
 
 
-message "GNOME Settings"
+printf "\033[1;32m%s\033[0m\n" "[GNOME] Configuring"
 # Set theme
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 if [ -d /usr/share/themes/adw-gtk3-dark ]; then
@@ -18,7 +21,7 @@ if [ -d /usr/share/themes/adw-gtk3-dark ]; then
 	fi
 	gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
 else
-	error "Missing adw-gtk3-dark"
+	printf "\033[1;31m%s\033[0m\n" "[GNOME] Missing adw-gtk3-dark"
 	echo "  RPM available at https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/ or with:"
 	echo
 	# Find HTTP RPM download link (for silverblue)
