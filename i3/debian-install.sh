@@ -8,15 +8,16 @@ if [ -z "$(command -v apt-get)" ]; then
 fi
 
 packages="
-i3-wm
 conky
+dunst
+feh
+i3-wm
+picom
 polybar
 redshift
 rofi
-picom
-dunst
 scrot
-feh
+zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[i3 Debian] Install Packages"
 sudo apt-get -y install $packages

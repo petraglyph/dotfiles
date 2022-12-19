@@ -12,15 +12,16 @@ sudo add-apt-repository -y ppa:aslatter/ppa
 
 packages="
 alacritty
-i3-wm
 conky
+dunst
+feh
+i3-wm
+picom
 polybar
 redshift
 rofi
-picom
-dunst
 scrot
-feh
+zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[i3 Ubuntu] Install Packages"
 sudo apt-get -y install $packages
