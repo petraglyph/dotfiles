@@ -4,7 +4,7 @@
 #   https://github.com/pennbauman/dotfiles
 HELP_TEXT="Numbered Files Formating Script
 
-  $ $(basename $0) [directory]
+  $ $(basename "$0") [directory]
 
 Formats numbers at the beginning of filenames with appropriate leading zeros"
 
@@ -21,16 +21,16 @@ dirformat () {
 		len_regex="[0-9]$len_regex"
 		max_len=$(($max_len + 1))
 	done
-	for f in "$1"/*; do
+	find "$1" -maxdepth 1 -mindepth 1 | while read -r f; do
 		file="$(basename "$f")"
 		# Check file begins with number
-		if [ -z $(echo "$file" | grep -oE '^[0-9]') ]; then
+		if [ -z "$(echo "$file" | grep -oE '^[0-9]')" ]; then
 			continue
 		fi
 		# Determine current number length
 		current_len=0
 		len_regex="^[0-9]"
-		while [ ! -z $(echo "$file" | grep -oE "$len_regex") ]; do
+		while [ ! -z "$(echo "$file" | grep -oE "$len_regex")" ]; do
 			len_regex="$len_regex[0-9]"
 			current_len=$(($current_len + 1))
 		done
@@ -43,24 +43,25 @@ dirformat () {
 		done
 		# Rename file if necessary
 		if [ ! -z "$padding" ]; then
+			echo "$(echo "$padding" | sed 's/0/ /g')'$file' -> '$padding$file'"
 			mv "$f" "$(dirname "$f")/$padding$file"
 		fi
 	done
 }
 
 # Determine directory to run on
-if [ $# > 0 ]; then
+if [ $# -gt 0 ]; then
 	# Check for help option
-	if [ ! -z $(echo $1 | grep -oE '^-*[hH](elp|)$') ]; then
+	if [ ! -z "$(echo $1 | grep -oE '^-*[hH](elp|)$')" ]; then
 		echo "$HELP_TEXT"
 		exit 0
 	fi
 	if [ -d "$1" ]; then
-		dirformat "$1"
+		dirformat "$(readlink -f "$1")"
 	else
 		echo "Invalid directory"
 		exit 1
 	fi
 else
-	dirformat $(pwd)
+	dirformat "$(pwd)"
 fi
