@@ -18,7 +18,7 @@ vim.opt.guicursor = ''
 vim.opt.scrolloff = 5
 vim.cmd('colorscheme maia-custom')
 -- Netrw
-vim.api.nvim_set_var('netrw_banner', 0)
+vim.api.nvim_set_var('netrw_banner', 1)
 vim.api.nvim_set_var('netrw_liststyle', 1)
 
 local augroup = vim.api.nvim_create_augroup('custom', {clear = true})
@@ -53,6 +53,8 @@ vim.keymap.set('n', '>', 'v>', {noremap = true, silent = true})
 -- Terminal
 vim.keymap.set('n', '<C-t>', ':terminal<Enter>i<end>', {noremap = true, silent = true})
 vim.cmd('autocmd TermOpen * setlocal nonumber')
+-- Netrw
+vim.keymap.set('n', '<C-f>', ':Explore<Enter>', {noremap = true, silent = true})
 
 
 -- Plugins (packer.nvim)
@@ -64,7 +66,6 @@ end
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'https://github.com/vim-airline/vim-airline.git'
-	use 'weebcyberpunk/lf.vim'
 	use "terrortylor/nvim-comment"
 	use 'nvim-lua/completion-nvim'
 	use {'steelsojka/completion-buffers', requires = {'nvim-lua/completion-nvim'}}
@@ -79,13 +80,6 @@ end)
 -- vim-airline
 vim.api.nvim_set_var('airline_theme', 'maia_custom')
 vim.api.nvim_set_var('airline#extensions#tabline#enabled', 1)
-
--- lf.vim
-if vim.fn.executable('lf') == 1 then
-	vim.keymap.set('n', '<C-f>', ':Lf<Enter>', {noremap = true, silent = true})
-else
-	vim.keymap.set('n', '<C-f>', ':Explore<Enter>', {noremap = true, silent = true})
-end
 
 -- nvim-comment
 if pcall(require, 'nvim_comment') then

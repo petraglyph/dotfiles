@@ -41,7 +41,7 @@ ln -fs $loc/configs/zshrc $HOME/.zshrc
 ln -fs $loc/configs/vimrc $HOME/.vimrc
 ln -fs $loc/configs/nvim.init.lua $XDG_CONFIG_HOME/nvim/init.lua
 ln -fs $loc/configs/maia-custom.vim $XDG_DATA_HOME/nvim/site/colors/maia-custom.vim
-ln -fs $loc/configs/airline-maia_custom.vim $XDG_DATA_HOME/nvim/site/autoload/airline/themes/maia_custom.vim
+ln -fs $loc/configs/maia-custom-airline.vim $XDG_DATA_HOME/nvim/site/autoload/airline/themes/maia_custom.vim
 ln -fs $loc/configs/lfrc $XDG_CONFIG_HOME/lf/lfrc
 ln -fs $loc/configs/lfcolors $XDG_CONFIG_HOME/lf/colors
 ln -fs $loc/configs/zellij.kdl $XDG_CONFIG_HOME/zellij/config.kdl

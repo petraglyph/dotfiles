@@ -1,5 +1,7 @@
-" Custom Maia Color Scheme
+" Custom Maia Color Scheme for Airline
 "   Penn Bauman <me@pennbauman.com>
+"   https://github.com/pennbauman/dotfiles
+
 
 " Color palette
 let s:yellow = { "cterm": 3, "gui": "#f0c07e" }

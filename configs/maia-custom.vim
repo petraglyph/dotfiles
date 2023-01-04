@@ -1,13 +1,12 @@
-" File:       matrial-monokai.vim
-" Maintainer: skielbasa
-" URL:        https://github.com/skielbasa/vim-monokai
-" License:    MIT
+" Custom Maia Color Scheme
+"   Penn Bauman <me@pennbauman.com>
+"   https://github.com/pennbauman/dotfiles
 "
-" A vim port of the Material Monokai Atom theme
-" Uses the Monokai theme by crusoexia as a base
-" 
-" Edited by Penn Bauman
-" 
+"   Based on material-monokai.vim
+"     Stefanie Kielbasa <skielbasa@srkdesign.com>
+"     https://github.com/skielbasa/vim-monokai
+
+
 " Initialisation
 " --------------
 
