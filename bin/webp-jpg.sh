@@ -40,7 +40,7 @@ if [ $# -gt 0 ]; then
 	fi
 	if [ -d "$1" ]; then
 		if [ $(find $1 -maxdepth 1 -name "*.webp" | wc -l) -ne 0 ]; then
-			for f in $(realpath -L -- $1)/*.webp; do
+			find "$(realpath -L -- $1)" -maxdepth 1 -name "*.webp" | while read -r f; do
 				jpger "$f"
 			done
 		else
@@ -55,7 +55,7 @@ if [ $# -gt 0 ]; then
 	fi
 else
 	if [ $(find . -maxdepth 1 -name "*.webp" | wc -l) -ne 0 ]; then
-		for f in *.webp; do
+		find . -maxdepth 1 -name "*.webp" | while read -r f; do
 			jpger "$f"
 		done
 	else
