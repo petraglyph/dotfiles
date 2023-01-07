@@ -57,6 +57,10 @@ if [ -d $HOME/.dotfiles/$comp ]; then
 	gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.dotfiles/$comp/background.jpg"
 fi
 
+# Workspaces
+gsettings set org.gnome.mutter workspaces-only-on-primary true
+gsettings set org.gnome.mutter dynamic-workspaces false
+
 # Enable nightlight
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 
@@ -79,6 +83,19 @@ gsettings set org.gnome.desktop.sound allow-volume-above-100-percent "true"
 
 # Keyboard
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:swap_lalt_lctl', 'caps:escape']"
+
+# Delay screen lock
+gsettings set org.gnome.desktop.screensaver lock-delay 120
+
+# Autodelete old trash and temp files
+gsettings set org.gnome.desktop.privacy remember-recent-files true
+gsettings set org.gnome.desktop.privacy recent-files-max-age 30
+gsettings set org.gnome.desktop.privacy remove-old-temp-files true
+gsettings set org.gnome.desktop.privacy remove-old-trash-files true
+gsettings set org.gnome.desktop.privacy old-files-age 30
+
+# Configurate search
+gsettings set org.gnome.desktop.search-providers enabled "['org.gnome.Calculator.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Weather.desktop', 'org.gnome.clocks.desktop']"
 
 
 # Edit keybindings

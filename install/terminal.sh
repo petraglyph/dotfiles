@@ -46,10 +46,13 @@ ln -fs $loc/configs/lfrc $XDG_CONFIG_HOME/lf/lfrc
 ln -fs $loc/configs/lfcolors $XDG_CONFIG_HOME/lf/colors
 ln -fs $loc/configs/zellij.kdl $XDG_CONFIG_HOME/zellij/config.kdl
 
-printf "\033[1;32m%s\033[0m\n" "Setting Up Zsh"
-if [ "$(basename $SHELL)" != "zsh" ]; then
-	chsh -s /usr/bin/zsh
-fi
-if [ -f $loc/$comp/zsh-dirs ]; then
-	ln -fs $loc/$comp/zsh-dirs $HOME/.zsh-dirs
+# Setup zsh if available
+if [ -f /usr/bin/zsh ]; then
+	printf "\033[1;32m%s\033[0m\n" "Setting Up Zsh"
+	if [ "$(basename $SHELL)" != "zsh" ]; then
+		chsh -s /usr/bin/zsh
+	fi
+	if [ -f $loc/$comp/zsh-dirs ]; then
+		ln -fs $loc/$comp/zsh-dirs $HOME/.zsh-dirs
+	fi
 fi
