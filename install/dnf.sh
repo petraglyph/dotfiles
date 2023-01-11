@@ -11,6 +11,7 @@ printf "\033[1;32m%s\033[0m\n" "[DNF] Updating"
 sudo dnf -y upgrade
 
 packages="
+adw-gtk3
 android-tools
 clang
 cronie
@@ -21,6 +22,8 @@ gnuplot
 htop
 jq
 latexmk
+lf
+lf-zsh-integration
 neofetch
 neovim
 nethogs

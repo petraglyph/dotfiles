@@ -22,33 +22,6 @@ if [ -d /usr/share/themes/adw-gtk3-dark ]; then
 	gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
 else
 	printf "\033[1;31m%s\033[0m\n" "[GNOME] Missing adw-gtk3-dark"
-	echo "  RPM available at https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/ or with:"
-	echo
-	# Find HTTP RPM download link (for silverblue)
-	link=$(curl -s https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/package/adw-gtk3/ | grep -E '<b><a href="/coprs/nickavem/adw-gtk3/build/[0-9]+/">' | tail -n 1)
-	. /etc/os-release
-	id_str=$(echo $link | sed -e 's/^<b><a href="\/coprs\///' -e 's/\/">$//')
-	repo=$(echo $id_str | sed 's/\/build\/[0-9]*//')
-	build=$(echo $id_str | sed 's/.*\///')
-	package=$(echo $repo | sed 's/.*\///')
-	arch="$(uname -i)"
-	# Check build numbers with increasing leading '0'
-	while [ true ]; do
-		#echo "$repo/fedora-$VERSION_ID-$arch/$build-adw-gtk3/"
-		url="https://download.copr.fedorainfracloud.org/results/$repo/fedora-$VERSION_ID-$arch/$build-$package/"
-		page=$(curl -s $url)
-		if [ -z "$(echo $page | grep 404)" ]; then
-			pattern="$package-[0-9\.]+-[0-9]+\.fc$VERSION_ID\.$arch\.rpm"
-			rpm=$(echo $page | grep -oE "href='$pattern" | sed "s/href='//")
-			echo "  curl $url$rpm --output ./$rpm"
-			break
-		fi
-		build=$(echo 0$build)
-	done
-	echo
-	# Print copr install (for mutable fedora)
-	echo "  sudo dnf copr enable nickavem/adw-gtk3"
-	echo "  dnf install adw-gtk3"
 fi
 
 # Set wallpaper
