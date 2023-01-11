@@ -7,15 +7,15 @@ TMP=$(mktemp)
 echo 0 > $TMP
 
 
-# Check dependencies
-if [ -z $(command -v "convert") ]; then
-	echo "Command 'convert' not found"
-	exit 1
-fi
-if [ -z $(command -v "exiftool") ]; then
-	echo "Command 'exiftool' not found"
-	exit 1
-fi
+# Check required commands are available
+missing=""
+for cmd in convert exiftool; do
+	if [ -z "$(command -v $cmd)" ]; then
+		echo "Command '$cmd' not found"
+		missing="$cmd"
+	fi
+done
+if [ ! -z "$missing" ]; then exit 1; fi
 
 
 rotater () {

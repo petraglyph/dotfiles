@@ -30,12 +30,14 @@ Configuration File Settings:
 
 
 # Check required commands are available
+missing=""
 for cmd in openssl wpa_passphrase wget xz; do
-	if [ -z $(command -v $cmd) ]; then
+	if [ -z "$(command -v $cmd)" ]; then
 		echo "! Missing dependency $cmd"
-		exit 1
+		missing="$cmd"
 	fi
 done
+if [ ! -z "$missing" ]; then exit 1; fi
 
 
 # Options
