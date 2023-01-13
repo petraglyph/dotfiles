@@ -1,6 +1,7 @@
 #!/bin/sh
 # General Ubuntu Installs
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 
 printf "\033[1;32m%s\033[0m\n" "[Ubuntu] Disable snapd"

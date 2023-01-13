@@ -1,12 +1,12 @@
 #!/bin/sh
 # Install script to local bin
 #   Penn Bauman <me@pennbauman.com>
-
-loc="$HOME/.dotfiles"
-SOURCE="$loc/bin"
+#   https://github.com/pennbauman/dotfiles
+LOC="$HOME/.dotfiles"
+SOURCE="$LOC/bin"
 TARGET="$HOME/.local/bin"
 
-# Check install location and comp
+# Check install location
 $(dirname $(readlink -f $0))/check.sh "none"
 if [ $? -ne 0 ]; then
 	exit 1

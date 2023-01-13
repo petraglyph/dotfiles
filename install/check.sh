@@ -1,27 +1,27 @@
 #!/bin/sh
 # Check config repo locations and computer name
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
+LOC="$HOME/.dotfiles"
+COMP="$1"
 
-loc="$HOME/.dotfiles"
-comp="$1"
-
-# Check dotfiles location and comp
+# Check dotfiles location
 if [ -z "$(dirname $(readlink -f $0) | grep "$HOME/.dotfiles")" ]; then
 	printf "\033[1;31m%s\033[0m\n" "Move repository to ~/.dotfiles before configuring"
 	exit 1
 fi
 
 # Check computer is provided
-if [ -z "$comp" ]; then
+if [ -z "$COMP" ]; then
 	printf "\033[1;31m%s\033[0m\n" "Computer required"
 	exit 1
 fi
 
 # Check computer is valid or 'none'
-if [ "$comp" = "none" ]; then
+if [ "$COMP" = "none" ]; then
 	exit 0
-elif [ -d $loc/$comp ]; then
-	if [ $(cat /etc/hostname) != "$comp" ]; then
+elif [ -d "$LOC/$COMP" ]; then
+	if [ "$HOSTNAME" != "$COMP" ]; then
 		printf "\033[1;31m%s\033[0m\n" "Wrong computer, should be '$(hostname)'"
 		while true; do
 			read -p "  Continue anyway [y/n]: " input
@@ -34,6 +34,6 @@ elif [ -d $loc/$comp ]; then
 		done
 	fi
 else
-	printf "\033[1;31m%s\033[0m\n" "Unknown computer '$comp'"
+	printf "\033[1;31m%s\033[0m\n" "Unknown computer '$COMP'"
 	exit 1
 fi

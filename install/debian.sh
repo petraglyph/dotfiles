@@ -1,6 +1,7 @@
 #!/bin/sh
 # General Debian Installs
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 . /etc/os-release
 

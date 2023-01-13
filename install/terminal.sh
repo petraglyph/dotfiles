@@ -1,12 +1,12 @@
 #!/bin/sh
 # Configure for Terminal Use
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
+LOC="$HOME/.dotfiles"
+COMP=$1
 
-loc="$HOME/.dotfiles"
-comp=$1
-
-# Check install location and comp
-$(dirname $(readlink -f $0))/check.sh "$comp"
+# Check install location and computer
+$(dirname $(readlink -f $0))/check.sh "$COMP"
 if [ $? -ne 0 ]; then
 	exit 1
 fi
@@ -30,21 +30,21 @@ mkdir -p $XDG_DATA_HOME/nvim/site/colors
 mkdir -p $XDG_DATA_HOME/nvim/site/autoload/airline/themes
 
 printf "\033[1;32m%s\033[0m\n" "Linking Terminal Configs"
-ln -fs $loc/configs/git/config $XDG_CONFIG_HOME/git/config
-ln -fs $loc/configs/git/ignore $XDG_CONFIG_HOME/git/ignore
-cp $loc/configs/git/email.sample $XDG_CONFIG_HOME/git/email.sample
-ln -fs $loc/configs/ranger $XDG_CONFIG_HOME/ranger
-ln -fs $loc/configs/profile $HOME/.profile
-ln -fs $loc/configs/aliasrc $HOME/.aliasrc
-ln -fs $loc/configs/bashrc $HOME/.bashrc
-ln -fs $loc/configs/zshrc $HOME/.zshrc
-ln -fs $loc/configs/vimrc $HOME/.vimrc
-ln -fs $loc/configs/nvim.init.lua $XDG_CONFIG_HOME/nvim/init.lua
-ln -fs $loc/configs/maia-custom.vim $XDG_DATA_HOME/nvim/site/colors/maia-custom.vim
-ln -fs $loc/configs/maia-custom-airline.vim $XDG_DATA_HOME/nvim/site/autoload/airline/themes/maia_custom.vim
-ln -fs $loc/configs/lfrc $XDG_CONFIG_HOME/lf/lfrc
-ln -fs $loc/configs/lfcolors $XDG_CONFIG_HOME/lf/colors
-ln -fs $loc/configs/zellij.kdl $XDG_CONFIG_HOME/zellij/config.kdl
+ln -fs $LOC/configs/git/config $XDG_CONFIG_HOME/git/config
+ln -fs $LOC/configs/git/ignore $XDG_CONFIG_HOME/git/ignore
+cp $LOC/configs/git/email.sample $XDG_CONFIG_HOME/git/email.sample
+ln -fs $LOC/configs/ranger $XDG_CONFIG_HOME/ranger
+ln -fs $LOC/configs/profile $HOME/.profile
+ln -fs $LOC/configs/aliasrc $HOME/.aliasrc
+ln -fs $LOC/configs/bashrc $HOME/.bashrc
+ln -fs $LOC/configs/zshrc $HOME/.zshrc
+ln -fs $LOC/configs/vimrc $HOME/.vimrc
+ln -fs $LOC/configs/nvim.init.lua $XDG_CONFIG_HOME/nvim/init.lua
+ln -fs $LOC/configs/maia-custom.vim $XDG_DATA_HOME/nvim/site/colors/maia-custom.vim
+ln -fs $LOC/configs/maia-custom-airline.vim $XDG_DATA_HOME/nvim/site/autoload/airline/themes/maia_custom.vim
+ln -fs $LOC/configs/lfrc $XDG_CONFIG_HOME/lf/lfrc
+ln -fs $LOC/configs/lfcolors $XDG_CONFIG_HOME/lf/colors
+ln -fs $LOC/configs/zellij.kdl $XDG_CONFIG_HOME/zellij/config.kdl
 
 # Setup zsh if available
 if [ -f /usr/bin/zsh ]; then
@@ -52,7 +52,7 @@ if [ -f /usr/bin/zsh ]; then
 	if [ "$(basename $SHELL)" != "zsh" ]; then
 		chsh -s /usr/bin/zsh
 	fi
-	if [ -f $loc/$comp/zsh-dirs ]; then
-		ln -fs $loc/$comp/zsh-dirs $HOME/.zsh-dirs
+	if [ -f $LOC/$COMP/zsh-dirs ]; then
+		ln -fs $LOC/$COMP/zsh-dirs $HOME/.zsh-dirs
 	fi
 fi

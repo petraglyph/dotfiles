@@ -1,6 +1,7 @@
 #!/bin/sh
 # General Fedora Installs
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 if [ ! -z "$(command -v rpm-ostree)" ]; then
 	printf "\033[1;34m%s\033[0m\n" "[Fedora] OSTree packaging detected"

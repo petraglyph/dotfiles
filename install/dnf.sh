@@ -1,6 +1,7 @@
 #!/bin/sh
 # General DNF Installs
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 if [ -z "$(command -v dnf)" ]; then
 	printf "\033[1;31m%s\033[0m\n" "DNF not installed"
@@ -44,8 +45,5 @@ zathura-plugins-all
 zathura-zsh-completion
 zsh
 "
-if [ $# -ne 0 ]; then
-	packages="$packages $@"
-fi
 printf "\033[1;32m%s\033[0m\n" "[DNF] Installing Packages"
-sudo dnf -y install $packages --skip-broken
+sudo dnf -y install --skip-broken $packages $@

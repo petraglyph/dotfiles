@@ -1,12 +1,12 @@
 #!/bin/sh
 # Setup GNOME desktop
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
+LOC="$HOME/.dotfiles"
+COMP=$1
 
-loc="$HOME/.dotfiles"
-comp=$1
-
-# Check install location and comp
-$(dirname $(readlink -f $0))/check.sh "$comp"
+# Check install location and computer
+$(dirname $(readlink -f $0))/check.sh "$COMP"
 if [ $? -ne 0 ]; then
 	exit 1
 fi
@@ -25,9 +25,9 @@ else
 fi
 
 # Set wallpaper
-if [ -d $HOME/.dotfiles/$comp ]; then
-	gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/.dotfiles/$comp/background.jpg"
-	gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.dotfiles/$comp/background.jpg"
+if [ -d $HOME/.dotfiles/$COMP ]; then
+	gsettings set org.gnome.desktop.background picture-uri-dark "file://$LOC/$COMP/background.jpg"
+	gsettings set org.gnome.desktop.background picture-uri "file://$LOC/$COMP/background.jpg"
 fi
 
 # Workspaces
