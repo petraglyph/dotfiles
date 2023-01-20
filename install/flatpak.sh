@@ -16,6 +16,7 @@ com.google.Chrome
 com.mojang.Minecraft
 com.valvesoftware.Steam
 org.inkscape.Inkscape
+org.mozilla.Thunderbird
 us.zoom.Zoom
 "
 if [ $# -ne 0 ]; then
