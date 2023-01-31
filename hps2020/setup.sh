@@ -25,5 +25,7 @@ sh ~/.dotfiles/install/bin.sh
 sh ~/.dotfiles/install/terminal.sh $comp
 # Desktop Configuration
 sh ~/.dotfiles/install/desktop.sh $comp
+# Cron Script Installs
+sh ~/.dotfiles/install/cron.sh clean-cache clean-trash dotfiles-backup
 # GNOME Configuration
 sh ~/.dotfiles/install/gnome.sh $comp

@@ -27,5 +27,7 @@ sh ~/.dotfiles/install/bin.sh
 sh ~/.dotfiles/install/terminal.sh $comp
 # Desktop Configuration
 sh ~/.dotfiles/install/desktop.sh $comp
+# Cron Script Installs
+sh ~/.dotfiles/install/cron.sh clean-cache dotfiles-backup pcloud-backup
 # i3 Configuration
 sh ~/.dotfiles/i3/setup.sh $comp

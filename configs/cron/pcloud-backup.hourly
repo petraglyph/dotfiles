@@ -1,0 +1,41 @@
+#!/bin/sh
+# Backup pCloud account
+#   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
+USER="penn"
+DIRS="documents downloads other"
+if [ "$(($(date +'%H') % 6))" -eq 0 ]; then
+	DIRS="$DIRS archive music texts videos"
+fi
+SOURCE="pcloud:"
+TARGET="/var/pcloud-backup/"
+
+if [ $(id -u) -ne 0 ]; then
+	echo "Must be run as root"
+	exit 1
+fi
+LOG="/var/log/cron/$(basename "$0" | sed 's/\..*$//').log"
+mkdir -m 775 -p $(dirname $LOG)
+
+
+if [ -z "$(sudo -u $USER rclone listremotes | grep 'pcloud')" ]; then
+	echo "rclone pcloud not found" >> $LOG
+	exit 1
+fi
+
+if [ ! -d "$TARGET" ]; then
+	echo "'$TARGET' not a directory" >> $LOG
+	exit 1
+fi
+
+if [ -z "$(pgrep rclone)" ]; then
+	echo "[$(date --rfc-3339=seconds)]# $(readlink -f "$0")" >> $LOG
+else
+	echo "[$(date --rfc-3339=seconds)]# rclone already running" >> $LOG
+	exit
+fi
+
+for d in $DIRS; do
+	echo "$SOURCE$d -> $TARGET$d" >> $LOG
+	sudo -u $USER rclone sync "$SOURCE$d" "$TARGET$d" --log-level INFO 2>> $LOG
+done

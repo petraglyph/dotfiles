@@ -1,7 +1,0 @@
-# hps2020 Crontab
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
-@reboot rm -rf $(find $HOME/.cache -type f -mtime +30 -print)
-@daily  rm -rf $(find $HOME/.cache -type f -mtime +30 -print)
-@reboot rm -rf $(find $HOME/.trash -type f -atime +5 -print)
-@daily  rm -rf $(find $HOME/.trash -type f -atime +5 -print)
