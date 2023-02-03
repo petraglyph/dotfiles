@@ -11,7 +11,7 @@ set sortby name
 # Custom commands
 cmd open ${{
 	case $(file --mime-type -Lb "$f") in
-		text/*|*/*zip*|*/x-xz|*/zstd) nvim "$fx" ;;
+		text/*|application/json|*/*zip*|*/x-xz|*/zstd) nvim "$fx" ;;
 		*) for f in "$fx"; do
 			xdg-open "$f" > /dev/null 2> /dev/null &
 		done ;;

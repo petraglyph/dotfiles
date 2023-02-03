@@ -72,40 +72,45 @@ gsettings set org.gnome.desktop.search-providers enabled "['org.gnome.Calculator
 
 
 # Edit keybindings
-for i in {1..9}; do
-	gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"
-done
-for i in {1..10}; do
-	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>${i: -1}']"
-	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>${i: -1}']"
-	#echo "$i ${i: -1}"
-done
+gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Super><Shift>q']"
 gsettings set org.gnome.shell.keybindings toggle-application-view "['<Super>space']"
 # Application switching
-gsettings set org.gnome.desktop.wm.keybindings switch-group "['<Super>Tab']"
-gsettings set org.gnome.desktop.wm.keybindings switch-group-backward "['<Super><Shift>Tab']"
-gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Above_Tab']"
-gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Above_Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Super>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Super><Shift>Tab']"
+i=1
+while [ $i -le 10 ]; do
+	if [ $i -le 9 ]; then
+		gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"
+	fi
+	j=$(($i % 10))
+	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$j']"
+	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>$j']"
+	i=$(($i + 1))
+done
 
 
 # Custom keybindings
 KEYBINDING_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 KEYBINDING_CMD="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEYBINDING_PATH"
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$KEYBINDING_PATH/custom0/', '$KEYBINDING_PATH/custom1/', '$KEYBINDING_PATH/custom2/', '$KEYBINDING_PATH/custom3/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$KEYBINDING_PATH/custom0/', '$KEYBINDING_PATH/custom1/', '$KEYBINDING_PATH/custom2/', '$KEYBINDING_PATH/custom3/', '$KEYBINDING_PATH/custom4/']"
 
-$KEYBINDING_CMD/custom0/ name "alacritty"
-$KEYBINDING_CMD/custom0/ command "alacritty"
-$KEYBINDING_CMD/custom0/ binding "<Super>Return"
+$KEYBINDING_CMD/custom0/ name "Files"
+$KEYBINDING_CMD/custom0/ command "nautilus"
+$KEYBINDING_CMD/custom0/ binding "<Super><Shift>f"
 
-$KEYBINDING_CMD/custom1/ name "alacritty distrobox"
-$KEYBINDING_CMD/custom1/ command "alacritty -e distrobox enter"
-$KEYBINDING_CMD/custom1/ binding "<Super><Shift>Return"
+$KEYBINDING_CMD/custom1/ name "alacritty"
+$KEYBINDING_CMD/custom1/ command "alacritty"
+$KEYBINDING_CMD/custom1/ binding "<Super>Return"
 
 $KEYBINDING_CMD/custom2/ name "alacritty lf"
 $KEYBINDING_CMD/custom2/ command "alacritty -e lf"
 $KEYBINDING_CMD/custom2/ binding "<Super>f"
 
-$KEYBINDING_CMD/custom3/ name "Files"
-$KEYBINDING_CMD/custom3/ command "nautilus"
-$KEYBINDING_CMD/custom3/ binding "<Super><Shift>f"
+$KEYBINDING_CMD/custom3/ name "alacritty distrobox"
+$KEYBINDING_CMD/custom3/ command "alacritty -e distrobox enter"
+$KEYBINDING_CMD/custom3/ binding "<Super><Shift>Return"
+
+$KEYBINDING_CMD/custom4/ name "alacritty qalc"
+$KEYBINDING_CMD/custom4/ command "alacritty -e qalc"
+$KEYBINDING_CMD/custom4/ binding "<Super>c"

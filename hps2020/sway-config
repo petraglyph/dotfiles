@@ -264,9 +264,6 @@ bindsym $super+i exec $term -e ranger $HOME/documents/images $HOME/documents $HO
 # open notes
 bindsym $super+Shift+n exec $term -e ranger $HOME/documents/other/notes $HOME/documents $HOME/documents
 
-# open x570-2020 ssh
-bindsym $super+Shift+f exec $term -e ssh x570
-
 
 
 ### STARTUP PROGRAMS

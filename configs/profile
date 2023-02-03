@@ -18,3 +18,7 @@ export VISUAL=nvim
 # go
 export GOPATH="$HOME/.go"
 export GOBIN="$HOME/.local/bin"
+# python
+if [ ! -z "$(command -v python3)" ]; then
+	export PYTHONPATH="$HOME/.local/lib/$(python3 -V | sed -E -e 's/\.[0-9]+$//' -e 's/^.* /python/')/site-packages"
+fi
