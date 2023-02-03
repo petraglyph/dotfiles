@@ -1,12 +1,11 @@
 #!/bin/sh
 # Configure Sway
 #   Penn Bauman <me@pennbauman.com>
+LOC="$HOME/.dotfiles"
+COMP="$1"
 
-loc="$HOME/.dotfiles"
-comp="$1"
-
-# Check install location and comp
-$(dirname $(readlink -f $0))/../install/check.sh "$comp"
+# Check install location and computer
+$(dirname $(readlink -f $0))/../install/check.sh "$COMP"
 if [ $? -ne 0 ]; then
 	exit 1
 fi
@@ -30,13 +29,13 @@ mkdir -p $XDG_CONFIG_HOME/environment.d
 mkdir -p $XDG_CONFIG_HOME/zathura
 
 printf "\033[1;32m%s\033[0m\n" "[Sway] Linking Configs"
-ln -fs $loc/$comp/sway-config $XDG_CONFIG_HOME/sway/config
-ln -fs $loc/$comp/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
-ln -fs $loc/sway/configs/waybar $XDG_CONFIG_HOME/waybar/config
-ln -fs $loc/sway/configs/waybar.css $XDG_CONFIG_HOME/waybar/style.css
-ln -fs $loc/sway/configs/envvars.conf $XDG_CONFIG_HOME/environment.d/envvars.conf
-ln -fs $loc/sway/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
+ln -fs $LOC/$COMP/sway-config $XDG_CONFIG_HOME/sway/config
+ln -fs $LOC/$COMP/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+ln -fs $LOC/sway/configs/waybar $XDG_CONFIG_HOME/waybar/config
+ln -fs $LOC/sway/configs/waybar.css $XDG_CONFIG_HOME/waybar/style.css
+ln -fs $LOC/sway/configs/envvars.conf $XDG_CONFIG_HOME/environment.d/envvars.conf
+ln -fs $LOC/sway/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
 
 printf "\033[1;32m%s\033[0m\n" "[Sway] Adding Font"
 mkdir -p $XDG_DATA_HOME/fonts
-cp -f $loc/sway/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_design_icons.ttf
+cp -f $LOC/sway/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_design_icons.ttf

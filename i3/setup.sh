@@ -1,12 +1,11 @@
 #!/bin/sh
 # Configure i3
 #   Penn Bauman <me@pennbauman.com>
+LOC="$HOME/.dotfiles"
+COMP=$1
 
-loc="$HOME/.dotfiles"
-comp=$1
-
-# Check install location and comp
-$(dirname $(readlink -f $0))/../install/check.sh "$comp"
+# Check install location and computer
+$(dirname $(readlink -f $0))/../install/check.sh "$COMP"
 if [ $? -ne 0 ]; then
 	exit 1
 fi
@@ -29,18 +28,18 @@ mkdir -p $XDG_CONFIG_HOME/zathura
 mkdir -p $XDG_DATA_HOME/fonts
 
 printf "\033[1;32m%s\033[0m\n" "[i3] Linking Configs"
-ln -fs $loc/$comp/i3-config $XDG_CONFIG_HOME/i3/config
-ln -fs $loc/$comp/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
-ln -fs $loc/i3/configs/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc
-ln -fs $loc/i3/configs/polybar $XDG_CONFIG_HOME/polybar/config
-ln -fs $loc/i3/configs/rofi-theme.rasi $XDG_CONFIG_HOME/rofi/config.rasi
-ln -fs $loc/i3/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
-ln -fs $loc/i3/configs/stalonetrayrc $HOME/.stalonetrayrc
-ln -fs $loc/$comp/Xresources $HOME/.Xresources
+ln -fs $LOC/$COMP/i3-config $XDG_CONFIG_HOME/i3/config
+ln -fs $LOC/$COMP/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+ln -fs $LOC/i3/configs/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc
+ln -fs $LOC/i3/configs/polybar $XDG_CONFIG_HOME/polybar/config
+ln -fs $LOC/i3/configs/rofi-theme.rasi $XDG_CONFIG_HOME/rofi/config.rasi
+ln -fs $LOC/i3/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
+ln -fs $LOC/i3/configs/stalonetrayrc $HOME/.stalonetrayrc
+ln -fs $LOC/$COMP/Xresources $HOME/.Xresources
 
 printf "\033[1;32m%s\033[0m\n" "[i3] Adding Font"
-cp -f $loc/i3/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_design_icons.ttf
+cp -f $LOC/i3/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_design_icons.ttf
 
 printf "\033[1;32m%s\033[0m\n" "[i3] Configuring Xorg"
 sudo rm -rf /etc/X11/xorg.conf.d
-sudo cp -rf $loc/$comp/xorg /etc/X11/xorg.conf.d
+sudo cp -rf $LOC/$COMP/xorg /etc/X11/xorg.conf.d

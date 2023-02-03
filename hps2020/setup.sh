@@ -1,17 +1,15 @@
 #!/bin/sh
 # Setup hps2020
 #   Penn Bauman <me@pennbauman.com>
+COMP="hps2020"
 
-loc="$HOME/.dotfiles"
-comp="hps2020"
-
-# Check install location and comp
-$(dirname $(readlink -f $0))/../install/check.sh "$comp"
+# Check install location and computer
+$(dirname $(readlink -f $0))/../install/check.sh "$COMP"
 if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-hostnamectl set-hostname $comp
+hostnamectl set-hostname $COMP
 
 # Fedora Installs
 sh ~/.dotfiles/install/fedora.sh
@@ -22,10 +20,10 @@ sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs
 sh ~/.dotfiles/install/bin.sh
 # Terminal Configuration
-sh ~/.dotfiles/install/terminal.sh $comp
+sh ~/.dotfiles/install/terminal.sh $COMP
 # Desktop Configuration
-sh ~/.dotfiles/install/desktop.sh $comp
+sh ~/.dotfiles/install/desktop.sh $COMP
 # Cron Script Installs
 sh ~/.dotfiles/install/cron.sh clean-cache clean-trash dotfiles-backup
 # GNOME Configuration
-sh ~/.dotfiles/install/gnome.sh $comp
+sh ~/.dotfiles/install/gnome.sh $COMP

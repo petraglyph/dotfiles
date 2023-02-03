@@ -6,6 +6,9 @@ LOC="$HOME/.dotfiles"
 COMP=$1
 
 # Check install location and computer
+if [ -z "$COMP" ]; then
+	COMP="none"
+fi
 $(dirname $(readlink -f $0))/check.sh "$COMP"
 if [ $? -ne 0 ]; then
 	exit 1
