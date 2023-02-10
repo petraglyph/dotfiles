@@ -20,7 +20,11 @@ ffmpeg
 flatpak
 gcc
 git-email
+gnuplot
 htop
+imagemagick
+jq
+libimage-exiftool-perl
 mpc
 mpd
 mpv
@@ -28,12 +32,14 @@ ncmpcpp
 ncmpcpp
 neovim
 nethogs
+python3-pip
 qalc
 ranger
 rclone
 software-properties-common
 ssmtp
 tldr
+zathura
 zsh
 "
 printf "\033[1;32m%s\033[0m\n" "[APT] Installing Packages"
