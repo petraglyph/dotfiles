@@ -14,6 +14,9 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
+# https://extensions.gnome.org/extension/1401/bluetooth-quick-connect
+# https://extensions.gnome.org/extension/5443/quick-settings-button-remover
+# https://extensions.gnome.org/extension/615/appindicator-support
 
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Configuring"
 # Set theme
@@ -77,8 +80,11 @@ gsettings set org.gnome.desktop.search-providers enabled "['org.gnome.Calculator
 # Edit keybindings
 gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Super><Shift>q']"
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['XF86Keyboard']"
 gsettings set org.gnome.shell.keybindings toggle-application-view "['<Super>space']"
 # Application switching
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Shift><Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Super>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Super><Shift>Tab']"
 i=1
