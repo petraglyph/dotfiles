@@ -1,0 +1,26 @@
+<!--
+Folding@Home Configuration
+  Penn Bauman <me@pennbauman.com>
+  https://github.com/pennbauman/dotfiles
+
+info: https://foldingathome.org/start-folding
+path: /etc/fahclient/config.xml
+-->
+
+<config>
+  <!-- User Information -->
+  <user v='pennbauman'/>
+  <passkey v='PASSWORD'/>
+  <team v='260355'/>
+
+  <!-- Computation -->
+  <power v='light'/>
+  <slot id='0' type='CPU'/>
+  <slot id='1' type='GPU'>
+    <pci-bus v='47'/>
+    <pci-slot v='0'/>
+  </slot>
+
+  <!-- Web Control -->
+  <allow v='127.0.0.1 127.0.0.1'/>
+</config>
