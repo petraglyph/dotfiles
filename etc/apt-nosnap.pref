@@ -1,0 +1,5 @@
+Explanation: Prevents snap from being installed
+Explanation: /etc/apt/preferences.d/nosnap.pref
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10
