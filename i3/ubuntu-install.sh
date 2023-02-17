@@ -7,8 +7,14 @@ if [ -z "$(command -v apt-get)" ]; then
 	exit 1
 fi
 
-printf "\033[1;32m%s\033[0m\n" "[i3 Ubuntu] Adding PPA for alacritty"
+printf "\033[1;32m%s\033[0m\n" "[i3 Ubuntu] Adding alacritty PPA"
 sudo add-apt-repository -y ppa:aslatter/ppa
+
+printf "\033[1;32m%s\033[0m\n" "[i3 Ubuntu] Adding i3wm repository"
+/usr/lib/apt/apt-helper download-file "https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2023.02.18_all.deb" /tmp/sur5r-keyring.deb "SHA256:a511ac5f10cd811f8a4ca44d665f2fa1add7a9f09bef238cdfad8461f5239cc4"
+sudo apt-get -y install /tmp/sur5r-keyring.deb
+echo "deb [arch=amd64] http://debian.sur5r.net/i3/ $(grep '^VERSION_CODENAME=' /etc/os-release | cut -d= -f 2) universe" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list > /dev/null
+sudo apt-get update
 
 packages="
 alacritty

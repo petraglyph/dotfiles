@@ -37,26 +37,16 @@ client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
 client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
 # i3 gaps
-#gaps inner 13
-#gaps outer -2
-#smart_gaps on
-#smart_borders on
+gaps inner 13
+gaps outer -2
+smart_gaps on
+smart_borders on
 
 ## Special Window Configurations
-for_window [class="Termite" title="scratch"] move scratchpad
 for_window [class="Alacritty" title="scratch"] move scratchpad
-for_window [class="Gimp-2.10"] border normal
 # windows floating by default
-for_window [class="Termite" title="float"] floating enable
 for_window [class="Alacritty" title="float"] floating enable
 for_window [class="Steam" title="Steam - News"] floating enable
-for_window [title="Java: *"] border normal
-for_window [title="Java: *"] floating enable
-for_window [class="Gcolor3"] floating enable
-#for_window [instance="sun-awt-X11-XFramePeer"] floating enable
-#for_window [instance="sun-awt-X11-XFramePeer"] border normal
-#for_window [title="MATLAB R2019b - academic use"] floating disable
-#for_window [title="MATLAB R2019b - academic use"] border none
 for_window [title="Terraria: *"] floating enable
 for_window [title="Terraria: *"] border normal
 for_window [class="stalonetray"] floating enable
@@ -106,11 +96,8 @@ assign [class="firefox"] $ws2
 assign [class="Google-chrome"] $ws3
 assign [class="Gimp"] $ws7
 assign [class="Inkscape"] $ws7
-assign [class="Transmission-gtk"] $ws9
 assign [class="Spotify"] $ws10
 assign [class="Rhythmbox"] $ws10
-assign [class="Termite" title="ncmpcpp"] $ws10
-assign [class="Termite" title="hdmi"] $wsHDMI
 assign [class="Alacritty" title="ncmpcpp"] $ws10
 assign [class="Alacritty" title="hdmi"] $wsHDMI
 # workspace monitors
@@ -278,7 +265,6 @@ exec --no-startup-id redshift
 exec dunst
 # files and background processes
 exec pcloud
-exec --no-startup-id /usr/libexec/kdeconnectd
 exec sh $loc/.local/start.sh
 exec sh $loc/i3/scripts/dimlight.sh
 exec sh $loc/i3/scripts/network-start.sh
