@@ -55,7 +55,4 @@ if [ -f /usr/bin/zsh ]; then
 	if [ "$(basename $SHELL)" != "zsh" ]; then
 		chsh -s /usr/bin/zsh
 	fi
-	if [ -f $LOC/$COMP/zsh-dirs ]; then
-		ln -fs $LOC/$COMP/zsh-dirs $HOME/.zsh-dirs
-	fi
 fi

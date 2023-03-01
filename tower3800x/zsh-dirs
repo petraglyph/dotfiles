@@ -1,8 +1,0 @@
-# Directory Bookmarks
-export img="$HOME/documents/images"
-export code="$HOME/documents/code"
-export dnd="$HOME/documents/dnd"
-
-export linux="$HOME/documents/other/linux"
-export sh="$HOME/documents/other/linux/scripts"
-export notes="$HOME/documents/other/notes"

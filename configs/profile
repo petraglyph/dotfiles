@@ -9,8 +9,6 @@ export XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/usr/local/share/:
 export TERM=xterm
 export SYSTEMD_PAGER=
 export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export LC_ALL="C"
 # editor
 export EDITOR=nvim
@@ -18,7 +16,3 @@ export VISUAL=nvim
 # go
 export GOPATH="$HOME/.go"
 export GOBIN="$HOME/.local/bin"
-# python
-if [ ! -z "$(command -v python3)" ]; then
-	export PYTHONPATH="$HOME/.local/lib/$(python3 -V | sed -E -e 's/\.[0-9]+$//' -e 's/^.* /python/')/site-packages"
-fi

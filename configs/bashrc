@@ -25,7 +25,7 @@ if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
 	source $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
-# Add user local to PATH
+# Add user local directories to PATH
 if ! [[ "$PATH" =~ "$HOME/.local/bin" ]]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
@@ -33,6 +33,9 @@ if ! [[ "$PATH" =~ "$HOME/.local/share/flatpak/exports/bin" ]]; then
 	PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
 fi
 export PATH=$PATH
+if [ -z "$PYTHONPATH" ] && [ ! -z "$(command -v python3)" ]; then
+	export PYTHONPATH="$HOME/.local/lib/$(python3 -V | sed -E -e 's/\.[0-9]+$//' -e 's/^.* /python/')/site-packages"
+fi
 
 
 # Enable programmable completion features
@@ -77,14 +80,8 @@ yellow='\[\033[0;33m\]'
 magenta='\[\033[0;35m\]'
 white='\[\033[1;37m\]'
 none='\[\033[0m\]'
-# check root
-if [ "$(id -u)" -eq 0 ]; then
-	color="$red"
-else
-	color="$blue"
-fi
 # starter
-PS1="$color["
+PS1="$blue["
 # ssh indicator
 if [ ! -z "$SSH_CONNECTION" ]; then
 	PS1+="${yellow}ssh:"
@@ -93,11 +90,16 @@ fi
 if [[ $(cat /proc/$PID/mounts| grep -w / | cut -d" " -f 1) == "overlay" ]]; then
 	PS1+="${magenta}box:"
 fi
-# name@computer
-PS1+="$color\u@\H"
+# user@hostname
+if [ "$(id -u)" -eq 0 ]; then
+	# if root just hostname
+	PS1+="$red\H"
+else
+	PS1+="$blue\u@\H"
+fi
 # directory
 PS1+=" $white\W"
 # ender
-PS1+="$color]\\$ $none"
+PS1+="$blue]\\$ $none"
 # partial command
 PS2="${color}>$none "

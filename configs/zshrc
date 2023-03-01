@@ -23,24 +23,23 @@ zstyle ':completion:*' list-colors
 tabs -4
 
 # Externals
-source $HOME/.profile
-if [ -e $HOME/.zsh_profile ]; then
-	source $HOME/.zsh_profile
+if [ -f $HOME/.profile ]; then
+	source $HOME/.profile
 fi
-if [ -e $HOME/.zsh-dirs ]; then
-	source $HOME/.zsh-dirs
+if [ -f $HOME/.zsh_profile ]; then
+	source $HOME/.zsh_profile
 fi
 if [ -f $HOME/.aliasrc ]; then
 	source $HOME/.aliasrc
 fi
-if [ -e $HOME/.cargo/env ]; then
+if [ -f $HOME/.cargo/env ]; then
 	source $HOME/.cargo/env
 fi
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
 	source $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
-# Add user local to PATH
+# Add user local directories to PATH
 if ! [[ "$PATH" =~ "$HOME/.local/bin" ]]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
@@ -48,6 +47,9 @@ if ! [[ "$PATH" =~ "$HOME/.local/share/flatpak/exports/bin" ]]; then
 	PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
 fi
 export PATH=$PATH
+if [ -z "$PYTHONPATH" ] && [ ! -z "$(command -v python3)" ]; then
+	export PYTHONPATH="$HOME/.local/lib/$(python3 -V | sed -E -e 's/\.[0-9]+$//' -e 's/^.* /python/')/site-packages"
+fi
 
 
 # Configure Prompt
@@ -67,8 +69,12 @@ set-prompt() {
 		fi
 	fi
 
-	# name@computer
-	PS1+='%{$fg_bold[green]%}%n@%m'
+	# user@hostname
+	if [ "$(id -u)" -eq 0 ]; then
+		PS1+='%{$fg_bold[red]%}%m'
+	else
+		PS1+='%{$fg_bold[green]%}%n@%m'
+	fi
 	# directory
 	PS1+=" %{$fg_bold[white]%}%1~"
 	# git
