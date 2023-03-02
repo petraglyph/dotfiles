@@ -16,6 +16,7 @@ vim.opt.listchars = 'tab:¦ ,trail:~,extends:>,precedes:<'
 vim.opt.list = true
 vim.opt.guicursor = ''
 vim.opt.scrolloff = 5
+vim.opt.colorcolumn = '81'
 vim.cmd('colorscheme maia-custom')
 -- Netrw
 vim.api.nvim_set_var('netrw_banner', 1)
