@@ -23,14 +23,12 @@ echo '[ "$(tty)" = "/dev/tty1" ] && exec sway' > $HOME/.zlogin
 
 # Making necessary directories
 mkdir -p $XDG_CONFIG_HOME/sway
-mkdir -p $XDG_CONFIG_HOME/alacritty
 mkdir -p $XDG_CONFIG_HOME/waybar
 mkdir -p $XDG_CONFIG_HOME/environment.d
 mkdir -p $XDG_CONFIG_HOME/zathura
 
 printf "\033[1;32m%s\033[0m\n" "[Sway] Linking Configs"
 ln -fs $LOC/$COMP/sway-config $XDG_CONFIG_HOME/sway/config
-ln -fs $LOC/$COMP/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 ln -fs $LOC/sway/configs/waybar $XDG_CONFIG_HOME/waybar/config
 ln -fs $LOC/sway/configs/waybar.css $XDG_CONFIG_HOME/waybar/style.css
 ln -fs $LOC/sway/configs/envvars.conf $XDG_CONFIG_HOME/environment.d/envvars.conf

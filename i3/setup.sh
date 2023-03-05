@@ -20,7 +20,6 @@ fi
 
 # Making necessary directories
 mkdir -p $XDG_CONFIG_HOME/i3
-mkdir -p $XDG_CONFIG_HOME/alacritty
 mkdir -p $XDG_CONFIG_HOME/dunst
 mkdir -p $XDG_CONFIG_HOME/polybar
 mkdir -p $XDG_CONFIG_HOME/rofi
@@ -29,7 +28,6 @@ mkdir -p $XDG_DATA_HOME/fonts
 
 printf "\033[1;32m%s\033[0m\n" "[i3] Linking Configs"
 ln -fs $LOC/$COMP/i3-config $XDG_CONFIG_HOME/i3/config
-ln -fs $LOC/$COMP/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 ln -fs $LOC/i3/configs/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc
 ln -fs $LOC/i3/configs/polybar $XDG_CONFIG_HOME/polybar/config
 ln -fs $LOC/i3/configs/rofi-theme.rasi $XDG_CONFIG_HOME/rofi/config.rasi

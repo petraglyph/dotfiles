@@ -27,11 +27,11 @@ if [ -d /usr/share/themes/adw-gtk3-dark ]; then
 	fi
 	gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
 else
-	printf "\033[1;31m%s\033[0m\n" "[GNOME] Missing adw-gtk3-dark"
+	printf "\033[1;33m%s\033[0m\n" "[GNOME] Missing adw-gtk3-dark"
 fi
 
 # Set wallpaper
-if [ -d $HOME/.dotfiles/$COMP ]; then
+if [ -d $LOC/$COMP ]; then
 	gsettings set org.gnome.desktop.background picture-uri-dark "file://$LOC/$COMP/background.jpg"
 	gsettings set org.gnome.desktop.background picture-uri "file://$LOC/$COMP/background.jpg"
 fi
@@ -99,6 +99,10 @@ while [ $i -le 10 ]; do
 done
 
 
+if [ -z "$(command -v alacritty)" ]; then
+	printf "\033[1;33m%s\033[0m\n" "[GNOME] Missing alacritty"
+fi
+printf "\033[1;32m%s\033[0m\n" "[GNOME] Setting Keybindings"
 # Custom keybindings
 KEYBINDING_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 KEYBINDING_CMD="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEYBINDING_PATH"
