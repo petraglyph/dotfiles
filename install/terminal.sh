@@ -26,6 +26,7 @@ fi
 # Making necessary directories
 rm -rf $HOME/.config/ranger
 mkdir -p $XDG_CONFIG_HOME/git
+mkdir -p $XDG_CONFIG_HOME/fish
 mkdir -p $XDG_CONFIG_HOME/nvim
 mkdir -p $XDG_CONFIG_HOME/lf
 mkdir -p $XDG_CONFIG_HOME/zellij
@@ -41,6 +42,7 @@ ln -fs $LOC/configs/profile $HOME/.profile
 ln -fs $LOC/configs/aliasrc $HOME/.aliasrc
 ln -fs $LOC/configs/bashrc $HOME/.bashrc
 ln -fs $LOC/configs/zshrc $HOME/.zshrc
+ln -fs $LOC/configs/fish-config.fish $HOME/.config/fish/config.fish
 ln -fs $LOC/configs/vimrc $HOME/.vimrc
 ln -fs $LOC/configs/nvim.init.lua $XDG_CONFIG_HOME/nvim/init.lua
 ln -fs $LOC/configs/maia-custom.vim $XDG_DATA_HOME/nvim/site/colors/maia-custom.vim

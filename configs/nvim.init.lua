@@ -71,6 +71,7 @@ require('packer').startup(function(use)
 	use 'nvim-lua/completion-nvim'
 	use {'steelsojka/completion-buffers', requires = {'nvim-lua/completion-nvim'}}
 	use {'lervag/vimtex', ft = {'tex'}}
+	use 'nickeb96/fish.vim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
