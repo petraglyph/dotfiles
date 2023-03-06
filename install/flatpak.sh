@@ -14,6 +14,7 @@ com.discordapp.Discord
 com.github.finefindus.eyedropper
 com.google.Chrome
 com.mojang.Minecraft
+com.rafaelmardojai.Blanket
 com.valvesoftware.Steam
 org.inkscape.Inkscape
 org.mozilla.Thunderbird
@@ -24,7 +25,7 @@ if [ $# -ne 0 ]; then
 fi
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists --user flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-if [ ! -z "$(flatpak remotes | grep fedora)" ]; then
+if [ ! -z "$(flatpak remotes | grep fedora)" ] && [ ! -z "$(echo $packages | grep -oE 'org.gnome.[a-zA-Z]*')" ]; then
 	flatpak -y install fedora $(echo $packages | grep -oE 'org.gnome.[a-zA-Z]*')
 	flatpak -y install flathub $(echo $packages | sed 's/org.gnome.[a-zA-Z]*//g')
 else
