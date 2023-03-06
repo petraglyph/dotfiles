@@ -136,7 +136,7 @@ call s:h("Conceal",       { "fg": s:purple })
 if g:maiacustom_subtle_spell == 1
   call s:h("SpellBad",    {                                           "format": "underline"})
 else
-  call s:h("SpellBad",    { "fg": s:red,        "bg": s:yellow })
+  call s:h("SpellBad",    { "fg": s:black,        "bg": s:yellow })
 endif
 
 " misc
