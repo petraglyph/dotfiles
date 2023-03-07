@@ -1,0 +1,29 @@
+// Zellij Layout for Working with dotfiles
+//   Penn Bauman <me@pennbauman.com>
+//   https://github.com/pennbauman/dotfiles
+
+layout {
+	default_tab_template {
+		pane size=1 borderless=true {
+			plugin location="zellij:tab-bar"
+		}
+		children
+		pane size=2 borderless=true {
+			plugin location="zellij:status-bar"
+		}
+	}
+
+	tab name="dotfiles" cwd=".dotfiles" split_direction="vertical" focus=true {
+		pane
+		pane focus=true
+	}
+	tab name="updates" cwd="." split_direction="vertical" {
+		pane
+		pane {
+			command "distrobox"
+			args "enter"
+			close_on_exit true
+		}
+	}
+	tab name="other" cwd="."
+}

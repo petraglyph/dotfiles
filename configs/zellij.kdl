@@ -12,23 +12,8 @@ theme "maia"
 // Configure the scroll back buffer size
 scroll_buffer_size 10000
 
-
-// Toggle between having pane frames around the panes
-// pane_frames false
-
 // The name of the default layout to load on startup
-// default_layout "compact"
-
-// Enable or disable automatic copy (and clear) of selection when releasing mouse
-// copy_on_select false
-
-// When attaching to an existing session with other users, should the session be mirrored (true)
-// mirror_session true
-
-// The folder in which Zellij will look for layouts
-// layout_dir /path/to/my/layout_dir
-// The folder in which Zellij will look for themes
-// theme_dir "/path/to/my/theme_dir"
+default_layout "double"
 
 
 themes {
@@ -36,7 +21,6 @@ themes {
         fg 87 91 97
         bg 144 144 144
         black 0 0 0
-        /* black 144 144 144 */
         red 219 91 91
         green 46 179 152
         yellow 240 192 126

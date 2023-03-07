@@ -37,7 +37,7 @@ printf "\033[1;32m%s\033[0m\n" "Linking Terminal Configs"
 ln -fs $LOC/configs/git/config $XDG_CONFIG_HOME/git/config
 ln -fs $LOC/configs/git/ignore $XDG_CONFIG_HOME/git/ignore
 cp $LOC/configs/git/email.sample $XDG_CONFIG_HOME/git/email.sample
-ln -fs $LOC/configs/ranger $XDG_CONFIG_HOME/ranger
+ln -fs $LOC/configs/ranger -T $XDG_CONFIG_HOME/ranger
 ln -fs $LOC/configs/profile $HOME/.profile
 ln -fs $LOC/configs/aliasrc $HOME/.aliasrc
 ln -fs $LOC/configs/bashrc $HOME/.bashrc
@@ -50,6 +50,7 @@ ln -fs $LOC/configs/maia-custom-airline.vim $XDG_DATA_HOME/nvim/site/autoload/ai
 ln -fs $LOC/configs/lfrc $XDG_CONFIG_HOME/lf/lfrc
 ln -fs $LOC/configs/lfcolors $XDG_CONFIG_HOME/lf/colors
 ln -fs $LOC/configs/zellij.kdl $XDG_CONFIG_HOME/zellij/config.kdl
+ln -fs $LOC/configs/zellij-layouts -T $XDG_CONFIG_HOME/zellij/layouts
 
 # Setup zsh if available
 if [ -f /usr/bin/zsh ]; then
