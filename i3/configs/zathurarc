@@ -1,9 +1,9 @@
+# Zathura configuration
+#   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 set window-title-basename true
 set statusbar-home-tilde true
 set selection-clipboard clipboard
-#set default-bg "#141A1B"
-#set inputbar-bg "#141A1B"
-#set statusbar-bg "#141A1B"
 set default-fg "#EEEEEE"
 set inputbar-fg "#2EB398"
 set statusbar-fg "#EEEEEE"

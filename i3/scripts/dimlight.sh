@@ -1,14 +1,13 @@
 #!/bin/sh
 # Dim Screen Colors in Xorg
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
+LOC="$HOME/.var/dotfiles"
 
-loc="$HOME/.local/state"
-
-if [ -f $loc/dimbright ]; then
-	current=$(sed '1q;d' $loc/dimbright)
+if [ -f $LOC/dimlight ]; then
+	current=$(sed '1q;d' $LOC/dimlight)
 else
-	mkdir -p $loc
-	current="1.0"
+	mkdir -p $LOC
 fi
 if [ -z "$current" ]; then
 	current="1.0"
@@ -36,7 +35,7 @@ if [ $(echo "$new < 0.1" | bc) -eq 1 ]; then
 fi
 echo "new: $new"
 
-echo "$new" > $loc/dimbright
+echo "$new" > $loc/dimlight
 prev=$(pgrep redshift)
 redshift -r -b $new -l "38:-78" &> /dev/null &
 for p in $prev; do

@@ -16,6 +16,9 @@ adw-gtk3
 android-tools
 clang
 cronie
+dash
+distrobox
+fedora-packager
 ffmpeg
 flatpak
 git-email
@@ -36,6 +39,7 @@ qalc
 rclone
 sassc
 ssmtp
+steam-devices
 texlive-latex
 texlive-scheme-medium
 tldr

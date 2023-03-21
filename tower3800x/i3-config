@@ -1,6 +1,6 @@
-## i3 Config File
+# i3 Config File
 #   Penn Bauman <me@pennbauman.com>
-# see https://i3wm.org/docs/userguide.html for reference
+#   https://github.com/pennbauman/dotfiles
 
 
 ### VARIABLES
@@ -265,9 +265,7 @@ exec --no-startup-id redshift
 exec dunst
 # files and background processes
 exec pcloud
-exec sh $loc/.local/start.sh
 exec sh $loc/i3/scripts/dimlight.sh
-exec sh $loc/i3/scripts/network-start.sh
 
 ## Run on i3 Restart
 exec_always sh $loc/i3/scripts/polybar-start.sh $name $name-hdmi

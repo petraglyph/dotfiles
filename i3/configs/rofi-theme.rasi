@@ -1,3 +1,7 @@
+/* rofi theme configuration
+     Penn Bauman <me@pennbauman.com>
+     https://github.com/pennbauman/dotfiles
+*/
 * {
 	bg: #000000;
 	fg: #EEEEEE;
@@ -50,13 +54,17 @@ listview {
 	lines: 10;
 	scrollbar: false;
 	border-color: @bg;
+	text-color: @fg;
 }
-element normal {
+element normal.normal, element alternate.normal {
 	padding: 12;
 	background-color: @bg;
 	border-color: @bg;
 	text-color: @fg;
 }
-element selected {
+element selected.normal {
 	text-color: @green;
+}
+element normal.urgent, element selected.urgent, element alternate.urgent {
+	text-color: @red;
 }

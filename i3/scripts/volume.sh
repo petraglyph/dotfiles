@@ -1,5 +1,7 @@
 #!/bin/sh
 # Print volume for polybar
+#   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oE '[0-9]*%' | head -n 1 | sed 's/%//')
 mute=$(pactl get-sink-mute @DEFAULT_SINK@)

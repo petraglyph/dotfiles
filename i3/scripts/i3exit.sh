@@ -1,15 +1,15 @@
 #!/bin/sh
-# i3 Exit
+# i3 Exit Script
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 echo "i3 System"
 echo "  [s] shutdown"
 echo "  [r] reboot"
 echo "  [e] exit i3"
-#echo "  [z] sleep"
 echo "  [c] cancel"
 while true; do 
-    read -p ": " t
+	read -p ": " t
 	case $t in
 		s) systemctl poweroff
 			exit 0;;

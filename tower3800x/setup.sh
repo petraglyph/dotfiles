@@ -1,6 +1,7 @@
 #!/bin/sh
 # Setup tower3800x
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 COMP="tower3800x"
 
 # Check install location and computer
@@ -11,12 +12,13 @@ fi
 
 hostnamectl set-hostname $COMP
 
-# Ubuntu Installs
-sh ~/.dotfiles/install/ubuntu.sh
-# i3 Ubuntu Installs
-sh ~/.dotfiles/i3/ubuntu-install.sh
+
+# Fedora Installs
+sh ~/.dotfiles/install/fedora.sh
+# i3 Fedora Installs
+sh ~/.dotfiles/i3/fedora-install.sh
 # Flatpak Installs
-sh ~/.dotfiles/install/flatpak.sh org.mozilla.firefox
+sh ~/.dotfiles/install/flatpak.sh io.mpv.Mpv
 # Rust Install
 sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs

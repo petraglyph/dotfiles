@@ -1,6 +1,7 @@
 #!/bin/sh
-# Lock i3
+# i3 Locking Script
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 
 ## Color i3lock
 backcolor="000000FF"

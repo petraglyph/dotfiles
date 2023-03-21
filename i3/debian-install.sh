@@ -1,7 +1,7 @@
 #!/bin/sh
 # i3 Debian Installs
 #   Penn Bauman <me@pennbauman.com>
-
+#   https://github.com/pennbauman/dotfiles
 if [ -z "$(command -v apt-get)" ]; then
 	printf "\033[1;31m%s\033[0m\n" "APT not installed"
 	exit 1
@@ -44,7 +44,6 @@ fi
 printf "\033[1;32m%s\033[0m\n" "[i3 Debian] Installing xidlehook (from cargo)"
 sudo apt-get -y install libx11-xcb-dev libxcb-screensaver0-dev
 cargo install xidlehook --locked --bins
-
 
 printf "\033[1;32m%s\033[0m\n" "[i3 Debian] Installing alacritty (from cargo)"
 sudo apt-get -y install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3

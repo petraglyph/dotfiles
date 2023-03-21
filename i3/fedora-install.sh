@@ -1,7 +1,7 @@
 #!/bin/sh
 # i3 Fedora Installs
 #   Penn Bauman <me@pennbauman.com>
-
+#   https://github.com/pennbauman/dotfiles
 if [ -z "$(command -v dnf)" ]; then
 	printf "\033[1;31m%s\033[0m\n" "DNF not installed"
 	exit 1
@@ -14,7 +14,8 @@ copr() {
 		echo $result
 	fi
 }
-copr sentry/i3desktop
+copr pennbauman/ports
+copr rubemlrm/i3lock-color
 
 
 packages="
@@ -26,7 +27,7 @@ conky
 dmenu
 dunst
 feh
-i3-gaps
+i3
 i3lock-color
 i3status
 lxappearance
@@ -40,7 +41,7 @@ stalonetray
 xset
 "
 printf "\033[1;32m%s\033[0m\n" "[i3 Fedora] Installing Packages"
-sudo dnf -y install $packages --skip-broken
+sudo dnf -y install $packages --skip-broken --setopt=install_weak_deps=False
 
 
 printf "\033[1;32m%s\033[0m\n" "[i3 Fedora] Installing xidlehook (from cargo)"

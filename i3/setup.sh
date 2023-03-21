@@ -1,6 +1,7 @@
 #!/bin/sh
 # Configure i3
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 LOC="$HOME/.dotfiles"
 COMP=$1
 
@@ -29,7 +30,7 @@ mkdir -p $XDG_DATA_HOME/fonts
 printf "\033[1;32m%s\033[0m\n" "[i3] Linking Configs"
 ln -fs $LOC/$COMP/i3-config $XDG_CONFIG_HOME/i3/config
 ln -fs $LOC/i3/configs/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc
-ln -fs $LOC/i3/configs/polybar $XDG_CONFIG_HOME/polybar/config
+ln -fs $LOC/i3/configs/polybar.ini $XDG_CONFIG_HOME/polybar/config.ini
 ln -fs $LOC/i3/configs/rofi-theme.rasi $XDG_CONFIG_HOME/rofi/config.rasi
 ln -fs $LOC/i3/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
 ln -fs $LOC/i3/configs/stalonetrayrc $HOME/.stalonetrayrc
