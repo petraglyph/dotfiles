@@ -80,4 +80,4 @@ fi
 
 echo
 echo "Flashing ISO ..."
-sudo dd if=$image of=$device bs=8M status=progress oflag=direct
+sudo dd if=$image of=$device bs=4M status=progress oflag=direct

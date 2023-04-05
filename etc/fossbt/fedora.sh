@@ -24,10 +24,11 @@ BASE_URL="https://torrents.fedoraproject.org"
 newest_version=""
 curl -s "$BASE_URL" | grep -oE 'href=".*\.torrent"' | sed -e 's/^href="//' -e 's/"$//' | grep -E '(x86_64|aarch64)' | grep -E -e 'Fedora-(Workstation|Server|KDE|Xfce)' -e "ostree" | while read -r url; do
 	version="$(echo "$url" | grep -oE '[0-9]+(_Beta)?\.torrent$' | sed -E 's/\.[a-z]+$//')"
+	version_num="$(echo "$version" | grep -oE '^[0-9]+')"
 	# Check version is newest or second newest (not counting beta versions)
-	if [ -z "$newest_version" ] && [ -z "$(echo "$version" | grep -o 'Beta')" ]; then
-		newest_version="$version"
-	elif [ $(($version + 1)) -lt $newest_version ]; then
+	if [ -z "$newest_version" ] && [ ! -z "$(echo "$version" | grep -o 'Beta')" ]; then
+		newest_version="$version_num"
+	elif [ $(($version_num + 1)) -lt $newest_version ]; then
 		break
 	fi
 	torrent="$(basename "$url")"

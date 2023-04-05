@@ -20,7 +20,7 @@ vim.opt.colorcolumn = '81'
 vim.cmd('colorscheme maia-custom')
 -- Netrw
 vim.api.nvim_set_var('netrw_banner', 1)
-vim.api.nvim_set_var('netrw_liststyle', 1)
+vim.api.nvim_set_var('netrw_liststyle', 0)
 
 local augroup = vim.api.nvim_create_augroup('custom', {clear = true})
 -- Set spellcheck

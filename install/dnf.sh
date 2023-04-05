@@ -38,6 +38,7 @@ python3-pip
 qalc
 rclone
 sassc
+sqlite
 ssmtp
 steam-devices
 texlive-latex

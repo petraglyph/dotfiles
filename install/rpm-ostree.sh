@@ -19,9 +19,11 @@ cronie
 dash
 distrobox
 feh
+fish
 git-email
 htop
 lf
+lf-fish-integration
 lf-zsh-integration
 neovim
 nethogs
