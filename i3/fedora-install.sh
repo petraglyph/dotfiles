@@ -15,7 +15,6 @@ copr() {
 	fi
 }
 copr pennbauman/ports
-copr rubemlrm/i3lock-color
 
 
 packages="
@@ -38,16 +37,8 @@ redshift
 rofi
 scrot
 stalonetray
+xidlehook
 xset
 "
 printf "\033[1;32m%s\033[0m\n" "[i3 Fedora] Installing Packages"
 sudo dnf -y install $packages --skip-broken --setopt=install_weak_deps=False
-
-
-printf "\033[1;32m%s\033[0m\n" "[i3 Fedora] Installing xidlehook (from cargo)"
-sudo dnf -y install libX11-devel
-if [ -z $HOME/.cargo/env ]; then
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
-fi
-. $HOME/.cargo/env
-cargo install xidlehook --locked --bins

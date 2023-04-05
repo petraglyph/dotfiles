@@ -12,6 +12,7 @@ printf "\033[1;32m%s\033[0m\n" "[Flatpak] Installing packages"
 packages="
 com.discordapp.Discord
 com.github.finefindus.eyedropper
+com.github.tchx84.Flatseal
 com.google.Chrome
 com.mojang.Minecraft
 com.rafaelmardojai.Blanket
