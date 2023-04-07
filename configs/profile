@@ -16,3 +16,6 @@ export VISUAL=nvim
 # go
 export GOPATH="$HOME/.go"
 export GOBIN="$HOME/.local/bin"
+# Distrobox
+export DBX_CONTAINER_IMAGE="registry.fedoraproject.org/fedora-toolbox:38"
+export DBX_CONTAINER_NAME="distrobox"
