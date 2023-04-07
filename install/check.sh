@@ -21,8 +21,8 @@ fi
 if [ "$COMP" = "none" ]; then
 	exit 0
 elif [ -d "$LOC/$COMP" ]; then
-	if [ "$HOSTNAME" != "$COMP" ] && [ "$(echo $HOSTNAME | sed 's/\..*$//')" != "$COMP" ]; then
-		printf "\033[1;31m%s\033[0m\n" "Wrong computer, should be '$HOSTNAME'"
+	if [ "$(hostname)" != "$COMP" ] && [ "$(hostname | sed 's/\..*$//')" != "$COMP" ]; then
+		printf "\033[1;31m%s\033[0m\n" "Wrong computer, should be '$(hostname)'"
 		while true; do
 			read -p "  Continue anyway [y/n]: " input
 			case $input in
