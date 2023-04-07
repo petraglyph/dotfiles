@@ -10,7 +10,7 @@ if [ ! -z "$(command -v rpm-ostree)" ]; then
 	curl -s "https://copr.fedorainfracloud.org/coprs/pennbauman/ports/repo/fedora-/" | sudo tee /etc/yum.repos.d/pennbauman-ports.repo > /dev/null
 	curl -s "https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-/" | sudo tee /etc/yum.repos.d/nickavem-adw-gtk3.repo > /dev/null
 
-	$(dirname $0)/rpm-ostree.sh
+	$(dirname $0)/rpm-ostree.sh adw-gtk3
 elif [ ! -z "$(command -v dnf)" ]; then
 	printf "\033[1;34m%s\033[0m\n" "[Fedora] Traditional packaging detected"
 
@@ -38,7 +38,7 @@ elif [ ! -z "$(command -v dnf)" ]; then
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling RPM Fusion"
 	sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-	$(dirname $0)/dnf.sh
+	$(dirname $0)/dnf.sh adw-gtk3 fedora-packager
 else
 	printf "\033[1;31m%s\033[0m\n" "[Fedora] Package management not detected"
 	exit 1

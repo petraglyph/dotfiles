@@ -12,7 +12,6 @@ printf "\033[1;32m%s\033[0m\n" "[rpm-ostree] Updating"
 rpm-ostree upgrade
 
 packages="
-adw-gtk3
 alacritty
 clang
 cronie

@@ -39,6 +39,7 @@ fi
 # Workspaces
 gsettings set org.gnome.mutter workspaces-only-on-primary true
 gsettings set org.gnome.mutter dynamic-workspaces false
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
 
 # Enable nightlight
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
