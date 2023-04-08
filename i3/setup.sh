@@ -33,7 +33,7 @@ ln -fs $LOC/i3/configs/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc
 ln -fs $LOC/i3/configs/polybar.ini $XDG_CONFIG_HOME/polybar/config.ini
 ln -fs $LOC/i3/configs/rofi-theme.rasi $XDG_CONFIG_HOME/rofi/config.rasi
 ln -fs $LOC/i3/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
-ln -fs $LOC/i3/configs/stalonetrayrc $HOME/.stalonetrayrc
+ln -fs $LOC/i3/configs/xinitrc $HOME/.xinitrc
 ln -fs $LOC/$COMP/Xresources $HOME/.Xresources
 
 printf "\033[1;32m%s\033[0m\n" "[i3] Adding Font"

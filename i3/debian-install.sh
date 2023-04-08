@@ -8,15 +8,21 @@ if [ -z "$(command -v apt-get)" ]; then
 fi
 
 packages="
+alacritty
 conky
 dunst
 feh
 i3-wm
 picom
 polybar
+pulseaudio-utils
 redshift
 rofi
 scrot
+trayer
+wireplumber
+x11-xserver-utils
+xinit
 zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[i3 Debian] Install Packages"
@@ -36,7 +42,7 @@ else
 fi
 ./install-i3lock-color.sh
 
-if [ -z $HOME/.cargo/env ]; then
+if [ ! -f $HOME/.cargo/env ]; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 fi
 . $HOME/.cargo/env
@@ -44,7 +50,3 @@ fi
 printf "\033[1;32m%s\033[0m\n" "[i3 Debian] Installing xidlehook (from cargo)"
 sudo apt-get -y install libx11-xcb-dev libxcb-screensaver0-dev
 cargo install xidlehook --locked --bins
-
-printf "\033[1;32m%s\033[0m\n" "[i3 Debian] Installing alacritty (from cargo)"
-sudo apt-get -y install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-cargo install alacritty --locked --bins

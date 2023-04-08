@@ -18,14 +18,14 @@ local chigh = "2EB398"
 local cerror = "DB5B5B"
 
 conky.text = [[
-${if_existing /proc/net/route enp39s0}\
+${if_up enp39s0}\
 ${if_up tun0}\
 %{F\#2EB398}%{F}\
 ${else}
 %{F\#2EB398}%{F}\
 ${endif}\
  ${addr enp39s0} (${downspeed enp39s0}/${upspeed enp39s0})\
-${else}${if_existing /proc/net/route wlp41s0}\
+${else}${if_up wlp41s0}\
 ${if_up tun0}\
 %{F\#2EB398}\
 ${if_match ${wireless_link_qual_perc wlp41s0}>80}\

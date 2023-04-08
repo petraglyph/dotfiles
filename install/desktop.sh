@@ -19,6 +19,7 @@ fi
 # Making necessary directories
 mkdir -p $XDG_CONFIG_HOME/mpd
 mkdir -p $XDG_CONFIG_HOME/ncmpcpp
+mkdir -p $XDG_CONFIG_HOME/gtk-3.0
 mkdir -p $XDG_CONFIG_HOME/alacritty
 
 printf "\033[1;32m%s\033[0m\n" "Linking Desktop Configs"

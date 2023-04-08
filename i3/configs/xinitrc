@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# invoke global X session script
+. /etc/X11/Xsession
+
+if [ -f ~/.Xresources ]; then
+	xrdb -merge -I$HOME ~/.Xresources
+fi
+
+exec i3

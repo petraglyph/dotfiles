@@ -13,17 +13,22 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 packages="
+bc
 clang
 curl
+distrobox
 feh
 ffmpeg
+fish
 flatpak
 gcc
+git
 git-email
 gnuplot
 htop
 imagemagick
 jq
+lf
 libimage-exiftool-perl
 mpc
 mpd

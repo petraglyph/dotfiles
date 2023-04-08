@@ -2,9 +2,19 @@
 # Print volume for polybar
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
+ERROR_OUTPUT="%{F#DB5B5B}%{F}[]%"
+if [ -z "$(command -v pactl)" ]; then
+	echo "$ERROR_OUTPUT"
+	exit 1
+fi
 
-vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oE '[0-9]*%' | head -n 1 | sed 's/%//')
-mute=$(pactl get-sink-mute @DEFAULT_SINK@)
+vol=$(pactl get-sink-volume @DEFAULT_SINK@ 2> /dev/null | grep -oE '[0-9]*%' | head -n 1 | sed 's/%//')
+mute=$(pactl get-sink-mute @DEFAULT_SINK@ 2> /dev/null)
+
+if [ -z "$vol" ]; then
+	echo "$ERROR_OUTPUT"
+	exit 1
+fi
 
 if [ "$vol" -gt 100 ]; then
     color="DB5B5B"
