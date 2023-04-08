@@ -13,12 +13,12 @@ fi
 hostnamectl set-hostname $COMP
 
 
-# Fedora Installs
-sh ~/.dotfiles/install/fedora.sh
-# i3 Fedora Installs
-sh ~/.dotfiles/i3/fedora-install.sh
+# Debian Installs
+sh ~/.dotfiles/install/debian.sh
+# i3 Debian Installs
+sh ~/.dotfiles/i3/debian-install.sh
 # Flatpak Installs
-sh ~/.dotfiles/install/flatpak.sh io.mpv.Mpv
+sh ~/.dotfiles/install/flatpak.sh io.mpv.Mpv org.mozilla.firefox
 # Rust Install
 sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs

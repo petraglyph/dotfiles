@@ -1,16 +1,14 @@
 Super + Letter
 
 a
-b - open besic
-	B - open 5e-books
+b
 c - calculator
 	C - open pCloudDrive
 d - open downloads
 	D - open dnd
 e - open code
-	E - open college
 f - open ~
-	F - open storage
+	F - open /tank
 g
 h - switch window left
 	H - move window left
