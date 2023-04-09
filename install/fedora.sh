@@ -20,10 +20,14 @@ elif [ ! -z "$(command -v dnf)" ]; then
 			printf "\033[1;31m%s\033[0m\n" "DNF not installed"
 			exit 1
 		fi
-		echo "[main]" | sudo tee /etc/dnf/dnf.conf
+		echo "[main]" | sudo tee /etc/dnf/dnf.conf > /dev/null
 	fi
-	echo "max_parallel_downloads=8" | sudo tee -a /etc/dnf/dnf.conf
-	echo "fastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf
+	if [ -z "$(grep max_parallel_downloads /etc/dnf/dnf.conf)" ]; then
+		echo "max_parallel_downloads=8" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
+	fi
+	if [ -z "$(grep fastestmirror /etc/dnf/dnf.conf)" ]; then
+		echo "fastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
+	fi
 
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling Copr repositories"
 	copr() {
