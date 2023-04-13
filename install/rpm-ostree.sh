@@ -29,6 +29,7 @@ qalc
 rclone
 ssmtp
 util-linux-user
+zellij
 zsh
 "
 printf "\033[1;32m%s\033[0m\n" "[rpm-ostree] Installing Packages"

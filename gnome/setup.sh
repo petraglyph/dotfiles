@@ -14,6 +14,10 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
+mkdir -p ~/.config/autostart
+for f in $(dirname $(readlink -f $0))/autostart/*; do
+	ln -fs $f $HOME/.config/autostart/$(basename $f)
+done
 
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Configuring"
 # Set theme

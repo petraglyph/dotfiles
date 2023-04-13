@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=alacritty-zellij-dotiles
+Comment=alacritty with zellij -l dotfiles
+Exec=/usr/bin/alacritty -e zellij -l dotfiles
+StartupNotify=false
+Hidden=false
+Terminal=false

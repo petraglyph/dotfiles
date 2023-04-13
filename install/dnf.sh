@@ -43,6 +43,7 @@ util-linux-user
 zathura
 zathura-plugins-all
 zathura-zsh-completion
+zellij
 zsh
 "
 printf "\033[1;32m%s\033[0m\n" "[DNF] Installing Packages"
