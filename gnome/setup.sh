@@ -1,5 +1,5 @@
 #!/bin/sh
-# Setup GNOME desktop
+# Configure GNOME
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
 LOC="$HOME/.dotfiles"
@@ -9,20 +9,17 @@ COMP=$1
 if [ -z "$COMP" ]; then
 	COMP="$(hostname)"
 fi
-$(dirname $(readlink -f $0))/check.sh "$COMP"
+$(dirname $(readlink -f $0))/../install/check.sh "$COMP"
 if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-# https://extensions.gnome.org/extension/1401/bluetooth-quick-connect
-# https://extensions.gnome.org/extension/5443/quick-settings-button-remover
-# https://extensions.gnome.org/extension/615/appindicator-support
 
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Configuring"
 # Set theme
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 if [ -d /usr/share/themes/adw-gtk3-dark ]; then
-	if [ -z "$(flatpak list | grep adw-gtk3)" ]; then
+	if [ ! -z "$(command -v flatpak)" ]; then
 		flatpak install -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 	fi
 	gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
@@ -32,8 +29,9 @@ fi
 
 # Set wallpaper
 if [ -d $LOC/$COMP ]; then
-	gsettings set org.gnome.desktop.background picture-uri-dark "file://$LOC/$COMP/background.jpg"
-	gsettings set org.gnome.desktop.background picture-uri "file://$LOC/$COMP/background.jpg"
+	bgfile="$(find "$LOC/$COMP" -maxdepth 1 -name 'background.*' | tail -n 1)"
+	gsettings set org.gnome.desktop.background picture-uri-dark "file://$bgfile"
+	gsettings set org.gnome.desktop.background picture-uri "file://$bgfile"
 fi
 
 # Workspaces

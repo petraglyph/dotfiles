@@ -75,7 +75,7 @@ fi
 # Prompt
 force_color_prompt=yes
 red='\[\033[1;31m\]'
-blue='\[\033[1;34m\]'
+blue='\[\033[1;36m\]'
 yellow='\[\033[0;33m\]'
 magenta='\[\033[0;35m\]'
 white='\[\033[1;37m\]'
