@@ -1,6 +1,7 @@
 #!/bin/sh
 # Setup hps2020 with Sway
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 COMP="hps2020"
 
 # Check install location and computer
@@ -10,6 +11,7 @@ if [ $? -ne 0 ]; then
 fi
 
 hostnamectl set-hostname $COMP
+
 
 # Fedora Installs
 sh ~/.dotfiles/install/fedora.sh
@@ -22,8 +24,10 @@ sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs
 sh ~/.dotfiles/install/bin.sh
 # Terminal Configuration
-sh ~/.dotfiles/install/terminal.sh $COMP
+sh ~/.dotfiles/install/terminal.sh
 # Desktop Configuration
-sh ~/.dotfiles/install/desktop.sh $COMP
+sh ~/.dotfiles/install/desktop.sh
+# Cron Script Installs
+sh ~/.dotfiles/install/cron.sh clean-cache clean-trash dotfiles-backup
 # Sway Configuration
 sh ~/.dotfiles/sway/setup.sh $COMP

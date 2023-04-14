@@ -1,6 +1,7 @@
 #!/bin/sh
 # Setup hps2020
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
 COMP="hps2020"
 
 # Check install location and computer
@@ -11,8 +12,11 @@ fi
 
 hostnamectl set-hostname $COMP
 
+
 # Fedora Installs
 sh ~/.dotfiles/install/fedora.sh
+# GNOME Fedora Installs
+sh ~/.dotfiles/gnome/fedora-install.sh
 # Flatpak Installs
 sh ~/.dotfiles/install/flatpak.sh io.mpv.Mpv
 # Rust Install
@@ -26,4 +30,4 @@ sh ~/.dotfiles/install/desktop.sh
 # Cron Script Installs
 sh ~/.dotfiles/install/cron.sh clean-cache clean-trash dotfiles-backup
 # GNOME Configuration
-sh ~/.dotfiles/install/gnome.sh $COMP
+sh ~/.dotfiles/gnome/setup.sh $COMP
