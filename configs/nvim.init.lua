@@ -14,7 +14,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.listchars = 'tab:¦ ,trail:~,extends:>,precedes:<'
 vim.opt.list = true
-vim.opt.guicursor = ''
+vim.opt.guicursor = 'n-v-c-i:block'
 vim.opt.scrolloff = 5
 vim.opt.colorcolumn = '81'
 vim.cmd('colorscheme maia-custom')

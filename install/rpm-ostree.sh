@@ -16,6 +16,8 @@ clang
 cronie
 dash
 distrobox
+dnf
+dnf5
 feh
 fish
 git-email
@@ -25,9 +27,13 @@ lf-fish-integration
 lf-zsh-integration
 neovim
 nethogs
+openssl
+perl-Image-ExifTool
+python3-pip
 qalc
 rclone
 ssmtp
+transmission-cli
 util-linux-user
 zellij
 zsh
