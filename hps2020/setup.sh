@@ -18,7 +18,7 @@ sh ~/.dotfiles/install/fedora.sh
 # GNOME Fedora Installs
 sh ~/.dotfiles/gnome/fedora-install.sh
 # Flatpak Installs
-sh ~/.dotfiles/install/flatpak.sh io.mpv.Mpv
+sh ~/.dotfiles/install/flatpak.sh com.valvesoftware.Steam
 # Rust Install
 sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs

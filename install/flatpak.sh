@@ -16,7 +16,7 @@ com.github.tchx84.Flatseal
 com.google.Chrome
 com.mojang.Minecraft
 com.rafaelmardojai.Blanket
-com.valvesoftware.Steam
+io.mpv.Mpv
 org.inkscape.Inkscape
 org.mozilla.Thunderbird
 us.zoom.Zoom

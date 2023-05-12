@@ -37,7 +37,6 @@ rclone
 sassc
 sqlite
 ssmtp
-steam-devices
 tldr
 util-linux-user
 zathura

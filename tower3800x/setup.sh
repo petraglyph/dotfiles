@@ -18,11 +18,13 @@ sh ~/.dotfiles/install/debian.sh
 # i3 Debian Installs
 sh ~/.dotfiles/i3/debian-install.sh
 # Flatpak Installs
-sh ~/.dotfiles/install/flatpak.sh io.mpv.Mpv org.mozilla.firefox
+sh ~/.dotfiles/install/flatpak.sh org.mozilla.firefox
 # Rust Install
 sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs
 sh ~/.dotfiles/install/bin.sh
+# Steam Install
+sh ~/.dotfiles/install/steam.sh
 # Terminal Configuration
 sh ~/.dotfiles/install/terminal.sh
 # Desktop Configuration
