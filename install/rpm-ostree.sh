@@ -24,7 +24,6 @@ git-email
 htop
 lf
 lf-fish-integration
-lf-zsh-integration
 neovim
 nethogs
 openssl
@@ -36,7 +35,6 @@ ssmtp
 transmission-cli
 util-linux-user
 zellij
-zsh
 "
 printf "\033[1;32m%s\033[0m\n" "[rpm-ostree] Installing Packages"
 rpm-ostree install --idempotent $packages $@

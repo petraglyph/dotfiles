@@ -48,10 +48,10 @@ ln -fs $LOC/configs/lfcolors $XDG_CONFIG_HOME/lf/colors
 ln -fs $LOC/configs/zellij.kdl $XDG_CONFIG_HOME/zellij/config.kdl
 ln -fs $LOC/configs/zellij-layouts -T $XDG_CONFIG_HOME/zellij/layouts
 
-# Setup zsh if available
-if [ -f /usr/bin/zsh ]; then
-	printf "\033[1;32m%s\033[0m\n" "Setting Up Zsh"
-	if [ "$(basename $SHELL)" != "zsh" ]; then
-		chsh -s /usr/bin/zsh
+# Setup fish if available
+if [ -f /usr/bin/fish ]; then
+	printf "\033[1;32m%s\033[0m\n" "Enabling fish"
+	if [ "$(basename $SHELL)" != "fish" ]; then
+		chsh -s /usr/bin/fish
 	fi
 fi

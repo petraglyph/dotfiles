@@ -45,7 +45,6 @@ software-properties-common
 ssmtp
 tldr
 zathura
-zsh
 "
 printf "\033[1;32m%s\033[0m\n" "[APT] Installing Packages"
 sudo apt-get -y install --no-install-recommends $packages $@

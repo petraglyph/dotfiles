@@ -24,7 +24,7 @@ gnuplot
 htop
 jq
 lf
-lf-zsh-integration
+lf-fish-integration
 neofetch
 neovim
 nethogs
@@ -42,9 +42,8 @@ tldr
 util-linux-user
 zathura
 zathura-plugins-all
-zathura-zsh-completion
+zathura-fish-completion
 zellij
-zsh
 "
 printf "\033[1;32m%s\033[0m\n" "[DNF] Installing Packages"
 sudo dnf -y install --skip-broken $packages $@

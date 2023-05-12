@@ -14,12 +14,22 @@ end
 for bin in $HOME/.local/share/flatpak/exports/bin $HOME/.cargo/bin /usr/local/bin $HOME/.local/bin
 	if ! test -d $bin
 		continue
-	else if string match -q $bin $PATH
+	end
+	if string match -q $bin $PATH
 		continue
 	end
 	set -gpx PATH $bin
 end
-if test (command -v python3)
+for data in $HOME/.local/share/flatpak/exports/share /usr/local/share /usr/share
+	if ! test -d $data
+		continue
+	end
+	if string match -q $data $XDG_DATA_DIRS
+		continue
+	end
+	set -gpx XDG_DATA_DIRS $data
+end
+if command -qv python3
 	if test -z $PYTHONPATH
 		set -l python_str (python3 -V | sed -E -e 's/\.[0-9]+$//' -e 's/^.* /python/')
 		set -gx PYTHONPATH $HOME/.local/lib/$python_str/site-packages
@@ -64,7 +74,7 @@ function fish_prompt
 	end
 
 	# directory
-	set_color --bold white
+	set_color normal
 	printf " %s" (prompt_pwd)
 
 	# git
@@ -107,11 +117,8 @@ function fish_prompt
 	end
 	set_color normal
 end
-function fish_right_prompt
-	# Day 00:00:00
-	date '+%a %T'
-end
 
+# Command style
 set -gx fish_color_param white
 set -gx fish_color_command cyan
 set -gx fish_color_option yellow
