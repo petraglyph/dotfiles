@@ -4,7 +4,7 @@
 
 # settings
 set info size:time
-set dircounts on
+set dircounts true
 set globsearch
 set sortby name
 

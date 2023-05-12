@@ -36,6 +36,16 @@ export PATH=$PATH
 if [ -z "$PYTHONPATH" ] && [ ! -z "$(command -v python3)" ]; then
 	export PYTHONPATH="$HOME/.local/lib/$(python3 -V | sed -E -e 's/\.[0-9]+$//' -e 's/^.* /python/')/site-packages"
 fi
+# Add system local/bin to PATH
+if ! [[ "$PATH" =~ "/usr/local/bin" ]]; then
+	PATH="/usr/local/bin:$PATH"
+fi
+# Add sbin to PATH if root
+if [ "$(id -u)" -eq 0 ]; then
+	if ! [[ "$PATH" =~ "/sbin" ]]; then
+		PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+	fi
+fi
 
 
 # Enable programmable completion features
@@ -75,7 +85,7 @@ fi
 # Prompt
 force_color_prompt=yes
 red='\[\033[1;31m\]'
-blue='\[\033[1;36m\]'
+blue='\[\033[1;34m\]'
 yellow='\[\033[0;33m\]'
 magenta='\[\033[0;35m\]'
 white='\[\033[1;37m\]'
