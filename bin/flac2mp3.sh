@@ -10,7 +10,7 @@ export SCRIPT_CMD="$(basename "$0")"
 
 
 # Check dependencies
-if [ -z $(command -v "ffmpeg") ]; then
+if [ -z "$(command -v ffmpeg)" ]; then
 	echo "Command 'ffmpeg' not found"
 	exit 1
 fi

@@ -14,7 +14,7 @@ if [ -z "$current" ]; then
 fi
 echo "old: $current"
 
-if [ ! $(command -v bc) ]; then
+if [ -z "$(command -v bc)" ]; then
 	echo "Missing dependency 'bc'"
 	exit 1
 fi

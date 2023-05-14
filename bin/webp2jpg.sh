@@ -10,7 +10,7 @@ export SCRIPT_CMD="$(basename "$0")"
 
 
 # Check dependencies
-if [ -z $(command -v "convert") ]; then
+if [ -z "$(command -v convert)" ]; then
 	echo "Command 'convert' not found"
 	exit 1
 fi

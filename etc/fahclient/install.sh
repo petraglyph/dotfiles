@@ -21,14 +21,14 @@ downpkg () {
 }
 
 echo "Installing Folding@Home"
-if [ $(command -v rpm) ]; then
+if [ ! -z "$(command -v rpm)" ]; then
 	PKG_URL="https://download.foldingathome.org/releases/public/release/fahclient/centos-6.7-64bit/v7.6/fahclient-7.6.21-1.x86_64.rpm"
 	downpkg "$PKG_URL" "$TMP_DIR/$(basename $PKG_URL)"
 	if [ $? -ne 0 ]; then
 		exit 1
 	fi
 	sudo rpm -i $TMP_DIR/$(basename $PKG_URL)
-elif [ $(command -v dpkg) ]; then
+elif [ ! -z "$(command -v dpkg)" ]; then
 	PKG_URL="https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.6/fahclient_7.6.21_amd64.deb"
 	downpkg "$PKG_URL" "$TMP_DIR/$(basename $PKG_URL)"
 	if [ $? -ne 0 ]; then

@@ -15,10 +15,6 @@ elif [ ! -z "$(command -v dnf)" ]; then
 
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Configure DNF"
 	if [ ! -f /etc/dnf/dnf.conf ]; then
-		if [ -z "$(command -v dnf)" ]; then
-			printf "\033[1;31m%s\033[0m\n" "DNF not installed"
-			exit 1
-		fi
 		echo "[main]" | sudo tee /etc/dnf/dnf.conf > /dev/null
 	fi
 	if [ -z "$(grep max_parallel_downloads /etc/dnf/dnf.conf)" ]; then

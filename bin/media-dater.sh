@@ -9,7 +9,7 @@ echo 0 > $TMP
 
 
 # Check dependencies
-if [ -z $(command -v "exiftool") ]; then
+if [ -z "$(command -v exiftool)" ]; then
 	echo "Command 'exiftool' not found"
 	exit 1
 fi
