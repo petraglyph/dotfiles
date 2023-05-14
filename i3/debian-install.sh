@@ -9,6 +9,7 @@ fi
 
 packages="
 alacritty
+bluez
 conky
 dunst
 feh
