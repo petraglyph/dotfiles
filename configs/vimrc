@@ -39,7 +39,7 @@ nmap > v>
 
 " Netrw
 let g:netrw_banner = 1
-let g:netrw_liststyle = 1
+let g:netrw_liststyle = 0
 nmap <C-f> :Explore<Enter>
 
 " Spellcheck
