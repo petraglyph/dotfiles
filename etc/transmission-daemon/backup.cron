@@ -3,7 +3,7 @@
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
 RCLONE_USER="penn"
-LOCK_FILE="/var/run/transmission-daemon-backup.cron"
+LOCK_FILE="/var/run/lock/transmission-daemon-backup.cron"
 SOURCE="/var/lib/transmission-daemon/config"
 TARGET="pcloud:archive/backups/$(hostname)-transmission-daemon"
 
@@ -30,6 +30,12 @@ if [ -z "$(sudo -u $RCLONE_USER rclone lsf "$TARGET" 2> /dev/null)" ]; then
 	echo "'$TARGET' not found" >> $LOG
 	exit 1
 fi
+
+if [ ! -d "$SOURCE" ]; then
+	echo "'$SOURCE' not found"
+	exit 1
+fi
+chmod +r -R "$SOURCE"
 
 sudo -u $RCLONE_USER rclone sync $SOURCE $TARGET --exclude "*resume" --log-level INFO 2>> $LOG
 
