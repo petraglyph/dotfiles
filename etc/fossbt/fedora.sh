@@ -26,7 +26,7 @@ curl -s "$BASE_URL" | grep -oE 'href=".*\.torrent"' | sed -e 's/^href="//' -e 's
 	version="$(echo "$url" | grep -oE '[0-9]+(_Beta)?\.torrent$' | sed -E 's/\.[a-z]+$//')"
 	version_num="$(echo "$version" | grep -oE '^[0-9]+')"
 	# Check version is newest or second newest (not counting beta versions)
-	if [ -z "$newest_version" ] && [ ! -z "$(echo "$version" | grep -o 'Beta')" ]; then
+	if [ -z "$newest_version" ] || [ ! -z "$(echo "$version" | grep -o 'Beta')" ]; then
 		newest_version="$version_num"
 	elif [ $(($version_num + 1)) -lt $newest_version ]; then
 		break
