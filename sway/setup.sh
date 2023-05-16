@@ -18,9 +18,6 @@ if [ -z $XDG_DATA_HOME ]; then
 	XDG_DATA_HOME=$HOME/.local/share
 fi
 
-printf "\033[1;32m%s\033[0m\n" "[Sway] Setting up tty1 login"
-echo '[ "$(tty)" = "/dev/tty1" ] && exec sway' > $HOME/.zlogin
-
 # Making necessary directories
 mkdir -p $XDG_CONFIG_HOME/sway
 mkdir -p $XDG_CONFIG_HOME/waybar
@@ -37,3 +34,12 @@ ln -fs $LOC/sway/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
 printf "\033[1;32m%s\033[0m\n" "[Sway] Adding Font"
 mkdir -p $XDG_DATA_HOME/fonts
 cp -f $LOC/sway/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_design_icons.ttf
+
+
+printf "\033[1;32m%s\033[0m\n" "[Sway] Adding tty1 autostart"
+echo '# Start Sway at login
+if status is-login
+        if test -z "$DISPLAY" -a "$XDG_VTNR" = 2
+                sway
+        end
+end' > $HOME/.config/fish/conf.d/sway-autostart.fish
