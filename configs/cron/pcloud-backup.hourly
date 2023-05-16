@@ -4,8 +4,8 @@
 #   https://github.com/pennbauman/dotfiles
 RCLONE_USER="penn"
 SCRIPT_NAME="$(basename "$0" | sed 's/\..*$//')"
-LOCK_FILE="/var/run/$SCRIPT_NAME.cron"
-DIRS="documents downloads other"
+LOCK_FILE="/var/run/lock/$SCRIPT_NAME.cron"
+DIRS="code documents downloads other"
 if [ "$(($(date +'%H') % 6))" -eq 0 ]; then
 	DIRS="$DIRS archive music texts videos"
 fi
@@ -37,6 +37,9 @@ if [ ! -d "$TARGET" ]; then
 fi
 
 for d in $DIRS; do
+	if [ ! -d "$TARGET$d" ]; then
+		continue
+	fi
 	echo "$SOURCE$d -> $TARGET$d" >> $LOG
 	sudo -u $RCLONE_USER rclone sync "$SOURCE$d" "$TARGET$d" --log-level INFO 2>> $LOG
 done
