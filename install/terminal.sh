@@ -67,7 +67,7 @@ fi
 
 
 # Setup fish if available
-if [ ! -z "$(grep -q fish /etc/shells)" ]; then
+if [ ! -z "$(grep fish /etc/shells)" ]; then
 	printf "\033[1;32m%s\033[0m\n" "Enabling fish"
 	if [ "$(basename $SHELL)" != "fish" ]; then
 		chsh -s /usr/bin/fish
