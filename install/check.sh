@@ -6,7 +6,7 @@ LOC="$HOME/.dotfiles"
 COMP="$1"
 
 # Check dotfiles location
-if [ -z "$(dirname $(readlink -f $0) | grep "$HOME/.dotfiles")" ]; then
+if [ -z "$(dirname $(realpath "$0") | grep "$HOME/.dotfiles")" ]; then
 	printf "\033[1;31m%s\033[0m\n" "Move repository to ~/.dotfiles before configuring"
 	exit 1
 fi

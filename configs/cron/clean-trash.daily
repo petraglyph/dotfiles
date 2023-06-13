@@ -10,7 +10,7 @@ if [ $(id -u) -ne 0 ]; then
 fi
 LOG="/var/log/cron/$(basename "$0" | sed 's/\..*$//').log"
 mkdir -m 775 -p $(dirname $LOG)
-echo "[$(date --rfc-3339=seconds)]# $(readlink -f "$0")" >> $LOG
+echo "[$(date --rfc-3339=seconds)]# $(realpath "$0")" >> $LOG
 
 
 if [ -d /root/.trash ]; then

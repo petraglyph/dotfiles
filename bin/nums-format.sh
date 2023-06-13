@@ -57,7 +57,7 @@ if [ $# -gt 0 ]; then
 		exit 0
 	fi
 	if [ -d "$1" ]; then
-		dirformat "$(readlink -f "$1")"
+		dirformat "$(realpath "$1")"
 	else
 		echo "Invalid directory"
 		exit 1

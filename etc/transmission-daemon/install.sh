@@ -16,7 +16,7 @@ else
 	exit 1
 fi
 VAR="/var/lib/transmission-daemon"
-HERE="$(dirname $(readlink -f $0))"
+HERE="$(dirname $(realpath $0))"
 
 # Pause service
 sudo systemctl stop transmission-daemon

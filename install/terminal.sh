@@ -5,7 +5,7 @@
 LOC="$HOME/.dotfiles"
 
 # Check install location
-$(dirname $(readlink -f $0))/check.sh "none"
+$(dirname $(realpath $0))/check.sh "none"
 if [ $? -ne 0 ]; then
 	exit 1
 fi

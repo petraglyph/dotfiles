@@ -9,13 +9,13 @@ COMP=$1
 if [ -z "$COMP" ]; then
 	COMP="$(hostname)"
 fi
-$(dirname $(readlink -f $0))/../install/check.sh "$COMP"
+$(dirname $(realpath $0))/../install/check.sh "$COMP"
 if [ $? -ne 0 ]; then
 	exit 1
 fi
 
 mkdir -p ~/.config/autostart
-for f in $(dirname $(readlink -f $0))/autostart/*; do
+for f in $(dirname $(realpath $0))/autostart/*; do
 	ln -fs $f $HOME/.config/autostart/$(basename $f)
 done
 

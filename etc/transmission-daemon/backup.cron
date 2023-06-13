@@ -18,7 +18,7 @@ if [ -f $LOCK_FILE ]; then
 	exit 0
 fi
 touch $LOCK_FILE
-echo "[$(date --rfc-3339=seconds)]# $(readlink -f "$0")" >> $LOG
+echo "[$(date --rfc-3339=seconds)]# $(realpath "$0")" >> $LOG
 
 
 if [ -z "$(sudo -u $RCLONE_USER rclone listremotes | grep 'pcloud')" ]; then

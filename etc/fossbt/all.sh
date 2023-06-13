@@ -18,7 +18,7 @@ if [ ! -d "$TARGET" ]; then
 	fi
 fi
 
-for f in $(dirname "$(readlink -f "$0")")/*; do
+for f in $(dirname "$(realpath "$0")")/*; do
 	if [ "$(basename "$f")" = "all.sh" ]; then
 		continue
 	fi

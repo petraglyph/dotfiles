@@ -48,7 +48,7 @@ else
 fi
 
 SYS_CONF="/etc/fahclient/config.xml"
-NEW_CONF="$(dirname $(readlink -f $0))/config.xml"
+NEW_CONF="$(dirname $(realpath $0))/config.xml"
 if [ ! -z "$(grep "pennbauman" $SYS_CONF)" ]; then
 	echo "Folding@Home already configured"
 else

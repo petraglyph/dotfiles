@@ -7,7 +7,7 @@ SOURCE="$LOC/bin"
 TARGET="$HOME/.local/bin"
 
 # Check install location
-$(dirname $(readlink -f $0))/check.sh "none"
+$(dirname $(realpath $0))/check.sh "none"
 if [ $? -ne 0 ]; then
 	exit 1
 fi
@@ -16,9 +16,9 @@ mkdir -p "$TARGET"
 # Remove broken symlinks created by this script
 find "$TARGET" -maxdepth 1 -mindepth 1 | while read -r f; do
 	if [ -L "$f" ]; then
-		if [ -z "$(readlink "$f" | grep "$SOURCE")" ]; then
+		if [ -z "$(realpath "$f" | grep "$SOURCE")" ]; then
 			continue
-		elif [ -e "$(readlink "$f")" ]; then
+		elif [ -e "$(realpath "$f")" ]; then
 			continue
 		else
 			rm "$f"
