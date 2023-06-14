@@ -2,20 +2,14 @@
 # Configure Command Line
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 LOC="$HOME/.dotfiles"
 
 # Check install location
 $(dirname $(realpath $0))/check.sh "none"
 if [ $? -ne 0 ]; then
 	exit 1
-fi
-
-# Set ENV variables
-if [ -z $XDG_CONFIG_HOME ]; then
-	XDG_CONFIG_HOME=$HOME/.config
-fi
-if [ -z $XDG_DATA_HOME ]; then
-	XDG_DATA_HOME=$HOME/.local/share
 fi
 
 
@@ -31,9 +25,9 @@ if [ ! -z "$(command -v zsh)" ]; then
 fi
 if [ ! -z "$(command -v fish)" ]; then
 	mkdir -p $XDG_CONFIG_HOME/fish
-	ln -fs $LOC/configs/fish/config.fish $HOME/.config/fish/config.fish
+	ln -fs $LOC/configs/fish/config.fish $XDG_CONFIG_HOME/fish/config.fish
 	for script in $LOC/configs/fish/0*; do
-		ln -fs $script $HOME/.config/fish/conf.d/$(basename $script)
+		ln -fs $script $XDG_CONFIG_HOME/fish/conf.d/$(basename $script)
 	done
 fi
 if [ ! -z "$(command -v git)" ]; then
@@ -51,7 +45,7 @@ if [ ! -z "$(command -v nvim)" ]; then
 	ln -fs $LOC/configs/maia-custom-airline.vim $XDG_DATA_HOME/nvim/site/autoload/airline/themes/maia_custom.vim
 fi
 if [ ! -z "$(command -v ranger)" ]; then
-	rm -rf $HOME/.config/ranger
+	rm -rf $XDG_CONFIG_HOME/ranger
 	ln -fs $LOC/configs/ranger -T $XDG_CONFIG_HOME/ranger
 fi
 if [ ! -z "$(command -v lf)" ]; then

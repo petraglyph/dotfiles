@@ -27,8 +27,6 @@ sh ~/.dotfiles/install/rust.sh
 sh ~/.dotfiles/install/bin.sh
 # Terminal Configuration
 sh ~/.dotfiles/install/terminal.sh
-# Desktop Configuration
-sh ~/.dotfiles/install/desktop.sh
 # Cron Script Installs
 sh ~/.dotfiles/install/cron.sh clean-cache clean-trash dotfiles-backup
 # GNOME Configuration

@@ -2,8 +2,10 @@
 # Configure i3
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 LOC="$HOME/.dotfiles"
-COMP=$1
+COMP="$1"
 
 # Check install location and computer
 $(dirname $(realpath $0))/../install/check.sh "$COMP"
@@ -11,13 +13,6 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-# Set ENV variables
-if [ -z $XDG_CONFIG_HOME ]; then
-	XDG_CONFIG_HOME=$HOME/.config
-fi
-if [ -z $XDG_DATA_HOME ]; then
-	XDG_DATA_HOME=$HOME/.local/share
-fi
 
 # Making necessary directories
 mkdir -p $XDG_CONFIG_HOME/i3
@@ -25,6 +20,9 @@ mkdir -p $XDG_CONFIG_HOME/dunst
 mkdir -p $XDG_CONFIG_HOME/polybar
 mkdir -p $XDG_CONFIG_HOME/rofi
 mkdir -p $XDG_CONFIG_HOME/zathura
+mkdir -p $XDG_CONFIG_HOME/alacritty
+mkdir -p $XDG_CONFIG_HOME/mpd
+mkdir -p $XDG_CONFIG_HOME/ncmpcpp
 mkdir -p $XDG_CONFIG_HOME/gtk-3.0
 mkdir -p $XDG_DATA_HOME/fonts
 
@@ -34,6 +32,11 @@ ln -fs $LOC/i3/configs/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc
 ln -fs $LOC/i3/configs/polybar.ini $XDG_CONFIG_HOME/polybar/config.ini
 ln -fs $LOC/i3/configs/rofi-theme.rasi $XDG_CONFIG_HOME/rofi/config.rasi
 ln -fs $LOC/i3/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
+ln -fs $LOC/configs/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+ln -fs $LOC/configs/mpd.conf $XDG_CONFIG_HOME/mpd/mpd.conf
+ln -fs $LOC/configs/ncmpcpp-bindings $XDG_CONFIG_HOME/ncmpcpp/bindings
+ln -fs $LOC/configs/ncmpcpp-config $XDG_CONFIG_HOME/ncmpcpp/config
+ln -fs $LOC/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
 ln -fs $LOC/i3/configs/xinitrc $HOME/.xinitrc
 ln -fs $LOC/i3/configs/gtk-settings.ini $XDG_CONFIG_HOME/gtk-3.0/settings.ini
 ln -fs $LOC/$COMP/Xresources $HOME/.Xresources
@@ -51,4 +54,4 @@ if status is-login
         if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
                 startx
         end
-end' > $HOME/.config/fish/conf.d/startx.fish
+end' > $XDG_CONFIG_HOME/fish/conf.d/startx.fish

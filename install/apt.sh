@@ -16,11 +16,9 @@ packages="
 bc
 clang
 curl
-distrobox
 feh
 ffmpeg
 fish
-flatpak
 gcc
 git
 git-email
@@ -30,11 +28,6 @@ imagemagick
 jq
 lf
 libimage-exiftool-perl
-mpc
-mpd
-mpv
-ncmpcpp
-ncmpcpp
 neovim
 nethogs
 python3-pip
@@ -44,8 +37,6 @@ rclone
 software-properties-common
 ssmtp
 tldr
-wildmidi
-zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[APT] Installing Packages"
 sudo apt-get -y install --no-install-recommends $packages $@

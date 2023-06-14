@@ -1,15 +1,20 @@
 #!/bin/sh
-# General Fedora Installs
+# GNOME Fedora Installs
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
 
 packages="
 adw-gtk3-theme
 alacritty
+distrobox
+flatpak
 gnome-console
 gnome-tweaks
 lf
 qalc
+zathura
+zathura-plugins-all
+zathura-fish-completion
 "
 
 if [ ! -z "$(command -v rpm-ostree)" ]; then

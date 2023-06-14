@@ -29,8 +29,6 @@ sh ~/.dotfiles/install/bin.sh
 sh ~/.dotfiles/install/steam.sh
 # Terminal Configuration
 sh ~/.dotfiles/install/terminal.sh
-# Desktop Configuration
-sh ~/.dotfiles/install/desktop.sh
 # Cron Script Installs
 sh ~/.dotfiles/install/cron.sh clean-cache dotfiles-backup pcloud-backup
 # i3 Configuration

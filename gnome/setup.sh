@@ -2,22 +2,27 @@
 # Configure GNOME
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 LOC="$HOME/.dotfiles"
-COMP=$1
+COMP="${1:-$(hostname)}"
 
 # Check install location and computer
-if [ -z "$COMP" ]; then
-	COMP="$(hostname)"
-fi
 $(dirname $(realpath $0))/../install/check.sh "$COMP"
 if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-mkdir -p ~/.config/autostart
+
+printf "\033[1;32m%s\033[0m\n" "[GNOME] Linking Configs"
+mkdir -p $XDG_CONFIG_HOME/alacritty
+ln -fs $LOC/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
+ln -fs $LOC/configs/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+
+mkdir -p $XDG_CONFIG_HOME/autostart
 for f in $(dirname $(realpath $0))/autostart/*; do
-	ln -fs $f $HOME/.config/autostart/$(basename $f)
+	ln -fs $f $XDG_CONFIG_HOME/autostart/$(basename $f)
 done
+
 
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Configuring"
 # Set theme

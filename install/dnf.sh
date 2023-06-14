@@ -16,9 +16,7 @@ android-tools
 clang
 cronie
 dash
-distrobox
 ffmpeg
-flatpak
 git-email
 gnuplot
 htop
@@ -29,19 +27,14 @@ neofetch
 neovim
 nethogs
 nodejs
-openvpn
 perl-Image-ExifTool
 python3-pip
 qalc
 rclone
-sassc
 sqlite
 ssmtp
 tldr
 util-linux-user
-zathura
-zathura-plugins-all
-zathura-fish-completion
 zellij
 "
 printf "\033[1;32m%s\033[0m\n" "[DNF] Installing Packages"

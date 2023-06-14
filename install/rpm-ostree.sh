@@ -15,7 +15,6 @@ packages="
 clang
 cronie
 dash
-distrobox
 dnf
 dnf5
 feh

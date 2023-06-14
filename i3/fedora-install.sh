@@ -18,18 +18,20 @@ copr pennbauman/ports
 
 
 packages="
-mpc
-mpd
-ncmpcpp
 alacritty
 conky
+distrobox
 dmenu
 dunst
 feh
+flatpak
 i3
 i3lock-color
 i3status
 lxappearance
+mpc
+mpd
+ncmpcpp
 pavucontrol
 picom
 polybar
@@ -39,6 +41,7 @@ scrot
 stalonetray
 xidlehook
 xset
+zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[i3 Fedora] Installing Packages"
 sudo dnf -y install $packages --skip-broken --setopt=install_weak_deps=False

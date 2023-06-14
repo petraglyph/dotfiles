@@ -17,18 +17,16 @@ fi
 
 # Fedora Installs
 sh ~/.dotfiles/install/fedora.sh
-# Flatpak Installs
-sh ~/.dotfiles/install/flatpak.sh io.mpv.Mpv
 # Sway Fedora Installs
 sh ~/.dotfiles/sway/fedora-install.sh
+# Flatpak Installs
+sh ~/.dotfiles/install/flatpak.sh io.mpv.Mpv
 # Rust Install
 sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs
 sh ~/.dotfiles/install/bin.sh
 # Terminal Configuration
 sh ~/.dotfiles/install/terminal.sh
-# Desktop Configuration
-sh ~/.dotfiles/install/desktop.sh
 # Cron Script Installs
 sh ~/.dotfiles/install/cron.sh clean-cache clean-trash dotfiles-backup
 # Sway Configuration

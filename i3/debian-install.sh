@@ -11,9 +11,16 @@ packages="
 alacritty
 bluez
 conky
+distrobox
 dunst
 feh
+flatpak
 i3-wm
+mpc
+mpd
+mpv
+ncmpcpp
+ncmpcpp
 picom
 polybar
 pulseaudio-utils
@@ -21,9 +28,11 @@ redshift
 rofi
 scrot
 trayer
+wildmidi
 wireplumber
 x11-xserver-utils
 xinit
+zathura
 zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[i3 Debian] Install Packages"

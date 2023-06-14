@@ -9,15 +9,27 @@ fi
 
 packages="
 alacritty
-bluez
 bc
+bluez
+distrobox
+flatpak
 gammastep
+grim
+mpc
+mpd
+mpv
+ncmpcpp
+ncmpcpp
+pulseaudio-utils
 sway
 swaybg
 swayidle
 swaylock
 waybar
+wildmidi
+wireplumber
 wofi
+zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[Sway Debian] Install Packages"
-sudo apt -y install $packages
+sudo apt-get -y install $packages
