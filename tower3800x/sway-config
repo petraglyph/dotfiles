@@ -1,4 +1,4 @@
-## Sway Config
+## tower3800x Sway Config
 #   Penn Bauman <me@pennbauman.com>
 
 
@@ -20,7 +20,7 @@ set $right l
 # config location
 set $loc "$HOME/.dotfiles"
 # computer name
-set $name "hps2020"
+set $name "tower3800x"
 
 
 
@@ -36,20 +36,14 @@ client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
 client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
 # gaps
-gaps inner 15
-gaps outer 0
+gaps inner 13
+gaps outer -2
 smart_gaps on
 smart_borders on
 
 ## Displays
 output * bg $loc/$name/background.jpg fill
-output eDP-1 scale 2
-output eDP-1 pos 0 1080 res 3840x2160
-# hdmi
-output DP-1 scale 1
-output DP-1 pos 0 0 res 1920x1080
-output DP-2 scale 1
-output DP-2 pos 0 0 res 1920x1080
+output * scale 2
 
 ## Special Window Configurations
 for_window [app_id="Alacritty" title="scratch"] move scratchpad
@@ -86,7 +80,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-set $wsHDMI "HDMI"
 # switch to workspace
 bindsym $super+1 workspace $ws1
 bindsym $super+2 workspace $ws2
@@ -98,7 +91,6 @@ bindsym $super+7 workspace $ws7
 bindsym $super+8 workspace $ws8
 bindsym $super+9 workspace $ws9
 bindsym $super+0 workspace $ws10
-bindsym $super+m workspace $wsHDMI
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace $ws1
 bindsym $super+Shift+2 move container to workspace $ws2
@@ -110,27 +102,12 @@ bindsym $super+Shift+7 move container to workspace $ws7
 bindsym $super+Shift+8 move container to workspace $ws8
 bindsym $super+Shift+9 move container to workspace $ws9
 bindsym $super+Shift+0 move container to workspace $ws10
-bindsym $super+Shift+m move container to workspace $wsHDMI
 # workspace assignments
 assign [app_id="firefox"] $ws2
 assign [app_id="Google-chrome"] $ws3
 #assign [class="Gimp"] $ws7
 #assign [class="Inkscape"] $ws7
-#assign [class="Transmission-gtk"] $ws9
 assign [app_id="Alacritty" title="ncmpcpp"] $ws10
-# workspace monitors
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output eDP-1
-workspace $ws6 output eDP-1
-workspace $ws7 output eDP-1
-workspace $ws8 output eDP-1
-workspace $ws9 output eDP-1
-workspace $ws10 output eDP-1
-workspace $wsHDMI output DP-1
-workspace $wsHDMI output DP-2
 
 
 
@@ -195,20 +172,20 @@ bindsym $super+c exec $term -t float -e qalc
 # Custom script runner
 bindsym $super+x exec $term -t float -e sh $HOME/documents/other/linux/scripts/quick-run.sh
 # Show/hide tray
-#bindsym $super+p exec sh $loc/i3/scripts/stalonetray.sh
+#bindsym $super+p exec sh $loc/i3/scripts/trayer.sh
 
 
 ## System Buttons
 # volume controls
-bindsym XF86AudioRaiseVolume exec amixer -D pipewire sset Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -D pipewire sset Master 5%- unmute
-bindsym XF86AudioMute exec amixer -D pipewire sset Master toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # volume controls
-bindsym $super+Up exec amixer -D pipewire sset Master 5%+ unmute
-bindsym $super+Down exec amixer -D pipewire sset Master 5%- unmute
-bindsym $super+Shift+Up exec amixer -D pipewire sset Master 2%+ unmute
-bindsym $super+Shift+Down exec amixer -D pipewire sset Master 2%- unmute
-bindsym $super+Delete exec amixer -D pipewire sset Master toggle
+bindsym $super+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Shift+Up exec pactl set-sink-volume @DEFAULT_SINK@ +2% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Shift+Down exec pactl set-sink-volume @DEFAULT_SINK@ -2% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Delete exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # media controls
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
@@ -238,31 +215,29 @@ bindsym $super+Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc_grim.png'
 
 ## Folder Opening
 # open ~/
-bindsym $super+f exec $term -e ranger --selectfile=$HOME/documents $HOME/documents $HOME/documents
+bindsym $super+f exec $term -e lf $HOME
 # open ~/downloads
-bindsym $super+d exec $term -e ranger $HOME/downloads $HOME/documents $HOME/documents
+bindsym $super+d exec $term -e lf $HOME/downloads
 # open ~/videos
-bindsym $super+v exec $term -e ranger $HOME/videos $HOME/documents $HOME/documents
+bindsym $super+v exec $term -e lf $HOME/videos
 # open code
-bindsym $super+e exec $term -e ranger $HOME/documents/code $HOME/documents $HOME/documents
+bindsym $super+e exec $term -e lf $HOME/documents/code
+# open /tank
+bindsym $super+Shift+f exec $term -e lf /tank
 # open /
-bindsym $super+Shift+r exec $term -e ranger / / $HOME/documents
+bindsym $super+Shift+r exec $term -e lf /
 # open dnd
-bindsym $super+Shift+d exec $term -e ranger $HOME/documents/dnd $HOME/documents/dnd/5e-books $HOME/documents
-# open 5e-books
-bindsym $super+Shift+b exec $term -e ranger $HOME/documents/dnd/5e-books $HOME/documents/dnd $HOME/documents
+bindsym $super+Shift+d exec $term -e lf $HOME/documents/dnd
 # open pCloudDrive
-bindsym $super+Shift+c exec $term -e ranger $HOME/pCloudDrive $HOME/documents $HOME/documents
+bindsym $super+Shift+c exec $term -e lf $HOME/pCloudDrive
 # open site
-bindsym $super+Shift+v exec $term -e ranger $HOME/documents/code/site $HOME/documents $HOME/documents
-# open college
-bindsym $super+Shift+e exec $term -e ranger $HOME/documents/college $HOME/documents $HOME/documents
+bindsym $super+Shift+v exec $term -e lf $HOME/documents/code/site
 # open linux
-bindsym $super+Shift+x exec $term -e ranger $HOME/documents/other/linux $HOME/documents $HOME/documents
+bindsym $super+Shift+x exec $term -e lf $HOME/documents/other/linux
 # open images
-bindsym $super+i exec $term -e ranger $HOME/documents/images $HOME/documents $HOME/documents
+bindsym $super+i exec $term -e lf $HOME/documents/images
 # open notes
-bindsym $super+Shift+n exec $term -e ranger $HOME/documents/other/notes $HOME/documents $HOME/documents
+bindsym $super+Shift+n exec $term -e lf $HOME/documents/other/notes
 
 
 
@@ -271,8 +246,8 @@ bindsym $super+Shift+n exec $term -e ranger $HOME/documents/other/notes $HOME/do
 # user windows
 exec $term
 exec $term
-exec $term -t scratch
-exec firefox
+exec $term --title="scratch"
+exec org.mozilla.firefox
 exec sh $loc/sway/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
 exec_always swayidle -w \
@@ -284,9 +259,7 @@ exec_always swayidle -w \
 #exec dunst
 # files and background processes
 exec pcloud
-#exec --no-startup-id /usr/libexec/kdeconnectd
 exec sh $loc/sway/scripts/dimlight.sh
-exec sh $loc/sway/scripts/network-start.sh
 
 ## Run on Restart
-exec_always killall waybar; waybar
+exec_always kill $(pgrep waybar); waybar

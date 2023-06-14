@@ -9,12 +9,14 @@ fi
 
 packages="
 alacritty
+at-spi2-core
 bc
 bluez
 distrobox
 flatpak
 gammastep
 grim
+mako-notifier
 mpc
 mpd
 mpv
@@ -33,3 +35,6 @@ zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[Sway Debian] Install Packages"
 sudo apt-get -y install $packages
+
+printf "\033[1;32m%s\033[0m\n" "[Sway Debian] Removing Packages"
+sudo apt-get -y remove xdg-desktop-portal-gtk

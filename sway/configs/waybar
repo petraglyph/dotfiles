@@ -4,7 +4,7 @@
 	"height": 30,
 	"modules-left": ["sway/workspaces", "sway/mode", "mpd"],
 	"modules-center": ["clock"],
-	"modules-right": ["network", "pulseaudio", "memory", "cpu", "battery"],
+	"modules-right": ["network", "pulseaudio", "memory", "cpu"],
 
 
 	// Left Modules
