@@ -31,6 +31,12 @@ $A2B_USAGE_TEXT"
 
 # Check command line arguments
 if [ $# -eq 0 ]; then
+	echo "$(basename "$0"): Missing script"
+	exit 1
+elif [ ! -x $1 ]; then
+	echo "$(basename "$0"): Script '$1' is not executable"
+	exit 1
+elif [ $# -eq 1 ]; then
 	echo "$A2B_HELP_TEXT"
 	exit 0
 else
@@ -101,7 +107,7 @@ find "$A2B_SOURCE" -maxdepth 1 -name "*$SOURCE_END" | sort > $TMP
 while true; do
 	# Get next file name
 	f="$(cat $TMP | head -n 1)"
-	tail -n +2 $TMP | sponge $TMP
+	sed -i '1d' $TMP
 
 	if [ -z "$f" ]; then
 		break
@@ -133,8 +139,6 @@ while true; do
 			mv "$f" "$A2B_BACKUP_DIR"
 		fi
 	fi
-
-	echo
 done
 
 rm -f $TMP
