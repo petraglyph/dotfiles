@@ -21,4 +21,4 @@ waybar
 zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[Sway Fedora] Install Packages"
-sudo dnf -y install $packages --skip-broken
+sudo dnf -y install $packages

@@ -38,4 +38,4 @@ util-linux-user
 zellij
 "
 printf "\033[1;32m%s\033[0m\n" "[DNF] Installing Packages"
-sudo dnf -y install --skip-broken $packages $@
+sudo dnf -y install $packages $@

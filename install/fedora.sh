@@ -3,14 +3,22 @@
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
 
+copradd () {
+	url="https://copr.fedorainfracloud.org/coprs/$1/$2/repo/fedora-/"
+	file="/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:$1:$2.repo"
+	if [ ! -f "$file" ]; then
+		curl -s "$url" | sudo tee "$file" > /dev/null
+	fi
+}
+
 if [ ! -z "$(command -v rpm-ostree)" ]; then
 	printf "\033[1;34m%s\033[0m\n" "[Fedora] OSTree packaging detected"
 
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling Copr repositories"
-	curl -s "https://copr.fedorainfracloud.org/coprs/pennbauman/ports/repo/fedora-/" | sudo tee /etc/yum.repos.d/pennbauman-ports.repo > /dev/null
+	copradd pennbauman ports
 
 	$(dirname $0)/rpm-ostree.sh
-elif [ ! -z "$(command -v dnf)" ]; then
+elif [ ! -z "$(command -v dnf-3)" ]; then
 	printf "\033[1;34m%s\033[0m\n" "[Fedora] Traditional packaging detected"
 
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Configure DNF"
@@ -25,25 +33,23 @@ elif [ ! -z "$(command -v dnf)" ]; then
 	fi
 
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling Copr repositories"
-	copr() {
-		result=$(sudo dnf -y copr enable $1 2>&1 | tail -1)
-		if [ "$result" != "Bugzilla. In case of problems, contact the owner of this repository." ]; then
-			echo $result
-		fi
-	}
-	copr pennbauman/ports
+	copradd pennbauman ports
 
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling RPM Fusion"
-	sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+	sudo dnf-3 -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-	$(dirname $0)/dnf.sh fedora-packager
+	$(dirname $0)/dnf.sh
+elif [ ! -z "$(command -v dnf5)" ]; then
+	printf "\033[1;34m%s\033[0m\n" "[Fedora] Traditional packaging detected"
+
+	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling Copr repositories"
+	copradd pennbauman ports
+
+	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling RPM Fusion"
+	sudo dnf5 -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+	$(dirname $0)/dnf.sh
 else
 	printf "\033[1;31m%s\033[0m\n" "[Fedora] Package management not detected"
 	exit 1
 fi
-
-
-
-
-
-

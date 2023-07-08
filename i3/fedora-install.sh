@@ -2,19 +2,16 @@
 # i3 Fedora Installs
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
-if [ -z "$(command -v dnf)" ]; then
+if [ -z "$(command -v dnf-3)" ]; then
 	printf "\033[1;31m%s\033[0m\n" "DNF not installed"
 	exit 1
 fi
 
 printf "\033[1;32m%s\033[0m\n" "[i3 Fedora] Enabling copr Repositories"
-copr() {
-	result=$(sudo dnf -y copr enable $1 2>&1 | tail -1)
-	if [ "$result" != "Bugzilla. In case of problems, contact the owner of this repository." ]; then
-		echo $result
-	fi
-}
-copr pennbauman/ports
+result=$(sudo dnf-3 -y copr enable pennbauman/ports 2>&1 | tail -1)
+if [ "$result" != "Bugzilla. In case of problems, contact the owner of this repository." ]; then
+	echo $result
+fi
 
 
 packages="
@@ -44,4 +41,4 @@ xset
 zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[i3 Fedora] Installing Packages"
-sudo dnf -y install $packages --skip-broken --setopt=install_weak_deps=False
+sudo dnf-3 -y install $packages --skip-broken --setopt=install_weak_deps=False

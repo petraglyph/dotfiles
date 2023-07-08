@@ -26,7 +26,7 @@ elif [ ! -z "$(command -v dnf)" ]; then
 	printf "\033[1;34m%s\033[0m\n" "[GNOME Fedora] Traditional packaging detected"
 
 	printf "\033[1;32m%s\033[0m\n" "[GNOME Fedora] Installing Packages"
-	sudo dnf -y install $packages --skip-broken
+	sudo dnf -y install $packages
 else
 	printf "\033[1;31m%s\033[0m\n" "[GNOME Fedora] Package management not detected"
 	exit 1
