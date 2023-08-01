@@ -2,9 +2,8 @@
 # Setup Raspbian Image and/or Write to SD Card
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
-CACHE_DIR="$HOME/.cache/raspbian"
-MNT_POINT=$(mktemp -d)
-TMP_FILE=$(mktemp)
+NAME_CLI="$(basename "$0" | sed 's/\..*$//')"
+CACHE_DIR="$HOME/.cache/raspios"
 HELP_TEXT="Raspbian Image Setup Script
 
   $ $(basename $0) <options...>
@@ -15,11 +14,11 @@ Options:
   --dev [path]         Device to write image onto
   --autodownload, -d   Automatically download a Raspbian image in necessary
   --image, -i [file]   Specify local Raspbian image to write
-  --all, -a            Preform all manual configurations
+  --all                Preform all manual configurations
   --no, -n             Do not ask to preform manual configurations
   --config, -c [file]  Configuration file to autofill settings
-  --armhf, -32         Use the 32-bit version of Raspbian as default image
-  --arm64, -64         Use the 64-bit version of Raspbian as default image
+  --type, -t [TYPE]    Raspbian type (std/raspios, lite/raspios_lite, or full/raspios_full)
+  --arch, -a [ARCH]    Raspbian architecture (armhf/32 or arm64/64)
 
 Configuration File Settings:
   USER_ID=\"username\"        Default user on system
@@ -48,8 +47,8 @@ IMAGE=""
 ALL="no"
 NO="no"
 CONFIG=""
-ARM64="no"
-ARM32="no"
+TYPE="std"
+ARCH="armhf"
 
 # Read command line options
 if [ $# -gt 0 ]; then
@@ -60,6 +59,8 @@ if [ $# -gt 0 ]; then
 				--image|-i) IMAGE="$arg" ;;
 				--dev) DISK="$arg" ;;
 				--config|-c) CONFIG="$arg" ;;
+				--type|-t) TYPE="$arg" ;;
+				--arch|-a) ARCH="$arg" ;;
 				*) echo "UNREACHABLE CODE ($$GET_VALUE case)"; exit 1 ;;
 			esac
 			GET_VALUE=""
@@ -76,11 +77,11 @@ if [ $# -gt 0 ]; then
 			--dev) GET_VALUE="$arg" ;;
 			--autodownload|-d) AUTODOWNLOAD="YES" ;;
 			--image|-i) GET_VALUE="$arg" ;;
-			--all|-a) ALL="YES" ;;
+			--all) ALL="YES" ;;
 			--no|-n) NO="YES" ;;
 			--config|-c) GET_VALUE="$arg" ;;
-			--arm64|-64) ARM64="YES" ;;
-			--armhf|-32) ARM32="YES" ;;
+			--type|-t) GET_VALUE="$arg" ;;
+			--arch|-a) GET_VALUE="$arg" ;;
 			*) echo "! Unknown arguement '$arg'"
 				exit 1 ;;
 		esac
@@ -91,6 +92,8 @@ if [ $# -gt 0 ]; then
 		--image|-i) echo "! Missing image file for '$GET_VALUE' option" ; exit 1 ;;
 		--dev) echo "! Missing path file for '$GET_VALUE' option" ; exit 1 ;;
 		--config|-c) echo "! Missing config file for '$GET_VALUE' option" ; exit 1 ;;
+		--type|-t) echo "! Missing OS type for '$GET_VALUE' option" ; exit 1 ;;
+		--arch|-a) echo "! Missing architecture for '$GET_VALUE' option" ; exit 1 ;;
 		*) echo "UNREACHABLE CODE ($$GET_VALUE case)"; exit 1 ;;
 	esac
 fi
@@ -98,78 +101,76 @@ if [ "$ALL" = "YES" ] && [ "$NO" = "YES" ]; then
 	echo "! Cannot specify both --all and --no, they conflict"
 	exit 1
 fi
-if [ "$ARM64" = "YES" ] && [ "$ARM32" = "YES" ]; then
-	echo "! Cannot specify both --arm64 and --armhf, they conflict"
-	exit 1
-fi
 
-# Check for image to write, autodownload if necessary
+# Check raspbian type
+case $TYPE in
+	std|standard|raspios) TYPE="raspios" ;;
+	lite|raspios_lite) TYPE="raspios_lite" ;;
+	full|raspios_full) TYPE="raspios_full" ;;
+	*) echo "! Unknown OS type '$TYPE'" ; exit 1 ;;
+esac
+# Check architecture
+case $ARCH in
+	armhf|hf|32) ARCH="armhf" ;;
+	arm64|64|aarch64) ARCH="arm64" ;;
+	*) echo "! Unknown architecture '$ARCH'" ; exit 1 ;;
+esac
+
+
 if [ "$WRITE" = "YES" ]; then
+	# Check for image to write, autodownload if necessary
 	if [ -z "$IMAGE" ]; then
-		if [ ! "$AUTODOWNLOAD" = "YES" ]; then
-			echo "No image provided for writing to SD card (--image option is missing)"
-			question="Would you like to download Raspbian? [y/n] "
-			while true; do
-				read -p "$question" c
-				case $c in
-					y|Y|yes) break ;;
-					n|N|no) echo "! No image available to write"
-						exit 0 ;;
-					*) echo "  Invalid option, please use 'y' or 'n'" ;;
-				esac
-				question="Download Raspbian? [y/n] "
-			done
-		fi
+		base_url="https://downloads.raspberrypi.org/${TYPE}_${ARCH}/images/"
+		release="$(curl -s "$base_url" | grep -oE 'href="[-_A-Za-z0-9\/]+"' | tail -n 1 | sed -e 's/^href="//' -e 's/"$//')"
+		image="$(curl -s "$base_url$release" | grep -oE 'href="[-_.A-Za-z0-9]+\.img\.xz"' | sed -e 's/^href="//' -e 's/"$//')"
+		image_url="$base_url$release$image"
+		image_compressed="$CACHE_DIR/$(basename $image_url)"
+		image_file=$(echo $image_compressed | sed 's/\.xz$//')
 
-		# Default image from https://www.raspberrypi.com/software/operating-systems
-		if [ "$ARM64" = "no" ] && [ "$ARM32" = "no" ]; then
-			question="Would you like to install 32-bit or 64-bit Raspbian? [64/32/quit] "
-			while true; do
-				read -p "$question" c
-				case $c in
-					64) ARM64="YES" ; break ;;
-					32) ARM32="YES" ; break ;;
-					q|Q|quit) exit 0 ;;
-					*) echo "  Invalid option, please use '64', '32', or 'q'" ;;
-				esac
-				question="32-bit or 64-bit Raspbian? [64/32] "
-			done
-		fi
-		if [ "$ARM64" = "YES" ]; then
-			img_url="https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2022-09-26/2022-09-22-raspios-bullseye-arm64-lite.img.xz"
-		elif [ "$ARM32" = "YES" ]; then
-			img_url="https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2022-09-26/2022-09-22-raspios-bullseye-armhf-lite.img.xz"
-		else
-			echo "! Unknown architecture selected"
-			exit 1
-		fi
-		compressed_img="$CACHE_DIR/$(basename $img_url)"
-		IMAGE=$(echo $compressed_img | sed 's/\.xz$//')
 
 		# Download image if necessary
-		if [ ! -f $IMAGE ]; then
-			echo "> Downloading Raspbian image"
+		if [ ! -f $image_file ]; then
+			if [ ! -f $image_compressed ]; then
+				if [ ! "$AUTODOWNLOAD" = "YES" ]; then
+					echo "No image provided for writing to SD card (--image option is missing)"
+					question="Would you like to download Raspbian? [y/n] "
+					while true; do
+						read -p "$question" c
+						case $c in
+							y|Y|yes) break ;;
+							n|N|no) echo "No image available to write" 1>&2
+								exit 0 ;;
+							*) echo "  Invalid option, please use 'y' or 'n'" ;;
+						esac
+						question="Download Raspbian? [y/n] "
+					done
+				fi
 
-			mkdir -p $CACHE_DIR
-			wget -q --show-progress $img_url -O $compressed_img
-			if [ $? -ne 0 ]; then
-				rm -f $compressed_img
-				echo "! Error downloading $img_url"
-				exit 1
+				echo "Downloading Raspbian image"
+
+				mkdir -p $CACHE_DIR
+				wget -q --show-progress $image_url -O $image_compressed
+				if [ $? -ne 0 ]; then
+					rm -f $image_compressed
+					echo "Error downloading $image_url" 1>&2
+					exit 1
+				fi
 			fi
-			xz -dv $compressed_img
+
+			xz -dv $image_compressed
 			if [ $? -eq 0 ]; then
-				rm -f $compressed_img
+				rm -f $image_compressed
 			else
-				rm -f $IMAGE
-				echo "! Error decompressing ~${compressed_img#$HOME}"
+				rm -f $image_file
+				echo "! Error decompressing ~${image_compressed#$HOME}"
 				exit 1
 			fi
 			echo
-			echo "> Image downloaded ~${IMAGE#$HOME}"
+			echo "> Image downloaded ~${image_file#$HOME}"
 		else
-			echo "> Image found at ~${IMAGE#$HOME}"
+			echo "> Image found at ~${image_file#$HOME}"
 		fi
+		IMAGE="$image_file"
 	else
 		if [ ! -f "$IMAGE" ]; then
 			echo "! Cannot file image file $IMAGE"
@@ -178,7 +179,6 @@ if [ "$WRITE" = "YES" ]; then
 	fi
 	touch $IMAGE
 fi
-#echo "image: $IMAGE"
 
 
 # Check for SD card to manipulate
@@ -208,6 +208,7 @@ while [ $i -lt 10 ]; do
 done
 #echo "disk: $DISK"
 
+MNT_POINT=$(mktemp -d "/tmp/$NAME_CLI-mnt-XXXX")
 
 # Write image or confirm SD card has raspbian
 if [ "$WRITE" = "YES" ]; then
@@ -215,6 +216,7 @@ if [ "$WRITE" = "YES" ]; then
 	sudo dd if="$IMAGE" of="$DISK" bs=4M status=progress conv=fsync
 	if [ $? -ne 0 ]; then
 		echo "! Error writing image to $DISK"
+		rm -rf $MNT_POINT
 		exit 1
 	fi
 	echo "> Image written to SD CARD"
@@ -222,12 +224,14 @@ if [ "$WRITE" = "YES" ]; then
 else
 	if [ ! -e ${DISK}p2 ]; then
 		echo "! SD card does not contain raspbian"
+		rm -rf $MNT_POINT
 		exit 1
 	fi
 	sudo mount ${DISK}p2 $MNT_POINT
 	if [ ! -e $MNT_POINT/usr/bin/raspi-config ]; then
 		echo "! SD card does not contain raspbian"
 		sudo umount $MNT_POINT
+		rm -rf $MNT_POINT
 		exit 1
 	fi
 	sudo umount $MNT_POINT
@@ -250,23 +254,26 @@ if [ "$NO" = "YES" ]; then
 fi
 # Read configuration file
 if [ ! -z $CONFIG ]; then
+	TMP_FILE=$(mktemp "/tmp/$NAME_CLI-conf-XXXX")
 	sed -e '/^[\t ]*\(#.*\|\)$/d' -e 's/\(^[\t ]*\|[\t ]*$\)//g' $CONFIG > $TMP_FILE
 	if [ ! -z "$(grep -vE "^[a-zA-Z_-]+=(\".*\"|'.*')$" $TMP_FILE)" ]; then
 		echo "! Invalid configuration file line:"
 		echo "$(grep -vE "^[a-zA-Z_-]+=(\".*\"|'.*')$" $TMP_FILE | head -n 1)"
+		rm -rf $TMP_FILE $MNT_POINT
 		exit 1
 	fi
 	WIFI_SSID=$(grep -E '^WIFI_SSID=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
 	WIFI_PASSWD=$(grep -E '^WIFI_PASSWD=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
-	if [ ! -z $WIFI_SSID$WIFI_PASSWD ]; then
+	if [ ! -z "$WIFI_SSID$WIFI_PASSWD" ]; then
 		WIFI_SETUP="YES"
 	fi
 	echo "WIFI_SSID='$WIFI_SSID' WIFI_PASSWD='$WIFI_PASSWD'"
 	USER_ID=$(grep -E '^USER_ID=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
 	USER_PASSWD=$(grep -E '^USER_PASSWD=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
-	if [ ! -z $USER_PASSWD ]; then
+	if [ ! -z "$USER_PASSWD" ]; then
 		USER_SETUP="YES"
 	fi
+	rm -f $TMP_FILE
 	echo "USER_ID='$USER_ID' USER_PASSWD='$USER_PASSWD'"
 fi
 #echo "USER_SETUP='$USER_SETUP' WIFI_SETUP='$WIFI_SETUP' SSH_SETUP='$SSH_SETUP'"
@@ -275,11 +282,13 @@ fi
 # Mount raspbian boot partition
 if [ ! -e ${DISK}p1 ]; then
 	echo "! Could not find boot partition ${DISK}p1"
+	rm -rf $MNT_POINT
 	exit 1
 fi
 sudo mount -o umask=0000 ${DISK}p1 $MNT_POINT
 if [ $? -ne 0 ]; then
 	echo "! Could not mount ${DISK}p1"
+	rm -rf $MNT_POINT
 	exit 1
 fi
 
@@ -333,6 +342,7 @@ update_config=1" >> $MNT_POINT/wpa_supplicant.conf
 	if [ $? -ne 0 ]; then
 		echo "! Wifi Setup Failed"
 		sudo umount $MNT_POINT
+		rm -rf $MNT_POINT
 		exit 1
 	fi
 	echo "> WiFi setup complete"
