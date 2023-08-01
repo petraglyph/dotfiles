@@ -16,7 +16,7 @@ fi
 
 
 # Debian Installs
-sh ~/.dotfiles/install/debian.sh
+sh ~/.dotfiles/install/debian.sh extra
 # i3 Debian Installs
 sh ~/.dotfiles/i3/debian-install.sh
 # Flatpak Installs

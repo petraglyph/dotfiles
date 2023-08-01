@@ -12,28 +12,19 @@ printf "\033[1;32m%s\033[0m\n" "[DNF] Updating"
 sudo dnf -y upgrade
 
 packages="
-android-tools
-clang
-cronie
+bc
+curl
 dash
-ffmpeg
-git-email
-gnuplot
+fish
+gcc
+git
 htop
-jq
 lf
 lf-fish-integration
-neofetch
 neovim
-nethogs
-nodejs
-perl-Image-ExifTool
-python3-pip
-qalc
-rclone
+openssh-clients
+rsync
 sqlite
-ssmtp
-tldr
 util-linux-user
 zellij
 "

@@ -16,7 +16,7 @@ fi
 
 
 # Fedora Installs
-sh ~/.dotfiles/install/fedora.sh
+sh ~/.dotfiles/install/fedora.sh extra
 # GNOME Fedora Installs
 sh ~/.dotfiles/gnome/fedora-install.sh
 # Flatpak Installs

@@ -18,5 +18,9 @@ if [ ! -f "$BACKPORTS_LIST" ]; then
 deb-src http://deb.debian.org/debian $codename-backports $REPO_KINDS" | sudo tee "$BACKPORTS_LIST" > /dev/null
 fi
 
-
-$(dirname $0)/apt.sh
+# Install packages
+if [ "$1" = "extra" ]; then
+	$(dirname $0)/apt-extra.sh
+else
+	$(dirname $0)/apt.sh
+fi
