@@ -19,6 +19,7 @@ Options:
   --config, -c [file]  Configuration file to autofill settings
   --type, -t [TYPE]    Raspbian type (std/raspios, lite/raspios_lite, or full/raspios_full)
   --arch, -a [ARCH]    Raspbian architecture (armhf/32 or arm64/64)
+  --quiet, -q          Don't print progress information
 
 Configuration File Settings:
   USER_ID=\"username\"        Default user on system
@@ -32,11 +33,13 @@ Configuration File Settings:
 missing=""
 for cmd in openssl wpa_passphrase wget xz; do
 	if [ -z "$(command -v $cmd)" ]; then
-		echo "! Missing dependency $cmd"
+		echo "Missing dependency $cmd" 1>&2
 		missing="$cmd"
 	fi
 done
-if [ ! -z "$missing" ]; then exit 1; fi
+if [ ! -z "$missing" ]; then
+	exit 1
+fi
 
 
 # Options
@@ -49,6 +52,7 @@ NO="no"
 CONFIG=""
 TYPE="std"
 ARCH="armhf"
+QUIET="no"
 
 # Read command line options
 if [ $# -gt 0 ]; then
@@ -61,12 +65,13 @@ if [ $# -gt 0 ]; then
 				--config|-c) CONFIG="$arg" ;;
 				--type|-t) TYPE="$arg" ;;
 				--arch|-a) ARCH="$arg" ;;
-				*) echo "UNREACHABLE CODE ($$GET_VALUE case)"; exit 1 ;;
+				*) echo "UNREACHABLE CODE ($$GET_VALUE case)" 1>&2
+					exit 1 ;;
 			esac
 			GET_VALUE=""
 			continue
 		fi
-		#echo "arg: '$arg'"
+
 		if [ ! -z $(echo $arg | grep -oE '^-*[hH](elp|)$') ]; then
 			echo "$HELP_TEXT"
 			exit 0
@@ -82,23 +87,26 @@ if [ $# -gt 0 ]; then
 			--config|-c) GET_VALUE="$arg" ;;
 			--type|-t) GET_VALUE="$arg" ;;
 			--arch|-a) GET_VALUE="$arg" ;;
-			*) echo "! Unknown arguement '$arg'"
+			--quiet|-q) QUIET="YES" ;;
+			*) echo "Unknown arguement '$arg'" 1>&2
 				exit 1 ;;
 		esac
 	done
 	# Check if value for option is still required
-	case $GET_VALUE in
-		"" ) ;;
-		--image|-i) echo "! Missing image file for '$GET_VALUE' option" ; exit 1 ;;
-		--dev) echo "! Missing path file for '$GET_VALUE' option" ; exit 1 ;;
-		--config|-c) echo "! Missing config file for '$GET_VALUE' option" ; exit 1 ;;
-		--type|-t) echo "! Missing OS type for '$GET_VALUE' option" ; exit 1 ;;
-		--arch|-a) echo "! Missing architecture for '$GET_VALUE' option" ; exit 1 ;;
-		*) echo "UNREACHABLE CODE ($$GET_VALUE case)"; exit 1 ;;
-	esac
+	if [ ! -z "$GET_VALUE" ]; then
+		case $GET_VALUE in
+			--image|-i) echo "Missing image file for '$GET_VALUE' option" 1>&2 ;;
+			--dev) echo "Missing path file for '$GET_VALUE' option" 1>&2 ;;
+			--config|-c) echo "Missing config file for '$GET_VALUE' option" 1>&2 ;;
+			--type|-t) echo "Missing OS type for '$GET_VALUE' option" 1>&2 ;;
+			--arch|-a) echo "Missing architecture for '$GET_VALUE' option" 1>&2 ;;
+			*) echo "UNREACHABLE CODE ($$GET_VALUE case)" 1>&2 ;;
+		esac
+		exit 1
+	fi
 fi
 if [ "$ALL" = "YES" ] && [ "$NO" = "YES" ]; then
-	echo "! Cannot specify both --all and --no, they conflict"
+	echo "Cannot specify both --all and --no, they conflict" 1>&2
 	exit 1
 fi
 
@@ -107,13 +115,15 @@ case $TYPE in
 	std|standard|raspios) TYPE="raspios" ;;
 	lite|raspios_lite) TYPE="raspios_lite" ;;
 	full|raspios_full) TYPE="raspios_full" ;;
-	*) echo "! Unknown OS type '$TYPE'" ; exit 1 ;;
+	*) echo "Unknown OS type '$TYPE'" 1>&2
+		exit 1 ;;
 esac
 # Check architecture
 case $ARCH in
 	armhf|hf|32) ARCH="armhf" ;;
 	arm64|64|aarch64) ARCH="arm64" ;;
-	*) echo "! Unknown architecture '$ARCH'" ; exit 1 ;;
+	*) echo "Unknown architecture '$ARCH'" 1>&2
+		exit 1 ;;
 esac
 
 
@@ -126,7 +136,6 @@ if [ "$WRITE" = "YES" ]; then
 		image_url="$base_url$release$image"
 		image_compressed="$CACHE_DIR/$(basename $image_url)"
 		image_file=$(echo $image_compressed | sed 's/\.xz$//')
-
 
 		# Download image if necessary
 		if [ ! -f $image_file ]; then
@@ -146,10 +155,15 @@ if [ "$WRITE" = "YES" ]; then
 					done
 				fi
 
-				echo "Downloading Raspbian image"
-
+				if [ "$QUIET" = "no" ]; then
+					echo "Downloading Raspbian image"
+				fi
 				mkdir -p $CACHE_DIR
-				wget -q --show-progress $image_url -O $image_compressed
+				if [ "$QUIET" = "no" ]; then
+					wget -q --show-progress $image_url -O $image_compressed
+				else
+					wget -q $image_url -O $image_compressed
+				fi
 				if [ $? -ne 0 ]; then
 					rm -f $image_compressed
 					echo "Error downloading $image_url" 1>&2
@@ -157,23 +171,32 @@ if [ "$WRITE" = "YES" ]; then
 				fi
 			fi
 
-			xz -dv $image_compressed
+			# Decompress image
+			if [ "$QUIET" = "no" ]; then
+				xz -dv $image_compressed
+			else
+				xz -dq $image_compressed
+			fi
 			if [ $? -eq 0 ]; then
 				rm -f $image_compressed
 			else
 				rm -f $image_file
-				echo "! Error decompressing ~${image_compressed#$HOME}"
+				echo "Error decompressing ~${image_compressed#$HOME}" 1>&2
 				exit 1
 			fi
-			echo
-			echo "> Image downloaded ~${image_file#$HOME}"
+			if [ "$QUIET" = "no" ]; then
+				echo
+				echo "Image downloaded ~${image_file#$HOME}"
+			fi
 		else
-			echo "> Image found at ~${image_file#$HOME}"
+			if [ "$QUIET" = "no" ]; then
+				echo "Image found at ~${image_file#$HOME}"
+			fi
 		fi
 		IMAGE="$image_file"
 	else
 		if [ ! -f "$IMAGE" ]; then
-			echo "! Cannot file image file $IMAGE"
+			echo "Cannot file image file $IMAGE" 1>&2
 			exit 1
 		fi
 	fi
@@ -184,17 +207,17 @@ fi
 # Check for SD card to manipulate
 if [ -z $DISK ]; then
 	if [ $(lsblk -ln | grep disk | grep ^mmc | wc -l) -gt 1 ]; then
-		echo "! Multiple SD cards found, one must be specific with --dev"
+		echo "Multiple SD cards found, one must be specific with --dev" 1>&2
 		exit 1
 	elif [ $(lsblk -ln | grep disk | grep ^mmc | wc -l) -eq 1 ]; then
 		DISK=/dev/$(lsblk -ln | grep disk | grep ^mmc | sed 's/ .*//')
 	else
-		echo "! No SD card available to setup"
+		echo "No SD card available to setup" 1>&2
 		exit 1
 	fi
 else
 	if [ ! -e $DISK ]; then
-		echo "! Cannot file device $DISK"
+		echo "Cannot find device $DISK" 1>&2
 		exit 1
 	fi
 fi
@@ -206,30 +229,33 @@ while [ $i -lt 10 ]; do
 	fi
 	i=$((i + 1))
 done
-#echo "disk: $DISK"
 
 MNT_POINT=$(mktemp -d "/tmp/$NAME_CLI-mnt-XXXX")
 
 # Write image or confirm SD card has raspbian
 if [ "$WRITE" = "YES" ]; then
-	echo "> Writing image to SD Card"
+	if [ "$QUIET" = "no" ]; then
+		echo "Writing image to $DISK"
+	fi
 	sudo dd if="$IMAGE" of="$DISK" bs=4M status=progress conv=fsync
 	if [ $? -ne 0 ]; then
-		echo "! Error writing image to $DISK"
+		echo "Error writing image to $DISK" 1>&2
 		rm -rf $MNT_POINT
 		exit 1
 	fi
-	echo "> Image written to SD CARD"
+	if [ "$QUIET" = "no" ]; then
+		echo "Image written to $DISK"
+	fi
 	sudo udevadm trigger
 else
 	if [ ! -e ${DISK}p2 ]; then
-		echo "! SD card does not contain raspbian"
+		echo "$DISK does not contain raspbian" 1>&2
 		rm -rf $MNT_POINT
 		exit 1
 	fi
 	sudo mount ${DISK}p2 $MNT_POINT
 	if [ ! -e $MNT_POINT/usr/bin/raspi-config ]; then
-		echo "! SD card does not contain raspbian"
+		echo "$DISK does not contain raspbian" 1>&2
 		sudo umount $MNT_POINT
 		rm -rf $MNT_POINT
 		exit 1
@@ -257,8 +283,8 @@ if [ ! -z $CONFIG ]; then
 	TMP_FILE=$(mktemp "/tmp/$NAME_CLI-conf-XXXX")
 	sed -e '/^[\t ]*\(#.*\|\)$/d' -e 's/\(^[\t ]*\|[\t ]*$\)//g' $CONFIG > $TMP_FILE
 	if [ ! -z "$(grep -vE "^[a-zA-Z_-]+=(\".*\"|'.*')$" $TMP_FILE)" ]; then
-		echo "! Invalid configuration file line:"
-		echo "$(grep -vE "^[a-zA-Z_-]+=(\".*\"|'.*')$" $TMP_FILE | head -n 1)"
+		echo "Invalid configuration file line:" 1>&2
+		echo "$(grep -vE "^[a-zA-Z_-]+=(\".*\"|'.*')$" $TMP_FILE | head -n 1)" 1>&2
 		rm -rf $TMP_FILE $MNT_POINT
 		exit 1
 	fi
@@ -267,27 +293,26 @@ if [ ! -z $CONFIG ]; then
 	if [ ! -z "$WIFI_SSID$WIFI_PASSWD" ]; then
 		WIFI_SETUP="YES"
 	fi
-	echo "WIFI_SSID='$WIFI_SSID' WIFI_PASSWD='$WIFI_PASSWD'"
+	# echo "WIFI_SSID='$WIFI_SSID' WIFI_PASSWD='$WIFI_PASSWD'"
 	USER_ID=$(grep -E '^USER_ID=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
 	USER_PASSWD=$(grep -E '^USER_PASSWD=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
 	if [ ! -z "$USER_PASSWD" ]; then
 		USER_SETUP="YES"
 	fi
 	rm -f $TMP_FILE
-	echo "USER_ID='$USER_ID' USER_PASSWD='$USER_PASSWD'"
+	# echo "USER_ID='$USER_ID' USER_PASSWD='$USER_PASSWD'"
 fi
-#echo "USER_SETUP='$USER_SETUP' WIFI_SETUP='$WIFI_SETUP' SSH_SETUP='$SSH_SETUP'"
 
 
 # Mount raspbian boot partition
 if [ ! -e ${DISK}p1 ]; then
-	echo "! Could not find boot partition ${DISK}p1"
+	echo "Could not find boot partition ${DISK}p1" 1>&2
 	rm -rf $MNT_POINT
 	exit 1
 fi
 sudo mount -o umask=0000 ${DISK}p1 $MNT_POINT
 if [ $? -ne 0 ]; then
-	echo "! Could not mount ${DISK}p1"
+	echo "Could not mount ${DISK}p1" 1>&2
 	rm -rf $MNT_POINT
 	exit 1
 fi
@@ -311,9 +336,13 @@ if [ "$USER_SETUP" = "YES" ]; then
 		read -p "$USER_ID user password: " USER_PASSWD
 	fi
 	echo "pi:$(echo "$USER_PASSWD" | openssl passwd -6 -stdin)" > $MNT_POINT/userconf
-	echo "> User setup complete"
+	if [ "$QUIET" = "no" ]; then
+		echo "User setup complete"
+	fi
 else
-	echo "> User setup skipped"
+	if [ "$QUIET" = "no" ]; then
+		echo "User setup skipped"
+	fi
 fi
 
 if [ "$WIFI_SETUP" = "no" ]; then
@@ -340,14 +369,18 @@ update_config=1" >> $MNT_POINT/wpa_supplicant.conf
 	# Write WiFi passphrase
 	wpa_passphrase "$WIFI_SSID" "$WIFI_PSWD" >> $MNT_POINT/wpa_supplicant.conf
 	if [ $? -ne 0 ]; then
-		echo "! Wifi Setup Failed"
+		echo "WiFi Setup Failed" 1>&2
 		sudo umount $MNT_POINT
 		rm -rf $MNT_POINT
 		exit 1
 	fi
-	echo "> WiFi setup complete"
+	if [ "$QUIET" = "no" ]; then
+		echo "WiFi setup complete"
+	fi
 else
-	echo "> WiFi setup skipped"
+	if [ "$QUIET" = "no" ]; then
+		echo "WiFi setup skipped"
+	fi
 fi
 
 if [ "$SSH_SETUP" = "no" ]; then
@@ -362,9 +395,13 @@ if [ "$SSH_SETUP" = "no" ]; then
 fi
 if [ "$SSH_SETUP" = "YES" ]; then
 	echo "" > $MNT_POINT/ssh
-	echo "> SSH setup complete"
+	if [ "$QUIET" = "no" ]; then
+		echo "SSH setup complete"
+	fi
 else
-	echo "> SSH setup skipped"
+	if [ "$QUIET" = "no" ]; then
+		echo "SSH setup skipped"
+	fi
 fi
 
 sudo umount $MNT_POINT
