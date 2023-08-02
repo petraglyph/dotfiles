@@ -13,6 +13,7 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 packages="
+apt-file
 bc
 curl
 fish

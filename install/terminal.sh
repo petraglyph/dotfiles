@@ -24,7 +24,7 @@ if [ ! -z "$(command -v zsh)" ]; then
 	ln -fs $LOC/configs/zshrc $HOME/.zshrc
 fi
 if [ ! -z "$(command -v fish)" ]; then
-	mkdir -p $XDG_CONFIG_HOME/fish
+	mkdir -p $XDG_CONFIG_HOME/fish/conf.d
 	ln -fs $LOC/configs/fish/config.fish $XDG_CONFIG_HOME/fish/config.fish
 	for script in $LOC/configs/fish/0*; do
 		ln -fs $script $XDG_CONFIG_HOME/fish/conf.d/$(basename $script)
