@@ -38,6 +38,8 @@ cmd touch ${{
 	touch $@
 }}
 
+map J push 8j
+map K push 8k
 map S :runshell
 map x :delete
 map D :trash

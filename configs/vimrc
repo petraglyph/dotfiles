@@ -26,8 +26,8 @@ nnoremap <tab>   :bnext<Enter>
 noremap <silent> k gk
 noremap <silent> j gj
 noremap <silent> <S-h> g^
-noremap <silent> <S-j> 15gj
-noremap <silent> <S-k> 15gk
+noremap <silent> <S-j> 8gj
+noremap <silent> <S-k> 8gk
 noremap <silent> <S-l> g$
 nmap <S-u> :redo<Enter>
 " editing
