@@ -15,14 +15,11 @@ packages="
 clang
 cronie
 dash
-dnf
-dnf5
 feh
 fish
 git-email
 htop
 lf
-lf-fish-integration
 neovim
 nethogs
 openssl

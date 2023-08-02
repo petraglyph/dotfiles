@@ -20,7 +20,6 @@ gcc
 git
 htop
 lf
-lf-fish-integration
 neovim
 openssh-clients
 rsync
