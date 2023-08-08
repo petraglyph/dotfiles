@@ -36,7 +36,7 @@ done
 # CD images
 BASE_CD_URL="https://cdimage.debian.org/debian-cd/current/"
 for arch in amd64 arm64; do
-	for kind in bt-cd bt-dvd; do
+	for kind in bt-dvd; do
 		torrent="$(curl -s "$BASE_CD_URL$arch/$kind/" | grep -oE 'href="debian-[.0-9]+[-.a-zA-Z0-9]+\.torrent"' | sed -e 's/^href="//' -e 's/"$//' | sort -u)"
 
 		if [ ! -e "$TARGET/$torrent" ] && [ ! -e "$TARGET/$torrent.added" ]; then

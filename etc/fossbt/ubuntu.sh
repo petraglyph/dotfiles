@@ -29,23 +29,19 @@ releases="$(curl -s "$BASE_URL" | while read -r l; do
 			continue
 		fi
 		state="lts"
-	elif [ $state = "lts" ] || [ $state = "lts2" ]; then
-		release="$(echo "$l" | grep -oE 'href=\"[a-z]+\/\".*[0-9]+(\.[0-9]+)+ LTS')"
+	elif [ $state = "lts" ]; then
+		release="$(echo "$l" | grep -oE 'href="[a-z]+/".*[0-9]+(\.[0-9]+)+ LTS')"
 		if [ -z "$release" ]; then
 			continue
 		fi
 		echo "$(echo "$release" | sed -E -e 's/^href="//' -e 's/\/" .*$//')"
-		if [ $state = "lts2" ]; then
-			state="gap"
-		else
-			state="lts2"
-		fi
+		state="gap"
 	elif [ $state = "gap" ]; then
 		if [ ! -z "$(echo "$l" | grep 'Interim Releases')" ]; then
 			state="interim"
 		fi
 	elif [ $state = "interim" ]; then
-		release="$(echo "$l" | grep -oE 'href="[a-z]+\/".*[0-9]+(\.[0-9]+)+')"
+		release="$(echo "$l" | grep -oE 'href="[a-z]+/".*[0-9]+(\.[0-9]+)+')"
 		if [ -z "$release" ]; then
 			if [ ! -z "$(echo "$l" | grep 'Extended')" ]; then
 				break
@@ -56,7 +52,7 @@ releases="$(curl -s "$BASE_URL" | while read -r l; do
 	fi
 done)"
 
-TORRENT_REGEX='>[-.a-z0-9]+\.iso\.torrent<'
+TORRENT_REGEX='>[-.a-z0-9]+-desktop-amd64\.iso\.torrent<'
 for r in $releases; do
 	files="$(curl -s "$BASE_URL/$r/"| grep -oE "$TORRENT_REGEX" | sed 's/[<>]//g')"
 	for torrent in $files; do

@@ -1,5 +1,17 @@
 #!/bin/sh
 # All torrent fetchers
+ROOT_DIR="$(dirname "$(realpath "$0")")"
+SCRIPTS="
+bunsenlabs
+debian
+elementary
+fedora
+kali
+linuxmint
+raspbian
+tails
+ubuntu
+"
 
 if [ $# -eq 0 ]; then
 	echo "Missing target directory"
@@ -18,10 +30,7 @@ if [ ! -d "$TARGET" ]; then
 	fi
 fi
 
-for f in $(dirname "$(realpath "$0")")/*; do
-	if [ "$(basename "$f")" = "all.sh" ]; then
-		continue
-	fi
-	printf "\033[1;34m%s\033[0m\n" "$(basename "$f") fetching torrents"
-	$f $@
+for s in $SCRIPTS; do
+	printf "\033[1;34m%s\033[0m\n" "$s.sh fetching torrents"
+	$ROOT_DIR/$s.sh $@
 done
