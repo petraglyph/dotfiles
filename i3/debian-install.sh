@@ -21,6 +21,7 @@ mpd
 mpv
 ncmpcpp
 ncmpcpp
+pavucontrol
 picom
 polybar
 pulseaudio-utils
@@ -42,15 +43,14 @@ sudo apt-get -y install $packages
 printf "\033[1;32m%s\033[0m\n" "[i3 Debian] Installing i3lock-color (from source)"
 sudo apt-get -y install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
 mkdir -p "$HOME/.cache/dotfiles"
-cd "$HOME/.cache/dotfiles"
-if [ -e i3lock-color ]; then
-	cd i3lock-color
-	git pull --ff-only
+BUILD_ROOT="$HOME/.cache/dotfiles/i3lock-color"
+if [ -d $BUILD_ROOT ]; then
+	git -C $BUILD_ROOT pull --ff-only
 else
-	git clone https://github.com/Raymo111/i3lock-color.git
-	cd i3lock-color
+	rm -rf $BUILD_ROOT
+	git clone https://github.com/Raymo111/i3lock-color.git $BUILD_ROOT
 fi
-./install-i3lock-color.sh
+cd $BUILD_ROOT && $BUILD_ROOT/install-i3lock-color.sh
 
 if [ ! -f $HOME/.cargo/env ]; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path

@@ -22,6 +22,7 @@ git
 htop
 lf
 neovim
+net-tools
 rsync
 ssh
 "

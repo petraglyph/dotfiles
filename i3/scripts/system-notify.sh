@@ -14,7 +14,7 @@ if [ $1 = "network" ]; then
 	ip4=$(echo $"$info" | grep IP4.ADDRESS | grep -oE '[.\/0-9]+$')
 	ip6=$(echo $"$info" | grep IP6.ADDRESS | grep -oE '[:\/a-f0-9]+$')
 	mac=$(echo $"$info" | grep GENERAL.HWADDR | grep -oE '[:A-F0-9]+$')
-	notify-send -u low -t 5000 "Network" "$(printf 'IPv4: %s\nIPv6: %s\nMAC: %s' $ip4 $ip6 $mac)"
+	dunstify -u low -t 5000 "Network" "$(printf 'IPv4: %s\nIPv6: %s\nMAC: %s' $ip4 $ip6 $mac)"
 elif [ $1 = "disk" ]; then
 	humanbytes() {
 		if [ $(numfmt --to=iec --format="%.0f" $1 | sed 's/[A-Z]//g') -lt 100 ]; then
@@ -46,7 +46,7 @@ elif [ $1 = "disk" ]; then
 		pcloud_total=$(df -B 1 --output=size ~/pCloudDrive | tail -n 1)
 		message="$message\n$(printdisk 'pCloud:' $pcloud_used $pcloud_total)"
 	fi
-	notify-send -u low -t 5000 "Storage" "$message"
+	dunstify -u low -t 5000 "Storage" "$message"
 else
 	echo "Unknown argument '$1'"
 	exit 1
