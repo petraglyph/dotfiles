@@ -36,13 +36,12 @@ function fish_prompt
 	end
 
 	# user@hostname
+	set -l name (prompt_hostname)
 	if test -f /run/.toolboxenv
-		set -f name (grep '^name=' /run/.containerenv | cut -d'"' -f 2)
-		if string match -rq '^[a-z]+-toolbox-.+$' $name
-			set -f name (echo $name | sed 's/-toolbox-//')
+		set name (grep '^name=' /run/.containerenv | cut -d'"' -f 2)
+		if string match -rq '^[a-z]+-toolbox-[.a-z0-9]+$' $name
+			set name (echo $name | sed 's/-toolbox-/-/')
 		end
-	else
-		set -f name (prompt_hostname)
 	end
 	if test (id -u) -eq 0
 		set_color --bold red
