@@ -6,15 +6,15 @@
 packages="
 adw-gtk3-theme
 alacritty
-distrobox
 flatpak
 gnome-console
 gnome-tweaks
 lf
 qalc
+toolbox
 zathura
-zathura-plugins-all
 zathura-fish-completion
+zathura-plugins-all
 "
 
 if [ ! -z "$(command -v rpm-ostree)" ]; then

@@ -30,20 +30,26 @@ function fish_prompt
 		printf "ssh:"
 	end
 	# toolbox/distrobox indicator
-	if test (uname -s 2> /dev/null | grep Linux)
-		if test (cat /proc/mounts | grep -w / | cut -d" " -f 1 | grep overlay)
-			set_color magenta
-			printf "box:"
-		end
+	if test -f /run/.containerenv
+		set_color magenta
+		printf "box:"
 	end
 
 	# user@hostname
+	if test -f /run/.toolboxenv
+		set -f name (grep '^name=' /run/.containerenv | cut -d'"' -f 2)
+		if string match -rq '^[a-z]+-toolbox-.+$' $name
+			set -f name (echo $name | sed 's/-toolbox-//')
+		end
+	else
+		set -f name (prompt_hostname)
+	end
 	if test (id -u) -eq 0
 		set_color --bold red
-		printf "%s" (prompt_hostname)
+		printf "%s" $name
 	else
 		set_color --bold $color_primary
-		printf "%s@%s" $USER (prompt_hostname)
+		printf "%s@%s" $USER $name
 	end
 
 	# directory

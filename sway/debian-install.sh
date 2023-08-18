@@ -12,7 +12,6 @@ alacritty
 at-spi2-core
 bc
 bluez
-distrobox
 flatpak
 gammastep
 grim
@@ -22,6 +21,7 @@ mpd
 mpv
 ncmpcpp
 ncmpcpp
+podman-toolbox
 pulseaudio-utils
 sway
 swaybg

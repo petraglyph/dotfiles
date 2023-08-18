@@ -17,7 +17,6 @@ fi
 packages="
 alacritty
 conky
-distrobox
 dmenu
 dunst
 feh
@@ -36,6 +35,7 @@ redshift
 rofi
 scrot
 stalonetray
+toolbox
 xidlehook
 xset
 zathura

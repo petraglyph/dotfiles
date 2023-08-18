@@ -128,8 +128,8 @@ $KEYBINDING_CMD/custom2/ name "alacritty lf"
 $KEYBINDING_CMD/custom2/ command "alacritty -e lf"
 $KEYBINDING_CMD/custom2/ binding "<Super>f"
 
-$KEYBINDING_CMD/custom3/ name "alacritty distrobox"
-$KEYBINDING_CMD/custom3/ command "alacritty -e distrobox enter"
+$KEYBINDING_CMD/custom3/ name "alacritty toolbox"
+$KEYBINDING_CMD/custom3/ command "alacritty -e toolbox enter"
 $KEYBINDING_CMD/custom3/ binding "<Super><Shift>Return"
 
 $KEYBINDING_CMD/custom4/ name "alacritty qalc"

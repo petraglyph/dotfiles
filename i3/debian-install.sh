@@ -11,7 +11,6 @@ packages="
 alacritty
 bluez
 conky
-distrobox
 dunst
 feh
 flatpak
@@ -23,6 +22,7 @@ ncmpcpp
 ncmpcpp
 pavucontrol
 picom
+podman-toolbox
 polybar
 pulseaudio-utils
 redshift

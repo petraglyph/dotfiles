@@ -9,7 +9,6 @@ fi
 
 packages="
 alacritty
-distrobox
 flatpak
 gammastep
 grim
@@ -17,6 +16,7 @@ sway
 swaybg
 swayidle
 swaylock
+toolbox
 waybar
 zathura
 "
