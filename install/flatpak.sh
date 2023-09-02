@@ -18,6 +18,7 @@ com.mojang.Minecraft
 com.rafaelmardojai.Blanket
 io.mpv.Mpv
 org.inkscape.Inkscape
+org.libreoffice.LibreOffice
 org.mozilla.Thunderbird
 us.zoom.Zoom
 "
@@ -26,12 +27,7 @@ if [ $# -ne 0 ]; then
 fi
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists --user flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-if [ ! -z "$(flatpak remotes | grep fedora)" ] && [ ! -z "$(echo $packages | grep -oE 'org.gnome.[a-zA-Z]*')" ]; then
-	flatpak -y install fedora $(echo $packages | grep -oE 'org.gnome.[a-zA-Z]*')
-	flatpak -y install flathub $(echo $packages | sed 's/org.gnome.[a-zA-Z]*//g')
-else
-	flatpak -y install flathub $packages
-fi
+flatpak -y install flathub $packages
 flatpak -y install flathub-beta "org.gimp.GIMP"
 
 
