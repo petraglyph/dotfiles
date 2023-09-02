@@ -14,7 +14,7 @@ media_library_primary_tag = album_artist
 cyclic_scrolling = yes
 space_add_mode = add_remove
 jump_to_now_playing_song_at_start = yes
-display_volume_level = no
+display_volume_level = yes
 display_remaining_time = no
 ignore_leading_the = yes
 mouse_support = yes
@@ -26,13 +26,9 @@ song_columns_list_format = (40)[white]{t|f:Title} (20)[green]{a} (30)[]{b} (7f)[
 song_list_format = $/b{%a - }{%t}|{$8%f$9}$R({%l})
 #song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
 song_library_format = $/b{%n - }{%t}|{%f}
-alternative_header_first_line_format = $b$8--$9 {%t}|{%f} $b$8--$9
-# = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
-alternative_header_second_line_format = {$8%a - %b (%y)}
-# = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
+alternative_header_first_line_format = $8--$9$b {%t}|{%f} $/b$8--
+alternative_header_second_line_format = {$8%a - %b {(%y)}}|{%D}
 current_item_prefix = $(green)$r
-now_playing_prefix = $b
-now_playing_suffix = $/b
 
 # Colors
 colors_enabled = yes
@@ -52,3 +48,9 @@ color2 = green
 window_border_color = red
 active_window_border = red
 #active_column_color = white_red
+
+# Visualizer
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_type = wave
+visualizer_look = "||"
+visualizer_color = green,yellow,red
