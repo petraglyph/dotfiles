@@ -32,3 +32,9 @@ for desktop in cinnamon xfce; do
 		curl -s "$BASE_URL$torrent" -o "$TARGET/$torrent"
 	fi
 done
+
+torrent_lmde="$(echo "$torrents_all" | grep -oE "^lmde.*64bit\.iso\.torrent$" | sort | tail -n 1)"
+if [ ! -e "$TARGET/$torrent_lmde" ] && [ ! -e "$TARGET/$torrent_lmde.added" ]; then
+	echo "$torrent_lmde"
+	curl -s "$BASE_URL$torrent_lmde" -o "$TARGET/$torrent_lmde"
+fi
