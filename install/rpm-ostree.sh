@@ -15,7 +15,6 @@ packages="
 clang
 cronie
 dash
-feh
 fish
 git-email
 htop
@@ -29,7 +28,6 @@ qalc
 rclone
 ssmtp
 transmission-cli
-util-linux-user
 zellij
 "
 printf "\033[1;32m%s\033[0m\n" "[rpm-ostree] Installing Packages"
