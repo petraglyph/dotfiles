@@ -59,4 +59,4 @@ fi
 
 printf "\033[1;32m%s\033[0m\n" "[i3 Debian] Installing xidlehook (from cargo)"
 sudo apt-get -y install libx11-xcb-dev libxcb-screensaver0-dev
-cargo install xidlehook --locked --bins
+sudo cargo install xidlehook --locked --bins --root /usr/local
