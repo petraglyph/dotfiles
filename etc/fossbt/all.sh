@@ -8,7 +8,7 @@ elementary
 fedora
 kali
 linuxmint
-raspbian
+raspios
 tails
 ubuntu
 "
