@@ -26,6 +26,7 @@ perl-Image-ExifTool
 python3-pip
 qalc
 rclone
+squashfs-tools-ng
 ssmtp
 transmission-cli
 zellij

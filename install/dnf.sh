@@ -24,6 +24,7 @@ neovim
 openssh-clients
 rsync
 sqlite
+squashfs-tools-ng
 util-linux-user
 zellij
 "
