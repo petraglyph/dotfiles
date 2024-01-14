@@ -8,6 +8,9 @@ adw-gtk3-theme
 alacritty
 flatpak
 gnome-console
+gnome-extensions-app
+gnome-shell-extension-appindicator
+gnome-shell-extension-caffeine
 gnome-tweaks
 lf
 qalc

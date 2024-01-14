@@ -16,6 +16,7 @@ packages="
 apt-file
 bc
 curl
+file
 fish
 gcc
 git
@@ -23,6 +24,7 @@ htop
 lf
 neovim
 net-tools
+parted
 rsync
 squashfs-tools-ng
 ssh

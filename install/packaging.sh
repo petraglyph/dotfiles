@@ -10,7 +10,9 @@ if [ "$os_id" = "fedora" ]; then
 	printf "\033[1;32m%s\033[0m\n" "[Packaging] Installing (DNF)"
 	packages="fedora-packager fedrq podman
 	cargo-rpm-macros rust2rpm rust2rpm-helper
-	go-rpm-macros go2rpm"
+	go-rpm-macros go2rpm
+	fedora-rpm-macros rpmautospec-rpm-macros systemd-rpm-macros
+	kernel-rpm-macros cmake-rpm-macros python3-rpm-macros"
 	sudo dnf -y --setopt=install_weak_deps=False install $packages
 elif [ "$os_id" = "debian" ]; then
 	printf "\033[1;32m%s\033[0m\n" "[Packaging] Installing (APT)"
