@@ -16,7 +16,7 @@ fi
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Linking Configs"
 mkdir -p $XDG_CONFIG_HOME/alacritty
 ln -fs $LOC/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
-ln -fs $LOC/configs/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+ln -fs $LOC/configs/alacritty.toml $XDG_CONFIG_HOME/alacritty/alacritty.toml
 
 mkdir -p $XDG_CONFIG_HOME/autostart
 for f in $(dirname $(realpath $0))/autostart/*; do

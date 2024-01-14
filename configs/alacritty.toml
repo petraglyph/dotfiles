@@ -1,0 +1,83 @@
+# Alacritty Configuration
+#   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
+
+[window]
+decorations = "none"
+[window.dimensions]
+columns = 80
+lines = 24
+[window.padding]
+x = 2
+y = 2
+
+
+[font]
+size = 11.0
+[font.normal]
+family = "DejaVu Sans Mono"
+
+
+[colors.primary]
+background = "#000000"
+bright_foreground = "#ffffff"
+foreground = "#eeeeee"
+[colors.cursor]
+cursor = "#eeeeee"
+text = "#000000"
+[colors.selection]
+background = "#eeeeee"
+text = "#000000"
+
+[colors.normal]
+black = "#000000"
+blue = "#4ea2c1"
+cyan = "#b5e4f4"
+green = "#2eb398"
+magenta = "#b56ea7"
+red = "#db5b5b"
+white = "#eeeeee"
+yellow = "#f0c07e"
+[colors.bright]
+black = "#505050"
+blue = "#4ea2c1"
+cyan = "#b5e4f4"
+green = "#2eb398"
+magenta = "#b56ea7"
+red = "#db5b5b"
+white = "#ffffff"
+yellow = "#f0c07e"
+
+[[colors.indexed_colors]]
+color = "#D28445"
+index = 16
+[[colors.indexed_colors]]
+color = "#8F5536"
+index = 17
+[[colors.indexed_colors]]
+color = "#141A1B"
+index = 18
+[[colors.indexed_colors]]
+color = "#303030"
+index = 19
+[[colors.indexed_colors]]
+color = "#909090"
+index = 20
+[[colors.indexed_colors]]
+color = "#EEEEEE"
+index = 21
+[[colors.indexed_colors]]
+color = "#5f5f87"
+index = 60
+[[colors.indexed_colors]]
+color = "#5f875f"
+index = 65
+[[colors.indexed_colors]]
+color = "#f75f5f"
+index = 167
+[[colors.indexed_colors]]
+color = "#d7d7ff"
+index = 189
+[[colors.indexed_colors]]
+color = "#d7ffaf"
+index = 193
