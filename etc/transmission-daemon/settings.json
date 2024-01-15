@@ -1,9 +1,9 @@
 {
-    "download-dir": "/var/lib/transmission-daemon/downloads",
-    "incomplete-dir": "/var/lib/transmission-daemon/partial",
+    "download-dir": "transmission/downloads",
+    "incomplete-dir": "transmission/partial",
     "incomplete-dir-enabled": true,
     "rename-partial-files": true,
-    "watch-dir": "/var/lib/transmission-daemon/watch",
+    "watch-dir": "transmission/watch",
     "watch-dir-enabled": true,
     "trash-original-torrent-files": false,
     "start-added-torrents": true,
@@ -75,7 +75,7 @@
     "rpc-port": 9091,
     "rpc-url": "/transmission/",
     "rpc-username": "transmit",
-    "rpc-whitelist": "127.0.0.1,::1,192.168.1.*",
+    "rpc-whitelist": "127.0.0.1,::1,192.168.*.*",
     "rpc-whitelist-enabled": true,
     "rpc-socket-mode": "0750",
     "message-level": 1
