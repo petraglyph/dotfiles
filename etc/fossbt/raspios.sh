@@ -34,7 +34,6 @@ for arch in armhf arm64; do
 			continue
 		fi
 		curl -s "$torrent_url" -o "$TARGET/$torrent_file"
-		echo "$torrent_url"
 		echo "$torrent_file"
 	done
 done
