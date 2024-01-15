@@ -25,9 +25,13 @@ newest_version=""
 curl -s "$BASE_URL" | grep -oE 'href=".*\.torrent"' | sed -e 's/^href="//' -e 's/"$//' | grep -E '(x86_64|aarch64)' | grep -E -e 'Fedora-(Workstation|Server|KDE|Xfce)' -e "ostree" | while read -r url; do
 	version="$(echo "$url" | grep -oE '[0-9]+(_Beta)?\.torrent$' | sed -E 's/\.[a-z]+$//')"
 	version_num="$(echo "$version" | grep -oE '^[0-9]+')"
-	# Check version is newest or second newest (not counting beta versions)
+	# Continue for newest stable version and new beta if present
 	if [ ! -z "$(echo "$version" | grep -o 'Beta')" ]; then
-		newest_version="$(($version_num - 1))"
+		if [ -z "$newest_version" ]; then
+			newest_version="$(($version_num - 1))"
+		else
+			continue
+		fi
 	elif [ -z "$newest_version" ]; then
 		newest_version="$version_num"
 	elif [ $version_num -lt $newest_version ]; then

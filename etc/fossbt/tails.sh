@@ -21,7 +21,7 @@ if [ ! -d "$TARGET" ]; then
 	fi
 fi
 
-BASE_URL="https://tails.boum.org/torrents/files/"
+BASE_URL="https://tails.net/torrents/files/"
 curl -s "$BASE_URL" | grep -oE 'href="[-.a-z0-9]+iso\.torrent"' | sed -e 's/^href="//' -e 's/"$//' | while read -r torrent; do
 	if [ ! -e "$TARGET/$torrent" ] && [ ! -e "$TARGET/$torrent.added" ]; then
 		echo "$torrent"
