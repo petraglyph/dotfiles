@@ -40,11 +40,10 @@ elif [ ! -z "$(command -v dnf-3)" ]; then
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling Copr repositories"
 	copradd pennbauman ports
 
-	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling RPM Fusion"
-	sudo dnf-3 -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
-	printf "\033[1;32m%s\033[0m\n" "[Fedora] Disabling Modular Repos"
-	sudo dnf-3 -y remove fedora-repos-modular
+	if [ "$1" = "extra" ]; then
+		printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling RPM Fusion"
+		sudo dnf-3 -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+	fi
 
 	# Install packages
 	if [ "$1" = "extra" ]; then
@@ -58,8 +57,10 @@ elif [ ! -z "$(command -v dnf5)" ]; then
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling Copr repositories"
 	copradd pennbauman ports
 
-	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling RPM Fusion"
-	sudo dnf5 -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+	if [ "$1" = "extra" ]; then
+		printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling RPM Fusion"
+		sudo dnf5 -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+	fi
 
 	# Install packages
 	if [ "$1" = "extra" ]; then
