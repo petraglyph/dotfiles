@@ -14,6 +14,7 @@ jq
 libimage-exiftool-perl
 nethogs
 python3-pip
+python3-devel
 qalc
 ranger
 rclone
