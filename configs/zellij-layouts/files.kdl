@@ -1,4 +1,4 @@
-// LF and Multiple Tabs Layout for Zellij
+// LF Only Layout for Zellij
 //   Penn Bauman <me@pennbauman.com>
 //   https://github.com/pennbauman/dotfiles
 
@@ -13,18 +13,10 @@ layout {
 		}
 	}
 
-	tab name="lf" {
+	tab split_direction="vertical" {
 		pane {
 			command "lf"
-			close_on_exit false
+			close_on_exit true
 		}
-	}
-	tab name="tab2" split_direction="vertical" focus=true {
-		pane
-		pane
-	}
-	tab name="tab3" split_direction="vertical" {
-		pane
-		pane
 	}
 }
