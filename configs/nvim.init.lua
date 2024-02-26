@@ -27,7 +27,6 @@ local augroup = vim.api.nvim_create_augroup('custom', {clear = true})
 local setspell = function()
 	vim.opt_local.spell = true
 end
-vim.api.nvim_create_autocmd('FileType', {pattern = 'text', group = augroup, callback = setspell})
 vim.api.nvim_create_autocmd('FileType', {pattern = 'markdown', group = augroup, callback = setspell})
 vim.api.nvim_create_autocmd('FileType', {pattern = 'tex', group = augroup, callback = setspell})
 -- Remember cursor position
@@ -122,7 +121,6 @@ end
 -- VimTeX
 vim.api.nvim_create_autocmd('FileType', {pattern = 'tex', group = augroup, callback = function()
 	vim.api.nvim_set_var('tex_flavor', 'latex')
-	vim.api.nvim_set_var('vimtex_view_method', 'zathura')
 	vim.api.nvim_set_var('vimtex_quickfix_mode', 0)
 	vim.keymap.set('n', '<C-l>', ':VimtexCompile<Enter>', {noremap = true, silent = true})
 	vim.api.nvim_create_user_command('TexWC', function()
