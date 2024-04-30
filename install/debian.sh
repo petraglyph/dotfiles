@@ -18,9 +18,14 @@ if [ ! -f "$BACKPORTS_LIST" ]; then
 deb-src http://deb.debian.org/debian $codename-backports $REPO_KINDS" | sudo tee "$BACKPORTS_LIST" > /dev/null
 fi
 
+packages="
+apt-config-auto-update
+unattended-upgrades
+"
+
 # Install packages
 if [ "$1" = "extra" ]; then
-	$(dirname $0)/apt-extra.sh
+	$(dirname $0)/apt-extra.sh $packages
 else
-	$(dirname $0)/apt.sh
+	$(dirname $0)/apt.sh $packages
 fi

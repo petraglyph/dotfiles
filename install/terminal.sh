@@ -13,7 +13,7 @@ if [ $? -ne 0 ]; then
 fi
 
 
-printf "\033[1;32m%s\033[0m\n" "Linking Terminal Configs"
+printf "\033[1;32m%s\033[0m\n" "[Term] Linking Terminal Configs"
 ln -fs $LOC/configs/profile $HOME/.profile
 ln -fs $LOC/configs/aliasrc $HOME/.aliasrc
 ln -fs $LOC/configs/bashrc $HOME/.bashrc
@@ -62,7 +62,7 @@ fi
 
 # Setup fish if available
 if [ ! -z "$(grep fish /etc/shells)" ]; then
-	printf "\033[1;32m%s\033[0m\n" "Enabling fish"
+	printf "\033[1;32m%s\033[0m\n" "[Term] Enabling fish"
 	if [ "$(basename $SHELL)" != "fish" ]; then
 		chsh -s /usr/bin/fish
 	fi

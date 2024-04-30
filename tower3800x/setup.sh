@@ -19,8 +19,10 @@ fi
 sh ~/.dotfiles/install/debian.sh extra
 # i3 Debian Installs
 sh ~/.dotfiles/i3/debian-install.sh
+# Firefox install
+sh ~/.dotfiles/install/firefox.sh
 # Flatpak Installs
-sh ~/.dotfiles/install/flatpak.sh org.mozilla.firefox
+sh ~/.dotfiles/install/flatpak.sh
 # Rust Install
 sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs

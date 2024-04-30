@@ -250,7 +250,7 @@ bindsym $super+Shift+n exec $term -e lf $HOME/documents/other/notes
 # user windows
 exec $term
 exec $term --title="scratch"
-exec org.mozilla.firefox
+exec firefox
 exec sh $loc/i3/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
 exec picom -b -f -D 1
