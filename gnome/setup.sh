@@ -28,10 +28,13 @@ printf "\033[1;32m%s\033[0m\n" "[GNOME] Configuring"
 # Set theme
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 if [ -d /usr/share/themes/adw-gtk3-dark ]; then
-	if [ ! -z "$(command -v flatpak)" ]; then
-		flatpak install -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
-	fi
+	# if [ ! -z "$(command -v flatpak)" ]; then
+		# flatpak install -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+	# fi
 	gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+	if [ ! -z "$(command -v flatpak)" ]; then
+		flatpak update -y
+	fi
 else
 	printf "\033[1;33m%s\033[0m\n" "[GNOME] Missing adw-gtk3-dark"
 fi
@@ -52,12 +55,13 @@ gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 
 # Battery percentage
-gsettings set org.gnome.desktop.interface show-battery-percentage "true"
+gsettings set org.gnome.desktop.interface show-battery-percentage true
 
 # Clock display
-gsettings set org.gnome.desktop.interface clock-show-date "true"
-gsettings set org.gnome.desktop.interface clock-show-seconds "true"
-gsettings set org.gnome.desktop.interface clock-show-weekday "true"
+gsettings set org.gnome.desktop.interface clock-format "24h"
+gsettings set org.gnome.desktop.interface clock-show-date true
+gsettings set org.gnome.desktop.interface clock-show-seconds true
+gsettings set org.gnome.desktop.interface clock-show-weekday true
 
 # Tap to click
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
@@ -66,10 +70,10 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 
 # Volume > 100%
-gsettings set org.gnome.desktop.sound allow-volume-above-100-percent "true"
+gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
 
 # Keyboard
-gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:swap_lalt_lctl', 'caps:escape']"
+gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:swap_lalt_lctl', 'caps:escape', 'altwin:menu_win']"
 
 # Delay screen lock
 gsettings set org.gnome.desktop.screensaver lock-delay 120
@@ -85,6 +89,14 @@ gsettings set org.gnome.desktop.privacy old-files-age 30
 gsettings set org.gnome.desktop.search-providers enabled "['org.gnome.Calculator.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Weather.desktop', 'org.gnome.clocks.desktop']"
 
 
+# Extensions
+printf "\033[1;32m%s\033[0m\n" "[GNOME] Enabling Extensions"
+gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
+gnome-extensions enable caffeine@patapon.info
+gnome-extensions enable launch-new-instance@gnome-shell-extensions.gcampax.github.com
+
+
+printf "\033[1;32m%s\033[0m\n" "[GNOME] Setting Keybindings"
 # Edit keybindings
 gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Super><Shift>q']"
@@ -109,8 +121,8 @@ done
 
 if [ -z "$(command -v alacritty)" ]; then
 	printf "\033[1;33m%s\033[0m\n" "[GNOME] Missing alacritty"
+	exit 1
 fi
-printf "\033[1;32m%s\033[0m\n" "[GNOME] Setting Keybindings"
 # Custom keybindings
 KEYBINDING_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 KEYBINDING_CMD="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEYBINDING_PATH"

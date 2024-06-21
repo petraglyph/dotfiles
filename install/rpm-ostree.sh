@@ -30,6 +30,7 @@ squashfs-tools-ng
 ssmtp
 transmission-cli
 zellij
+zstd
 "
 printf "\033[1;32m%s\033[0m\n" "[rpm-ostree] Installing Packages"
 rpm-ostree install --idempotent $packages $@

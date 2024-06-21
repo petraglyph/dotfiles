@@ -25,8 +25,8 @@ us.zoom.Zoom
 if [ $# -ne 0 ]; then
 	packages="$packages $@"
 fi
-flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak remote-add --if-not-exists --user flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists --system flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 flatpak -y install flathub $packages
 flatpak -y install flathub-beta "org.gimp.GIMP"
 
