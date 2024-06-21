@@ -6,26 +6,25 @@ NAME_CLI="$(basename "$0" | sed 's/\..*$//')"
 CACHE_DIR="$HOME/.cache/raspios"
 HELP_TEXT="Raspbian Image Setup Script
 
-  $ $(basename $0) <options...>
+  $ $(basename $0) [OPTIONS]...
 
-Options:
-  --help, -h           Print this help message
-  --write, -w          Write Raspbian image to SD card before setup
-  --dev [path]         Device to write image onto
-  --autodownload, -d   Automatically download a Raspbian image in necessary
-  --image, -i [file]   Specify local Raspbian image to write
-  --all                Preform all manual configurations
-  --no, -n             Do not ask to preform manual configurations
-  --config, -c [file]  Configuration file to autofill settings
-  --type, -t [TYPE]    Raspbian type (std/raspios, lite/raspios_lite, or full/raspios_full)
-  --arch, -a [ARCH]    Raspbian architecture (armhf/32 or arm64/64)
-  --quiet, -q          Don't print progress information
+General Options:
+  --help, -h      Print this help message
+  --quiet, -q     Do not print progress information
+  --no-ask, -n    Do not ask to preform actions not specified in options
+  --write, -w     Write Raspbian image to SD card before setup
+  --dev PATH      Device to write image onto
 
-Configuration File Settings:
-  USER_ID=\"username\"        Default user on system
-  USER_PASSWD=\"password\"    Password for default user
-  WIFI_SSID=\"name\"          WiFi network name
-  WIFI_PASSWD=\"password\"    WiFi network password
+Image Options:
+  --image FILE, -i FILE   Specify local Raspbian image to write
+  --autodownload, -d      Automatically download a Raspbian image in necessary
+  --type TYPE, -t TYPE    Raspbian type (std/raspios, lite, or full)
+  --arch ARCH, -a ARCH    Raspbian architecture (armhf/32 or arm64/64)
+
+Configuration Options:
+  --os-auth USER:PASSWORD    Username and password of default user
+  --wifi-auth SSID:PASSWORD  Name and password of WiFi network to setup
+  --ssh, -s                  Enable SSH server
 "
 
 
@@ -47,24 +46,32 @@ WRITE="no"
 DISK=""
 AUTODOWNLOAD="no"
 IMAGE=""
-ALL="no"
-NO="no"
-CONFIG=""
+NO_ASK="no"
 TYPE="std"
 ARCH="armhf"
 QUIET="no"
+SSH_SETUP="no"
+USER_AUTH=""
+WIFI_AUTH=""
 
 # Read command line options
+for arg in "$@"; do
+	if [ ! -z $(echo $arg | grep -oE '^-*[hH](elp|)$') ]; then
+		echo "$HELP_TEXT"
+		exit 0
+	fi
+done
 if [ $# -gt 0 ]; then
 	GET_VALUE=""
 	for arg in "$@"; do
 		if [ ! -z $GET_VALUE ]; then
 			case $GET_VALUE in
-				--image|-i) IMAGE="$arg" ;;
 				--dev) DISK="$arg" ;;
-				--config|-c) CONFIG="$arg" ;;
+				--image|-i) IMAGE="$arg" ;;
 				--type|-t) TYPE="$arg" ;;
 				--arch|-a) ARCH="$arg" ;;
+				--os-auth) USER_AUTH="$arg" ;;
+				--wifi-auth) WIFI_AUTH="$arg" ;;
 				*) echo "UNREACHABLE CODE ($$GET_VALUE case)" 1>&2
 					exit 1 ;;
 			esac
@@ -72,22 +79,18 @@ if [ $# -gt 0 ]; then
 			continue
 		fi
 
-		if [ ! -z $(echo $arg | grep -oE '^-*[hH](elp|)$') ]; then
-			echo "$HELP_TEXT"
-			exit 0
-		fi
-
 		case $arg in
+			--quiet|-q) QUIET="YES" ;;
+			--no-ask|-n) NO_ASK="YES" ;;
 			--write|-w) WRITE="YES" ;;
 			--dev) GET_VALUE="$arg" ;;
-			--autodownload|-d) AUTODOWNLOAD="YES" ;;
 			--image|-i) GET_VALUE="$arg" ;;
-			--all) ALL="YES" ;;
-			--no|-n) NO="YES" ;;
-			--config|-c) GET_VALUE="$arg" ;;
+			--autodownload|-d) AUTODOWNLOAD="YES" ;;
 			--type|-t) GET_VALUE="$arg" ;;
 			--arch|-a) GET_VALUE="$arg" ;;
-			--quiet|-q) QUIET="YES" ;;
+			--os-auth) GET_VALUE="$arg" ;;
+			--wifi-auth) GET_VALUE="$arg" ;;
+			--ssh|-s) SSH_SETUP="YES" ;;
 			*) echo "Unknown arguement '$arg'" 1>&2
 				exit 1 ;;
 		esac
@@ -104,10 +107,6 @@ if [ $# -gt 0 ]; then
 		esac
 		exit 1
 	fi
-fi
-if [ "$ALL" = "YES" ] && [ "$NO" = "YES" ]; then
-	echo "Cannot specify both --all and --no, they conflict" 1>&2
-	exit 1
 fi
 
 # Check raspbian type
@@ -140,9 +139,13 @@ if [ "$WRITE" = "YES" ]; then
 		# Download image if necessary
 		if [ ! -f $image_file ]; then
 			if [ ! -f $image_compressed ]; then
+				if [ "$NO_ASK" = "YES" ]; then
+					echo "No image available to write, use --image FILE or --autodownload"
+					exit 1
+				fi
 				if [ ! "$AUTODOWNLOAD" = "YES" ]; then
 					echo "No image provided for writing to SD card (--image option is missing)"
-					question="Would you like to download Raspbian? [y/n] "
+					question="Would you like to download $(basename "$image_file" | sed -E 's/^[-0-9]+//')? [y/n] "
 					while true; do
 						read -p "$question" c
 						case $c in
@@ -224,8 +227,8 @@ fi
 # Unmount all partitions on disk
 i=1
 while [ $i -lt 10 ]; do
-	if [ -e $DISK$i ]; then
-		sudo umount $DISK$i 2> /dev/null
+	if [ -e "${DISK}p$i" ]; then
+		sudo umount -A "${DISK}p$i" 2> /dev/null
 	fi
 	i=$((i + 1))
 done
@@ -256,11 +259,11 @@ else
 	sudo mount ${DISK}p2 $MNT_POINT
 	if [ ! -e $MNT_POINT/usr/bin/raspi-config ]; then
 		echo "$DISK does not contain raspbian" 1>&2
-		sudo umount $MNT_POINT
+		sudo umount -A $MNT_POINT
 		rm -rf $MNT_POINT
 		exit 1
 	fi
-	sudo umount $MNT_POINT
+	sudo umount -A $MNT_POINT
 fi
 
 
@@ -268,39 +271,10 @@ fi
 USER_SETUP="no"
 WIFI_SETUP="no"
 SSH_SETUP="no"
-if [ "$ALL" = "YES" ]; then
-	USER_SETUP="YES"
-	WIFI_SETUP="YES"
-	SSH_SETUP="YES"
-fi
-if [ "$NO" = "YES" ]; then
+if [ "$NO_ASK" = "YES" ]; then
 	USER_SETUP="NO"
 	WIFI_SETUP="NO"
 	SSH_SETUP="NO"
-fi
-# Read configuration file
-if [ ! -z $CONFIG ]; then
-	TMP_FILE=$(mktemp "/tmp/$NAME_CLI-conf-XXXX")
-	sed -e '/^[\t ]*\(#.*\|\)$/d' -e 's/\(^[\t ]*\|[\t ]*$\)//g' $CONFIG > $TMP_FILE
-	if [ ! -z "$(grep -vE "^[a-zA-Z_-]+=(\".*\"|'.*')$" $TMP_FILE)" ]; then
-		echo "Invalid configuration file line:" 1>&2
-		echo "$(grep -vE "^[a-zA-Z_-]+=(\".*\"|'.*')$" $TMP_FILE | head -n 1)" 1>&2
-		rm -rf $TMP_FILE $MNT_POINT
-		exit 1
-	fi
-	WIFI_SSID=$(grep -E '^WIFI_SSID=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
-	WIFI_PASSWD=$(grep -E '^WIFI_PASSWD=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
-	if [ ! -z "$WIFI_SSID$WIFI_PASSWD" ]; then
-		WIFI_SETUP="YES"
-	fi
-	# echo "WIFI_SSID='$WIFI_SSID' WIFI_PASSWD='$WIFI_PASSWD'"
-	USER_ID=$(grep -E '^USER_ID=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
-	USER_PASSWD=$(grep -E '^USER_PASSWD=' $TMP_FILE | sed -e "s/\(^[A-Z_]*=['\"]\|['\"]$\)//g")
-	if [ ! -z "$USER_PASSWD" ]; then
-		USER_SETUP="YES"
-	fi
-	rm -f $TMP_FILE
-	# echo "USER_ID='$USER_ID' USER_PASSWD='$USER_PASSWD'"
 fi
 
 
@@ -317,93 +291,101 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-if [ "$USER_SETUP" = "no" ]; then
-	while true; do
-		read -p "Configure default user? [y/n] " c
-		case $c in
-			y|Y|yes) USER_SETUP="YES" ; break ;;
-			n|N|no) break ;;
-			*) echo "  Invalid option, please use 'y' or 'n'" ;;
-		esac
-	done
-fi
-if [ "$USER_SETUP" = "YES" ]; then
-	# Setup pi user with password
-	if [ -z $USER_ID ]; then
-		USER_ID="pi"
-	fi
-	if [ -z $USER_PASSWD ]; then
-		read -p "$USER_ID user password: " USER_PASSWD
-	fi
-	echo "pi:$(echo "$USER_PASSWD" | openssl passwd -6 -stdin)" > $MNT_POINT/userconf
-	if [ "$QUIET" = "no" ]; then
-		echo "User setup complete"
+
+# Setup default user
+if [ -z "$USER_AUTH" ]; then
+	if [ "$NO_ASK" = "YES" ]; then
+		if [ "$QUIET" = "no" ]; then
+			echo "User setup skipped"
+		fi
+	else
+		user_id="pi"
+		while true; do
+			read -p "Configure default user? [y/n] " c
+			case $c in
+				y|Y|yes) read -p "'$user_id' user password: " user_passwd ;
+					break ;;
+				n|N|no) break ;;
+				*) echo "  Invalid option, please use 'y' or 'n'" ;;
+			esac
+		done
 	fi
 else
+	# setup from cli option
+	user_id="$(echo "$USER_AUTH" | cut -d':' -f 1)"
+	user_passwd="$(echo "$USER_AUTH" | cut -d':' -f 2)"
+fi
+if [ ! -z "$user_id" ] && [ ! -z "$user_passwd" ]; then
+	echo "$user_id:$(echo "$user_passwd" | openssl passwd -6 -stdin)" > $MNT_POINT/userconf
 	if [ "$QUIET" = "no" ]; then
-		echo "User setup skipped"
+		echo "WiFi setup complete"
 	fi
 fi
 
-if [ "$WIFI_SETUP" = "no" ]; then
-	while true; do
-		read -p "Configure WiFi network? [y/n] " c
-		case $c in
-			y|Y|yes) WIFI_SETUP="YES" ; break ;;
-			n|N|no) break ;;
-			*) echo "  Invalid option, please use 'y' or 'n'" ;;
-		esac
-	done
+
+# Setup WiFi connection
+if [ -z "$WIFI_AUTH" ]; then
+	if [ "$NO_ASK" = "YES" ]; then
+		if [ "$QUIET" = "no" ]; then
+			echo "WiFi setup skipped"
+		fi
+	else
+		while true; do
+			read -p "Configure WiFi network? [y/n] " c
+			case $c in
+				y|Y|yes) read -p "WiFi SSID: " wifi_ssid ;
+					read -p "WiFi Password: " wifi_pswd ; break ;;
+				n|N|no) break ;;
+				*) echo "  Invalid option, please use 'y' or 'n'" ;;
+			esac
+		done
+	fi
+else
+	# setup from cli option
+	wifi_ssid="$(echo "$WIFI_AUTH" | cut -d':' -f 1)"
+	wifi_pswd="$(echo "$WIFI_AUTH" | cut -d':' -f 2)"
 fi
-if [ "$WIFI_SETUP" = "YES" ]; then
+if [ ! -z "$wifi_ssid" ] && [ ! -z "$wifi_pswd" ]; then
 	echo "country=US
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1" >> $MNT_POINT/wpa_supplicant.conf
-	# Get WiFi info
-	if [ -z $WIFI_SSID ]; then
-		read -p "WiFi SSID: " WIFI_SSID
-	fi
-	if [ -z $WIFI_PSWD ]; then
-		read -p "WiFi Password: " WIFI_PSWD
-	fi
-	# Write WiFi passphrase
-	wpa_passphrase "$WIFI_SSID" "$WIFI_PSWD" >> $MNT_POINT/wpa_supplicant.conf
+	wpa_passphrase "$wifi_ssid" "$wifi_pswd" >> $MNT_POINT/wpa_supplicant.conf
 	if [ $? -ne 0 ]; then
 		echo "WiFi Setup Failed" 1>&2
-		sudo umount $MNT_POINT
+		sudo umount -A $MNT_POINT
 		rm -rf $MNT_POINT
 		exit 1
 	fi
 	if [ "$QUIET" = "no" ]; then
 		echo "WiFi setup complete"
 	fi
-else
-	if [ "$QUIET" = "no" ]; then
-		echo "WiFi setup skipped"
-	fi
 fi
 
+
+# Setup SSH
 if [ "$SSH_SETUP" = "no" ]; then
-	while true; do
-		read -p "Enable SSH? [y/n] " c
-		case $c in
-			y|Y|yes) SSH_SETUP="YES" ; break ;;
-			n|N|no) break ;;
-			*) echo "  Invalid option, please use 'y' or 'n'" ;;
-		esac
-	done
+	if [ "$NO_ASK" = "YES" ]; then
+		if [ "$QUIET" = "no" ]; then
+			echo "WiFi setup skipped"
+		fi
+	else
+		while true; do
+			read -p "Enable SSH? [y/n] " c
+			case $c in
+				y|Y|yes) SSH_SETUP="YES" ; break ;;
+				n|N|no) break ;;
+				*) echo "  Invalid option, please use 'y' or 'n'" ;;
+			esac
+		done
+	fi
 fi
 if [ "$SSH_SETUP" = "YES" ]; then
-	echo "" > $MNT_POINT/ssh
+	touch $MNT_POINT/ssh
 	if [ "$QUIET" = "no" ]; then
 		echo "SSH setup complete"
 	fi
-else
-	if [ "$QUIET" = "no" ]; then
-		echo "SSH setup skipped"
-	fi
 fi
 
-sudo umount $MNT_POINT
+sudo umount -A $MNT_POINT
 rm -rf $MNT_POINT
 exit 0
