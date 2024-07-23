@@ -22,8 +22,8 @@ htop
 lf
 neovim
 openssh-clients
+perl-Image-ExifTool
 rsync
-sqlite
 util-linux-user
 zellij
 "

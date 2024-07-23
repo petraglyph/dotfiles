@@ -16,6 +16,7 @@ com.github.tchx84.Flatseal
 com.google.Chrome
 com.mojang.Minecraft
 com.rafaelmardojai.Blanket
+org.gnome.Papers
 io.mpv.Mpv
 org.inkscape.Inkscape
 org.libreoffice.LibreOffice
@@ -27,8 +28,8 @@ if [ $# -ne 0 ]; then
 fi
 flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists --system flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-flatpak -y install flathub $packages
-flatpak -y install flathub-beta "org.gimp.GIMP"
+flatpak install -y --system flathub $packages
+flatpak install -y --system flathub-beta "org.gimp.GIMP"
 
 
 printf "\033[1;32m%s\033[0m\n" "[Flatpak] Symlinking ~/.minecraft/"

@@ -11,10 +11,8 @@ cronie
 ffmpeg
 git-email
 gnuplot
-neofetch
 nethogs
 nodejs
-perl-Image-ExifTool
 python3-devel
 qalc
 rclone
