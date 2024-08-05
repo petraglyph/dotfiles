@@ -10,6 +10,7 @@ gnome-console
 gnome-extensions-app
 gnome-shell-extension-appindicator
 gnome-shell-extension-caffeine
+gnome-shell-extension-system-monitor
 gnome-tweaks
 lf
 qalc

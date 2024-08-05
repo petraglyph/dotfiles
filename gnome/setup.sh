@@ -94,6 +94,7 @@ printf "\033[1;32m%s\033[0m\n" "[GNOME] Enabling Extensions"
 gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 gnome-extensions enable caffeine@patapon.info
 gnome-extensions enable launch-new-instance@gnome-shell-extensions.gcampax.github.com
+gnome-extensions enable system-monitor@gnome-shell-extensions.gcampax.github.com
 
 
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Setting Keybindings"
