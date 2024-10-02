@@ -35,20 +35,7 @@ releases="$(curl -s "$BASE_URL" | while read -r l; do
 			continue
 		fi
 		echo "$(echo "$release" | sed -E -e 's/^href="//' -e 's/\/" .*$//')"
-		state="gap"
-	elif [ $state = "gap" ]; then
-		if [ ! -z "$(echo "$l" | grep 'Interim Releases')" ]; then
-			state="interim"
-		fi
-	elif [ $state = "interim" ]; then
-		release="$(echo "$l" | grep -oE 'href="[a-z]+/".*[0-9]+(\.[0-9]+)+')"
-		if [ -z "$release" ]; then
-			if [ ! -z "$(echo "$l" | grep 'Extended')" ]; then
-				break
-			fi
-			continue
-		fi
-		echo "$(echo "$release" | sed -E -e 's/^href="//' -e 's/\/" .*$//')"
+		break
 	fi
 done)"
 
