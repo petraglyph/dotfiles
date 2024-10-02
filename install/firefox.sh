@@ -8,7 +8,7 @@ os_id="$(grep '^ID=' /etc/os-release | cut -d'=' -f 2)"
 if [ "$os_id" = "debian" ] || [ "$os_id" = "ubuntu" ]; then
 	printf "\033[1;32m%s\033[0m\n" "[Firefox] Installing (APT)"
 	KEY_URL="https://packages.mozilla.org/apt/repo-signing-key.gpg"
-	KEY_FILE="/tmp/etc/apt/keyrings/packages.mozilla.org.asc"
+	KEY_FILE="/etc/apt/keyrings/packages.mozilla.org.asc"
 	SOURCE_FILE="/etc/apt/sources.list.d/mozilla.list"
 	CONF_FILE="/etc/apt/preferences.d/mozilla"
 	SHA512="81bde6a80b434b36c90df26de52897ad1768f4f8e9bb47d976fff1ab73033bc06fabb6398ae3e96084be6a33f4215fe7ea6d8b5b9e6402ffd1f964715657fb57"

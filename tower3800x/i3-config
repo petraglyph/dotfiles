@@ -171,7 +171,7 @@ mode "resize" {
 ## Program Launching
 bindsym $super+space exec rofi -modi drun -show drun
 # start terminal
-bindsym $super+Return exec $term
+bindsym $super+Return exec $term -e zellij -l single
 # start calculator
 bindsym $super+c exec $term -t float -e qalc
 # Custom script runner
@@ -219,7 +219,7 @@ bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/'
 
 ## Folder Opening
 # open ~/
-bindsym $super+f exec $term -e lf $HOME
+bindsym $super+f exec $term -e zellij -l files
 # open ~/downloads
 bindsym $super+d exec $term -e lf $HOME/downloads
 # open ~/videos
@@ -227,7 +227,7 @@ bindsym $super+v exec $term -e lf $HOME/videos
 # open code
 bindsym $super+e exec $term -e lf $HOME/documents/code
 # open /tank
-bindsym $super+Shift+f exec $term -e lf /tank
+bindsym $super+Shift+f exec $term -e lf /media/4tb-disks
 # open /
 bindsym $super+Shift+r exec $term -e lf /
 # open dnd
@@ -248,7 +248,7 @@ bindsym $super+Shift+n exec $term -e lf $HOME/documents/other/notes
 ### STARTUP PROGRAMS
 ## Run on i3 Startup
 # user windows
-exec $term
+exec $term -e zellij -l dotfiles
 exec $term --title="scratch"
 exec firefox
 exec sh $loc/i3/scripts/ncmpcpp-start.sh $term
