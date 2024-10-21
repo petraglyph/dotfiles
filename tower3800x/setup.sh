@@ -15,23 +15,19 @@ if [ $(hostname) != $COMP ]; then
 fi
 
 
-# Debian Installs
-sh ~/.dotfiles/install/debian.sh extra
-# i3 Debian Installs
-sh ~/.dotfiles/i3/debian-install.sh
-# Firefox install
-sh ~/.dotfiles/install/firefox.sh
+# Fedora Installs
+sh ~/.dotfiles/install/fedora.sh extra
+# GNOME Fedora Installs
+sh ~/.dotfiles/gnome/fedora-install.sh
 # Flatpak Installs
-sh ~/.dotfiles/install/flatpak.sh
+sh ~/.dotfiles/install/flatpak.sh com.valvesoftware.Steam
 # Rust Install
 sh ~/.dotfiles/install/rust.sh
 # ~/.local/bin Installs
 sh ~/.dotfiles/install/bin.sh
-# Steam Install
-sh ~/.dotfiles/install/steam.sh
 # Terminal Configuration
 sh ~/.dotfiles/install/terminal.sh
 # Cron Script Installs
-sh ~/.dotfiles/install/cron.sh clean-cache dotfiles-backup pcloud-backup
-# i3 Configuration
-sh ~/.dotfiles/i3/setup.sh $COMP
+sh ~/.dotfiles/install/cron.sh clean-cache clean-trash dotfiles-backup
+# GNOME Configuration
+sh ~/.dotfiles/gnome/setup.sh $COMP
