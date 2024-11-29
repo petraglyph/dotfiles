@@ -5,13 +5,14 @@
 
 copradd () {
 	url="https://copr.fedorainfracloud.org/coprs/$1/$2/repo/fedora-/"
-	file="/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:$1:$2.repo"
+	file="/etc/yum.repos.d/copr:$1:$2.repo"
 	if [ ! -f "$file" ]; then
 		curl -s "$url" | sudo tee "$file" > /dev/null
 		if [ $? -ne 0 ]; then
 			sudo rm -f "$file"
 			echo "Copr add failed ($1 $2)"
 		fi
+		sudo sed -i 's/copr:copr.fedorainfracloud.org:/copr:/' "$file"
 	fi
 }
 

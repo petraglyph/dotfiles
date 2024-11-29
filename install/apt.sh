@@ -24,10 +24,10 @@ htop
 lf
 neovim
 net-tools
+openssh-client
 parted
 rsync
 squashfs-tools-ng
-ssh
 "
 printf "\033[1;32m%s\033[0m\n" "[APT] Installing Packages"
 sudo apt-get -y install --no-install-recommends $packages $@
