@@ -72,12 +72,18 @@ $KEYBINDING_CMD/custom0/ name "Files"
 $KEYBINDING_CMD/custom0/ command "nautilus"
 $KEYBINDING_CMD/custom0/ binding "<Super><Shift>f"
 
-if [ -z "$(command -v kgx)" ]; then
-	$KEYBINDING_CMD/custom1/ name "gnome-terminal"
+if command -v kgx &> /dev/null; then
+	$KEYBINDING_CMD/custom1/ name "Gnome Console"
+	$KEYBINDING_CMD/custom1/ command "kgx"
+	$KEYBINDING_CMD/custom1/ binding "<Super>Return"
+elif command -v ptyxis &> /dev/null; then
+	$KEYBINDING_CMD/custom1/ name "Ptyxis Terminal"
+	$KEYBINDING_CMD/custom1/ command "ptyxis --new-window"
+	$KEYBINDING_CMD/custom1/ binding "<Super>Return"
+elif command -v gnome-terminal &> /dev/null; then
+	$KEYBINDING_CMD/custom1/ name "Gnome Terminal"
 	$KEYBINDING_CMD/custom1/ command "gnome-terminal"
 	$KEYBINDING_CMD/custom1/ binding "<Super>Return"
 else
-	$KEYBINDING_CMD/custom1/ name "gnome-console"
-	$KEYBINDING_CMD/custom1/ command "kgx"
-	$KEYBINDING_CMD/custom1/ binding "<Super>Return"
+	printf "\033[1;33m%s\033[0m\n" "[GNOME] No terminal found"
 fi

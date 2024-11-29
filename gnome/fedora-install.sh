@@ -4,9 +4,7 @@
 #   https://github.com/pennbauman/dotfiles
 
 packages="
-adw-gtk3-theme
 alacritty
-gnome-console
 gnome-extensions-app
 gnome-shell-extension-appindicator
 gnome-shell-extension-caffeine

@@ -27,17 +27,7 @@ done
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Configuring"
 # Set theme
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-if [ -d /usr/share/themes/adw-gtk3-dark ]; then
-	# if [ ! -z "$(command -v flatpak)" ]; then
-		# flatpak install -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
-	# fi
-	gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
-	if [ ! -z "$(command -v flatpak)" ]; then
-		flatpak update -y
-	fi
-else
-	printf "\033[1;33m%s\033[0m\n" "[GNOME] Missing adw-gtk3-dark"
-fi
+gsettings set org.gnome.desktop.interface accent-color 'green'
 
 # Set wallpaper
 if [ -d $LOC/$COMP ]; then
