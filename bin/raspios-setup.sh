@@ -163,7 +163,7 @@ if [ "$WRITE" = "YES" ]; then
 				fi
 				mkdir -p $CACHE_DIR
 				if [ "$QUIET" = "no" ]; then
-					wget -q --show-progress $image_url -O $image_compressed
+					wget -q --progress=bar $image_url -O $image_compressed
 				else
 					wget -q $image_url -O $image_compressed
 				fi
@@ -224,11 +224,14 @@ else
 		exit 1
 	fi
 fi
+if $(echo "$DISK" | grep -q '[0-9]$'); then
+	DISK_PART_SEP="p"
+fi
 # Unmount all partitions on disk
 i=1
 while [ $i -lt 10 ]; do
-	if [ -e "${DISK}p$i" ]; then
-		sudo umount -A "${DISK}p$i" 2> /dev/null
+	if [ -e "${DISK}${DISK_PART_SEP}$i" ]; then
+		sudo umount -A "${DISK}${DISK_PART_SEP}$i" 2> /dev/null
 	fi
 	i=$((i + 1))
 done
@@ -251,12 +254,12 @@ if [ "$WRITE" = "YES" ]; then
 	fi
 	sudo udevadm trigger
 else
-	if [ ! -e ${DISK}p2 ]; then
+	if [ ! -e ${DISK}${DISK_PART_SEP}2 ]; then
 		echo "$DISK does not contain raspbian" 1>&2
 		rm -rf $MNT_POINT
 		exit 1
 	fi
-	sudo mount ${DISK}p2 $MNT_POINT
+	sudo mount ${DISK}${DISK_PART_SEP}2 $MNT_POINT
 	if [ ! -e $MNT_POINT/usr/bin/raspi-config ]; then
 		echo "$DISK does not contain raspbian" 1>&2
 		sudo umount -A $MNT_POINT
@@ -267,26 +270,15 @@ else
 fi
 
 
-# Configuration options
-USER_SETUP="no"
-WIFI_SETUP="no"
-SSH_SETUP="no"
-if [ "$NO_ASK" = "YES" ]; then
-	USER_SETUP="NO"
-	WIFI_SETUP="NO"
-	SSH_SETUP="NO"
-fi
-
-
 # Mount raspbian boot partition
-if [ ! -e ${DISK}p1 ]; then
-	echo "Could not find boot partition ${DISK}p1" 1>&2
+if [ ! -e ${DISK}${DISK_PART_SEP}1 ]; then
+	echo "Could not find boot partition ${DISK}${DISK_PART_SEP}1" 1>&2
 	rm -rf $MNT_POINT
 	exit 1
 fi
-sudo mount -o umask=0000 ${DISK}p1 $MNT_POINT
+sudo mount -o umask=0000 ${DISK}${DISK_PART_SEP}1 $MNT_POINT
 if [ $? -ne 0 ]; then
-	echo "Could not mount ${DISK}p1" 1>&2
+	echo "Could not mount ${DISK}${DISK_PART_SEP}1" 1>&2
 	rm -rf $MNT_POINT
 	exit 1
 fi
@@ -318,7 +310,7 @@ fi
 if [ ! -z "$user_id" ] && [ ! -z "$user_passwd" ]; then
 	echo "$user_id:$(echo "$user_passwd" | openssl passwd -6 -stdin)" > $MNT_POINT/userconf
 	if [ "$QUIET" = "no" ]; then
-		echo "WiFi setup complete"
+		echo "User setup complete"
 	fi
 fi
 
@@ -366,7 +358,7 @@ fi
 if [ "$SSH_SETUP" = "no" ]; then
 	if [ "$NO_ASK" = "YES" ]; then
 		if [ "$QUIET" = "no" ]; then
-			echo "WiFi setup skipped"
+			echo "SSH setup skipped"
 		fi
 	else
 		while true; do
