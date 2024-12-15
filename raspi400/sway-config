@@ -1,0 +1,277 @@
+## tower3800x Sway Config
+#   Penn Bauman <me@pennbauman.com>
+
+
+### VARIABLES
+# colors (matcha-dark-sea)
+set $c-backgnd  #000000
+set $c-text     #EEEEEE
+set $c-high-n   #2EB398
+set $c-high-b   #DB5B5B
+# mod key
+set $super Mod4
+# terminal
+set $term alacritty
+# vi arrow keys
+set $left h
+set $down j
+set $up k
+set $right l
+# config location
+set $loc "$HOME/.dotfiles"
+# computer name
+set $name "raspi400"
+
+
+
+### APPEARANCE
+# fonts
+font pango:DejaVu Sans Mono, pango:JoyPixels 10.5
+
+## Windows Borders
+default_border pixel 0
+# window colors          border      background   text       indicator
+client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
+client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
+client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
+client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
+# gaps
+gaps inner 13
+gaps outer -2
+smart_gaps on
+smart_borders on
+
+## Displays
+output * bg $loc/$name/background.jpg fill
+output * scale 1
+
+## Special Window Configurations
+for_window [app_id="Alacritty" title="scratch"] move scratchpad
+#for_window [class="Gimp-2.10"] border normal
+# windows floating by default
+for_window [app_id="Alacritty" title="float"] floating enable
+#for_window [class="Steam" title="Steam - News"] floating enable
+
+## Top Bar
+bar {
+    status_command $loc/sway/scripts/bar.sh
+
+    position top
+    status_edge_padding 20
+    font DejaVu Sans Mono 16
+
+    colors {
+        statusline $c-text
+        background $c-backgnd
+        focused_workspace $c-backgnd $c-backgnd $c-high-n
+        active_workspace $c-backgnd $c-backgnd $c-text
+        inactive_workspace $c-backgnd $c-backgnd $c-text
+        urgent_workspace $c-backgnd $c-backgnd $c-high-b
+    }
+}
+
+
+
+### Inputs
+input type:keyboard {
+    xkb_layout us
+    xkb_options ctrl:swap_lalt_lctl,caps:escape,altwin_menu_win
+}
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    click_method clickfinger
+    tap_button_map lrm
+}
+
+
+
+### WORKSPACES
+# workspace names
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+# switch to workspace
+bindsym $super+1 workspace $ws1
+bindsym $super+2 workspace $ws2
+bindsym $super+3 workspace $ws3
+bindsym $super+4 workspace $ws4
+bindsym $super+5 workspace $ws5
+bindsym $super+6 workspace $ws6
+bindsym $super+7 workspace $ws7
+bindsym $super+8 workspace $ws8
+bindsym $super+9 workspace $ws9
+bindsym $super+0 workspace $ws10
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace $ws1
+bindsym $super+Shift+2 move container to workspace $ws2
+bindsym $super+Shift+3 move container to workspace $ws3
+bindsym $super+Shift+4 move container to workspace $ws4
+bindsym $super+Shift+5 move container to workspace $ws5
+bindsym $super+Shift+6 move container to workspace $ws6
+bindsym $super+Shift+7 move container to workspace $ws7
+bindsym $super+Shift+8 move container to workspace $ws8
+bindsym $super+Shift+9 move container to workspace $ws9
+bindsym $super+Shift+0 move container to workspace $ws10
+# workspace assignments
+assign [app_id="firefox"] $ws2
+assign [app_id="Google-chrome"] $ws3
+#assign [class="Gimp"] $ws7
+#assign [class="Inkscape"] $ws7
+assign [app_id="Alacritty" title="ncmpcpp"] $ws10
+
+
+
+### WINDOWS ARRANGEMENT
+## General Window Controls
+# change focused Window
+bindsym $super+$left focus left
+bindsym $super+$down focus down
+bindsym $super+$up focus up
+bindsym $super+$right focus right
+# change focused Window
+bindsym $super+Tab focus right
+bindsym $super+Shift+Tab focus left
+# move focused window
+bindsym $super+Shift+$left move left
+bindsym $super+Shift+$down move down
+bindsym $super+Shift+$up move up
+bindsym $super+Shift+$right move right
+# container layout
+bindsym $super+t layout toggle tabbed split
+# toggle split  orientation
+bindsym $super+Shift+t split toggle
+# toggle tiling / floating
+bindsym $super+Shift+space floating toggle
+# kill focused window
+bindsym $super+Shift+q kill
+
+## Scratchpad
+# move currently window to scratchpad
+bindcode $super+Shift+49 move scratchpad
+# show or hide scratchpad window
+bindcode $super+49 scratchpad show
+
+## Resizing Windows
+bindsym $super+r mode "resize"
+mode "resize" {
+    # large
+    bindsym $left   resize shrink width 100 px or 10 ppt
+    bindsym $down   resize grow height 100 px or 10 ppt
+    bindsym $up     resize shrink height 100 px or 10 ppt
+    bindsym $right  resize grow width 100 px or 10 ppt
+    # small
+    bindsym Shift+$left   resize shrink width 10 px or 10 ppt
+    bindsym Shift+$down   resize grow height 10 px or 10 ppt
+    bindsym Shift+$up     resize shrink height 10 px or 10 ppt
+    bindsym Shift+$right  resize grow width 10 px or 10 ppt
+    # exit resize mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $super+r mode "default"
+}
+
+
+
+### KEYBOARD SHORTCUTS
+## Program Launching
+bindsym $super+Space exec wofi --show drun
+# start terminal
+bindsym $super+Return exec $term
+# start calculator
+bindsym $super+c exec $term -t float -e qalc
+# Custom script runner
+bindsym $super+x exec $term -t float -e sh $HOME/documents/other/linux/scripts/quick-run.sh
+# Show/hide tray
+#bindsym $super+p exec sh $loc/i3/scripts/trayer.sh
+
+
+## System Buttons
+# volume controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# volume controls
+bindsym $super+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Shift+Up exec pactl set-sink-volume @DEFAULT_SINK@ +2% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Shift+Down exec pactl set-sink-volume @DEFAULT_SINK@ -2% & pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym $super+Delete exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# media controls
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+# media controls
+bindsym Pause exec mpc toggle
+bindsym $super+Left exec mpc prev
+bindsym $super+Right exec mpc next
+bindsym $super+Shift+Left exec mpc seek -0:0:10
+bindsym $super+Shift+Right exec mpc seek +0:0:10
+# screen brightness controls
+bindsym XF86MonBrightnessUp exec sh $loc/sway/scripts/dimlight.sh +
+bindsym XF86MonBrightnessDown exec sh $loc/sway/scripts/dimlight.sh -
+bindsym $super+Prior exec sh $loc/sway/scripts/dimlight.sh +
+bindsym $super+Next exec sh $loc/sway/scripts/dimlight.sh -
+
+## Sway Control
+# restart swat
+bindsym $super+Shift+Escape reload
+# exit sway
+bindsym $super+Escape exec $term -t float -e $loc/sway/scripts/exit.sh
+# lock sway
+bindsym $super+z exec sh $loc/sway/scripts/locker.sh suspend
+# screenshots
+bindsym Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc_grim.png')
+bindsym $super+Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc_grim.png') -g $(slurp)
+
+## Folder Opening
+# open ~/
+bindsym $super+f exec $term -e lf $HOME
+# open ~/downloads
+bindsym $super+d exec $term -e lf $HOME/downloads
+# open ~/videos
+bindsym $super+v exec $term -e lf $HOME/videos
+# open code
+bindsym $super+e exec $term -e lf $HOME/documents/code
+# open /tank
+bindsym $super+Shift+f exec $term -e lf /tank
+# open /
+bindsym $super+Shift+r exec $term -e lf /
+# open dnd
+bindsym $super+Shift+d exec $term -e lf $HOME/documents/dnd
+# open pCloudDrive
+bindsym $super+Shift+c exec $term -e lf $HOME/pCloudDrive
+# open site
+bindsym $super+Shift+v exec $term -e lf $HOME/documents/code/site
+# open linux
+bindsym $super+Shift+x exec $term -e lf $HOME/documents/other/linux
+# open images
+bindsym $super+i exec $term -e lf $HOME/documents/images
+# open notes
+bindsym $super+Shift+n exec $term -e lf $HOME/documents/other/notes
+
+
+
+
+### STARTUP PROGRAMS
+## Run on Startup
+# user windows
+exec $term
+#exec $term --title="scratch"
+#exec sh $loc/sway/scripts/ncmpcpp-start.sh $term
+# screen and appearance daemons
+exec_always swayidle -w \
+    timeout 1200 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+    timeout 1800 $loc/sway/scripts/locker.sh \
+    before-sleep $loc/sway/scripts/locker.sh \
+    after-resume 'swaymsg "output * dpms on"'
+exec mako
+#exec sh $loc/sway/scripts/dimlight.sh

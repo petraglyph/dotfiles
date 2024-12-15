@@ -16,6 +16,8 @@ fi
 # Making necessary directories
 mkdir -p $XDG_CONFIG_HOME/sway
 mkdir -p $XDG_CONFIG_HOME/waybar
+mkdir -p $XDG_CONFIG_HOME/wofi
+mkdir -p $XDG_CONFIG_HOME/mako
 mkdir -p $XDG_CONFIG_HOME/environment.d
 mkdir -p $XDG_CONFIG_HOME/zathura
 mkdir -p $XDG_CONFIG_HOME/alacritty
@@ -27,6 +29,9 @@ ln -fs $LOC/$COMP/sway-config $XDG_CONFIG_HOME/sway/config
 ln -fs $LOC/sway/configs/waybar $XDG_CONFIG_HOME/waybar/config
 ln -fs $LOC/sway/configs/waybar.css $XDG_CONFIG_HOME/waybar/style.css
 ln -fs $LOC/sway/configs/envvars.conf $XDG_CONFIG_HOME/environment.d/envvars.conf
+ln -fs $LOC/sway/configs/wofi $XDG_CONFIG_HOME/wofi/config
+ln -fs $LOC/sway/configs/wofi.css $XDG_CONFIG_HOME/wofi/style.css
+ln -fs $LOC/sway/configs/mako $XDG_CONFIG_HOME/mako/config
 ln -fs $LOC/sway/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
 ln -fs $LOC/configs/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 ln -fs $LOC/configs/mpd.conf $XDG_CONFIG_HOME/mpd/mpd.conf
@@ -42,7 +47,7 @@ cp -f $LOC/sway/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_
 printf "\033[1;32m%s\033[0m\n" "[Sway] Adding tty1 autostart"
 echo '# Start Sway at login
 if status is-login
-        if test -z "$DISPLAY" -a "$XDG_VTNR" = 2
+        if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
                 sway
         end
 end' > $XDG_CONFIG_HOME/fish/conf.d/sway-autostart.fish

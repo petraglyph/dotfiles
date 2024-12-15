@@ -1,0 +1,46 @@
+/* wofi theme configuration
+     Penn Bauman <me@pennbauman.com>
+     https://github.com/pennbauman/dotfiles
+*/
+#window {
+	background-color: #000;
+	color: #EEE;
+
+	font-family: "DejaVu Sans Mono";
+	font-size: 16px;
+}
+#outer-box {
+}
+#inner-box {
+	margin: 0px 150px 100px;
+}
+
+/* search box */
+#input {
+	margin: 100px 100px 20px;
+	padding: 4px 12px;
+	outline: none;
+	box-shadow: none;
+	background-color: #000;
+	border-radius: 0;
+	border-width: 4px;
+	border-color: #EEE;
+	color: #EEE;
+}
+#input:selected {
+	outline: none;
+	box-shadow: none;
+	border-color: #000;
+}
+
+/* results */
+#entry {
+	padding: 12px 0 12px 3px;
+	outline: none;
+	background-color: #000;
+	border-color: #000;
+}
+#text:selected {
+	color: #2EB398;
+	font-weight: bold;
+}

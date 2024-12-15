@@ -1,0 +1,12 @@
+width=100%
+height=100%
+yoffset=0
+halign=start
+content_halign=start
+valign=start
+content_halign=start
+hide_scroll=true
+
+mode=drun
+allow_markup=true
+no_actions=true
