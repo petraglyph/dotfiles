@@ -17,13 +17,13 @@
     "cache-size-mb": 4,
     "default-trackers": "",
     "dht-enabled": true,
-    "download-dir": "/media/transmission/downloads",
+    "download-dir": "DATA_DIR/downloads",
     "download-queue-enabled": true,
     "download-queue-size": 8,
     "encryption": 1,
     "idle-seeding-limit": 30,
     "idle-seeding-limit-enabled": false,
-    "incomplete-dir": "/media/transmission/partial",
+    "incomplete-dir": "DATA_DIR/partial",
     "incomplete-dir-enabled": true,
     "lpd-enabled": false,
     "message-level": 1,
@@ -77,6 +77,6 @@
     "umask": "0",
     "upload-slots-per-torrent": 16,
     "utp-enabled": true,
-    "watch-dir": "/media/transmission/watch",
+    "watch-dir": "DATA_DIR/watch",
     "watch-dir-enabled": true
 }
