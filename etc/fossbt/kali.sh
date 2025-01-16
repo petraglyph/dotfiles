@@ -22,7 +22,7 @@ if [ ! -d "$TARGET" ]; then
 fi
 
 BASE_URL="https://cdimage.kali.org/current/"
-curl -s "$BASE_URL" | grep -oE 'href="[-_.a-z0-9]+\.iso\.torrent"' | sed -e 's/^href="//' -e 's/"$//' | grep -v -e 'i386' -e 'purple' -e 'netinst' | while read -r torrent; do
+curl -s "$BASE_URL" | grep -oE 'href="[-_.a-z0-9]+\.iso\.torrent"' | sed -e 's/^href="//' -e 's/"$//' | grep -e 'installer' -e 'live-everything' | grep -v -e 'i386' -e 'purple' -e 'netinst' | while read -r torrent; do
 	if [ ! -e "$TARGET/$torrent" ] && [ ! -e "$TARGET/$torrent.added" ]; then
 		echo "$torrent"
 		curl -s -L "$BASE_URL$torrent" -o "$TARGET/$torrent"

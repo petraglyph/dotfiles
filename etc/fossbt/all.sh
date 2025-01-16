@@ -8,11 +8,12 @@ elementary
 fedora
 kali
 linuxmint
-raspios
 tails
 ubuntu
 "
+FORMAT="\033[1;34m%s\033[0m\n"
 
+# Check and create target directory
 if [ $# -eq 0 ]; then
 	echo "Missing target directory"
 	exit 1
@@ -30,7 +31,13 @@ if [ ! -d "$TARGET" ]; then
 	fi
 fi
 
+# Check if --log option is used
+if [ "$2" = "--log" ]; then
+	FORMAT=""
+	date '+[%Y-%m-%d %H:%M:%S]'
+fi
+# Run torrent fetching scripts
 for s in $SCRIPTS; do
-	printf "\033[1;34m%s\033[0m\n" "$s.sh fetching torrents"
-	$ROOT_DIR/$s.sh $@
+	printf "$FORMAT" "$s.sh fetching torrents"
+	$ROOT_DIR/$s.sh $TARGET
 done

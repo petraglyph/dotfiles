@@ -35,32 +35,50 @@ releases="$(curl -s "$BASE_URL" | while read -r l; do
 			continue
 		fi
 		echo "$(echo "$release" | sed -E -e 's/^href="//' -e 's/\/" .*$//')"
-		break
+		state="gap"
+	elif [ $state = "gap" ]; then
+		if [ ! -z "$(echo "$l" | grep 'Interim Releases')" ]; then
+			state="interim"
+		fi
+	elif [ $state = "interim" ]; then
+		release="$(echo "$l" | grep -oE 'href="[a-z]+/".*[0-9]+(\.[0-9]+)+')"
+		if [ -z "$release" ]; then
+			if [ ! -z "$(echo "$l" | grep 'Extended')" ]; then
+				break
+			fi
+			continue
+		fi
+		echo "$(echo "$release" | sed -E -e 's/^href="//' -e 's/\/" .*$//')"
 	fi
 done)"
 
-TORRENT_REGEX='>[-.a-z0-9]+-desktop-amd64\.iso\.torrent<'
+TORRENT_REGEX='>[a-z]?ubuntu-[.0-9]+-desktop-amd64\.iso\.torrent<'
 for r in $releases; do
-	files="$(curl -s "$BASE_URL/$r/"| grep -oE "$TORRENT_REGEX" | sed 's/[<>]//g')"
-	for torrent in $files; do
-		if [ -e "$TARGET/$torrent" ] || [ -e "$TARGET/$torrent.added" ]; then
-			continue
+	torrent="$(curl -s "$BASE_URL/$r/"| grep -oE "$TORRENT_REGEX" | sed 's/[<>]//g')"
+	if [ -z "$torrent" ]; then
+		continue
+	fi
+	# Check release order
+	release_num="$(echo "$torrent" | grep -oE '[0-9]{2}.[0-9]{2}')"
+	release_year="$(echo "$release_num" | grep -oE '^[0-9]{2}')"
+	if [ -z "$lts_year" ]; then
+		lts_year="$(echo "$release_num" | grep -oE -e '^[0-9][02468]\.04$' | sed 's/\.04//')"
+	else
+		if [ $release_year -lt $lts_year ]; then
+			break
 		fi
+	fi
+
+	# Standard ISO
+	if [ ! -e "$TARGET/$torrent" ] && [ ! -e "$TARGET/$torrent.added" ]; then
 		echo "$torrent"
 		curl -s "$BASE_URL/$r/$torrent" -o "$TARGET/$torrent"
-	done
+	fi
 
 	xubuntu_url="https://torrent.ubuntu.com/xubuntu/releases/$r/release/desktop/"
 	torrent="$(curl -s "$xubuntu_url" | grep -oE "$TORRENT_REGEX" | sed 's/[<>]//g')"
 	if [ ! -e "$TARGET/$torrent" ] && [ ! -e "$TARGET/$torrent.added" ]; then
 		echo "$torrent"
 		curl -s "$xubuntu_url$torrent" -o "$TARGET/$torrent"
-	fi
-
-	kubuntu_url="https://torrent.ubuntu.com/kubuntu/releases/$r/release/desktop/"
-	torrent="$(curl -s "$kubuntu_url" | grep -oE "$TORRENT_REGEX" | sed 's/[<>]//g')"
-	if [ ! -e "$TARGET/$torrent" ] && [ ! -e "$TARGET/$torrent.added" ]; then
-		echo "$torrent"
-		curl -s "$kubuntu_url$torrent" -o "$TARGET/$torrent"
 	fi
 done
