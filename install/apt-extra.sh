@@ -13,7 +13,7 @@ imagemagick
 jq
 libimage-exiftool-perl
 nethogs
-python3-devel
+python3-dev
 qalc
 ranger
 rclone

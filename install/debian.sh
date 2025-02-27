@@ -20,7 +20,6 @@ fi
 
 packages="
 apt-config-auto-update
-unattended-upgrades
 "
 
 # Install packages
