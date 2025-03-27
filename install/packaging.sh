@@ -16,7 +16,7 @@ if [ "$os_id" = "fedora" ]; then
 elif [ "$os_id" = "debian" ]; then
 	printf "\033[1;32m%s\033[0m\n" "[Packaging] Installing (APT)"
 	packages="devscripts debhelper"
-	sudo apt-get -y --no-install---no-install-recommends install $packages
+	sudo apt-get -y --no-install-recommends install $packages
 else
 	echo "Unknown OS '$os_id'"
 	exit 1

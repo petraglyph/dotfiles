@@ -6,8 +6,10 @@
 
 packages="
 android-tools
+btrbk
 clang
 cronie
+duperemove
 ffmpeg
 git-email
 gnuplot
