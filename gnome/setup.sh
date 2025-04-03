@@ -98,6 +98,10 @@ gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Alt>Tab']
 gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Shift><Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Super>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Super><Shift>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-right "[]"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-left "[]"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-up "[]"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-down "[]"
 i=1
 while [ $i -le 10 ]; do
 	if [ $i -le 9 ]; then
@@ -117,24 +121,30 @@ fi
 # Custom keybindings
 KEYBINDING_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 KEYBINDING_CMD="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$KEYBINDING_PATH"
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$KEYBINDING_PATH/custom0/', '$KEYBINDING_PATH/custom1/', '$KEYBINDING_PATH/custom2/', '$KEYBINDING_PATH/custom3/', '$KEYBINDING_PATH/custom4/']"
+array="["
+for i in $(seq 0 10); do
+	array="$array'$KEYBINDING_PATH/custom$i/', "
+done
+array="$(echo "$array" | sed -E 's/..$//')]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "$array"
 
-$KEYBINDING_CMD/custom0/ name "Files"
-$KEYBINDING_CMD/custom0/ command "nautilus"
-$KEYBINDING_CMD/custom0/ binding "<Super><Shift>f"
+keybind () {
+	$KEYBINDING_CMD/custom$1/ name "$2"
+	$KEYBINDING_CMD/custom$1/ command "$3"
+	$KEYBINDING_CMD/custom$1/ binding "$4"
+}
 
-$KEYBINDING_CMD/custom1/ name "alacritty"
-$KEYBINDING_CMD/custom1/ command "alacritty"
-$KEYBINDING_CMD/custom1/ binding "<Super>Return"
+# Media
+keybind 0 "Media Play/Pause" "playerctl play-pause" "<Super>Pause"
+keybind 1 "Media Next" "playerctl next" "<Super><Shift>Right"
+keybind 2 "Media Previous" "playerctl previous" "<Super><Shift>Left"
+keybind 3 "Volume Up" "pactl set-sink-volume @DEFAULT_SINK@ +5%" "<Super><Shift>Up"
+keybind 4 "Volume Up" "pactl set-sink-volume @DEFAULT_SINK@ -5%" "<Super><Shift>Down"
+keybind 5 "Mute Toggle" "pactl set-sink-mute @DEFAULT_SINK@ toggle" "<Super>Delete"
 
-$KEYBINDING_CMD/custom2/ name "alacritty lf"
-$KEYBINDING_CMD/custom2/ command "alacritty -e lf"
-$KEYBINDING_CMD/custom2/ binding "<Super>f"
-
-$KEYBINDING_CMD/custom3/ name "alacritty toolbox"
-$KEYBINDING_CMD/custom3/ command "alacritty -e toolbox enter"
-$KEYBINDING_CMD/custom3/ binding "<Super><Shift>Return"
-
-$KEYBINDING_CMD/custom4/ name "alacritty qalc"
-$KEYBINDING_CMD/custom4/ command "alacritty -e qalc"
-$KEYBINDING_CMD/custom4/ binding "<Super>c"
+# Programs
+keybind 6 "Files" "nautilus" "<Super><Shift>f"
+keybind 7 "alacritty" "alacritty" "<Super>Return"
+keybind 8 "alacritty lf" "alacritty -e lf" "<Super>f"
+keybind 9 "alacritty toolbox" "alacritty -e toolbox enter" "<Super><Shift>Return"
+keybind 10 "alacritty qalc" "alacritty -e qalc" "<Super>c"

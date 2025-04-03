@@ -23,6 +23,7 @@ neovim
 nethogs
 openssl
 perl-Image-ExifTool
+playerctl
 python3-devel
 qalc
 rclone
