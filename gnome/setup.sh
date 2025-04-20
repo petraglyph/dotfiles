@@ -19,7 +19,7 @@ ln -fs $LOC/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
 ln -fs $LOC/configs/alacritty.toml $XDG_CONFIG_HOME/alacritty/alacritty.toml
 
 mkdir -p $XDG_CONFIG_HOME/autostart
-for f in $(dirname $(realpath $0))/autostart/*; do
+for f in $LOC/gnome/autostart/*; do
 	ln -fs $f $XDG_CONFIG_HOME/autostart/$(basename $f)
 done
 
@@ -76,7 +76,9 @@ gsettings set org.gnome.desktop.privacy remove-old-trash-files true
 gsettings set org.gnome.desktop.privacy old-files-age 30
 
 # Configurate search
-gsettings set org.gnome.desktop.search-providers enabled "['org.gnome.Calculator.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Weather.desktop', 'org.gnome.clocks.desktop']"
+gsettings set org.gnome.desktop.search-providers enabled "['org.gnome.Calculator.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.clocks.desktop']"
+gsettings set org.gnome.desktop.search-providers sort-order "['org.gnome.Calculator.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.clocks.desktop']"
+gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Software.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop']"
 
 
 # Extensions
