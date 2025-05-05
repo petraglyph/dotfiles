@@ -13,14 +13,11 @@ fi
 
 # Check computer is provided
 if [ -z "$COMP" ]; then
-	printf "\033[1;31m%s\033[0m\n" "Computer required"
-	exit 1
+	exit 0
 fi
 
-# Check computer is valid or 'none'
-if [ "$COMP" = "none" ]; then
-	exit 0
-elif [ -d "$LOC/$COMP" ]; then
+# Check computer is valid
+if [ -d "$LOC/$COMP" ]; then
 	if [ "$(hostname)" != "$COMP" ] && [ "$(hostname | sed 's/\..*$//')" != "$COMP" ]; then
 		printf "\033[1;31m%s\033[0m\n" "Wrong computer, should be '$(hostname)'"
 		while true; do

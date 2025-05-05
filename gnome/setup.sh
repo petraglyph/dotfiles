@@ -4,10 +4,10 @@
 #   https://github.com/pennbauman/dotfiles
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 LOC="$HOME/.dotfiles"
-COMP="${1:-$(hostname)}"
+BG_FILE="$LOC/gnome/background.jpg"
 
 # Check install location and computer
-$(dirname $(realpath $0))/../install/check.sh "$COMP"
+$(dirname $(realpath $0))/../install/check.sh
 if [ $? -ne 0 ]; then
 	exit 1
 fi
@@ -30,11 +30,8 @@ gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 gsettings set org.gnome.desktop.interface accent-color 'green'
 
 # Set wallpaper
-if [ -d $LOC/$COMP ]; then
-	bgfile="$(find "$LOC/$COMP" -maxdepth 1 -name 'background.*' | tail -n 1)"
-	gsettings set org.gnome.desktop.background picture-uri-dark "file://$bgfile"
-	gsettings set org.gnome.desktop.background picture-uri "file://$bgfile"
-fi
+gsettings set org.gnome.desktop.background picture-uri-dark "file://$BG_FILE"
+gsettings set org.gnome.desktop.background picture-uri "file://$BG_FILE"
 
 # Workspaces
 gsettings set org.gnome.mutter workspaces-only-on-primary true
@@ -80,6 +77,12 @@ gsettings set org.gnome.desktop.search-providers enabled "['org.gnome.Calculator
 gsettings set org.gnome.desktop.search-providers sort-order "['org.gnome.Calculator.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.clocks.desktop']"
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Software.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop']"
 
+# Set default apps
+xdg-mime default org.gnome.Papers.desktop application/pdf
+xdg-mime default org.gnome.Loupe.desktop image/png image/jpeg image/webp
+xdg-mime default io.mpv.Mpv.desktop video/mp4 video/mkv video/webm
+xdg-mime default org.gnome.Decibels.desktop audio/mp3 audio/m4a audio/flac
+
 
 # Extensions
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Enabling Extensions"
@@ -92,6 +95,7 @@ gnome-extensions enable system-monitor@gnome-shell-extensions.gcampax.github.com
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Setting Keybindings"
 # Edit keybindings
 gsettings set org.gnome.desktop.wm.keybindings minimize "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys help "[]"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Super><Shift>q']"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['XF86Keyboard']"
 gsettings set org.gnome.shell.keybindings toggle-application-view "['<Super>space']"
@@ -127,7 +131,7 @@ array="["
 for i in $(seq 0 10); do
 	array="$array'$KEYBINDING_PATH/custom$i/', "
 done
-array="$(echo "$array" | sed -E 's/..$//')]"
+array="$(echo "$array" | sed -E 's/, $//')]"
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "$array"
 
 keybind () {

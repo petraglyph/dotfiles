@@ -7,7 +7,7 @@ SOURCE="$LOC/bin"
 TARGET="$HOME/.local/bin"
 
 # Check install location
-$(dirname $(realpath $0))/check.sh "none"
+$(dirname $(realpath $0))/check.sh
 if [ $? -ne 0 ]; then
 	exit 1
 fi
