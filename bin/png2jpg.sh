@@ -10,8 +10,8 @@ export SCRIPT_CMD="$(basename "$0")"
 
 
 # Check dependencies
-if [ -z "$(command -v convert)" ]; then
-	echo "Command 'convert' not found"
+if [ -z "$(command -v magick)" ]; then
+	echo "Command 'magick' not found"
 	exit 1
 fi
 
@@ -26,7 +26,7 @@ if [ $# -eq 2 ] && [ -f "$1" ] && [ -d "$(dirname "$2")" ]; then
 		exit 1
 	fi
 
-	convert "$1" "$2"
+	magick "$1" "$2"
 	exit $?
 fi
 

@@ -1,17 +1,17 @@
 #!/bin/sh
-# WEBP to JPEG Conversion Script
+# FLAC to MP3 Conversion Script
 #   Penn Bauman <me@pennbauman.com>
 #   https://github.com/pennbauman/dotfiles
-export SOURCE_END=".webp"
-export SOURCE_NAME="WEBP"
-export TARGET_END=".jpg"
-export TARGET_NAME="JPEG"
+export SOURCE_END=".m4a"
+export SOURCE_NAME="M4A"
+export TARGET_END=".mp3"
+export TARGET_NAME="MP3"
 export SCRIPT_CMD="$(basename "$0")"
 
 
 # Check dependencies
-if [ -z "$(command -v magick)" ]; then
-	echo "Command 'magick' not found"
+if [ -z "$(command -v ffmpeg)" ]; then
+	echo "Command 'ffmpeg' not found"
 	exit 1
 fi
 
@@ -25,11 +25,8 @@ if [ $# -eq 2 ] && [ -f "$1" ] && [ -d "$(dirname "$2")" ]; then
 		echo "'$2' is not a $TARGET_NAME file"
 		exit 1
 	fi
-	if [ $(grep -c "ANMF" "$1") -ne 0 ]; then
-		echo "WEBP file '$1' is animated, cannot convert to JPG"
-	fi
 
-	magick "$1" "$2"
+	ffmpeg -i "$1" -b:a 320k "$2" > /dev/null 2> /dev/null
 	exit $?
 fi
 
