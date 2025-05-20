@@ -29,7 +29,8 @@ for arch in amd64; do
 
 		if [ ! -e "$TARGET/$torrent" ] && [ ! -e "$TARGET/$torrent.added" ]; then
 			echo "$torrent"
-			curl -s "$BASE_CD_URL$arch/$kind/$torrent" -o "$TARGET/$torrent"
+			echo $BASE_CD_URL$arch/$kind/$torrent
+			curl -s "$BASE_CD_URL/$arch/$kind/$torrent" -o "$TARGET/$torrent"
 		fi
 	done
 done
