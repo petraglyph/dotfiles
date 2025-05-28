@@ -5,8 +5,9 @@
 
 packages="
 apt-config-auto-update
-unattended-upgrades
 apt-listchanges
+powermgmt-base
+unattended-upgrades
 "
 
 printf "\033[1;32m%s\033[0m\n" "[APT] Enabling Auto Updates"
