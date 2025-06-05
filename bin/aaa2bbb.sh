@@ -94,16 +94,35 @@ fi
 
 
 # Check for torrent files
-if [ -z "$(find "$A2B_SOURCE" -maxdepth 1 -name "*$SOURCE_END")" ]; then
+if [ -z "$(find "$A2B_SOURCE" -maxdepth 1 -iname "*$SOURCE_END")" ]; then
 	echo "No $SOURCE_NAME files found in '$A2B_SOURCE'"
 	exit 0
 fi
+
 
 # Create backup directory
 if [ "$A2B_OPTION" = "INPLACE" ]; then
 	A2B_BACKUP_DIR="$(mktemp -d -p "$A2B_SOURCE" backup-XXX)"
 fi
-find "$A2B_SOURCE" -maxdepth 1 -name "*$SOURCE_END" | sort > $TMP
+# Create regex to switch file names
+end_regex=""
+current_end="$SOURCE_END"
+while [ ! -z "$current_end" ]; do
+	first="$(echo "$current_end" | grep -oE '^.')"
+	current_end="$(echo "$current_end" | sed 's/^.//')"
+	if [ ! -z "$(echo "$first" | grep -E '^[a-z]$')" ]; then
+		end_regex="$end_regex[$first$(echo "$first" | tr a-z A-Z)]"
+	elif [ ! -z "$(echo "$first" | grep -E '^[A-Z]$')" ]; then
+		end_regex="$end_regex[$(echo "$first" | tr A-Z a-z)$first]"
+	elif [ ! -z "$(echo "$first" | grep -E '^\.$')" ]; then
+		end_regex="$end_regex\\$first"
+	else
+		end_regex="$end_regex$first"
+	fi
+done
+echo "$end_regex"
+# Find files to convert
+find "$A2B_SOURCE" -maxdepth 1 -iname "*$SOURCE_END" | sort > $TMP
 while true; do
 	# Get next file name
 	f="$(cat $TMP | head -n 1)"
@@ -117,7 +136,7 @@ while true; do
 		exit 1
 	fi
 	file="$(basename "$f")"
-	new="$(echo "$file" | sed -E "s/\\$SOURCE_END$/$TARGET_END/")"
+	new="$(echo "$file" | sed -E "s/$end_regex$/$TARGET_END/")"
 	
 	# Convert files
 	if [ -z "$A2B_OPTION" ]; then
@@ -125,6 +144,7 @@ while true; do
 		$1 "$f" "$A2B_TARGET/$new"
 		if [ $? -ne 0 ]; then
 			echo "Converting '$f' failed"
+			rmdir --ignore-fail-on-non-empty $A2B_BACKUP_DIR
 			exit 1
 		fi
 	elif [ "$A2B_OPTION" = "LIST" ]; then
@@ -134,6 +154,7 @@ while true; do
 		$1 "$f" "$A2B_SOURCE/$new"
 		if [ $? -ne 0 ]; then
 			echo "Converting '$f' failed"
+			rmdir --ignore-fail-on-non-empty $A2B_BACKUP_DIR
 			exit 1
 		else
 			mv "$f" "$A2B_BACKUP_DIR"
