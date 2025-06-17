@@ -5,7 +5,7 @@
 LOC="$HOME/.dotfiles"
 
 # Check install location and computer
-$(dirname $(realpath $0))/../install/check.sh
+$(dirname $(realpath $0))/install/check.sh
 if [ $? -ne 0 ]; then
 	exit 1
 fi
@@ -16,7 +16,9 @@ sh $LOC/install/fedora.sh
 # GNOME Fedora Installs
 sh $LOC/gnome/fedora-install.sh
 # Flatpak Installs
-sh $LOC/install/flatpak.sh "com.valvesoftware.Steam"
+sh $LOC/install/flatpak-extra.sh
+# Steam Install
+sh $LOC/install/steam.sh
 # Rust Install
 sh $LOC/install/rust.sh
 # ~/.local/bin Installs

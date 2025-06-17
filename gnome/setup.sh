@@ -44,6 +44,10 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 # Battery percentage
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 
+# Inactive timeout
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+
 # Clock display
 gsettings set org.gnome.desktop.interface clock-format "24h"
 gsettings set org.gnome.desktop.interface clock-show-date true
@@ -77,11 +81,26 @@ gsettings set org.gnome.desktop.search-providers enabled "['org.gnome.Calculator
 gsettings set org.gnome.desktop.search-providers sort-order "['org.gnome.Calculator.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.clocks.desktop']"
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.Software.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop']"
 
+
+printf "\033[1;32m%s\033[0m\n" "[GNOME] Managing Applications"
+# Hide terminal and setup apps from grid
+for a in nvim lf htop fish org.gnome.Tour yelp; do
+	printf "[Desktop Entry]\nNoDisplay=true\n" > $HOME/.local/share/applications/$a.desktop
+done
+
+# Configure Nautilus
+gsettings set org.gnome.nautilus.preferences show-delete-permanently true
+gsettings set org.gnome.nautilus.preferences show-create-link true
+gsettings set org.gnome.nautilus.preferences default-folder-viewer list-view
+gsettings set org.gtk.Settings.FileChooser sort-directories-first true
+gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
+
 # Set default apps
-xdg-mime default org.gnome.Papers.desktop application/pdf
-xdg-mime default org.gnome.Loupe.desktop image/png image/jpeg image/webp
-xdg-mime default io.mpv.Mpv.desktop video/mp4 video/mkv video/webm
-xdg-mime default org.gnome.Decibels.desktop audio/mp3 audio/m4a audio/flac
+xdg-mime default org.gnome.Papers.desktop "application/pdf"
+xdg-mime default org.gnome.Loupe.desktop "image/png" "image/jpeg" "image/webp"
+xdg-mime default io.mpv.Mpv.desktop "video/mp4" "video/mkv" "video/webm"
+xdg-mime default org.gnome.Decibels.desktop "audio/mp3" "audio/m4a" "audio/flac"
+xdg-mime default org.gnome.Papers.desktop "application/pdf" "application/vnd.comicbook+zip" "application/vnd.comicbook-rar"
 
 
 # Extensions

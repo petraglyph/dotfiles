@@ -5,14 +5,15 @@
 
 
 packages="
-org.mozilla.Thunderbird
-com.mojang.Minecraft
-de.haeckerfelix.Fragments
-com.discordapp.Discord
-org.inkscape.Inkscape
-org.signal.Signal
-org.gnome.Fractal
 app.drey.Dialect
+de.haeckerfelix.Fragments
+org.chromium.Chromium
+org.gnome.Fractal
+org.inkscape.Inkscape
+org.mozilla.Thunderbird
+org.nickvision.tubeconverter
+org.prismlauncher.PrismLauncher
+org.signal.Signal
 "
 
 $(dirname $0)/flatpak.sh $packages $@
