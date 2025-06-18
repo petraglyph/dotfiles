@@ -69,7 +69,6 @@ require('packer').startup(function(use)
 	use "terrortylor/nvim-comment"
 	use 'nvim-lua/completion-nvim'
 	use {'steelsojka/completion-buffers', requires = {'nvim-lua/completion-nvim'}}
-	use {'lervag/vimtex', ft = {'tex'}}
 	use 'nickeb96/fish.vim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
@@ -117,13 +116,3 @@ if pcall(require, 'completion') then
 		return vim.fn.pumvisible() == 1 and '<C-p>' or '<S-Tab>'
 	end, { expr = true })
 end
-
--- VimTeX
-vim.api.nvim_create_autocmd('FileType', {pattern = 'tex', group = augroup, callback = function()
-	vim.api.nvim_set_var('tex_flavor', 'latex')
-	vim.api.nvim_set_var('vimtex_quickfix_mode', 0)
-	vim.keymap.set('n', '<C-l>', ':VimtexCompile<Enter>', {noremap = true, silent = true})
-	vim.api.nvim_create_user_command('TexWC', function()
-		print(vim.api.nvim_exec(':w !detex | wc -w', true))
-	end, {bang = true})
-end})
