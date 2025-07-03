@@ -21,20 +21,22 @@ if [ ! -d "$TARGET" ]; then
 	fi
 fi
 
-BASE_URL="https://www.linuxmint.com/torrents/"
-torrents_all="$(curl -s "$BASE_URL" | grep -oE 'href=".*\.torrent"' | sed -e 's/^href="//' -e 's/"$//' | sort -V)"
-torrents_mint="$(echo "$torrents_all" | grep -oE "^linuxmint.*64bit\.iso\.torrent$")"
+# Standard Linux Mint
+version="$(curl -s "https://linuxmint.com/download.php" | grep -oE "<title>Download Linux Mint [0-9]+\.[0-9]+ - Linux Mint</title>" | grep -oE '[0-9]+\.[0-9]+')"
+BASE_URL="https://linuxmint.com/torrents"
 for desktop in cinnamon xfce; do
-	torrent="$(echo "$torrents_mint" | grep "$desktop" | tail -n 1)"
+	torrent="linuxmint-$version-$desktop-64bit.iso.torrent"
 	
 	if [ ! -e "$TARGET/$torrent" ] && [ ! -e "$TARGET/$torrent.added" ]; then
 		echo "$torrent"
-		curl -s "$BASE_URL$torrent" -o "$TARGET/$torrent"
+		curl -s "$BASE_URL/$torrent" -o "$TARGET/$torrent"
 	fi
 done
 
-torrent_lmde="$(echo "$torrents_all" | grep -oE "^lmde.*64bit\.iso\.torrent$" | tail -n 1)"
+# Linux Mint Debian Edition
+version_lmde="$(curl -s "https://linuxmint.com/download_lmde.php" | grep -oE "<title>Download LMDE [0-9]+ - Linux Mint</title>" | grep -oE '[0-9]+')"
+torrent_lmde="lmde-$version_lmde-cinnamon-64bit.iso.torrent"
 if [ ! -e "$TARGET/$torrent_lmde" ] && [ ! -e "$TARGET/$torrent_lmde.added" ]; then
 	echo "$torrent_lmde"
-	curl -s "$BASE_URL$torrent_lmde" -o "$TARGET/$torrent_lmde"
+	curl -s "$BASE_URL/$torrent_lmde" -o "$TARGET/$torrent_lmde"
 fi

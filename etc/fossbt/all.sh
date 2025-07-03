@@ -4,7 +4,6 @@ ROOT_DIR="$(dirname "$(realpath "$0")")"
 SCRIPTS="
 bunsenlabs
 debian
-elementary
 fedora
 kali
 linuxmint
