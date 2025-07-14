@@ -39,6 +39,9 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:swap_lalt_lctl
 
 # Disable screen lock
 gsettings set org.gnome.desktop.screensaver lock-enabled false
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type "nothing"
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type "suspend"
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 1800
 
 
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Setting Keybindings"

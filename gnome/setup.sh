@@ -67,7 +67,11 @@ gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:swap_lalt_lctl', 'caps:escape', 'altwin:menu_win']"
 
 # Delay screen lock
+gsettings set org.gnome.desktop.screensaver lock-enabled true
 gsettings set org.gnome.desktop.screensaver lock-delay 120
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type "nothing"
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type "suspend"
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 600
 
 # Autodelete old trash and temp files
 gsettings set org.gnome.desktop.privacy remember-recent-files true
