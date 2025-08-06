@@ -1,8 +1,5 @@
 [include]
 	path = "email"
-[user]
-	email = me@pennbauman.com
-	name = Penn Bauman
 [core]
 	excludesfile = ~/.config/git/ignore
 	pager = less -x4
