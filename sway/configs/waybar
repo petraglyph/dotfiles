@@ -4,7 +4,7 @@
 	"height": 30,
 	"modules-left": ["sway/workspaces", "sway/mode", "mpd"],
 	"modules-center": ["clock"],
-	"modules-right": ["network", "pulseaudio", "memory", "cpu"],
+	"modules-right": ["network", "pulseaudio", "memory", "cpu", "battery"],
 
 
 	// Left Modules
@@ -46,8 +46,8 @@
 		"interval": 1,
 		/*"interface": "wlo1",*/
 		"timeless-units": true,
-		"format-wifi": "{icon} <span color=\"#eeeeee\">{essid} ({bandwidthDownBytes}/{bandwidthUpBytes})</span>",
-		"format-ethernet": " <span color=\"#eeeeee\">{ipaddr} ({bandwidthDownBytes}/{bandwidthUpBytes})</span>",
+		"format-wifi": "{icon} <span color=\"#eeeeee\">{essid} ({bandwidthDownBytes} {bandwidthUpBytes})</span>",
+		"format-ethernet": " <span color=\"#eeeeee\">{ipaddr} ({bandwidthDownBytes} {bandwidthUpBytes})</span>",
 		"format-disconnected": "來 <span color=\"#eeeeee\">Disconnected</span>",
 		"tooltip-format": "{ifname}: {ipaddr}/{cidr}",
 		"format-icons": ["冷", "爛", "爛", "襤", "蠟"],

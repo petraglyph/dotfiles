@@ -20,9 +20,12 @@ mkdir -p $XDG_CONFIG_HOME/wofi
 mkdir -p $XDG_CONFIG_HOME/mako
 mkdir -p $XDG_CONFIG_HOME/environment.d
 mkdir -p $XDG_CONFIG_HOME/zathura
+mkdir -p $XDG_CONFIG_HOME/gtk-3.0
+mkdir -p $XDG_CONFIG_HOME/gtk-4.0
 mkdir -p $XDG_CONFIG_HOME/alacritty
 mkdir -p $XDG_CONFIG_HOME/mpd
 mkdir -p $XDG_CONFIG_HOME/ncmpcpp
+
 
 printf "\033[1;32m%s\033[0m\n" "[Sway] Linking Configs"
 ln -fs $LOC/$COMP/sway-config $XDG_CONFIG_HOME/sway/config
@@ -33,6 +36,8 @@ ln -fs $LOC/sway/configs/wofi $XDG_CONFIG_HOME/wofi/config
 ln -fs $LOC/sway/configs/wofi.css $XDG_CONFIG_HOME/wofi/style.css
 ln -fs $LOC/sway/configs/mako $XDG_CONFIG_HOME/mako/config
 ln -fs $LOC/sway/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
+ln -fs $LOC/sway/configs/gtk-settings.ini $XDG_CONFIG_HOME/gtk-3.0/settings.ini
+ln -fs $LOC/sway/configs/gtk-settings.ini $XDG_CONFIG_HOME/gtk-4.0/settings.ini
 ln -fs $LOC/configs/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 ln -fs $LOC/configs/mpd.conf $XDG_CONFIG_HOME/mpd/mpd.conf
 ln -fs $LOC/configs/ncmpcpp-bindings $XDG_CONFIG_HOME/ncmpcpp/bindings

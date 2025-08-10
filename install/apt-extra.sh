@@ -5,6 +5,8 @@
 
 
 packages="
+btrbk
+btrfs-compsize
 clang
 ffmpeg
 git-email

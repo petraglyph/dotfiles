@@ -24,6 +24,7 @@ ncmpcpp
 ncmpcpp
 podman-toolbox
 pulseaudio-utils
+qalc
 sway
 swaybg
 swayidle
