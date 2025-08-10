@@ -119,13 +119,21 @@ esac
 # recode_dir codec quality target output
 recode_dir () {
 	mkdir -p "$4"
-	printf "\033[1;34m%s\033[0m %s -> %s\n" "[DIR]" "$(realpath --relative-to=$PWD "$3")" "$(realpath --relative-to=$PWD "$4")"
+	printf "\033[1;34m%s\033[0m %s -> %s\n" " [DIR]" "$(realpath --relative-base="$PWD" "$3")" "$(realpath -m --relative-base="$PWD" "$4")"
 
 	for f in "$3"/*; do
 		if [ -f "$f" ]; then
 			recode $1 $2 "$f" "$4"
+			n=$?
+			if [ $n -gt 0 ]; then
+				return $n
+			fi
 		elif [ -d "$f" ]; then
 			recode_dir $1 $2 "$f" "$4/$(basename "$f")"
+			n=$?
+			if [ $n -gt 0 ]; then
+				return $n
+			fi
 		else
 			echo "UNREACHABLE CODE (recusive SOURCE_LOC not file or dir)"
 			echo "  '$f'"
@@ -133,7 +141,7 @@ recode_dir () {
 	done
 }
 
-# recode codec quality target output
+# recode codec quality output
 recode () {
 	codec="lib$1"
 	quality="hd${2}"
@@ -141,8 +149,8 @@ recode () {
 	output="$4"
 
 	pretty_str="${2}p.$1.recode"
-	if [ -z "$(basename "$src" | grep -oE "\([0-9]+p")" ]; then
-		target="$output/$(basename "$src" | sed -E 's/\.[a-z]+$//') ($pretty_str)$(basename "$src" | grep -oE '\.[a-z]+$')"
+	if [ -z "$(basename "$src" | grep -oE "\([0-9]+p\)")" ]; then
+		target="$output/$(basename "$src" | sed -E 's/\.[a-z0-9]+$//') ($pretty_str)$(basename "$src" | grep -oE '\.[a-z0-9]+$')"
 	else
 		target="$output/$(basename "$src" | sed "s/(.*)/($pretty_str)/")"
 	fi
@@ -152,9 +160,9 @@ recode () {
 		printf "\033[1;33m%s\033[0m %s\n" "[SKIP]" "$name"
 		return
 	fi
-	printf "\033[1;32m%s\033[0m\n" "$name"
-	# echo "$(realpath --relative-to=$PWD "$src") -> $(realpath --relative-to=$PWD "$target")"
+	printf "\033[1;32m%s\033[0m %s\n" "[FILE]" "$name"
 	ffmpeg -i "$src" -n -v 24 -stats -c:v $codec -s $quality -crf 30 -c:a aac -strict -2 -metadata title="$name" "$target" < /dev/null
+	return
 }
 
 
@@ -185,8 +193,10 @@ else
 
 	if [ -f "$SOURCE_LOC" ]; then
 		recode $CODEC_STR $QUALITY_NUM "$(readlink -f "$SOURCE_LOC")" "$OUTPUT_LOC"
+		exit
 	elif [ -d "$SOURCE_LOC" ]; then
 		recode_dir $CODEC_STR $QUALITY_NUM "$(readlink -f "$SOURCE_LOC")" "$OUTPUT_LOC"
+		exit
 	else
 		echo "UNREACHABLE CODE (SOURCE_LOC not file or dir, -o OUTPUT_LOC)"
 		echo "  '$SOURCE_LOC'"
