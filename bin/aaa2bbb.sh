@@ -120,7 +120,7 @@ while [ ! -z "$current_end" ]; do
 		end_regex="$end_regex$first"
 	fi
 done
-echo "$end_regex"
+
 # Find files to convert
 find "$A2B_SOURCE" -maxdepth 1 -iname "*$SOURCE_END" | sort > $TMP
 while true; do
