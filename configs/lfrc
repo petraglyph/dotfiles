@@ -5,7 +5,6 @@
 # settings
 set info size:time
 set dircounts true
-set globsearch
 set sortby name
 
 # Custom commands
