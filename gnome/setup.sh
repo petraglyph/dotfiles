@@ -100,8 +100,7 @@ gsettings set org.gtk.Settings.FileChooser sort-directories-first true
 gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
 
 # Set default apps
-xdg-mime default org.gnome.Papers.desktop "application/pdf"
-xdg-mime default org.gnome.Loupe.desktop "image/png" "image/jpeg" "image/webp"
+xdg-mime default org.gnome.Loupe.desktop "image/png" "image/jpeg" "image/webp" "image/gif"
 xdg-mime default io.mpv.Mpv.desktop "video/mp4" "video/mkv" "video/webm"
 xdg-mime default org.gnome.Decibels.desktop "audio/mp3" "audio/m4a" "audio/flac"
 xdg-mime default org.gnome.Papers.desktop "application/pdf" "application/vnd.comicbook+zip" "application/vnd.comicbook-rar"

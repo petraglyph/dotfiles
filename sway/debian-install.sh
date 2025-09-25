@@ -15,6 +15,7 @@ bluez
 flatpak
 gammastep
 grim
+imv
 libnotify-bin
 mako-notifier
 mpc
@@ -33,6 +34,7 @@ waybar
 wildmidi
 wireplumber
 wofi
+xwayland
 zathura
 "
 printf "\033[1;32m%s\033[0m\n" "[Sway Debian] Install Packages"

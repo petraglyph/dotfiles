@@ -44,6 +44,12 @@ ln -fs $LOC/configs/ncmpcpp-bindings $XDG_CONFIG_HOME/ncmpcpp/bindings
 ln -fs $LOC/configs/ncmpcpp-config $XDG_CONFIG_HOME/ncmpcpp/config
 ln -fs $LOC/configs/user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
 
+printf "\033[1;32m%s\033[0m\n" "[Sway] Setting Default Applications"
+xdg-mime default imv-dir.desktop "image/png" "image/jpeg" "image/webp" "image/gif"
+xdg-mime default io.mpv.Mpv.desktop "video/mp4" "video/mkv" "video/webm"
+xdg-mime default io.mpv.Mpv.desktop "audio/mp3" "audio/m4a" "audio/flac"
+xdg-mime default org.gnome.Papers.desktop "application/pdf" "application/vnd.comicbook+zip" "application/vnd.comicbook-rar"
+
 printf "\033[1;32m%s\033[0m\n" "[Sway] Adding Font"
 mkdir -p $XDG_DATA_HOME/fonts
 cp -f $LOC/sway/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_design_icons.ttf
