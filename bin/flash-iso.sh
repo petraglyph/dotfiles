@@ -1,7 +1,7 @@
 #!/bin/sh
 # Write ISO to flash drive
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 if [ $# -eq 0 ]; then
 	echo "Missing ISO file"

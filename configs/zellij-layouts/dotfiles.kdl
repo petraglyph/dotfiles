@@ -1,6 +1,6 @@
 // Dotfiles and Updates Layout for Zellij
-//   Penn Bauman <me@pennbauman.com>
-//   https://github.com/pennbauman/dotfiles
+//   Petra E Bauman <petra.e.bauman@gmail.com>
+//   https://codeberg.org/petraglyph/dotfiles
 
 layout {
 	default_tab_template {

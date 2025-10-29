@@ -1,7 +1,7 @@
 #!/bin/sh
 # Check config repo locations and computer name
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 LOC="$HOME/.dotfiles"
 COMP="$1"
 

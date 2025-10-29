@@ -1,7 +1,7 @@
 #!/bin/sh
 # Toggle trayer on/off
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 if [ $(pgrep trayer -c) -eq 0 ]; then
 	trayer --transparent true --tint 0 \

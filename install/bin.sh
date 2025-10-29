@@ -1,7 +1,7 @@
 #!/bin/sh
 # Install script to local bin
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 LOC="$HOME/.dotfiles"
 SOURCE="$LOC/bin"
 TARGET="$HOME/.local/bin"

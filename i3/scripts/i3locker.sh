@@ -1,7 +1,7 @@
 #!/bin/sh
 # i3 Locking Script
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 ## Color i3lock
 backcolor="000000FF"

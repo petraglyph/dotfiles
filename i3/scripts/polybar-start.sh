@@ -1,7 +1,7 @@
 #!/bin/sh
 # Start polybar
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 for n in $(pgrep polybar); do
 	kill $n

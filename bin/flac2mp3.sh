@@ -1,7 +1,7 @@
 #!/bin/sh
 # FLAC to MP3 Conversion Script
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 export SOURCE_END=".flac"
 export SOURCE_NAME="FLAC"
 export TARGET_END=".mp3"

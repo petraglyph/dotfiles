@@ -1,7 +1,7 @@
 #!/bin/sh
 # Setup raspi400 with Sway
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 COMP="raspi400"
 
 # Check install location and computer

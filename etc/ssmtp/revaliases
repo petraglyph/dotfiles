@@ -1,7 +1,0 @@
-# sSMTP aliases
-#   /etc/ssmtp/revaliases
-
-# local_user:outgoing_address:mailhub.url[:port]
-
-penn:me@pennbauman.com:mail.privateemail.com:587
-root:me@pennbauman.com:mail.privateemail.com:587

@@ -1,7 +1,7 @@
 #!/bin/sh
 # Format torrent files with name and hash filenames
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 HELP_STR="
 Usage:
   $(basename "$0") -l|--list DIRECTORY      List formatted torrent file names

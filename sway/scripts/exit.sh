@@ -1,6 +1,7 @@
 #!/bin/sh
 # Exit Sway
-#   Penn Bauman <me@pennbauman.com>
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 echo "Sway System"
 echo "  [s] shutdown"

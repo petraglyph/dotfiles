@@ -1,7 +1,7 @@
 #!/bin/sh
 # Configure GNOME for admin user
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Configuring"

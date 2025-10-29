@@ -1,7 +1,7 @@
 #!/bin/sh
 # General Fedora Installs
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 copradd () {
 	url="https://copr.fedorainfracloud.org/coprs/$1/$2/repo/fedora-/"
@@ -20,7 +20,7 @@ if [ ! -z "$(command -v rpm-ostree)" ]; then
 	printf "\033[1;34m%s\033[0m\n" "[Fedora] OSTree packaging detected"
 
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling Copr repositories"
-	copradd pennbauman ports
+	copradd petraglyph packages
 
 	# Install packages
 	$(dirname $0)/rpm-ostree.sh
@@ -28,7 +28,7 @@ elif [ ! -z "$(command -v dnf)" ]; then
 	printf "\033[1;34m%s\033[0m\n" "[Fedora] Traditional packaging detected"
 
 	printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling Copr repositories"
-	copradd pennbauman ports
+	copradd petraglyph packages
 
 	if [ "$1" = "extra" ]; then
 		printf "\033[1;32m%s\033[0m\n" "[Fedora] Enabling RPM Fusion"

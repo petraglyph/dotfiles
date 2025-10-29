@@ -1,7 +1,7 @@
 #!/bin/sh
 # Install and Setup transmission-daemon
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 SYSTEMD_DIR="$HOME/.config/systemd/user"
 CONFIG_DIR="$HOME/.config/transmission-daemon"
 DATA_DIR="$HOME/transmission"

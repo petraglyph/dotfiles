@@ -1,7 +1,7 @@
 #!/bin/sh
 # Print volume for polybar
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 ERROR_OUTPUT="%{F#DB5B5B}%{F}[]%"
 if [ -z "$(command -v pactl)" ]; then
 	echo "$ERROR_OUTPUT"

@@ -1,6 +1,7 @@
 #!/bin/sh
 # Dim Screen Colors in Wayland
-#   Penn Bauman <me@pennbauman.com>
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 loc="$HOME/.local/state"
 

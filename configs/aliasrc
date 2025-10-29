@@ -1,6 +1,6 @@
 # Shell aliases
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 alias ls="ls -Fh --group-directories-first"
 alias cp="cp -r"
 alias rm="rm -r"

@@ -1,7 +1,7 @@
 #!/bin/sh
 # Alpine Linux Chroot
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 CLI_NAME="$(basename "$0" | sed 's/\..*$//')"
 HELP_TEXT="Alpine Linux Chroot Wrapper
 

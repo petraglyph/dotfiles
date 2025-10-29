@@ -1,6 +1,6 @@
 # Fish add to PATH
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 for bin in /var/lib/flatpak/exports/bin $HOME/.local/share/flatpak/exports/bin $HOME/.cargo/bin /usr/local/bin $HOME/.local/bin
 	if ! test -d $bin
 		continue

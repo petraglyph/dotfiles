@@ -1,6 +1,6 @@
 " Custom Maia Color Scheme for Airline
-"   Penn Bauman <me@pennbauman.com>
-"   https://github.com/pennbauman/dotfiles
+"   Petra E Bauman <petra.e.bauman@gmail.com>
+"   https://codeberg.org/petraglyph/dotfiles
 
 
 " Color palette

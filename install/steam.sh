@@ -1,7 +1,7 @@
 #!/bin/sh
 # Install Steam
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 os_id="$(grep '^ID=' /etc/os-release | cut -d'=' -f 2)"
 

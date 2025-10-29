@@ -1,7 +1,7 @@
 #!/bin/sh
 # Install and Setup transmission-daemon
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 SYSTEMD_DIR="/etc/systemd/system/transmission-daemon.service.d"
 if $(grep -qE '^debian-transmission' /etc/passwd); then
 	DAEMON_USER="debian-transmission"

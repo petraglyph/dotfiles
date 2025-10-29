@@ -1,7 +1,7 @@
 #!/bin/sh
 # Low Battery Notification Script
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 level=$(cat /sys/class/power_supply/BAT0/capacity)
 if [ $level -le 20 ]; then

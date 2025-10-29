@@ -1,7 +1,7 @@
 #!/bin/sh
 # Rotate Images to Vertical
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 TMP=$(mktemp)
 echo 0 > $TMP

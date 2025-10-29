@@ -1,5 +1,6 @@
 -- Conky Config for Network Info
---   Penn Bauman <me@pennbauman.com>
+--   Petra E Bauman <petra.e.bauman@gmail.com>
+--   https://codeberg.org/petraglyph/dotfiles
 conky.config = {
     out_to_x = false,
     own_window = false,

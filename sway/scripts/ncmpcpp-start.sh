@@ -1,5 +1,7 @@
 #!/bin/sh
 # Start and Setup mpd and ncmpcpp
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 term=$1
 

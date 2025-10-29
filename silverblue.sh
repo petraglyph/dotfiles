@@ -1,7 +1,7 @@
 #!/bin/sh
 # Setup Fedora Silverbue
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 LOC="$HOME/.dotfiles"
 
 # Check install location and computer

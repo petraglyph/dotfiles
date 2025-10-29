@@ -1,7 +1,7 @@
 #!/bin/sh
 # i3 Exit Script
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 echo "i3 System"
 echo "  [s] shutdown"

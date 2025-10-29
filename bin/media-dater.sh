@@ -1,7 +1,7 @@
 #!/bin/sh
 # Date Image File Names From Metadata
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 MEDIA_ENDERS=".*\.(jpg|png|mp4|mov)$"
 TMP=$(mktemp)

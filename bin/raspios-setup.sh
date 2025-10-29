@@ -1,7 +1,7 @@
 #!/bin/sh
 # Setup Raspbian Image and/or Write to SD Card
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 NAME_CLI="$(basename "$0" | sed 's/\..*$//')"
 CACHE_DIR="$HOME/.cache/raspios"
 HELP_TEXT="Raspbian Image Setup Script

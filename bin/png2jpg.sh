@@ -1,7 +1,7 @@
 #!/bin/sh
 # PNG to JPEG Conversion Script
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 export SOURCE_END=".png"
 export SOURCE_NAME="PNG"
 export TARGET_END=".jpg"

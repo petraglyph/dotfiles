@@ -1,6 +1,7 @@
 #!/bin/sh
 # Lock Sway
-#   Penn Bauman <me@pennbauman.com>
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 ## Lock Color
 backcolor="000000FF"

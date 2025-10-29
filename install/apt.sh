@@ -1,7 +1,7 @@
 #!/bin/sh
 # General APT Installs
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 if [ -z "$(command -v apt-get)" ]; then
 	printf "\033[1;31m%s\033[0m\n" "APT not installed"

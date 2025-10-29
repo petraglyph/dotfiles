@@ -1,7 +1,7 @@
 #!/bin/sh
 # General Debian Installs
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 BACKPORTS_LIST="/etc/apt/sources.list.d/backports.list"
 REPO_KINDS="main contrib non-free non-free-firmware"
 

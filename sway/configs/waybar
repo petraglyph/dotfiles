@@ -1,5 +1,6 @@
 // Way Configuration
-//   Penn Bauman <me@pennbauman.com>
+//   Petra E Bauman <petra.e.bauman@gmail.com>
+//   https://codeberg.org/petraglyph/dotfiles
 {
 	"height": 30,
 	"modules-left": ["sway/workspaces", "sway/mode", "mpd"],

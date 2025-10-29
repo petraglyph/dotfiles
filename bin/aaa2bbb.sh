@@ -1,7 +1,7 @@
 #!/bin/sh
 # AAA to BBB Generic Conversion Script
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 TMP="$(mktemp)"
 if [ -z "$SOURCE_END" ]; then
 	SOURCE_END=".aaa"

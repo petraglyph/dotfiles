@@ -1,7 +1,7 @@
 #!/bin/sh
 # Enable Debian Auto Updates
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 packages="
 apt-config-auto-update

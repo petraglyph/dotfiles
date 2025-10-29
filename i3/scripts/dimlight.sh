@@ -1,7 +1,7 @@
 #!/bin/sh
 # Dim Screen Colors in Xorg
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 LOC="$HOME/.cache/dotfiles"
 
 if [ -f $LOC/dimlight ]; then

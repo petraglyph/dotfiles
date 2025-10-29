@@ -1,6 +1,7 @@
 #!/bin/sh
 # Connect to WiFi
-#   Penn Bauman <me@pennbauman.com>
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 while [ -z "$(grep -E '(wlp41s0|enp39s0|wlo1)' /proc/net/route)" ]; do
 	wifis=$(nmcli dev wifi list)

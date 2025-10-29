@@ -1,7 +1,7 @@
 #!/bin/sh
 # Enable OS Prober on Debian
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 sudo apt-get -y install os-prober
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 # Sway Status Bar Command
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 if [ -z "$(command -v pactl)" ]; then
 	echo "Missing pactl"
 	exit 1

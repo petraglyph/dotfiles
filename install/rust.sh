@@ -1,7 +1,7 @@
 #!/bin/sh
 # AutiInstall Rust
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 
 # Do nothing if already installed
 if [ -d $HOME/.cargo ]; then
