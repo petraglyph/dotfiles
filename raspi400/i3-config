@@ -1,5 +1,7 @@
-## tower3800x Sway Config
+## i3 Config File
 #   Penn Bauman <me@pennbauman.com>
+#   https://github.com/pennbauman/dotfiles
+# see https://i3wm.org/docs/userguide.html for reference
 
 
 ### VARIABLES
@@ -20,7 +22,7 @@ set $right l
 # config location
 set $loc "$HOME/.dotfiles"
 # computer name
-set $name "tower3800x"
+set $name "raspi400"
 
 
 
@@ -29,42 +31,23 @@ set $name "tower3800x"
 font pango:DejaVu Sans Mono, pango:JoyPixels 10.5
 
 ## Windows Borders
-default_border pixel 0
+new_window pixel 0
 # window colors          border      background   text       indicator
 client.focused           $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.unfocused         $c-backgnd  $c-backgnd   $c-text    $c-backgnd
 client.focused_inactive  $c-backgnd  $c-backgnd   $c-high-n  $c-backgnd
 client.urgent            $c-high-b   $c-high-b    $c-backgnd $c-high-n
-# gaps
+# i3 gaps
 gaps inner 13
 gaps outer -2
 smart_gaps on
 smart_borders on
 
-## Displays
-output * bg $loc/$name/background.jpg fill
-output * scale 2
-
 ## Special Window Configurations
-for_window [app_id="Alacritty" title="scratch"] move scratchpad
-#for_window [class="Gimp-2.10"] border normal
+for_window [class="Alacritty" title="scratch"] move scratchpad
 # windows floating by default
-for_window [app_id="Alacritty" title="float"] floating enable
-#for_window [class="Steam" title="Steam - News"] floating enable
-
-
-
-### Inputs
-input type:keyboard {
-	xkb_layout us
-	xkb_options ctrl:swap_lalt_lctl,caps:escape,altwin_menu_win
-}
-input type:touchpad {
-	tap enabled
-	natural_scroll enabled
-	click_method clickfinger
-	tap_button_map lrm
-}
+for_window [class="Alacritty" title="float"] floating enable
+for_window [class="stalonetray"] floating enable
 
 
 
@@ -80,6 +63,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $wsHDMI "HDMI"
 # switch to workspace
 bindsym $super+1 workspace $ws1
 bindsym $super+2 workspace $ws2
@@ -91,6 +75,7 @@ bindsym $super+7 workspace $ws7
 bindsym $super+8 workspace $ws8
 bindsym $super+9 workspace $ws9
 bindsym $super+0 workspace $ws10
+bindsym $super+m workspace $wsHDMI
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace $ws1
 bindsym $super+Shift+2 move container to workspace $ws2
@@ -102,12 +87,29 @@ bindsym $super+Shift+7 move container to workspace $ws7
 bindsym $super+Shift+8 move container to workspace $ws8
 bindsym $super+Shift+9 move container to workspace $ws9
 bindsym $super+Shift+0 move container to workspace $ws10
+bindsym $super+Shift+m move container to workspace $wsHDMI
 # workspace assignments
-assign [app_id="firefox"] $ws2
-assign [app_id="Google-chrome"] $ws3
-#assign [class="Gimp"] $ws7
-#assign [class="Inkscape"] $ws7
-assign [app_id="Alacritty" title="ncmpcpp"] $ws10
+assign [class="Firefox"] $ws2
+assign [class="firefox"] $ws2
+assign [class="Google-chrome"] $ws3
+assign [class="Gimp"] $ws7
+assign [class="Inkscape"] $ws7
+assign [class="Spotify"] $ws10
+assign [class="Rhythmbox"] $ws10
+assign [class="Alacritty" title="ncmpcpp"] $ws10
+assign [class="Alacritty" title="hdmi"] $wsHDMI
+# workspace monitors
+workspace $ws1 output DP-1
+workspace $ws2 output DP-1
+workspace $ws3 output DP-1
+workspace $ws4 output DP-1
+workspace $ws5 output DP-1
+workspace $ws6 output DP-1
+workspace $ws7 output DP-1
+workspace $ws8 output DP-1
+workspace $ws9 output DP-1
+workspace $ws10 output DP-1
+workspace $wsHDMI output HDMI-1
 
 
 
@@ -164,7 +166,7 @@ mode "resize" {
 
 ### KEYBOARD SHORTCUTS
 ## Program Launching
-bindsym $super+Space exec wofi --show drun
+bindsym $super+space exec rofi -modi drun -show run
 # start terminal
 bindsym $super+Return exec $term
 # start calculator
@@ -172,7 +174,7 @@ bindsym $super+c exec $term -t float -e qalc
 # Custom script runner
 bindsym $super+x exec $term -t float -e sh $HOME/documents/other/linux/scripts/quick-run.sh
 # Show/hide tray
-#bindsym $super+p exec sh $loc/i3/scripts/trayer.sh
+bindsym $super+p exec sh $loc/i3/scripts/trayer.sh
 
 
 ## System Buttons
@@ -197,25 +199,24 @@ bindsym $super+Right exec mpc next
 bindsym $super+Shift+Left exec mpc seek -0:0:10
 bindsym $super+Shift+Right exec mpc seek +0:0:10
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec sh $loc/sway/scripts/dimlight.sh +
-bindsym XF86MonBrightnessDown exec sh $loc/sway/scripts/dimlight.sh -
-bindsym $super+Prior exec sh $loc/sway/scripts/dimlight.sh +
-bindsym $super+Next exec sh $loc/sway/scripts/dimlight.sh -
+bindsym XF86MonBrightnessUp exec sh $loc/i3/scripts/dimlight.sh +
+bindsym XF86MonBrightnessDown exec sh $loc/i3/scripts/dimlight.sh -
+bindsym $super+Prior exec sh $loc/i3/scripts/dimlight.sh +
+bindsym $super+Next exec sh $loc/i3/scripts/dimlight.sh -
 
-## Sway Control
-# restart swat
-bindsym $super+Shift+Escape reload
-# exit sway
-bindsym $super+Escape exec $term -t float -e $loc/sway/scripts/exit.sh
-# lock sway
-bindsym $super+z exec sh $loc/sway/scripts/locker.sh suspend
+## i3 Control
+# restart i3
+bindsym $super+Shift+Escape restart
+# exit i3
+bindsym $super+Escape exec $term -t float -e sh $loc/i3/scripts/i3exit.sh
+# lock i3
+bindsym $super+z exec sh $loc/i3/scripts/i3locker.sh dark
 # screenshots
-bindsym Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc_grim.png')
-bindsym $super+Print exec grim $HOME/$(date +'%Y-%m-%d_%H:%M:%S_prtsrc_grim.png') -g $(slurp)
+bindsym Print exec scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/'
 
 ## Folder Opening
 # open ~/
-bindsym $super+f exec $term -e lf $HOME
+bindsym $super+f exec $term -e lf
 # open ~/downloads
 bindsym $super+d exec $term -e lf $HOME/downloads
 # open ~/videos
@@ -223,7 +224,7 @@ bindsym $super+v exec $term -e lf $HOME/videos
 # open code
 bindsym $super+e exec $term -e lf $HOME/documents/code
 # open /tank
-bindsym $super+Shift+f exec $term -e lf /tank
+bindsym $super+Shift+f exec $term -e lf /media/4tb-disks
 # open /
 bindsym $super+Shift+r exec $term -e lf /
 # open dnd
@@ -242,24 +243,17 @@ bindsym $super+Shift+n exec $term -e lf $HOME/documents/other/notes
 
 
 ### STARTUP PROGRAMS
-## Run on Startup
+## Run on i3 Startup
 # user windows
 exec $term
-exec $term
 exec $term --title="scratch"
-exec org.mozilla.firefox
-exec sh $loc/sway/scripts/ncmpcpp-start.sh $term
 # screen and appearance daemons
-exec_always swayidle -w \
-	timeout 300 'swaymsg "output * dpms off"' \
-		resume 'swaymsg "output * dpms on"' \
-	timeout 300 $loc/sway/scripts/locker.sh \
-	before-sleep $loc/sway/scripts/locker.sh \
-	after-resume 'swaymsg "output * dpms on"'
-#exec dunst
+exec picom -b -f -D 1
+exec xidlehook --not-when-fullscreen --not-when-audio --timer 300 "xset dpms force off" "" --timer 600 "sh $loc/i3/scripts/i3locker.sh" ""
+exec dunst
 # files and background processes
-exec pcloud
-exec sh $loc/sway/scripts/dimlight.sh
+exec sh $loc/i3/scripts/dimlight.sh
 
-## Run on Restart
-exec_always kill $(pgrep waybar); waybar
+## Run on i3 Restart
+exec_always sh $loc/i3/scripts/polybar-start.sh $name
+exec_always feh --bg-scale $loc/$name/background.jpg

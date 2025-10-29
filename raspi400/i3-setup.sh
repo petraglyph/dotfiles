@@ -1,7 +1,7 @@
 #!/bin/sh
-# Setup raspi400 with Sway
-#   Penn Bauman <me@pennbauman.com>
-#   https://github.com/pennbauman/dotfiles
+# Setup raspi400 with i3
+#   Petra E Bauman <petra.e.bauman@gmail.com>
+#   https://codeberg.org/petraglyph/dotfiles
 COMP="raspi400"
 
 # Check install location and computer
@@ -18,14 +18,10 @@ fi
 # Debian Installs
 sh ~/.dotfiles/install/debian.sh
 # Sway Debian Installs
-sh ~/.dotfiles/sway/debian-install.sh chromium
-# Rust Install
-sh ~/.dotfiles/install/rust.sh
+sh ~/.dotfiles/i3/debian-install.sh chromium
 # ~/.local/bin Installs
 sh ~/.dotfiles/install/bin.sh
 # Terminal Configuration
 sh ~/.dotfiles/install/terminal.sh
-# Cron Script Installs
-sh ~/.dotfiles/install/cron.sh clean-cache
 # Sway Configuration
-sh ~/.dotfiles/sway/setup.sh $COMP
+sh ~/.dotfiles/i3/setup.sh $COMP

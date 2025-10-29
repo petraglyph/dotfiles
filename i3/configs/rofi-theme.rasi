@@ -8,7 +8,7 @@
 	green: #2EB398;
 	red: #DB5B5B;
 
-	font: "Mono 40";
+	font: "Mono 20";
 
 	background-color: @bg;
 	border-color: @bg;
@@ -25,7 +25,7 @@
 /* layout */
 window {
 	fullscreen: true;
-	padding: 700;
+	padding: 350;
 	background-color: @bg;
 }
 mainbox {
@@ -37,12 +37,12 @@ inputbar {
 
 /* search box */
 prompt {
-	padding: 12;
+	padding: 6;
 	text-color: @fg;
 }
 entry {
 	background-color: @bg;
-	padding: 12 0 12 3;
+	padding: 6 0 6 2;
 	text-color: @fg;
 	placeholder: "";
 }
@@ -57,7 +57,7 @@ listview {
 	text-color: @fg;
 }
 element normal.normal, element alternate.normal {
-	padding: 12;
+	padding: 6;
 	background-color: @bg;
 	border-color: @bg;
 	text-color: @fg;

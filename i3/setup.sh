@@ -32,7 +32,7 @@ ln -fs $LOC/i3/configs/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc
 ln -fs $LOC/i3/configs/polybar.ini $XDG_CONFIG_HOME/polybar/config.ini
 ln -fs $LOC/i3/configs/rofi-theme.rasi $XDG_CONFIG_HOME/rofi/config.rasi
 ln -fs $LOC/i3/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
-ln -fs $LOC/configs/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+ln -fs $LOC/configs/alacritty.toml $XDG_CONFIG_HOME/alacritty/alacritty.toml
 ln -fs $LOC/configs/mpd.conf $XDG_CONFIG_HOME/mpd/mpd.conf
 ln -fs $LOC/configs/ncmpcpp-bindings $XDG_CONFIG_HOME/ncmpcpp/bindings
 ln -fs $LOC/configs/ncmpcpp-config $XDG_CONFIG_HOME/ncmpcpp/config
