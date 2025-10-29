@@ -25,7 +25,7 @@ sh $LOC/install/rust.sh
 sh $LOC/install/bin.sh
 # Terminal Configuration
 sh $LOC/install/terminal.sh
-# Cron Script Installs
-sh $LOC/install/cron.sh "dotfiles-backup"
+# Systemd User Configuration
+sh $LOC/install/systemd-user.sh
 # GNOME Configuration
 sh $LOC/gnome/setup.sh

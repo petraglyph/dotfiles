@@ -13,7 +13,6 @@ rpm-ostree upgrade
 
 packages="
 btrbk
-cronie
 dash
 duperemove
 fish

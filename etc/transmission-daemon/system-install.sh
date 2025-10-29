@@ -40,11 +40,6 @@ if [ ! -z "$(sudo grep "PASSWORD" "$DATA_DIR/config/settings.json")" ]; then
 fi
 sudo chown -R $DAEMON_USER:$DAEMON_USER $DATA_DIR
 
-if [ ! -z "$(command -v rclone)" ]; then
-	printf "\033[1;32m%s\033[0m\n" "[transmission-daemon] Configuring cron backup script"
-	sudo cp $HERE/backup.cron /etc/cron.daily/transmission-daemon-backup
-fi
-
 printf "\033[1;32m%s\033[0m\n" "[transmission-daemon] Starting service"
 sudo systemctl daemon-reload
 sudo systemctl enable transmission-daemon

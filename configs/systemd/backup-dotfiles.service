@@ -1,0 +1,7 @@
+[Unit]
+Description=Backup ~/.dotfiles
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=rclone sync .dotfiles pcloud:archive/backups/%H-dotfiles.new --log-level INFO
