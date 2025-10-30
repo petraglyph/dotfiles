@@ -33,9 +33,9 @@ window#waybar {
 	padding:0;
 	margin:0 3px;
 }
-#battery, #cpu, #memory, #pulseaudio, #network {
+#battery, #cpu, #memory, #pulseaudio.loud, #network {
 	color:#2EB398;
 }
-#battery.warning:not(.charging), #cpu.warning, #memory.warning, #pulseaudio.loud, #network.disconnected {
+#battery.warning:not(.charging), #cpu.warning, #memory.warning, #pulseaudio, #network.disconnected {
 	color:#DB5B5B;
 }

@@ -25,6 +25,7 @@ mpv
 ncmpcpp
 ncmpcpp
 podman-toolbox
+pulseaudio-module-bluetooth
 pulseaudio-utils
 qalc
 sway

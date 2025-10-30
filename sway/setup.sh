@@ -39,7 +39,7 @@ ln -fs $LOC/sway/configs/mako $XDG_CONFIG_HOME/mako/config
 ln -fs $LOC/sway/configs/zathurarc $XDG_CONFIG_HOME/zathura/zathurarc
 ln -fs $LOC/sway/configs/gtk-settings.ini $XDG_CONFIG_HOME/gtk-3.0/settings.ini
 ln -fs $LOC/sway/configs/gtk-settings.ini $XDG_CONFIG_HOME/gtk-4.0/settings.ini
-ln -fs $LOC/configs/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+ln -fs $LOC/configs/alacritty.toml $XDG_CONFIG_HOME/alacritty/alacritty.toml
 ln -fs $LOC/configs/mpd.conf $XDG_CONFIG_HOME/mpd/mpd.conf
 ln -fs $LOC/configs/ncmpcpp-bindings $XDG_CONFIG_HOME/ncmpcpp/bindings
 ln -fs $LOC/configs/ncmpcpp-config $XDG_CONFIG_HOME/ncmpcpp/config
