@@ -22,6 +22,10 @@ mkdir -p $XDG_CONFIG_HOME/autostart
 for f in $LOC/gnome/autostart/*; do
 	ln -fs $f $XDG_CONFIG_HOME/autostart/$(basename $f)
 done
+# Disable gnome software daemon autostart
+cp /etc/xdg/autostart/gnome-software-service.desktop $XDG_CONFIG_HOME/autostart
+echo "X-GNOME-Autostart-enabled=false" >> $XDG_CONFIG_HOME/autostart/gnome-software-service.desktop
+
 
 
 printf "\033[1;32m%s\033[0m\n" "[GNOME] Configuring"
