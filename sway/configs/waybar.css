@@ -1,7 +1,6 @@
 * {
 	border: none;
 	border-radius: 0;
-	font-family: DejaVu Sans Mono, Material Design Icons;
 	font-size: 16px;
 	min-height: 0;
 	padding:0;
@@ -12,6 +11,10 @@ window#waybar {
 	color: #eeeeee;
 }
 
+
+#workspaces {
+	font-family: Material Design Icons;
+}
 #workspaces button {
 	padding: 0 8px;
 	font-size:28px;
@@ -27,9 +30,14 @@ window#waybar {
 	margin-left:20px;
 }
 
+#mpd, #clock {
+	font-family: DejaVu Sans Mono;
+}
+
 
 
 #battery, #cpu, #memory, #pulseaudio, #network {
+	font-family: Material Design Icons;
 	padding:0;
 	margin:0 3px;
 }

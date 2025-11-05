@@ -53,7 +53,7 @@ xdg-mime default org.gnome.Papers.desktop "application/pdf" "application/vnd.com
 
 printf "\033[1;32m%s\033[0m\n" "[Sway] Adding Font"
 mkdir -p $XDG_DATA_HOME/fonts
-cp -f $LOC/sway/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_design_icons.ttf
+wget -nv -O $XDG_DATA_HOME/fonts/material_design_icons.ttf https://github.com/Templarian/MaterialDesign-Webfont/raw/refs/tags/v7.4.47/fonts/materialdesignicons-webfont.ttf
 
 
 printf "\033[1;32m%s\033[0m\n" "[Sway] Adding tty1 autostart"

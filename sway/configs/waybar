@@ -14,16 +14,16 @@
 		"all-outputs": true,
 		"format": "{icon}",
 		"format-icons": {
-			"1" : "",
-			"2" : "",
-			"3" : "",
-			"4" : "ﱨ",
-			"5" : "",
-			"6" : "",
-			"7" : "",
-			"8" : "",
-			"9" : "",
-			"10" : ""
+			"1" : "󰆍",
+			"2" : "󰈹",
+			"3" : "󰊯",
+			"4" : "󱲆",
+			"5" : "󰉕",
+			"6" : "󰔂",
+			"7" : "󰋯",
+			"8" : "󰋶",
+			"9" : "󰌚",
+			"10" : "󰝚"
 		}
 	},
 	"mpd": {
@@ -45,27 +45,26 @@
 	// Right Modules
 	"network": {
 		"interval": 1,
-		/*"interface": "wlo1",*/
 		"timeless-units": true,
-		"format-wifi": "{icon} <span color=\"#eeeeee\">{essid} ({bandwidthDownBytes} {bandwidthUpBytes})</span>",
-		"format-ethernet": " <span color=\"#eeeeee\">{ipaddr} ({bandwidthDownBytes} {bandwidthUpBytes})</span>",
-		"format-disconnected": "來 <span color=\"#eeeeee\">Disconnected</span>",
+		"format-wifi": "{icon} <span color=\"#eeeeee\" font=\"DejaVu Sans Mono\">{essid} ({bandwidthDownBytes} {bandwidthUpBytes})</span>",
+		"format-ethernet": "󰈀 <span color=\"#eeeeee\" font=\"DejaVu Sans Mono\">{ipaddr} ({bandwidthDownBytes} {bandwidthUpBytes})</span>",
+		"format-disconnected": "󰤮 <span color=\"#eeeeee\" font=\"DejaVu Sans Mono\">Disconnected</span>",
 		"tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-		"format-icons": ["冷", "爛", "爛", "襤", "蠟"],
+		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
 	},
 	"pulseaudio": {
-		"format": "{icon}<span color=\"#eeeeee\">{volume}%</span>",
-		"format-muted": "<span color=\"#eeeeee\">{volume}%</span>",
+		"format": "{icon}<span color=\"#eeeeee\" font=\"DejaVu Sans Mono\">{volume}%</span>",
+		"format-muted": "󰝟<span color=\"#eeeeee\" font=\"DejaVu Sans Mono\">{volume}%</span>",
 		"states": {
 			"loud": 101,
 		},
 		"format-icons": {
-			"default": ["", ""]
+			"default": ["󰖀", "󰕾"]
 		},
 	},
 	"memory": {
 		"interval": 5,
-		"format": "<span color=\"#eeeeee\">{percentage:02}%</span>",
+		"format": "󰍛<span color=\"#eeeeee\" font=\"DejaVu Sans Mono\">{percentage:02}%</span>",
 		"states": {
 			"warning": 80,
 		},
@@ -73,7 +72,7 @@
 	},
 	"cpu": {
 		"interval": 1,
-		"format": "<span color=\"#eeeeee\">{usage:02}%</span>",
+		"format": "󰘚<span color=\"#eeeeee\" font=\"DejaVu Sans Mono\">{usage:02}%</span>",
 		"states": {
 			"warning": 80,
 		},
@@ -84,11 +83,9 @@
 		"states": {
 			"warning": 30,
 		},
-		"format": "{icon}<span color=\"#eeeeee\">{capacity}%</span>",
-		"format-charging": " <span color=\"#eeeeee\">{capacity}%</span>",
-		// "format-plugged": "{capacity}% ",
-		// "format-full": "",
-		"format-icons": ["", "", "", "", "", "", "", "", "", ""]
+		"format": "{icon}<span color=\"#eeeeee\" font=\"DejaVu Sans Mono\">{capacity}%</span>",
+		"format-charging": "󰂄 <span color=\"#eeeeee\" font=\"DejaVu Sans Mono\">{capacity}%</span>",
+		"format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"]
 	},
 
 	"tray": {

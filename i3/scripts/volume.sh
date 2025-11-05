@@ -22,10 +22,10 @@ else
     color="2EB398"
 fi
 if [ "$vol" -eq 0 ] || [ -n "$(echo $mute | grep yes)" ]; then
-    icon=""
+    icon="󰝟"
 elif [ "$vol" -le 50 ]; then
-    icon=""
+    icon="󰖀"
 else
-    icon=""
+    icon="󰕾"
 fi
 echo $(printf '%%{F#%s}%s%%{F}%02d%%' $color $icon $vol)

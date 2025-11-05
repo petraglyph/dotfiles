@@ -42,7 +42,7 @@ ln -fs $LOC/i3/configs/gtk-settings.ini $XDG_CONFIG_HOME/gtk-3.0/settings.ini
 ln -fs $LOC/$COMP/Xresources $HOME/.Xresources
 
 printf "\033[1;32m%s\033[0m\n" "[i3] Adding Font"
-cp -f $LOC/i3/configs/material_design_icons.ttf $XDG_DATA_HOME/fonts/material_design_icons.ttf
+wget -nv -O $XDG_DATA_HOME/fonts/material_design_icons.ttf https://github.com/Templarian/MaterialDesign-Webfont/raw/refs/tags/v7.4.47/fonts/materialdesignicons-webfont.ttf
 
 printf "\033[1;32m%s\033[0m\n" "[i3] Configuring Xorg"
 sudo rm -rf /etc/X11/xorg.conf.d

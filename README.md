@@ -14,7 +14,3 @@ To setup Fedora Silverblue run:
 To setup terminal only run:
 
 	~/.dotfiles/install/terminal.sh
-
-
-## Sources
-[i3/configs/material_design_icons.ttf](/i3/configs/material_design_icons.ttf) from [Google Material Icons/Symbols](https://github.com/google/material-design-icons)
